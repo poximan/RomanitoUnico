@@ -26,7 +26,7 @@ import romaneo.utileria.Constantes;
 /* ............................................. */
 
 @Path(Constantes.ConstAcondicionador.PATH)
-public class AcondicionadorRest {
+public class RestAcondicionador {
 
 	/* ............................................. */
 	/* ............................................. */
