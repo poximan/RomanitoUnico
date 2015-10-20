@@ -1,4 +1,4 @@
-<div apply="controllers.BusquedaControler">
+<div apply="romaneo.unificado.controllers.BusquedaControler">
 <zk xmlns:w="client" xmlns:n="xhtml">
 <n:h1>Buscar Acondicionador!</n:h1>
 <hbox align="center">
@@ -15,14 +15,14 @@
         <listheader label="Nombre" width="100px"/>
         <listheader label="Apellido" width="150px" />
         <listheader label="DNI" width="250px"/>
-        <listheader label="Dirección"/>
+        <listheader label="EMAIL"/>
     </listhead>
      <template name="model">
         <listitem>
-            <listcell label="${each.nombre}"></listcell>
-            <listcell label="${each.apellido}"></listcell>
-            <listcell label= "${each.dni}"></listcell>
-            <listcell label= "${each.direccion}"></listcell>
+            <listcell label="${each.persona.nombre}"></listcell>
+            <listcell label="${each.persona.apellido}"></listcell>
+            <listcell label= "${each.persona.documento}"></listcell>
+            <listcell label= "${each.contacto.email}"></listcell>
             <listcell >
                     <button label="Editar" hflex="1" class="btn-default">
                     </button>
@@ -32,7 +32,5 @@
         </listitem>
     </template>
 </listbox>
-
-</div>
-
 </zk>
+</div>
