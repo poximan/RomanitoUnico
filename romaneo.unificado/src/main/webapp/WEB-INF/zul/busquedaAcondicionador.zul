@@ -27,12 +27,15 @@
 					<listcell label="${each.persona.documento}"></listcell>
 					<listcell label="${each.contacto.email}"></listcell>
 					<listcell>
-						<n:button type="button" class="btn btn-default">
-      <n:span class="glyphicon glyphicon-align-left"></n:span>
-    </n:button>
-						<button label="Eliminar" hflex="1"
-							class="btn-danger">
-						</button>
+						<n:button type="button" class="btn-default">
+							<n:span class="glyphicon glyphicon-edit">
+							</n:span>
+						</n:button>
+						<n:button type="button" class="btn-danger">
+							<n:span
+								class="glyphicon glyphicon-remove-circle">
+							</n:span>
+						</n:button>
 					</listcell>
 				</listitem>
 			</template>
