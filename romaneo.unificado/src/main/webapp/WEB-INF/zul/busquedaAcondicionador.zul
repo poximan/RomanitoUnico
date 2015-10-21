@@ -1,36 +1,41 @@
 <div apply="romaneo.unificado.controllers.BusquedaControler">
-<zk xmlns:w="client" xmlns:n="xhtml">
-<n:h1>Buscar Acondicionador!</n:h1>
-<hbox align="center">
-    Buscar:
-    <textbox id="textNombre" placeholder="nombre" />
-    <textbox id="textApellido" placeholder="apellido"/>
-    <textbox id="textdni" placeholder="dni" />
-    <textbox id="textDireccion" placeholder="dirección" />
-    <button id="btnBuscar" label="buscar" class="btn-default" />
-</hbox>
 
-<listbox class="table table-striped" id="aconListbox"  mold="paging" pageSize="2" height="160px" emptyMessage="acondicionador no encontrado">
-    <listhead>
-        <listheader label="Nombre" width="100px"/>
-        <listheader label="Apellido" width="150px" />
-        <listheader label="DNI" width="250px"/>
-        <listheader label="EMAIL"/>
-    </listhead>
-     <template name="model">
-        <listitem>
-            <listcell label="${each.persona.nombre}"></listcell>
-            <listcell label="${each.persona.apellido}"></listcell>
-            <listcell label= "${each.persona.documento}"></listcell>
-            <listcell label= "${each.contacto.email}"></listcell>
-            <listcell >
-                    <button label="Editar" hflex="1" class="btn-default">
-                    </button>
-                    <button label="Eliminar" hflex="1" class="btn-danger">
-                    </button>
-            </listcell>
-        </listitem>
-    </template>
-</listbox>
-</zk>
+	<zk xmlns:w="client" xmlns:n="xhtml">
+		<n:h1>Buscar Acondicionador!</n:h1>
+		<hbox align="center">
+			Buscar:
+			<textbox id="textNombre" placeholder="nombre" />
+			<textbox id="textApellido" placeholder="apellido" />
+			<textbox id="textdni" placeholder="dni" />
+			<textbox id="textDireccion" placeholder="dirección" />
+			<button id="btnBuscar" label="buscar" class="btn-default" />
+		</hbox>
+
+		<listbox class="table table-striped" id="aconListbox"
+			mold="paging" pageSize="2" height="160px"
+			emptyMessage="acondicionador no encontrado">
+			<listhead>
+				<listheader label="Nombre" width="100px" />
+				<listheader label="Apellido" width="150px" />
+				<listheader label="DNI" width="250px" />
+				<listheader label="EMAIL" />
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="${each.persona.nombre}"></listcell>
+					<listcell label="${each.persona.apellido}"></listcell>
+					<listcell label="${each.persona.documento}"></listcell>
+					<listcell label="${each.contacto.email}"></listcell>
+					<listcell>
+						<n:button type="button" class="btn btn-default">
+      <n:span class="glyphicon glyphicon-align-left"></n:span>
+    </n:button>
+						<button label="Eliminar" hflex="1"
+							class="btn-danger">
+						</button>
+					</listcell>
+				</listitem>
+			</template>
+		</listbox>
+	</zk>
 </div>
