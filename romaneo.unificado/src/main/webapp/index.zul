@@ -24,86 +24,153 @@
 
 	<!-- baraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
 
-	<div
-		class="collapse navbar-collapse navbar-ex1-collapse"
-		apply="romaneo.unificado.controllers.WindowsController">
-		<n:ul class=" nav navbar-nav
-		navbar-default col-xs-2 col-sm-6 col-md-8"
-			style="/bootstrap/css/bootstrap.css">
-			<n:li class="active" style="cursor:pointer">
-				<n:a id="monitoringBttn">Inicio</n:a>
-			</n:li>
-			<n:li style="cursor:pointer">
-				<n:a id="noticias">Noticias</n:a>
-			</n:li>
-			<n:li style="cursor:pointer">
-				<n:a id="buscar">BuscarAcondicionador</n:a>
-			</n:li>
+	<n:nav role="navigation" class="navbar navbar-default" apply="romaneo.unificado.controllers.WindowsController">
 
-			<n:li style="cursor:pointer">
-				<n:a id="reportsBttn">...</n:a>
-			</n:li>
-		</n:ul>
+		<!-- Brand and toggle get grouped for better mobile display -->
 
-		<n:ul class="nav navbar-nav navbar-right navbar-default">
-			<n:li class="dropdown">
-				<n:a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">
-					<n:b>Iniciar</n:b>
-					<n:span class="caret"></n:span>
-				</n:a>
-				<n:ul id="login-dp"
-					class="dropdown-menu navbar-default">
-					<n:li>
-						<div class="row">
-							<div class="col-md-12">
-								<n:form class="form" role="form"
-									method="post" action="login" accept-charset="UTF-8"
-									id="login-nav">
-									<div class="form-group">
-										<n:label class="sr-only"
-											for="exampleInputEmail2">
-											Usuario
-										</n:label>
-										<n:input type="usuario"
-											class="form-control" id="usuario" placeholder="Usuario">
-										</n:input>
-									</div>
-									<div class="form-group">
-										<n:label class="sr-only"
-											for="exampleInputPassword2">
-											Password
-										</n:label>
-										<n:input type="password"
-											class="form-control" id="password"
-											placeholder="Contraseña">
-										</n:input>
-										<div
-											class="help-block text-right">
-											<n:a href="">
-												Olvido la contraseña ?
-											</n:a>
+		<n:div class="navbar-header">
+
+			<n:button type="button" data-target="#navbarCollapse"
+				data-toggle="collapse" class="navbar-toggle">
+
+				<n:span class="sr-only">Toggle navigation</n:span>
+
+				<n:span class="icon-bar"></n:span>
+
+				<n:span class="icon-bar"></n:span>
+
+				<n:span class="icon-bar"></n:span>
+
+			</n:button>
+
+			<n:a id="btnRomaneo" href="#" class="navbar-brand">Romaneo</n:a>
+
+		</n:div>
+
+		<!-- Collection of nav links, forms, and other content for toggling -->
+
+		<n:div id="navbarCollapse" class="collapse navbar-collapse">
+
+			<n:ul class="nav navbar-nav">
+
+				<n:li>
+					<n:a id="btnNoticias" href="#">Noticias</n:a>
+				</n:li>
+
+				<n:li class="dropdown">
+
+					<n:a data-toggle="dropdown" class="dropdown-toggle"
+						href="#">
+						Busquedas
+						<n:b class="caret"></n:b>
+					</n:a>
+
+					<n:ul role="menu" class="dropdown-menu">
+
+						<n:li>
+							<n:a id="btnBusAcon" href="#">Busqueda Acondicionador</n:a>
+						</n:li>
+
+						<n:li>
+							<n:a id="btnBusEsta" href="#">Busqueda Establecimiento</n:a>
+						</n:li>
+
+						<n:li>
+							<n:a id="btnBusPro" href="#">Busqueda Productor</n:a>
+						</n:li>
+
+						<n:li class="divider"></n:li>
+
+						<n:li>
+							<n:a href="#">otros</n:a>
+						</n:li>
+
+					</n:ul>
+
+				</n:li>
+
+			</n:ul>
+
+			<n:form role="search" class="navbar-form navbar-left">
+
+				<n:div class="form-group">
+
+					<n:input type="text" placeholder="Search"
+						class="form-control">
+					</n:input>
+
+				</n:div>
+
+			</n:form>
+
+			<n:ul class="nav navbar-nav navbar-right navbar-default">
+				<n:li class="dropdown">
+					<n:a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">
+						<n:b>Iniciar</n:b>
+						<n:span class="caret"></n:span>
+					</n:a>
+
+					<n:ul id="login-dp"
+						class="dropdown-menu navbar-default">
+						<n:li>
+							<div class="row">
+								<div class="col-md-12">
+									<n:form class="form" role="form"
+										method="post" action="login" accept-charset="UTF-8"
+										id="login-nav">
+										<div class="form-group">
+											<n:label class="sr-only"
+												for="exampleInputEmail2">
+												Usuario
+											</n:label>
+											<n:input type="usuario"
+												class="form-control" id="usuario" placeholder="Usuario">
+											</n:input>
 										</div>
-									</div>
+										<div class="form-group">
+											<n:label class="sr-only"
+												for="exampleInputPassword2">
+												Password
+											</n:label>
+											<n:input type="password"
+												class="form-control" id="password"
+												placeholder="Contraseña">
+											</n:input>
+											<div
+												class="help-block text-right">
+												<n:a href="">
+													Olvido la contraseña
+													?
+												</n:a>
+											</div>
+										</div>
 
-									<div class="form-group">
-										<button id="btnIniciar"
-											class="btn btn-primary btn-block ">
-											Iniciar
-										</button>
-									</div>
+										<div class="form-group">
+											<button id="btnIniciar"
+												class="btn btn-primary btn-block ">
+												Iniciar
+											</button>
+										</div>
 
-								</n:form>
+									</n:form>
+								</div>
 							</div>
-						</div>
-					</n:li>
-				</n:ul>
-			</n:li>
-		</n:ul>
-	</div>
+						</n:li>
+					</n:ul>
+				</n:li>
+			</n:ul>
 
-	<window id="window" title="Noticias...!" >
-		<include id="ventana" visible="false"/>
-		<iframe id="extPage" visible="false"  style="width:100%; height:650px;border:3px inset;"/>
+
+		</n:div>
+
+	</n:nav>
+
+
+
+	<window id="window" title="Noticias...!">
+		<include id="ventana" visible="false" />
+		<iframe id="extPage" visible="false"
+			style="width:100%; height:650px;border:3px inset;" />
 	</window>
 </zk>

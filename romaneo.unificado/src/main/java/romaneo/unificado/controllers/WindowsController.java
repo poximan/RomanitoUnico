@@ -6,7 +6,7 @@ import org.zkoss.zk.ui.Path;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Button;
+import org.zkoss.zul.A;
 import org.zkoss.zul.Iframe;
 import org.zkoss.zul.Include;
 import org.zkoss.zul.Window;
@@ -22,9 +22,15 @@ public class WindowsController extends SelectorComposer<Component>
 	@Wire
 	private Include ventana;
 	@Wire
-	private Button boton;
+	private A boton;
+	
+	@Listen("onClick = #btnRomaneo")
+	public void romaneo()
+	{
+		System.out.println("Romaneo");
+	}
 
-	@Listen("onClick = #noticias")
+	@Listen("onClick = #btnNoticias")
 	public void noticias()
 	{
 		Window window = (Window) Path.getComponent("//indexPage/window");
@@ -35,7 +41,7 @@ public class WindowsController extends SelectorComposer<Component>
 		extPage.setSrc("http://prolana.magyp.gob.ar/");
 	}
 	
-	@Listen("onClick = #buscar")
+	@Listen("onClick = #btnBusAcon")
 	public void buscar()
 	{
 		System.out.print("busqueda");
