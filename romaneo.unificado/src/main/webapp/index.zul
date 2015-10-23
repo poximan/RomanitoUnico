@@ -25,10 +25,10 @@
 	<!-- baraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
 
 	<div
-		class="collapse navbar-collapse navbar-ex1-collapse navbar-default"
+		class="collapse navbar-collapse navbar-ex1-collapse"
 		apply="romaneo.unificado.controllers.WindowsController">
 		<n:ul class=" nav navbar-nav
-		navbar-default "
+		navbar-default col-xs-2 col-sm-6 col-md-8"
 			style="/bootstrap/css/bootstrap.css">
 			<n:li class="active" style="cursor:pointer">
 				<n:a id="monitoringBttn">Inicio</n:a>

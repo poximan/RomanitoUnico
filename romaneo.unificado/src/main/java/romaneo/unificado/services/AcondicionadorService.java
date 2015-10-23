@@ -14,7 +14,7 @@ public class AcondicionadorService {
 		
 		List<Acondicionador> acondicionadores = new ArrayList<>();
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 40; i++) {
 			Contacto contacto = new Contacto("email" + i + "@hotmail.com", "456486" + i);
 			Persona persona = new Persona("Nombre " + i, "Apellido " + i, i);
 

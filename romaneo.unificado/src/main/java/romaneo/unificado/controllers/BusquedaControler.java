@@ -30,6 +30,33 @@ public class BusquedaControler extends SelectorComposer<Component>
 	@Wire
 	private Listbox aconListbox;
 
+	/*
+	 * setea la lista con 25 filas
+	 */
+	@Listen("onClick = #btnVC")
+	public void vc()
+	{
+		aconListbox.setPageSize(25);
+	}
+	
+	/*
+	 * setea la lista con 50 filas
+	 */
+	@Listen("onClick = #btnCin")
+	public void cincuenta()
+	{
+		aconListbox.setPageSize(50);
+	}
+	
+	/*
+	 * setea la lista con 10 filas
+	 */
+	@Listen("onClick = #btnDiez")
+	public void diez()
+	{
+		aconListbox.setPageSize(10);
+	}
+	
 	@Listen("onClick = #btnBuscar")
 	public void buscar()
 	{
