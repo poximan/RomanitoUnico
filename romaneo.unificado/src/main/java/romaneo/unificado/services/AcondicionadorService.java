@@ -1,37 +1,68 @@
-
 package romaneo.unificado.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import romaneo.unificado.entities.Acondicionador;
-import romaneo.unificado.entities.Contacto;
-import romaneo.unificado.entities.Persona;
+import org.springframework.transaction.annotation.Transactional;
 
-public class AcondicionadorService {
-	
-	public static List<Acondicionador> allAcondicionadores() {
-		
-		List<Acondicionador> acondicionadores = new ArrayList<>();
+import romaneo.unificado.daos.AcondicionadorDao;
+import romaneo.unificado.domain.Acondicionador;
+import romaneo.unificado.exceptions.ValidationException;
 
-		for (int i = 0; i < 40; i++) {
-			Contacto contacto = new Contacto("email" + i + "@hotmail.com", "456486" + i);
-			Persona persona = new Persona("Nombre " + i, "Apellido " + i, i);
+public interface AcondicionadorService extends BaseService<Acondicionador, AcondicionadorDao> {
 
-			Acondicionador acondicionador = new Acondicionador(persona, contacto);
+	/**
+	 * Validación
+	 * 
+	 * @param entity
+	 *            Chofer
+	 * @throws ValidationException
+	 *             Errores de validacion
+	 */
+	void validate(Acondicionador entity) throws ValidationException;
 
-			acondicionadores.add(acondicionador);
-		}
-		return acondicionadores;
-	}
+	/**
+	 * Método que guarda un nuevo chofer en la DB, previamente validado. En caso
+	 * de fallar la validación arroja una RuntimeException especificando la
+	 * causa.
+	 * 
+	 * @param acondicionador
+	 *            Chofer a persistir.
+	 * @throws ValidationException
+	 *             Errores de validación
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	void create(Acondicionador acondicionador) throws ValidationException;
 
-	public static List<Acondicionador> buscarNombre(String text) {
-		return null;
-	}
+	/**
+	 * Método que actualiza los datos de un chofer en la DB, previamente
+	 * validado. En caso de fallar la validación arroja una RuntimeException
+	 * especificando la causa.
+	 * 
+	 * @param entity
+	 *            Chofer a actualizar.
+	 * @throws ValidationException
+	 *             Errores de validación
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	void update(Acondicionador entity) throws ValidationException;
 
-	public static List<Acondicionador> bucarApellido(String text) {
-		return null;
-	}
+	/**
+	 * Busca todos los choferes del centro de distribucion y a demas agrega una
+	 * instancia que en los combobox de ZK permitira seleccionar todos.
+	 * 
+	 * @return
+	 */
+	@Transactional(readOnly = true)
+	List<Acondicionador> getAcondicionadoresForCombobox();
+
+	/**
+	 * Buscar por DNI
+	 * 
+	 * @param dni
+	 *            DNI
+	 * @return Chofer encontrado, caso contrario null
+	 */
+	@Transactional(readOnly = true)
+	Acondicionador findByDni(Integer dni);
 
 }
-
