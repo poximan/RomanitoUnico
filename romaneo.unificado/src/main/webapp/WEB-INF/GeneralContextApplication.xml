@@ -70,7 +70,7 @@
 	<beans:bean name="WebAppFolder" class="java.lang.String">
 
 		<beans:constructor-arg
-			value="D:\workspace_java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\unificadoCopiaLocal" />
+			value="D:\workspace_java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\unificado" />
 
 	</beans:bean>
 

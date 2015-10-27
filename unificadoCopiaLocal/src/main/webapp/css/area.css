@@ -1,0 +1,28 @@
+#areaEditingToolbar {
+	right: 2px;
+	top: 23px;
+	padding: 5px;
+}
+
+div.myEditingToolbarItem {
+	padding: 3px;
+	background-color: transparent;
+	border: thin;
+	border-color: gray;
+	border-style: solid;
+	cursor: pointer;
+}
+
+div.myEditingToolbarItem:hover {
+	background-color: gray;
+	opacity: 0.4;
+}
+
+div.myEditingToolbarItemSelected {
+	padding: 3px;
+	background-color: gray;
+	opacity: 0.4;
+	border: thin;
+	border-color: gray;
+	border-style: solid;
+}

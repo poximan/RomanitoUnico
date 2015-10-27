@@ -1,0 +1,47 @@
+.separator-title {
+	background: #E0E0E0;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+.title {
+	font-weight: bold;
+	font-size: 18px;
+	color: #555555;
+	margin-top: 10px;
+}
+
+.subtitle {
+	font-weight: bold;
+	font-size: 14px;
+	color: #555555;
+	margin-top: 10px;
+}
+
+.button {
+	min-height: 28px;
+	background: none;
+	color: #ED8C37;
+}
+
+.grid {
+	border: none;
+	margin: 0;
+}
+
+.grid-row .z-row-content, 
+.z-row-inner {
+	background: #FFFFFF !important;
+}
+
+.normal-window .z-window .z-window-noborder .z-window-noheader .z-window-embedded, 
+.z-window-content {
+	overflow-y: auto !important;
+	overflow-x: hidden !important;
+}
+
+.filters-panel {
+	padding: 0px !important;
+	margin-bottom: 15px !important;
+	border: 0px !important;
+}

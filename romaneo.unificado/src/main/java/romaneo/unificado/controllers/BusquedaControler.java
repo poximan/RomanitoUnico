@@ -10,7 +10,7 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Textbox;
 
-import romaneo.unificado.entities.Acondicionador;
+import romaneo.unificado.domain.Acondicionador;
 import romaneo.unificado.services.AcondicionadorService;
 
 public class BusquedaControler extends SelectorComposer<Component>
@@ -60,14 +60,15 @@ public class BusquedaControler extends SelectorComposer<Component>
 	@Listen("onClick = #btnBuscar")
 	public void buscar()
 	{
-		List<Acondicionador> acondicionadores = AcondicionadorService.allAcondicionadores();
 		/*
+		List<Acondicionador> acondicionadores = AcondicionadorService.allAcondicionadores();
+		
 		if(textNombre.getText() != "")
 			acondicionadores.addAll(AcondicionadorService.buscarNombre(textNombre.getText()));
 		if(textApellido.getText() != "")
 			acondicionadores.addAll(AcondicionadorService.bucarApellido(textApellido.getText()));
-        
-        */
+                
 		aconListbox.setModel(new ListModelList<Acondicionador>(acondicionadores));
+		*/
 	}
 }

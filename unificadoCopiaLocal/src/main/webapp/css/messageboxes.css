@@ -1,0 +1,60 @@
+.message_box_info, 
+.message_box_success, 
+.message_box_warning, 
+.message_box_error {
+	margin_bottom: 5px;
+	padding: 8px;
+	_moz-border-radius: 5px;
+	_webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid;
+}
+
+.message_box_info {
+	background-color: #D9EDF7;
+	border-color: #BCE8F1;
+	color: #3A87AD;
+}
+
+.message_box_success {
+	background-color: #DFF0D8;
+	border-color: #D6E9C6;
+	color: #468847;
+}
+
+.message_box_warning {
+	background-color: #FCF8E3;
+	border-color: #FBEED5;
+	color: #C09853;
+}
+
+.message_box_error {
+	background-color: #F2DEDE;
+	border-color: #EED3D7;
+	color: #B94A48;
+}
+
+.message_box_info i, 
+.message_box_success i, 
+.message_box_warning i, 
+.message_box_error i {
+	margin: 5px 14px;
+	font-size: 2em;
+	vertical-align: middle;
+}
+
+.message_box_info i {
+	color: #3A87AD;
+}
+
+.message_box_success i {
+	color: #468847;
+}
+
+.message_box_warning i {
+	color: #C09853;
+}
+
+.message_box_error i {
+	color: #B94A48;
+}

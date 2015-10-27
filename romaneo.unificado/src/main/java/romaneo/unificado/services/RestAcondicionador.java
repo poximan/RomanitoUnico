@@ -14,10 +14,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import romaneo.unificado.entities.Acondicionador;
-import romaneo.unificado.entities.Contacto;
-import romaneo.unificado.entities.Persona;
-
+import romaneo.unificado.domain.Acondicionador;
+import romaneo.unificado.domain.AdUser;
+import romaneo.unificado.domain.Contacto;
 import romaneo.utileria.Constantes;
 
 /* ............................................. */
@@ -62,7 +61,7 @@ public class RestAcondicionador {
 		List<Acondicionador> resultado = new ArrayList<>();
 
 		for (Acondicionador acondicionador : acondicionadores)
-			if (acondicionador.getPersona().getNombre().equals(nombre))
+			if (acondicionador.getFirstName().equals(nombre))
 				resultado.add(acondicionador);
 
 		return resultado;
@@ -77,7 +76,7 @@ public class RestAcondicionador {
 		List<Acondicionador> resultado = new ArrayList<>();
 
 		for (Acondicionador acondicionador : acondicionadores)
-			if (acondicionador.getPersona().getDocumento() == dni)
+			if (acondicionador.getDni() == dni)
 				resultado.add(acondicionador);
 
 		return resultado;
@@ -87,11 +86,11 @@ public class RestAcondicionador {
 
 		for (int i = 0; i < 10; i++) {
 			Contacto contacto = new Contacto("email" + i + "@hotmail.com", "456486" + i);
-			Persona persona = new Persona("Nombre " + i, "Apellido " + i, i);
+			//AdUser persona = new AdUser("Nombre " + i, "Apellido " + i, i);
 
-			Acondicionador acondicionador = new Acondicionador(persona, contacto);
+			//Acondicionador acondicionador = new Acondicionador(persona, contacto);
 
-			acondicionadores.add(acondicionador);
+			//acondicionadores.add(acondicionador);
 		}
 	}
 }

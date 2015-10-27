@@ -1,0 +1,50 @@
+<div apply="romaneo.unificado.controllers.BusquedaControler">
+
+	<zk xmlns:w="client" xmlns:n="xhtml">
+		<n:h1>Buscar Acondicionador!</n:h1>
+		<hbox align="center">
+			Buscar:
+			<textbox id="textNombre" placeholder="nombre" />
+			<textbox id="textApellido" placeholder="apellido" />
+			<textbox id="textdni" placeholder="dni" />
+			<textbox id="textDireccion" placeholder="email" />
+			<button id="btnBuscar" label="buscar" class="btn-default" />
+		</hbox>
+
+		<listbox class="table table-striped col-md-8" id="aconListbox"
+			mold="paging" pageSize="10"
+			emptyMessage="acondicionador no encontrado">
+			<listhead>
+				<listheader label="Nombre" />
+				<listheader label="Apellido"/>
+				<listheader label="DNI" />
+				<listheader label="EMAIL" />
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="${each.persona.nombre}"></listcell>
+					<listcell label="${each.persona.apellido}"></listcell>
+					<listcell label="${each.persona.documento}"></listcell>
+					<listcell label="${each.contacto.email}"></listcell>
+					<listcell>
+						<n:button type="button" class="btn-default">
+							<n:span class="glyphicon glyphicon-edit">
+							</n:span>
+						</n:button>
+						<n:button type="button" class="btn-danger">
+							<n:span
+								class="glyphicon glyphicon-remove-circle">
+							</n:span>
+						</n:button>
+					</listcell>
+				</listitem>
+			</template>
+			
+		</listbox>
+		<hbox align="center">
+				<button id="btnDiez" label="10" class="btn-default" />
+				<button id="btnVC" label="25" class="btn-default" />
+				<button id="btnCin" label="50" class="btn-default" />
+		</hbox>
+	</zk>
+</div>

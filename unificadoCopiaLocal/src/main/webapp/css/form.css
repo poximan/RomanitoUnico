@@ -1,0 +1,52 @@
+.layout-form {
+	margin: 8px;
+}
+
+.grid-form {
+	border: none;
+}
+
+.buttons-form {
+	width: 100px;
+	min-height: 28px;
+	color: #ED8C37 !important;
+}
+
+.small-button-form {
+	padding: 0;
+	width: 38px;
+	height: 38px;
+}
+
+.normal-button-form {
+	padding: 0;
+	width: 28px;
+	height: 28px;
+	font-size: 16px;
+}
+
+.large-button-form {
+	padding: 0;
+	width: 34px;
+	height: 34px;
+	color: #317eac !important;
+	font-size: 16px;
+}
+
+.container-buttons-form {
+	padding: 15px;
+	border-top: 1px solid #e5e5e5 !important;
+}
+
+.row-filters-form .z-row-content, 
+.z-row-inner {
+	background: #ffffff !important;
+}
+
+.separator-form {
+	background: #c0c0c0;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}

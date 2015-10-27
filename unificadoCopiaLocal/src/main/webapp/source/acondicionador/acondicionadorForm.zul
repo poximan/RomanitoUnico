@@ -1,0 +1,94 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="acondicionadorFormWndw" border="normal" width="450px"
+		closable="true"
+		apply="romaneo.unificado.controllers.AcondicionadorFormController">
+
+		<style src="/css/form.css" />
+
+		<vlayout style="margin: 15px;">
+
+			<grid fixedLayout="true" sclass="grid-form">
+				<columns>
+					<column align="right" width="70px"></column>
+					<column></column>
+				</columns>
+				<rows>
+
+					<row sclass="row-form">
+						<label value="${labels.acondicionador.firstName}" />
+						<textbox id="firstNameTxtbx" maxlength="50"
+							hflex="1" class="form-control" />
+					</row>
+
+					<row sclass="row-form">
+						<label value="${labels.acondicionador.lastName}" />
+						<textbox id="lastNameTxtbx" maxlength="50"
+							hflex="1" class="form-control" />
+					</row>
+
+					<row sclass="row-form">
+						<label value="${labels.acondicionador.dni}" />
+						<intbox id="dniIntbx" maxlength="8"
+							constraint="no negative" hflex="1" class="form-control" />
+					</row>
+
+					<row sclass="row-form">
+						<label value="${labels.acondicionador.phones}" />
+						<textbox id="phonesTxtbx" maxlength="30"
+							hflex="1" class="form-control" />
+					</row>
+
+					<row sclass="row-form">
+						<label value="${labels.acondicionador.email}" />
+						<textbox id="emailTxtbx" maxlength="70"
+							hflex="1" class="form-control" />
+					</row>
+
+					<row sclass="row-form">
+						<label value="${labels.acondicionador.address}" />
+						<textbox id="addressTxtbx" maxlength="150"
+							hflex="1" class="form-control" />
+					</row>
+
+					<row sclass="row-form">
+						<label value="${labels.acondicionador.city}" />
+						<bandbox id="cityBndbx" hflex="1"
+							readonly="true" autodrop="true">
+							<bandpopup>
+								<vbox>
+									<hbox align="center"
+										pack="center">
+										<textbox id="citySearchTxtbx"
+											placeholder="${labels.app.search}" hflex="1"
+											class="form-control" />
+									</hbox>
+									<listbox id="citiesLstbx"
+										height="300px" width="300px" mold="paging" pageSize="10"
+										onSelect="cityBndbx.value=self.selectedItem.label; cityBndbx.close();"
+										visible="false">
+										<listhead>
+											<listheader
+												label="${labels.acondicionador.city}" sort="auto" />
+										</listhead>
+									</listbox>
+								</vbox>
+							</bandpopup>
+						</bandbox>
+					</row>
+
+				</rows>
+			</grid>
+
+		</vlayout>
+
+		<div sclass="container-buttons-form">
+			<hbox pack="end" width="100%">
+				<button id="acceptBttn" iconSclass="z-icon-check"
+					label="${labels.app.accept}" sclass="btn btn-primary btn-sm" />
+				<button id="cancelBttn" iconSclass="z-icon-times"
+					label="${labels.app.cancel}" sclass="btn btn-default btn-sm" />
+			</hbox>
+		</div>
+	</window>
+</zk>
