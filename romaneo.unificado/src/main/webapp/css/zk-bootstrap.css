@@ -1,0 +1,234 @@
+/* Modal estilo bootstrap */
+.z-window {
+	background: #FFFFFF !important;
+	border: 0px !important;
+	padding: 0px !important;
+}
+
+.z-window-content {
+	border: 0px !important;
+	padding: 0px !important;
+}
+
+.z-window-header {
+	border-bottom: 1px solid #E5E5E5 !important;
+	padding: 15px !important;
+	font-size: 17px;
+	color: #777777;
+}
+
+.z-window-icon {
+	border: 0px !important;
+	width: 24px;
+}
+
+.z-window-shadow {
+	-webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* El texto del boton sin sombra*/
+.z-button {
+	text-shadow: 0 0px #FFFFFF !important;
+}
+
+/* Grid sin lineas */
+.z-row .z-row-inner, .z-row .z-cell {
+	border-left: 0px;
+	overflow: hidden;
+}
+
+/* Combobox del tamaño input-sm de bootstrap */
+/* Datebox del tamaño input-sm de bootstrap */
+.z-combobox-input {
+	display: table-cell;
+	width: 100%;
+	margin-bottom: 0;
+	height: 38px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.428571429;
+	color: #555555;
+	vertical-align: middle;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.z-combobox-button {
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1;
+	text-align: center;
+	background-color: #EEEEEE;
+	border: 1px solid #CCCCCC;
+	border-radius: 4px;
+	width: 1%;
+	white-space: nowrap;
+	vertical-align: middle;
+	display: table-cell;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	border-left: 0;
+}
+
+.z-combobox-popup {
+	position: absolute !important;
+}
+
+/* Datebox del tamaño input-sm de bootstrap */
+.z-datebox-input {
+	display: table-cell;
+	width: 100%;
+	margin-bottom: 0;
+	height: 38px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.428571429;
+	color: #555555;
+	vertical-align: middle;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.z-datebox-button {
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1;
+	text-align: center;
+	background-color: #EEEEEE;
+	border: 1px solid #CCCCCC;
+	border-radius: 4px;
+	width: 1%;
+	white-space: nowrap;
+	vertical-align: middle;
+	display: table-cell;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	border-left: 0;
+}
+
+.z-datebox-popup {
+	position: absolute !important;
+}
+
+.z-paging {
+	height: 38px !important;
+	border-bottom: 0px solid #DDDDDD !important;
+	padding: 0px;
+	background: transparent !important;
+}
+
+.z-paging-button {
+	min-width: 32px;
+	height: 38px;
+	padding: 10px 0;
+}
+
+.z-paging-input {
+	height: 38px;
+}
+
+.z-bandbox-input {
+	height: 38px;
+}
+
+.z-bandbox-button {
+	min-width: 38px;
+	height: 38px;
+	padding: 10px 12px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* Borde sombreado verde igual al de bootstrap. */
+input[class*="z-"]:focus {
+	outline: 0;
+	border-color: rgba(75, 179, 70, 0.6);
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(47, 134, 47, 0.6) !important;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(47, 134, 47, 0.6) !important;
+}
+
+.z-progressmeter {
+	border-radius: 4px;
+	margin-top: 10px;
+}
+
+/* Barra de progreso del color verde */
+.z-progressmeter-image {
+	font-size: 0;
+	display: inline-block;
+	height: 16px;
+	line-height: 0;
+	background: #336633;
+}
+
+.breadcrumb {
+	padding: 12px 15px !important;
+	margin-bottom: 10px !important;
+	background-color: #EEEEEE !important;
+}
+
+.breadcrumb a,
+.breadcrumb a:hover,
+.breadcrumb a:active,
+.breadcrumb a:focus {
+	color: #336633;
+	cursor: default;
+	outline: none !important;
+	text-decoration: none !important;
+}
+
+button {
+	outline: none !important;
+}
+
+.z-paging {
+	white-space: nowrap;
+}
+
+/* Background and border */
+.z-loading {
+	background-color: #87C087;
+	cursor: wait;
+	white-space: nowrap;
+	padding: 3px;
+	border: 1px solid #87C087;
+}
+
+/* Inner part and text */
+.z-loading-indicator {
+	background-color: #FFFFFF;
+	color: #336633;
+	border: 1px solid #87C087;
+	white-space: nowrap;
+	padding: 6px;
+}
+
+/* The loading icon */
+.z-loading-icon {
+	background: transparent no-repeat center;
+	background-image: url("/unificado/imagenes/progress.gif");
+	background-size: 20px 20px;
+	height: 20px;
+	width: 20px;
+}
+
+.z-errorbox-content {
+	border-radius: 4px !important;
+	margin-top: 3px !important;
+}

@@ -12,8 +12,8 @@
 	<style src="/css/map.css" />
 	<script src="/js/mootools.js"></script>
 
-	<?link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.jpg"?>
-	<?link rel="icon" type="image/x-icon" href="/Images/favicon.jpg"?>
+	<?link rel="shortcut icon" type="image/x-icon" href="/imagenes/favicon.jpg"?>
+	<?link rel="icon" type="image/x-icon" href="/imagenes/favicon.jpg"?>
 
 	<window id="mainWndw"
 		apply="romaneo.unificado.controllers.MainController" width="100%"
@@ -39,7 +39,7 @@
 					</n:button>
 					<image id="logoImg" class="pull-left"
 						style="cursor:default;max-height:61px;max-width:61px;padding-left:11px;"
-						src="/Images/logo.png" />
+						src="/imagenes/logo.png" />
 					<n:a class="navbar-brand" style="font-size:20px;">
 						${labels.app.name}
 					</n:a>

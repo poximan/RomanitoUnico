@@ -6,8 +6,8 @@
 	<style src="/css/zk-bootstrap.css" />
 	<style src="/css/form.css" />
 
-	<?link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.jpg"?>
-	<?link rel="icon" type="image/x-icon" href="/Images/favicon.jpg"?>
+	<?link rel="shortcut icon" type="image/x-icon" href="/imagenes/favicon.jpg"?>
+	<?link rel="icon" type="image/x-icon" href="/imagenes/favicon.jpg"?>
 
 	<window mode="overlapped" title="Ingresar" position="center" width="372px">
 		<n:form id="f" name="f" action="j_spring_security_check" method="POST">

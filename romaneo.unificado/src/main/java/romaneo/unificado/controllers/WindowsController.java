@@ -50,7 +50,7 @@ public class WindowsController extends SelectorComposer<Component>
 		extPage.setVisible(false);
 		Include frame = (Include) window.getFellowIfAny("ventana");
 		frame.setVisible(true);
-		frame.setSrc("/WEB-INF/zul/busquedaAcondicionador.zul");
+		frame.setSrc("source/acondicionador/busquedaAcondicionador.zul");
 	}
 	
 	@Listen("onClick = #btnIniciar")

@@ -1,10 +1,10 @@
 <?page id="indexPage" title="Romaneo"?>
 <?link rel="stylesheet" type="text/css"
-    href="bootstrap/css/bootstrap.css" ?>
+    href="\css\bootstrap\css\bootstrap.css" ?>
 <zk xmlns:w="client" xmlns:n="xhtml">
 
-	<script src="/bootstrap/js/bootstrap.js" />
-	<style src="/bootstrap/css/bootstrap.css" />
+	<script src="/css/bootstrap/js/bootstrap.js" />
+	<style src="/css/bootstrap/css/bootstrap.css" />
 
 	<hbox width="100%">
 		<hbox hflex="1">
@@ -24,7 +24,8 @@
 
 	<!-- baraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
 
-	<n:nav role="navigation" class="navbar navbar-default" apply="romaneo.unificado.controllers.WindowsController">
+	<n:nav role="navigation" class="navbar navbar-default"
+		apply="romaneo.unificado.controllers.WindowsController">
 
 		<!-- Brand and toggle get grouped for better mobile display -->
 
@@ -43,7 +44,9 @@
 
 			</n:button>
 
-			<n:a id="btnRomaneo" href="#" class="navbar-brand">Romaneo</n:a>
+			<n:a id="btnRomaneo" href="#" class="navbar-brand">
+				Romaneo
+			</n:a>
 
 		</n:div>
 
@@ -68,15 +71,21 @@
 					<n:ul role="menu" class="dropdown-menu">
 
 						<n:li>
-							<n:a id="btnBusAcon" href="#">Busqueda Acondicionador</n:a>
+							<n:a id="btnBusAcon" href="#">
+								Busqueda Acondicionador
+							</n:a>
 						</n:li>
 
 						<n:li>
-							<n:a id="btnBusEsta" href="#">Busqueda Establecimiento</n:a>
+							<n:a id="btnBusEsta" href="#">
+								Busqueda Establecimiento
+							</n:a>
 						</n:li>
 
 						<n:li>
-							<n:a id="btnBusPro" href="#">Busqueda Productor</n:a>
+							<n:a id="btnBusPro" href="#">
+								Busqueda Productor
+							</n:a>
 						</n:li>
 
 						<n:li class="divider"></n:li>

@@ -15,7 +15,6 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import romaneo.unificado.domain.Acondicionador;
-import romaneo.unificado.domain.AdUser;
 import romaneo.unificado.domain.Contacto;
 import romaneo.utileria.Constantes;
 
