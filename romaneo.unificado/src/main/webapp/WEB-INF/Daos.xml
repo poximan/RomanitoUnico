@@ -7,7 +7,7 @@
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 
-	<beans:bean id="acondicionadorDao"
+	<beans:bean id="AcondicionadorDao"
 		class="romaneo.unificado.daos.AcondicionadorDaoImple">
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>

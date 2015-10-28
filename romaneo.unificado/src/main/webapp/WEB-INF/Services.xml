@@ -10,7 +10,7 @@
 
 	<beans:bean id="AcondicionadorService"
 		class="romaneo.unificado.services.AcondicionadorServiceImple">
-		<beans:property name="dao" ref="acondicionadorDao" />
+		<beans:property name="dao" ref="AcondicionadorDao" />
 	</beans:bean>
 
 	<beans:bean id="InterfaceFactory"

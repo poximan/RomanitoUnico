@@ -16,7 +16,7 @@
 			emptyMessage="acondicionador no encontrado">
 			<listhead>
 				<listheader label="Nombre" />
-				<listheader label="Apellido"/>
+				<listheader label="Apellido" />
 				<listheader label="DNI" />
 				<listheader label="EMAIL" />
 			</listhead>
@@ -39,12 +39,12 @@
 					</listcell>
 				</listitem>
 			</template>
-			
+
 		</listbox>
 		<hbox align="center">
-				<button id="btnDiez" label="10" class="btn-default" />
-				<button id="btnVC" label="25" class="btn-default" />
-				<button id="btnCin" label="50" class="btn-default" />
+			<button id="btnDiez" label="10" class="btn-default" />
+			<button id="btnVC" label="25" class="btn-default" />
+			<button id="btnCin" label="50" class="btn-default" />
 		</hbox>
 	</zk>
 </div>
