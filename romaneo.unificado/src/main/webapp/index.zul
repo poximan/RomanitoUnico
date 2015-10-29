@@ -60,42 +60,8 @@
 					<n:a id="btnNoticias" href="#">Noticias</n:a>
 				</n:li>
 
-				<n:li class="dropdown">
-
-					<n:a data-toggle="dropdown" class="dropdown-toggle"
-						href="#">
-						Busquedas
-						<n:b class="caret"></n:b>
-					</n:a>
-
-					<n:ul role="menu" class="dropdown-menu">
-
-						<n:li>
-							<n:a id="btnBusAcon" href="#">
-								Busqueda Acondicionador
-							</n:a>
-						</n:li>
-
-						<n:li>
-							<n:a id="btnBusEsta" href="#">
-								Busqueda Establecimiento
-							</n:a>
-						</n:li>
-
-						<n:li>
-							<n:a id="btnBusPro" href="#">
-								Busqueda Productor
-							</n:a>
-						</n:li>
-
-						<n:li class="divider"></n:li>
-
-						<n:li>
-							<n:a href="#">otros</n:a>
-						</n:li>
-
-					</n:ul>
-
+				<n:li>
+					<n:a id="btnIngresar" href="#">Ingresar</n:a>
 				</n:li>
 
 			</n:ul>

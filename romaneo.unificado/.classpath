@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	
-	<classpathentry excluding="romaneo/unificado/controllers/ControladorHttpAcondicionador.java|romaneo/unificado/services/JSONParser.java" kind="src" output="target/classes" path="src/main/java">
+	<classpathentry excluding="romaneo/unificado/controllers/ControladorHttpAcondicionador.java|romaneo/unificado/services/JSONParser.java|romaneo/unificado/controllers/ProductorFormController.java|romaneo/unificado/controllers/ProductorListController.java" kind="src" output="target/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>

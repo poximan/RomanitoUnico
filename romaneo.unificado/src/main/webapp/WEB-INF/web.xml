@@ -78,7 +78,7 @@
 		<servlet-class>org.zkoss.zk.au.http.DHtmlUpdateServlet</servlet-class>
 	</servlet>
 
-	<!-- ................ servlet mapping ................ -->
+	<!-- ................ servlet mapping ................  -->
 	<servlet-mapping>
 		<servlet-name>zkLoader</servlet-name>
 		<url-pattern>*.zul</url-pattern>
@@ -91,7 +91,7 @@
 
 	<!-- ................ pagina inicio ................ -->
 	<welcome-file-list>
-		<welcome-file>source/main.zul</welcome-file>
+		<welcome-file>source/index.zul</welcome-file>
 	</welcome-file-list>
 
 </web-app>

@@ -1,0 +1,102 @@
+<zk xmlns:n="xhtml">
+	<window id="acondicionadoresListWndw" border="none" hflex="1"
+		sclass="normal-window"
+		apply="romaneo.unificado.controllers.AcondicionadorListController">
+
+		<style src="/css/list.css" />
+
+		<n:div class="row">
+
+			<n:div class="col-md-2">
+				<n:ul class="nav nav-pills nav-stacked">
+			
+					<n:li class="active">
+						<n:a id="acondicionadoresSubmenuA3">
+							${labels.masterData.menu.acondicionadores}
+						</n:a>
+					</n:li>
+					
+				</n:ul>
+			</n:div>
+
+			<n:div class="col-md-10">
+
+				<n:h1 style="margin-top:5px">
+					${labels.masterData.menu.acondicionadores}
+				</n:h1>
+				<separator />
+
+				<n:div class="filters-panel panel">
+					<n:div class="row">
+						<n:div class="col-md-3">
+							<textbox id="filterByLastNameTxtbx"
+								placeholder="${labels.acondicionador.lastName}" class="form-control" />
+						</n:div>
+						<n:div class="col-md-3">
+							<textbox id="filterByFirstNameTxtbx"
+								placeholder="${labels.acondicionador.firstName}" class="form-control" />
+						</n:div>
+						<n:div class="col-md-3">
+							<intbox id="filterByDniIntbx"
+								placeholder="${labels.acondicionador.dni}" class="form-control" />
+						</n:div>
+					</n:div>
+
+					<separator height="10px" orient="vertical" />
+
+					<n:div class="panel-footer text-right">
+						<button id="filterBttn"
+							iconSclass="z-icon-filter" label="${labels.app.filter}"
+							class="btn btn-sm btn-default" />
+						<button id="cleanFiltersBttn"
+							iconSclass="z-icon-undo" label="${labels.app.cleanFilters}"
+							class="btn btn-sm btn-default" />
+						<button id="newBttn" iconSclass="z-icon-plus"
+							label="${labels.app.create}" class="btn btn-sm btn-primary" />
+						<button id="editBttn" disabled="true"
+							iconSclass="z-icon-edit" label="${labels.app.edit}"
+							class="btn btn-sm btn-default" />
+						<button id="deleteBttn" disabled="true"
+							iconSclass="z-icon-times" label="${labels.app.delete}"
+							class="btn btn-sm btn-default" />
+					</n:div>
+				</n:div>
+
+				<listbox id="acondicionadoresLstbx" rows="10">
+					<listhead>
+						<listheader label="${labels.acondicionador.lastName}"
+							hflex="min" align="center" />
+						<listheader label="${labels.acondicionador.firstName}"
+							align="center" />
+						<listheader label="${labels.acondicionador.phones}"
+							align="center" />
+						<listheader label="${labels.acondicionador.email}"
+							align="center" />
+					</listhead>
+				</listbox>
+
+				<div class="panel-footer custom-list-paging">
+					<n:div class="row">
+						<n:div class="col-md-3">
+							<paging id="acondicionadoresPgn" pageSize="10" />
+						</n:div>
+						<n:div class="col-md-4">
+							<hbox align="center">
+								<label value="${labels.app.listSize}" />
+								<combobox id="acondicionadoresPageSizeCmbbx"
+									width="80px" sclass="input-group" value="10">
+									<comboitem value="5" label="5" />
+									<comboitem value="10" label="10" />
+									<comboitem value="15" label="15" />
+									<comboitem value="20" label="20" />
+								</combobox>
+							</hbox>
+						</n:div>
+					</n:div>
+				</div>
+			</n:div>
+
+		</n:div>
+
+	</window>
+</zk>

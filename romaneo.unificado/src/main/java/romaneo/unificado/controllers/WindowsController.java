@@ -1,6 +1,7 @@
 package romaneo.unificado.controllers;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Path;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
@@ -36,19 +37,16 @@ public class WindowsController extends SelectorComposer<Component> {
 		extPage.setSrc("http://prolana.magyp.gob.ar/");
 	}
 
-	@Listen("onClick = #btnBusAcon")
+	@Listen("onClick = #btnIngresar")
 	public void buscar() {
-		System.out.print("busqueda");
-		Window window = (Window) Path.getComponent("//indexPage/window");
-		Iframe extPage = (Iframe) window.getFellowIfAny("extPage");
-		extPage.setVisible(false);
-		Include frame = (Include) window.getFellowIfAny("ventana");
-		frame.setVisible(true);
-
-		frame.setSrc("source/acondicionador/busquedaAcondicionador.zul");
+		System.out.print("ingresar");
+		Executions.getCurrent().sendRedirect("/source/main.zul");
 	}
 
 	@Listen("onClick = #btnIniciar")
-	public void iniciar() {
+	public void iniciar()
+	{
+		System.out.print("iniciar");
+		Executions.getCurrent().sendRedirect("/mainPage.zul");
 	}
 }
