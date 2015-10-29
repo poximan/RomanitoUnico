@@ -9,8 +9,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -69,9 +67,6 @@ public class AdUser extends BaseEntity implements Serializable {
 	@Column(name = "phone2", length = 40)
 	private String phone2;
 
-	@Column(name = "phone3", length = 40)
-	private String phone3;
-
 	@Column(name = "birthday")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date birthday;
@@ -85,13 +80,6 @@ public class AdUser extends BaseEntity implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "adUser")
 	private List<AdUserRoles> adUserRolesList;
-
-	@OneToMany(mappedBy = "supervisorId")
-	private List<AdUser> adUserList;
-
-	@JoinColumn(name = "supervisor_id", referencedColumnName = "ad_user_id")
-	@ManyToOne
-	private AdUser supervisorId;
 
 	public AdUser() {
 	}
@@ -216,14 +204,6 @@ public class AdUser extends BaseEntity implements Serializable {
 		this.birthday = birthday;
 	}
 
-	public String getPhone3() {
-		return phone3;
-	}
-
-	public void setPhone3(String phone3) {
-		this.phone3 = phone3;
-	}
-
 	public Character getIssystemaccess() {
 		return issystemaccess;
 	}
@@ -246,22 +226,6 @@ public class AdUser extends BaseEntity implements Serializable {
 
 	public void setAdUserRolesList(List<AdUserRoles> adUserRolesList) {
 		this.adUserRolesList = adUserRolesList;
-	}
-
-	public List<AdUser> getAdUserList() {
-		return adUserList;
-	}
-
-	public void setAdUserList(List<AdUser> adUserList) {
-		this.adUserList = adUserList;
-	}
-
-	public AdUser getSupervisorId() {
-		return supervisorId;
-	}
-
-	public void setSupervisorId(AdUser supervisorId) {
-		this.supervisorId = supervisorId;
 	}
 
 	@Override

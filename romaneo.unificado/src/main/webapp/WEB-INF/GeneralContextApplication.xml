@@ -23,8 +23,9 @@
 		scheduler="taskScheduler" />
 
 	<!-- BASE DE DATOS -->
-	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
 		destroy-method="close">
+	
 		<beans:property name="driverClassName" value="org.postgresql.Driver" />
 
 		<beans:property name="url"
@@ -45,6 +46,7 @@
 		</beans:property>
 
 		<beans:property name="hibernateProperties">
+		
 			<beans:props>
 				<beans:prop key="hibernate.show_sql">false</beans:prop>
 				<beans:prop key="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider
@@ -61,6 +63,7 @@
 				</beans:prop>
 				<beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
 			</beans:props>
+
 		</beans:property>
 
 		<!-- ENTIDADES -->

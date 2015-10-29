@@ -47,8 +47,8 @@ public class AdRole extends BaseEntity implements Serializable {
 
 	@Column(name = "description", length = 255)
 	private String description;
+	
 	@Basic(optional = false)
-
 	@Column(name = "userlevel", nullable = false, length = 10)
 	private String userlevel;
 

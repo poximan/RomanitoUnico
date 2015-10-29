@@ -10,9 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/** @author nacho */
+/**
+ * @author nacho
+ */
 @Entity
-@Table(name = "localidades")
+@Table(name = "localidad")
 public class Localidad extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,12 +29,6 @@ public class Localidad extends BaseEntity implements Serializable {
 
 	@Column(name = "codpostal")
 	private String codpostal;
-
-	@Column(name = "partido")
-	private String partido;
-
-	@Column(name = "provincia")
-	private String provincia;
 
 	@JoinColumn(name = "codpart", referencedColumnName = "codpart")
 	@ManyToOne
@@ -67,22 +63,6 @@ public class Localidad extends BaseEntity implements Serializable {
 
 	public void setCodpostal(String codpostal) {
 		this.codpostal = codpostal;
-	}
-
-	public String getPartido() {
-		return partido;
-	}
-
-	public void setPartido(String partido) {
-		this.partido = partido;
-	}
-
-	public String getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
 	}
 
 	public Partido getCodpart() {
