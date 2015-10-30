@@ -141,8 +141,6 @@
 
 	</n:nav>
 
-
-
 	<window id="window" title="Noticias...!">
 		<include id="ventana" visible="false" />
 		<iframe id="extPage" visible="false"

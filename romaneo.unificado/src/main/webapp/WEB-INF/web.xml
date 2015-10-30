@@ -22,7 +22,6 @@
 	</context-param>
 
 	<!-- ................ listener ................ -->
-
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
@@ -32,7 +31,6 @@
 	</listener>
 
 	<!-- ................ filter ................ -->
-
 	<filter>
 		<filter-name>hibernateOSIV</filter-name>
 		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
@@ -78,7 +76,7 @@
 		<servlet-class>org.zkoss.zk.au.http.DHtmlUpdateServlet</servlet-class>
 	</servlet>
 
-	<!-- ................ servlet mapping ................  -->
+	<!-- ................ servlet mapping ................ -->
 	<servlet-mapping>
 		<servlet-name>zkLoader</servlet-name>
 		<url-pattern>*.zul</url-pattern>
@@ -91,7 +89,7 @@
 
 	<!-- ................ pagina inicio ................ -->
 	<welcome-file-list>
-		<welcome-file>source/index.zul</welcome-file>
+		<welcome-file>source/main.zul</welcome-file>
 	</welcome-file-list>
 
 </web-app>

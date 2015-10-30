@@ -3,23 +3,15 @@ package romaneo.unificado.controllers;
 import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Bandbox;
-import org.zkoss.zul.Intbox;
-import org.zkoss.zul.ListModelList;
-import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Listitem;
-import org.zkoss.zul.ListitemRenderer;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import romaneo.unificado.controllers.BaseFormController;
 import romaneo.unificado.domain.Acondicionador;
-import romaneo.unificado.domain.Localidad;
 import romaneo.unificado.domain.Productor;
 import romaneo.unificado.exceptions.FieldResourceError;
 import romaneo.unificado.exceptions.ValidationException;
@@ -34,19 +26,12 @@ public class ProductorFormController extends BaseFormController {
 	private static final long serialVersionUID = 1L;
 
 	@Wire
-	private Textbox firstNameTxtbx, lastNameTxtbx, phonesTxtbx, emailTxtbx, addressTxtbx;
-	@Wire
-	private Textbox citySearchTxtbx;
-	@Wire
-	private Listbox citiesLstbx;
-	@Wire
-	private Bandbox cityBndbx;
+	private Textbox firstNameTxtbx;
+
 	@Wire
 	private Window productorFormWndw;
-	@Wire
-	private Intbox dniIntbx;
 
-	private Productor acondicionador;
+	private Productor productor;
 
 	@Override
 	public String getClassName() {
@@ -66,13 +51,12 @@ public class ProductorFormController extends BaseFormController {
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 
-		if ((acondicionador = (Productor) Executions.getCurrent().getArg().get(SELECTED)) != null) {
-			cityBndbx.setValue(acondicionador.getNombre_productor());
-			cityBndbx.setAttribute(ENTITY, acondicionador.getNombre_productor());
-			fillFields(acondicionador);
-		} else {
-			acondicionador = new Productor();
-		}
+		if ((productor = (Productor) Executions.getCurrent().getArg().get(SELECTED)) != null)
+			fillFields(productor);
+
+		else
+			productor = new Productor();
+
 	}
 
 	/**
@@ -86,40 +70,17 @@ public class ProductorFormController extends BaseFormController {
 		firstNameTxtbx.setValue(productor.getNombre_productor());
 	}
 
-	@Listen("onOK = #citySearchTxtbx")
-	public void findCity(Event event) {
-		citiesLstbx.setVisible(true);
-		citiesLstbx
-				.setModel(new ListModelList<Localidad>(getLocalidadService().findByName(citySearchTxtbx.getValue())));
-		citiesLstbx.setItemRenderer(new ListitemRenderer<Localidad>() {
-			@Override
-			public void render(Listitem item, Localidad city, int arg2) throws Exception {
-				item.setLabel(city.getLocalidad());
-				item.setAttribute(ENTITY, city);
-			}
-		});
-		citiesLstbx.renderAll();
-	}
-
-	@Listen("onSelect = #citiesLstbx")
-	public void selectCity() {
-		if (citiesLstbx.getSelectedItem() == null) {
-			return;
-		}
-		cityBndbx.setAttribute(ENTITY, citiesLstbx.getSelectedItem().getAttribute(ENTITY));
-	}
-
 	@SuppressWarnings("unchecked")
 	@Listen("onClick = #acceptBttn")
 	@Override
 	public void accept() {
-		acondicionador.setNombre_productor(firstNameTxtbx.getValue());
+		productor.setNombre_productor(firstNameTxtbx.getValue());
 
 		try {
-			if (Long.valueOf(acondicionador.getId()) == null) {
-				getService().create(acondicionador);
+			if (Long.valueOf(productor.getId()) == null) {
+				getService().create(productor);
 			} else {
-				getService().update(acondicionador);
+				getService().update(productor);
 			}
 			// Refrescar la lista
 			Events.sendEvent("onRefresh", getWindowComponent().getParent(), null);
@@ -128,17 +89,8 @@ public class ProductorFormController extends BaseFormController {
 			e.printStackTrace();
 			// Errores de validacion
 			for (FieldResourceError fieldError : e.getError().getFieldErrors()) {
-				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.firstName"))) {
+				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("productor.nombre"))) {
 					firstNameTxtbx.setErrorMessage(fieldError.getMessage());
-				}
-				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.lastName"))) {
-					lastNameTxtbx.setErrorMessage(fieldError.getMessage());
-				}
-				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.dni"))) {
-					dniIntbx.setErrorMessage(fieldError.getMessage());
-				}
-				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.city"))) {
-					cityBndbx.setErrorMessage(fieldError.getMessage());
 				}
 			}
 		} catch (Exception e) {
@@ -147,5 +99,4 @@ public class ProductorFormController extends BaseFormController {
 			Messagebox.show(e.getMessage(), "Error", Messagebox.OK, Messagebox.ERROR);
 		}
 	}
-
 }

@@ -3,7 +3,7 @@
 	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
-	<beans:bean id="AdUserDao" class="romaneo.unificado.daos.AdUserDaoImple">
+	<beans:bean id="UsuarioDao" class="romaneo.unificado.daos.UsuarioDaoImple">
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 

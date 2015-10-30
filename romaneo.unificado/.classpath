@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="romaneo/unificado/controllers/ControladorHttpAcondicionador.java|romaneo/unificado/services/JSONParser.java|romaneo/unificado/controllers/ProductorFormController.java|romaneo/unificado/controllers/ProductorListController.java" kind="src" output="target/classes" path="src/main/java">
+	<classpathentry excluding="romaneo/unificado/controllers/ControladorHttpAcondicionador.java|romaneo/unificado/services/JSONParser.java" kind="src" output="target/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
 		</attributes>

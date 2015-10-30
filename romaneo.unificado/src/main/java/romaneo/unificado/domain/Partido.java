@@ -1,3 +1,8 @@
+/* ............................................. */
+/* ............................................. */
+/* PRELIMINAR .................................. */
+/* ............................................. */
+
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
@@ -10,60 +15,51 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/** @author nacho */
+/* ............................................. */
+/* ............................................. */
+/* CLASE ....................................... */
+/* ............................................. */
+
 @Entity
 @Table(name = "partido")
 public class Partido extends BaseEntity implements Serializable {
+
+	/* ............................................. */
+	/* ............................................. */
+	/* ATRIBUTOS ................................... */
+	/* ............................................. */
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Basic(optional = false)
-	@Column(name = "codpart")
-	private String codpart;
+	@Column(name = "ID")
+	private Integer id;
 
-	@Column(name = "partido")
-	private String partido;
+	@Column(name = "NOMBRE")
+	private String nombre;
 
-	@JoinColumn(name = "provincia", referencedColumnName = "codprov")
+	@JoinColumn(name = "PROVINCIA", referencedColumnName = "id")
 	@ManyToOne
 	private Provincia provincia;
+
+	/* ............................................. */
+	/* ............................................. */
+	/* CONSTRUCTOR ................................. */
+	/* ............................................. */
 
 	public Partido() {
 	}
 
-	public Partido(String codpart) {
-		this.codpart = codpart;
-	}
-
-	public String getCodpart() {
-		return codpart;
-	}
-
-	public void setCodpart(String codpart) {
-		this.codpart = codpart;
-	}
-
-	public String getPartido() {
-		return partido;
-	}
-
-	public void setPartido(String partido) {
-		this.partido = partido;
-	}
-
-	public Provincia getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(Provincia provincia) {
-		this.provincia = provincia;
-	}
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
+	/* ............................................. */
 
 	@Override
 	public int hashCode() {
 		int hash = 0;
-		hash += (codpart != null ? codpart.hashCode() : 0);
+		hash += (id != null ? id.hashCode() : 0);
 		return hash;
 	}
 
@@ -73,8 +69,7 @@ public class Partido extends BaseEntity implements Serializable {
 			return false;
 		}
 		Partido other = (Partido) object;
-		if ((this.codpart == null && other.codpart != null)
-				|| (this.codpart != null && !this.codpart.equals(other.codpart))) {
+		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}
 		return true;
@@ -82,18 +77,50 @@ public class Partido extends BaseEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Entities.Partido[ codpart=" + codpart + " ]";
+		return "domain.partido[ partido=" + id + " ]";
 	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
 	@Override
 	public Object getPK() {
-		return this.codpart;
+		return this.id;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* SET'S ....................................... */
+	/* ............................................. */
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
 	}
 
 	@Override
-	public void setPK(Object Id) {
-		this.codpart = (String) Id;
-
+	public void setPK(Object id) {
+		this.id = (Integer) id;
 	}
-
 }

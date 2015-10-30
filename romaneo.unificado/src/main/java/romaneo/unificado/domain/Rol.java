@@ -6,14 +6,18 @@
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /* ............................................. */
 /* ............................................. */
@@ -21,8 +25,8 @@ import javax.persistence.Table;
 /* ............................................. */
 
 @Entity
-@Table(name = "localidad")
-public class Localidad extends BaseEntity implements Serializable {
+@Table(name = "rol")
+public class Rol extends BaseEntity implements Serializable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -33,25 +37,42 @@ public class Localidad extends BaseEntity implements Serializable {
 
 	@Id
 	@Basic(optional = false)
-	@Column(name = "ID")
+	@Column(name = "ID", nullable = false)
 	private Integer id;
 
-	@Column(name = "LOCALIDAD")
-	private String localidad;
+	@Basic(optional = false)
+	@Column(name = "ESTA_ACTIVO", nullable = false)
+	private Character activo;
 
-	@Column(name = "COD_POSTAL")
-	private String codigo_postal;
+	@Basic(optional = false)
+	@Column(name = "FECHA_CREACION", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar fecha_creacion;
 
-	@JoinColumn(name = "ID_PARTIDO", referencedColumnName = "id")
-	@ManyToOne
-	private Partido partido;
+	@Basic(optional = false)
+	@Column(name = "CREADO_POR", nullable = false)
+	private int creado_por;
+
+	@Basic(optional = false)
+	@Column(name = "NOMBRE", nullable = false, length = 60)
+	private String nombre;
+
+	@Column(name = "DESCRIPCION", length = 255)
+	private String descripcion;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_rol")
+	private List<UsuarioRol> lista_adUserRoles;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public Localidad() {
+	public Rol() {
+	}
+
+	public Rol(Integer id) {
+		this.id = id;
 	}
 
 	/* ............................................. */
@@ -68,10 +89,10 @@ public class Localidad extends BaseEntity implements Serializable {
 
 	@Override
 	public boolean equals(Object object) {
-		if (!(object instanceof Localidad)) {
+		if (!(object instanceof Rol)) {
 			return false;
 		}
-		Localidad other = (Localidad) object;
+		Rol other = (Rol) object;
 		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}
@@ -80,7 +101,7 @@ public class Localidad extends BaseEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return localidad;
+		return "domain.AdRole[ id=" + id + " ]";
 	}
 
 	/* ............................................. */
@@ -90,23 +111,35 @@ public class Localidad extends BaseEntity implements Serializable {
 
 	@Override
 	public Object getPK() {
-		return this.id;
+		return id;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public String getLocalidad() {
-		return localidad;
+	public Character getActivo() {
+		return activo;
 	}
 
-	public String getCodigo_postal() {
-		return codigo_postal;
+	public Calendar getFecha_creacion() {
+		return fecha_creacion;
 	}
 
-	public Partido getPartido() {
-		return partido;
+	public int getCreado_por() {
+		return creado_por;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public List<UsuarioRol> getLista_adUserRoles() {
+		return lista_adUserRoles;
 	}
 
 	/* ............................................. */
@@ -114,24 +147,36 @@ public class Localidad extends BaseEntity implements Serializable {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
+	@Override
+	public void setPK(Object id) {
+		this.id = (Integer) id;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public void setLocalidad(String localidad) {
-		this.localidad = localidad;
+	public void setActivo(Character activo) {
+		this.activo = activo;
 	}
 
-	public void setCodigo_postal(String codigo_postal) {
-		this.codigo_postal = codigo_postal;
+	public void setFecha_creacion(Calendar fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
 	}
 
-	public void setPartido(Partido partido) {
-		this.partido = partido;
+	public void setCreado_por(int creado_por) {
+		this.creado_por = creado_por;
 	}
 
-	@Override
-	public void setPK(Object id) {
-		this.id = (Integer) id;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public void setLista_adUserRoles(List<UsuarioRol> lista_adUserRoles) {
+		this.lista_adUserRoles = lista_adUserRoles;
 	}
 }

@@ -27,7 +27,7 @@ import javax.persistence.TableGenerator;
 @Entity
 @Table(name = "productor")
 @NamedQuery(name = "productor.buscarPorId", query = "SELECT tabla FROM Productor tabla WHERE tabla.id = ?1")
-public class Productor implements Serializable {
+public class Productor extends BaseEntity implements Serializable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -40,7 +40,7 @@ public class Productor implements Serializable {
 	@Column(name = "ID_PRODUCTOR")
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "gen_productor")
 	@TableGenerator(name = "gen_productor", initialValue = 1, allocationSize = 1)
-	private long id;
+	private Integer id;
 
 	@Column(name = "NOMBRE", nullable = true)
 	private String nombre_productor;
@@ -54,7 +54,6 @@ public class Productor implements Serializable {
 	/* ............................................. */
 
 	public Productor() {
-		super();
 	}
 
 	/* ............................................. */
@@ -67,7 +66,7 @@ public class Productor implements Serializable {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -75,16 +74,28 @@ public class Productor implements Serializable {
 		return nombre_productor;
 	}
 
+	@Override
+	public Object getPK() {
+
+		return id;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
 	public void setNombre_productor(String nombre_productor) {
 		this.nombre_productor = nombre_productor;
+	}
+
+	@Override
+	public void setPK(Object id) {
+
+		this.id = (Integer) id;
 	}
 }

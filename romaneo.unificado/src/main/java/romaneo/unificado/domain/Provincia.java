@@ -1,3 +1,8 @@
+/* ............................................. */
+/* ............................................. */
+/* PRELIMINAR .................................. */
+/* ............................................. */
+
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
@@ -8,47 +13,47 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/** @author nacho */
+/* ............................................. */
+/* ............................................. */
+/* CLASE ....................................... */
+/* ............................................. */
+
 @Entity
 @Table(name = "provincia")
 public class Provincia extends BaseEntity implements Serializable {
+
+	/* ............................................. */
+	/* ............................................. */
+	/* ATRIBUTOS ................................... */
+	/* ............................................. */
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Basic(optional = false)
-	@Column(name = "codprov")
-	private String codprov;
+	@Column(name = "ID")
+	private Integer id;
 
-	@Column(name = "provincia")
+	@Column(name = "PROVINCIA")
 	private String provincia;
+
+	/* ............................................. */
+	/* ............................................. */
+	/* CONSTRUCTOR ................................. */
+	/* ............................................. */
 
 	public Provincia() {
 	}
 
-	public Provincia(String codprov) {
-		this.codprov = codprov;
-	}
-
-	public String getCodprov() {
-		return codprov;
-	}
-
-	public void setCodprov(String codprov) {
-		this.codprov = codprov;
-	}
-
-	public String getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
+	/* ............................................. */
 
 	@Override
 	public int hashCode() {
 		int hash = 0;
-		hash += (codprov != null ? codprov.hashCode() : 0);
+		hash += (id != null ? id.hashCode() : 0);
 		return hash;
 	}
 
@@ -58,8 +63,7 @@ public class Provincia extends BaseEntity implements Serializable {
 			return false;
 		}
 		Provincia other = (Provincia) object;
-		if ((this.codprov == null && other.codprov != null)
-				|| (this.codprov != null && !this.codprov.equals(other.codprov))) {
+		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}
 		return true;
@@ -67,18 +71,42 @@ public class Provincia extends BaseEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Entities.Provincia[ codprov=" + codprov + " ]";
+		return "domain.provincia[ id=" + id + " ]";
 	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
 	@Override
 	public Object getPK() {
-		return this.codprov;
+		return this.id;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public String getProvincia() {
+		return provincia;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* SET'S ....................................... */
+	/* ............................................. */
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
 	}
 
 	@Override
 	public void setPK(Object Id) {
-		this.codprov = (String) Id;
-
+		this.id = (Integer) Id;
 	}
-
 }

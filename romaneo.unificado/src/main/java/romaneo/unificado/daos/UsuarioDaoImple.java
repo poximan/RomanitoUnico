@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import romaneo.unificado.domain.AdUser;
+import romaneo.unificado.domain.Usuario;
 
 /**
  * Clase Dao que permirte hacer CRUD (Create/Read/Update/Delete). Extiende de
@@ -12,25 +12,25 @@ import romaneo.unificado.domain.AdUser;
  * 
  * @author Eric Hidalgo
  */
-public class AdUserDaoImple extends BaseDaoImple<AdUser, Integer> implements AdUserDao {
+public class UsuarioDaoImple extends BaseDaoImple<Usuario, Integer> implements UsuarioDao {
 
 	@Override
-	protected Class<AdUser> getEntityClass() {
-		return AdUser.class;
+	protected Class<Usuario> getEntityClass() {
+		return Usuario.class;
 	}
 
 	@Override
-	public AdUser findByName(String name) {
+	public Usuario findByName(String nombre) {
 
 		StringBuffer query = new StringBuffer("");
-		query.append("FROM " + AdUser.class.getSimpleName() + " u ");
+		query.append("FROM " + Usuario.class.getSimpleName() + " u ");
 		query.append("WHERE 1 = 1 ");
-		query.append("AND u.name = :name");
+		query.append("AND u.nombre = :nombre");
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("name", name);
+		parameters.put("nombre", nombre);
 
-		List<AdUser> result = findQueryByParameters(query.toString(), parameters);
+		List<Usuario> result = findQueryByParameters(query.toString(), parameters);
 		return result.isEmpty() ? null : result.get(0);
 	}
 

@@ -24,8 +24,8 @@ public class AcondicionadorServiceImple extends BaseServiceImple<Acondicionador,
 
 		// Agrego un item para obtener todas
 		Acondicionador allDrv = new Acondicionador();
-		allDrv.setFirstName(Labels.getLabel("allMasc"));
-		allDrv.setLastName("");
+		allDrv.setNombre(Labels.getLabel("allMasc"));
+		allDrv.setApellido("");
 		acondicionador.add(allDrv);
 
 		return acondicionador;
@@ -47,11 +47,11 @@ public class AcondicionadorServiceImple extends BaseServiceImple<Acondicionador,
 	public void validate(Acondicionador entity) throws ValidationException {
 		ResourceError error = new ResourceError();
 
-		if (entity.getFirstName() == null || entity.getFirstName().isEmpty()) {
+		if (entity.getNombre() == null || entity.getNombre().isEmpty()) {
 			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.firstName"),
 					null, Labels.getLabel("acondicionador.firstNameError")));
 		}
-		if (entity.getLastName() == null || entity.getLastName().isEmpty()) {
+		if (entity.getApellido() == null || entity.getApellido().isEmpty()) {
 			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.lastName"),
 					null, Labels.getLabel("acondicionador.lastNameError")));
 		}
@@ -59,7 +59,7 @@ public class AcondicionadorServiceImple extends BaseServiceImple<Acondicionador,
 			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.dni"), null,
 					Labels.getLabel("acondicionador.dniError")));
 		}
-		if (entity.getCodloc() == null) {
+		if (entity.getId_localidad() == null) {
 			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.city"), null,
 					Labels.getLabel("acondicionador.cityError")));
 		}

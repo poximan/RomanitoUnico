@@ -1,9 +1,9 @@
 package romaneo.unificado.daos;
 
-import romaneo.unificado.domain.AdUser;
+import romaneo.unificado.domain.Usuario;
 
 /** @author Eric Hidalgo */
-public interface AdUserDao extends BaseDao<AdUser, Integer> {
+public interface UsuarioDao extends BaseDao<Usuario, Integer> {
 
 	/**
 	 * Busca un usuario por su nombre
@@ -12,6 +12,6 @@ public interface AdUserDao extends BaseDao<AdUser, Integer> {
 	 *            Nombre que identifica al usuario
 	 * @return El usuario buscado, si no la encuentra retorna null
 	 */
-	AdUser findByName(String name);
+	Usuario findByName(String name);
 
 }

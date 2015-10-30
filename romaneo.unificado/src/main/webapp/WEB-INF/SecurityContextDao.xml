@@ -20,7 +20,7 @@
 
 	<authentication-manager alias="autenticationManagerUserService">
 
-		<authentication-provider user-service-ref="AdUserService">
+		<authentication-provider user-service-ref="UsuarioService">
 			<password-encoder ref="passwordEncoder" />
 		</authentication-provider>
 
@@ -28,7 +28,7 @@
 
 	<beans:bean id="daoAuthenticationProvider"
 		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
-		<beans:property name="userDetailsService" ref="AdUserService" />
+		<beans:property name="userDetailsService" ref="UsuarioService" />
 	</beans:bean>
 
 	<beans:bean id="authenticationManager"

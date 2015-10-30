@@ -5,15 +5,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
-import romaneo.unificado.daos.AdUserDao;
-import romaneo.unificado.domain.AdUser;
+import romaneo.unificado.daos.UsuarioDao;
+import romaneo.unificado.domain.Usuario;
 
 /**
  * Logica de negocios de usuarios
  * 
  * @author ehidalgo
  */
-public interface AdUserService extends BaseService<AdUser, AdUserDao> {
+public interface UsuarioService extends BaseService<Usuario, UsuarioDao> {
 
 	/**
 	 * Busca un usuario por su nombre
@@ -33,7 +33,7 @@ public interface AdUserService extends BaseService<AdUser, AdUserDao> {
 	 * @return
 	 */
 	@Transactional(readOnly = true)
-	AdUser getLoguedUser();
+	Usuario getLoguedUser();
 
 	/**
 	 * Cambiar contraseña

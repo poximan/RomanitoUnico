@@ -24,7 +24,7 @@ import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Window;
 
 import romaneo.unificado.domain.AppSettings;
-import romaneo.unificado.services.AdUserService;
+import romaneo.unificado.services.UsuarioService;
 import romaneo.unificado.services.BaseService;
 import romaneo.unificado.services.AcondicionadorService;
 import romaneo.unificado.services.LocalidadService;
@@ -138,8 +138,8 @@ public abstract class BaseController extends SelectorComposer<Component> {
 	}
 
 	/** @return el servicio de usuarios. */
-	protected AdUserService getUserService() {
-		return (AdUserService) SpringUtil.getBean(AdUserService.class.getSimpleName());
+	protected UsuarioService getUsuarioService() {
+		return (UsuarioService) SpringUtil.getBean(UsuarioService.class.getSimpleName());
 	}
 
 	/** @return el servicio de choferes. */

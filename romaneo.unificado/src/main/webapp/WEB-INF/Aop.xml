@@ -8,7 +8,7 @@
 
 	<beans:bean id="StatusLogInterceptor"
 		class="romaneo.unificado.aop.logging.interceptor.StatusLogInterceptor">
-		<beans:property name="adUserService" ref="AdUserService" />
+		<beans:property name="usuarioService" ref="UsuarioService" />
 		<beans:property name="loggingService" ref="LoggingService" />
 	</beans:bean>
 

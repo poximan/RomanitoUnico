@@ -24,9 +24,9 @@ import romaneo.unificado.domain.Acondicionador;
 import romaneo.unificado.services.AcondicionadorService;
 
 /**
- * Lista de choferes
+ * Lista de acondicionadores
  * 
- * @author Kevin Feuerschvenger
+ * @author hugo
  */
 public class AcondicionadorListController extends BasePagedListController<Acondicionador> {
 	private static final long serialVersionUID = 1L;
@@ -50,14 +50,17 @@ public class AcondicionadorListController extends BasePagedListController<Acondi
 
 	@Override
 	protected ListitemRenderer<Acondicionador> getListitemRender() {
-		
+
 		return new ListitemRenderer<Acondicionador>() {
 			@Override
 			public void render(Listitem item, Acondicionador acondicionador, int arg) throws Exception {
-				(new Listcell("" + acondicionador.getLastName() != null ? acondicionador.getLastName() : "")).setParent(item);
-				(new Listcell("" + acondicionador.getFirstName() != null ? acondicionador.getFirstName() : "")).setParent(item);
-				(new Listcell("" + acondicionador.getPhones() != null ? acondicionador.getPhones() : "")).setParent(item);
-				(new Listcell("" + acondicionador.getMail() != null ? acondicionador.getMail() : "")).setParent(item);
+				(new Listcell("" + acondicionador.getApellido() != null ? acondicionador.getApellido() : ""))
+						.setParent(item);
+				(new Listcell("" + acondicionador.getNombre() != null ? acondicionador.getNombre() : ""))
+						.setParent(item);
+				(new Listcell("" + acondicionador.getTelefono() != null ? acondicionador.getTelefono() : ""))
+						.setParent(item);
+				(new Listcell("" + acondicionador.getEmail() != null ? acondicionador.getEmail() : "")).setParent(item);
 				item.setAttribute(ENTITY, acondicionador);
 			}
 		};
@@ -128,7 +131,7 @@ public class AcondicionadorListController extends BasePagedListController<Acondi
 		filterByDniIntbx.setValue(null);
 	}
 
-	@Listen("onClick = #acondicionadoresSubmenuA3")
+	@Listen("onClick = #acondicionadoresSubmenuA1")
 	public void navigationToAcondicionadores() {
 		if (Path.getComponent("//mainPage/mainWndw") != null) {
 			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");

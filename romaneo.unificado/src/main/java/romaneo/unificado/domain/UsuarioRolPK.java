@@ -9,20 +9,15 @@ import java.io.Serializable;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-@Entity
-@Table(name = "localidad")
-public class Localidad extends BaseEntity implements Serializable {
+@Embeddable
+public class UsuarioRolPK implements Serializable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -31,27 +26,25 @@ public class Localidad extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	@Basic(optional = false)
-	@Column(name = "ID")
-	private Integer id;
+	@Column(name = "ID_USUARIO", nullable = false)
+	private int id_usuario;
 
-	@Column(name = "LOCALIDAD")
-	private String localidad;
-
-	@Column(name = "COD_POSTAL")
-	private String codigo_postal;
-
-	@JoinColumn(name = "ID_PARTIDO", referencedColumnName = "id")
-	@ManyToOne
-	private Partido partido;
+	@Basic(optional = false)
+	@Column(name = "ID_ROL", nullable = false)
+	private int id_rol;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public Localidad() {
+	public UsuarioRolPK() {
+	}
+
+	public UsuarioRolPK(int id_usuario, int id_rol) {
+		this.id_usuario = id_usuario;
+		this.id_rol = id_rol;
 	}
 
 	/* ............................................. */
@@ -62,17 +55,21 @@ public class Localidad extends BaseEntity implements Serializable {
 	@Override
 	public int hashCode() {
 		int hash = 0;
-		hash += (id != null ? id.hashCode() : 0);
+		hash += (int) id_usuario;
+		hash += (int) id_rol;
 		return hash;
 	}
 
 	@Override
 	public boolean equals(Object object) {
-		if (!(object instanceof Localidad)) {
+		if (!(object instanceof UsuarioRolPK)) {
 			return false;
 		}
-		Localidad other = (Localidad) object;
-		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+		UsuarioRolPK other = (UsuarioRolPK) object;
+		if (this.id_usuario != other.id_usuario) {
+			return false;
+		}
+		if (this.id_rol != other.id_rol) {
 			return false;
 		}
 		return true;
@@ -80,7 +77,7 @@ public class Localidad extends BaseEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return localidad;
+		return "domain.UsuarioRolPK[ usuario id=" + id_usuario + ", rol id=" + id_rol + " ]";
 	}
 
 	/* ............................................. */
@@ -88,25 +85,12 @@ public class Localidad extends BaseEntity implements Serializable {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	@Override
-	public Object getPK() {
-		return this.id;
+	public int getId_usuario() {
+		return id_usuario;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public String getLocalidad() {
-		return localidad;
-	}
-
-	public String getCodigo_postal() {
-		return codigo_postal;
-	}
-
-	public Partido getPartido() {
-		return partido;
+	public int getId_rol() {
+		return id_rol;
 	}
 
 	/* ............................................. */
@@ -114,24 +98,11 @@ public class Localidad extends BaseEntity implements Serializable {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId_usuario(int id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
-	public void setLocalidad(String localidad) {
-		this.localidad = localidad;
-	}
-
-	public void setCodigo_postal(String codigo_postal) {
-		this.codigo_postal = codigo_postal;
-	}
-
-	public void setPartido(Partido partido) {
-		this.partido = partido;
-	}
-
-	@Override
-	public void setPK(Object id) {
-		this.id = (Integer) id;
+	public void setId_rol(int id_rol) {
+		this.id_rol = id_rol;
 	}
 }

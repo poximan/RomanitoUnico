@@ -66,8 +66,8 @@ public class AcondicionadorFormController extends BaseFormController {
 		super.doAfterCompose(comp);
 
 		if ((acondicionador = (Acondicionador) Executions.getCurrent().getArg().get(SELECTED)) != null) {
-			cityBndbx.setValue(acondicionador.getCodloc().getLocalidad());
-			cityBndbx.setAttribute(ENTITY, acondicionador.getCodloc().getLocalidad());
+			cityBndbx.setValue(acondicionador.getId_localidad().getLocalidad());
+			cityBndbx.setAttribute(ENTITY, acondicionador.getId_localidad().getLocalidad());
 			fillFields(acondicionador);
 		} else {
 			acondicionador = new Acondicionador();
@@ -82,11 +82,11 @@ public class AcondicionadorFormController extends BaseFormController {
 	 *            el formulario.
 	 */
 	private void fillFields(Acondicionador acondicionador) {
-		firstNameTxtbx.setValue(acondicionador.getFirstName());
-		lastNameTxtbx.setValue(acondicionador.getLastName());
-		phonesTxtbx.setValue(acondicionador.getPhones());
-		emailTxtbx.setValue(acondicionador.getMail());
-		addressTxtbx.setValue(acondicionador.getAddress());
+		firstNameTxtbx.setValue(acondicionador.getNombre());
+		lastNameTxtbx.setValue(acondicionador.getApellido());
+		phonesTxtbx.setValue(acondicionador.getTelefono());
+		emailTxtbx.setValue(acondicionador.getEmail());
+		addressTxtbx.setValue(acondicionador.getDireccion());
 		dniIntbx.setValue(acondicionador.getDni());
 	}
 
@@ -117,13 +117,14 @@ public class AcondicionadorFormController extends BaseFormController {
 	@Listen("onClick = #acceptBttn")
 	@Override
 	public void accept() {
-		acondicionador.setFirstName(firstNameTxtbx.getValue());
-		acondicionador.setLastName(lastNameTxtbx.getValue());
+
+		acondicionador.setNombre(firstNameTxtbx.getValue());
+		acondicionador.setApellido(lastNameTxtbx.getValue());
 		acondicionador.setDni(dniIntbx.getValue());
-		acondicionador.setPhones(phonesTxtbx.getValue());
-		acondicionador.setMail(emailTxtbx.getValue());
-		acondicionador.setAddress(addressTxtbx.getValue());
-		acondicionador.setCodloc((Localidad) cityBndbx.getAttribute(ENTITY));
+		acondicionador.setTelefono(phonesTxtbx.getValue());
+		acondicionador.setEmail(emailTxtbx.getValue());
+		acondicionador.setDireccion(addressTxtbx.getValue());
+		acondicionador.setId_localidad((Localidad) cityBndbx.getAttribute(ENTITY));
 
 		try {
 			if (acondicionador.getId() == null) {

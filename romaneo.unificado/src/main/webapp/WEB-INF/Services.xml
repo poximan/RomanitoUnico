@@ -3,9 +3,9 @@
 	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
-	<beans:bean id="AdUserService"
-		class="romaneo.unificado.services.AdUserServiceImple">
-		<beans:property name="dao" ref="AdUserDao" />
+	<beans:bean id="UsuarioService"
+		class="romaneo.unificado.services.UsuarioServiceImple">
+		<beans:property name="dao" ref="UsuarioDao" />
 	</beans:bean>
 
 	<beans:bean id="AcondicionadorService"
@@ -30,7 +30,7 @@
 		<beans:property name="webAppFolder" ref="WebAppFolder" />
 		<beans:property name="folder" value="/interfaces/sheets" />
 		<beans:property name="dao" ref="InterfaceDao" />
-		<beans:property name="adUserService" ref="AdUserService" />
+		<beans:property name="usuarioService" ref="UsuarioService" />
 		<beans:property name="localidadService" ref="LocalidadService" />
 
 	</beans:bean>

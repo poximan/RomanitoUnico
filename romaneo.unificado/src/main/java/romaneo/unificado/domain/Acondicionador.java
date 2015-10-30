@@ -1,3 +1,8 @@
+/* ............................................. */
+/* ............................................. */
+/* PRELIMINAR .................................. */
+/* ............................................. */
+
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
@@ -14,126 +19,71 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-/** @author nacho */
+/* ............................................. */
+/* ............................................. */
+/* CLASE ....................................... */
+/* ............................................. */
+
 @Entity
 @Table(name = "acondicionador")
 public class Acondicionador extends BaseEntity implements Serializable {
 
-	private static final long serialVersionUID = -2019342400320322095L;
+	/* ............................................. */
+	/* ............................................. */
+	/* ATRIBUTOS ................................... */
+	/* ............................................. */
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@Column(name = "id")
+	@Column(name = "ID")
 	private Integer id;
 
+	@Column(name = "NOMBRE", length = 50)
+	private String nombre;
+
 	@Basic(optional = false)
-	@Column(name = "last_name", nullable = false, length = 50)
+	@Column(name = "APELLIDO", nullable = false, length = 50)
 	@NotNull
-	private String lastName;
-
-	@Column(name = "first_name", length = 50)
-	private String firstName;
+	private String apellido;
 
 	@Basic(optional = false)
-	@Column(name = "address", nullable = false, length = 150)
+	@Column(name = "DIRECCION", nullable = false, length = 150)
 	@NotNull
 	@Pattern(regexp = "[A-Za-z0-9-_:., ]{1,150}")
-	private String address;
+	private String direccion;
 
 	@Basic(optional = false)
-	@Column(name = "dni", nullable = false)
+	@Column(name = "DNI", nullable = false)
 	@NotNull
 	private Integer dni;
 
-	@Column(name = "phones", length = 30)
+	@Column(name = "TELEFONO", length = 30)
 	@Pattern(regexp = "[A-Za-z0-9-_:., ]{1,30}")
-	private String phones;
+	private String telefono;
 
-	@Column(name = "mail", length = 70)
-	private String mail;
+	@Column(name = "EMAIL", length = 70)
+	private String email;
 
-	@JoinColumn(name = "codloc", referencedColumnName = "codloc", nullable = false)
+	@JoinColumn(name = "ID_LOCALIDAD", referencedColumnName = "id", nullable = false)
 	@ManyToOne(optional = false)
 	@NotNull
-	private Localidad codloc;
+	private Localidad id_localidad;
+
+	/* ............................................. */
+	/* ............................................. */
+	/* CONSTRUCTOR ................................. */
+	/* ............................................. */
 
 	public Acondicionador() {
 	}
 
-	@Override
-	public Object getPK() {
-		return this.id;
-	}
-
-	@Override
-	public void setPK(Object Id) {
-		this.id = (Integer) Id;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public Integer getDni() {
-		return dni;
-	}
-
-	public void setDni(Integer dni) {
-		this.dni = dni;
-	}
-
-	public String getPhones() {
-		return phones;
-	}
-
-	public void setPhones(String phones) {
-		this.phones = phones;
-	}
-
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public Localidad getCodloc() {
-		return codloc;
-	}
-
-	public void setCodloc(Localidad codloc) {
-		this.codloc = codloc;
-	}
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
+	/* ............................................. */
 
 	@Override
 	public int hashCode() {
@@ -156,16 +106,16 @@ public class Acondicionador extends BaseEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return lastName + " " + firstName;
+		return apellido + " " + nombre;
 	}
 
 	public String getFullName() {
-		return lastName + " " + firstName;
+		return apellido + " " + nombre;
 	}
 
 	public enum Filters {
 
-		BY_FIRST_NAME("firstName"), BY_LAST_NAME("lastName"), BY_DNI("dni");
+		BY_FIRST_NAME("nombre"), BY_LAST_NAME("apellido"), BY_DNI("dni");
 
 		private String value;
 
@@ -176,7 +126,89 @@ public class Acondicionador extends BaseEntity implements Serializable {
 		Filters(String value) {
 			this.value = value;
 		}
-
 	}
 
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	@Override
+	public Object getPK() {
+		return this.id;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public Integer getDni() {
+		return dni;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public Localidad getId_localidad() {
+		return id_localidad;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* SET'S ....................................... */
+	/* ............................................. */
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public void setDni(Integer dni) {
+		this.dni = dni;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setId_localidad(Localidad localidad) {
+		this.id_localidad = localidad;
+	}
+
+	@Override
+	public void setPK(Object Id) {
+		this.id = (Integer) Id;
+	}
 }

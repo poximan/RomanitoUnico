@@ -6,7 +6,7 @@ import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
 import romaneo.unificado.domain.Logging;
-import romaneo.unificado.services.AdUserService;
+import romaneo.unificado.services.UsuarioService;
 import romaneo.unificado.services.LoggingService;
 import romaneo.unificado.stateMachine.ObjectWithState;
 import romaneo.unificado.stateMachine.State;
@@ -19,11 +19,11 @@ import romaneo.unificado.stateMachine.StateEvent;
  */
 public class StatusLogInterceptor implements MethodInterceptor {
 
-	private AdUserService adUserService;
+	private UsuarioService usuarioService;
 	private LoggingService loggingService;
 
-	public void setAdUserService(AdUserService adUserService) {
-		this.adUserService = adUserService;
+	public void setUsuarioService(UsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
 	}
 
 	public void setLoggingService(LoggingService loggingService) {
@@ -52,8 +52,7 @@ public class StatusLogInterceptor implements MethodInterceptor {
 
 			logging.setTypeObject("table");
 			logging.setNameObject(object.getClass().getSimpleName().toLowerCase());
-			logging.setUserId(
-					adUserService.getLoguedUser() != null ? adUserService.getLoguedUser().getAdUserId() : null);
+			logging.setUserId(usuarioService.getLoguedUser() != null ? usuarioService.getLoguedUser().getId() : null);
 
 			logging.setIdObject(object.getId());
 			logging.setStateFrom(previousState);

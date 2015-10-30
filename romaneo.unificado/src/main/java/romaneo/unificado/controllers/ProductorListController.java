@@ -21,14 +21,16 @@ import org.zkoss.zul.Window;
 
 import romaneo.unificado.controllers.BasePagedListController;
 import romaneo.unificado.domain.Acondicionador;
+import romaneo.unificado.domain.Productor;
 import romaneo.unificado.services.AcondicionadorService;
 
 /**
- * Lista de choferes
+ * Lista de productores
  * 
- * @author Kevin Feuerschvenger
+ * @author hugo
  */
-public class ProductorListController extends BasePagedListController<Acondicionador> {
+public class ProductorListController extends BasePagedListController<Productor> {
+
 	private static final long serialVersionUID = 1L;
 
 	@Wire
@@ -49,15 +51,14 @@ public class ProductorListController extends BasePagedListController<Acondiciona
 	private Intbox filterByDniIntbx;
 
 	@Override
-	protected ListitemRenderer<Acondicionador> getListitemRender() {
-		
-		return new ListitemRenderer<Acondicionador>() {
+	protected ListitemRenderer<Productor> getListitemRender() {
+
+		return new ListitemRenderer<Productor>() {
 			@Override
-			public void render(Listitem item, Acondicionador acondicionador, int arg) throws Exception {
-				(new Listcell("" + acondicionador.getLastName() != null ? acondicionador.getLastName() : "")).setParent(item);
-				(new Listcell("" + acondicionador.getFirstName() != null ? acondicionador.getFirstName() : "")).setParent(item);
-				(new Listcell("" + acondicionador.getPhones() != null ? acondicionador.getPhones() : "")).setParent(item);
-				(new Listcell("" + acondicionador.getMail() != null ? acondicionador.getMail() : "")).setParent(item);
+			public void render(Listitem item, Productor acondicionador, int arg) throws Exception {
+				(new Listcell(
+						"" + acondicionador.getNombre_productor() != null ? acondicionador.getNombre_productor() : ""))
+								.setParent(item);
 				item.setAttribute(ENTITY, acondicionador);
 			}
 		};
@@ -128,7 +129,7 @@ public class ProductorListController extends BasePagedListController<Acondiciona
 		filterByDniIntbx.setValue(null);
 	}
 
-	@Listen("onClick = #productoresSubmenuA3")
+	@Listen("onClick = #productoresSubmenuA2")
 	public void navigationToAcondicionadores() {
 		if (Path.getComponent("//mainPage/mainWndw") != null) {
 			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");

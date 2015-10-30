@@ -11,9 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import romaneo.unificado.daos.AdUserDao;
-import romaneo.unificado.domain.AdUser;
-import romaneo.unificado.domain.AdUserRoles;
+import romaneo.unificado.daos.UsuarioDao;
+import romaneo.unificado.domain.Usuario;
+import romaneo.unificado.domain.UsuarioRol;
 import romaneo.unificado.exceptions.FieldResourceError;
 import romaneo.unificado.exceptions.ResourceError;
 import romaneo.unificado.exceptions.ValidationException;
@@ -24,36 +24,36 @@ import romaneo.unificado.exceptions.ValidationException;
  * 
  * @author Eric Hidalgo
  */
-public class AdUserServiceImple extends BaseServiceImple<AdUser, AdUserDao>
-		implements UserDetailsService, AdUserService {
+public class UsuarioServiceImple extends BaseServiceImple<Usuario, UsuarioDao>
+		implements UserDetailsService, UsuarioService {
 
 	@Override
 	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
 
-		AdUser user = dao.findByName(name);
+		Usuario user = dao.findByName(name);
 
 		if (user == null)
 			throw new UsernameNotFoundException("El usuario " + user + " no existe en la base de datos");
 
 		// Convierto mi usuario a un UserDetails de SpringSecurity
-		return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(),
-				user.getIsactive() == 'Y' ? true : false, true, true, true, convertProfiles(user.getAdUserRolesList()));
+		return new org.springframework.security.core.userdetails.User(user.getNombre(), user.getPassword(),
+				user.getActivo() == 'Y' ? true : false, true, true, true, convertProfiles(user.getLista_adUserRoles()));
 	}
 
 	/** Convierte los perfiles del usuario a los de Spring-Security */
-	private Collection<GrantedAuthority> convertProfiles(List<AdUserRoles> roles) {
+	private Collection<GrantedAuthority> convertProfiles(List<UsuarioRol> roles) {
 
 		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-		for (AdUserRoles role : roles) {
-			authorities.add(new SimpleGrantedAuthority(role.getAdRole().getName()));
+		for (UsuarioRol role : roles) {
+			authorities.add(new SimpleGrantedAuthority(role.getId_rol().getNombre()));
 		}
 
 		return authorities;
 	}
 
 	@Override
-	public AdUser getLoguedUser() {
+	public Usuario getLoguedUser() {
 		if (SecurityContextHolder.getContext().getAuthentication() != null) {
 			org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) SecurityContextHolder
 					.getContext().getAuthentication().getPrincipal();
@@ -65,7 +65,7 @@ public class AdUserServiceImple extends BaseServiceImple<AdUser, AdUserDao>
 	@Override
 	public void changePassword(String name, String oldPassword, String newPassword, String reNewPassword)
 			throws UsernameNotFoundException {
-		AdUser user = dao.findByName(name);
+		Usuario user = dao.findByName(name);
 
 		if (user == null)
 			throw new UsernameNotFoundException("El usuario " + user + " no existe en la base de datos");
@@ -76,7 +76,7 @@ public class AdUserServiceImple extends BaseServiceImple<AdUser, AdUserDao>
 		dao.update(user);
 	}
 
-	private void validationPasswords(AdUser user, String oldPassword, String newPassword, String reNewPassword)
+	private void validationPasswords(Usuario user, String oldPassword, String newPassword, String reNewPassword)
 			throws ValidationException {
 
 		ResourceError error = new ResourceError();
@@ -97,5 +97,4 @@ public class AdUserServiceImple extends BaseServiceImple<AdUser, AdUserDao>
 			throw new ValidationException(error);
 
 	}
-
 }

@@ -36,7 +36,7 @@ public class MainController extends BaseController {
 	@Wire
 	private A backBttn, fowardBttn, mailboxBttn, systemManagementBttn;
 	@Wire
-	private Div containerDv, interfacesDv, acondicionadorDv;
+	private Div containerDv, interfacesDv, acondicionadorDv, productorDv;
 	@Wire
 	private Div mobileDeviceDv, messageTypeDv;
 	@Wire
@@ -74,7 +74,7 @@ public class MainController extends BaseController {
 		getNavigationHistoryService().setMain(mainWndw);
 		getNavigationHistoryService().setMainButtons(menus);
 
-		navigationToAcondicionadores();
+		navigationToAcondicionadores();		
 	}
 
 	@Listen("onClick = #editAccountBttn")
@@ -102,6 +102,11 @@ public class MainController extends BaseController {
 	@Listen("onGoToAcondicionadores = #mainWndw")
 	public void navigationToAcondicionadores() {
 		createWindow(Labels.getLabel("url.acondicionadorList"), acondicionadorDv, masterDataBttn, false, null);
+	}
+
+	@Listen("onGoToProductores = #mainWndw")
+	public void navigationToProductores() {
+		createWindow(Labels.getLabel("url.productorList"), productorDv, masterDataBttn, false, null);
 	}
 
 	// **** ADMINISTRACION DEL SISTEMA **** //

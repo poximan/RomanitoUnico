@@ -2,14 +2,14 @@ package romaneo.unificado.services;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import romaneo.unificado.services.AdUserService;
+import romaneo.unificado.services.UsuarioService;
 import romaneo.unificado.services.LocalidadService;
 
 import romaneo.unificado.domain.Interface;
 
 public class InterfaceSheetsServiceImple extends InterfaceGenericServiceImple implements InterfaceService {
 
-	private AdUserService adUserService;
+	private UsuarioService usuarioService;
 	private LocalidadService localidadService;
 
 	@Transactional(rollbackFor = Exception.class)
@@ -42,16 +42,16 @@ public class InterfaceSheetsServiceImple extends InterfaceGenericServiceImple im
 		// TODO Auto-generated method stub
 	}
 
-	public AdUserService getAdUserService() {
-		return adUserService;
+	public UsuarioService getUsuarioService() {
+		return usuarioService;
 	}
 
 	public LocalidadService getLocalidadService() {
 		return localidadService;
 	}
 
-	public void setAdUserService(AdUserService adUserService) {
-		this.adUserService = adUserService;
+	public void setUsuarioService(UsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
 	}
 
 	public void setLocalidadService(LocalidadService localidadService) {
