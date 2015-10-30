@@ -1,7 +1,7 @@
 <zk xmlns:n="xhtml">
 	<window id="productoresListWndw" border="none" hflex="1"
 		sclass="normal-window"
-		apply="romaneo.unificado.controllers.AcondicionadorListController">
+		apply="romaneo.unificado.controllers.productor.ProductorListController">
 
 		<style src="/css/list.css" />
 

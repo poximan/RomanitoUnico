@@ -15,21 +15,9 @@
 	<?link rel="shortcut icon" type="image/x-icon" href="/imagenes/favicon.jpg"?>
 	<?link rel="icon" type="image/x-icon" href="/imagenes/favicon.jpg"?>
 
-	<hbox width="100%">
-		<hbox hflex="1">
-			<n:a href="http://www.minagri.gob.ar/sitio/">
-				<image src="/imagenes/logo_minagri.png"
-					class="img-rounded" style="margin-top:50px;" />
-			</n:a>
-		</hbox>
-		<hbox hflex="1" pack="end">
-			<n:a href="https://prolana.magyp.gob.ar/">
-				<image src="/imagenes/logo_prolana.jpg"
-					class="img-rounded" style="margin-top:40px;" />
-			</n:a>
-		</hbox>
-
-	</hbox>
+	<!-- ........................................................ -->
+	<!-- VENTANA PRINCIPAL ...................................... -->
+	<!-- ........................................................ -->
 
 	<window id="mainWndw"
 		apply="romaneo.unificado.controllers.MainController" width="100%"
@@ -55,7 +43,7 @@
 					</n:button>
 					<image id="logoImg" class="pull-left"
 						style="cursor:default;max-height:61px;max-width:61px;padding-left:11px;"
-						src="/imagenes/logo.png" />
+						src="/imagenes/SheepFINAL.png" />
 					<n:a class="navbar-brand" style="font-size:20px;">
 						${labels.app.name}
 					</n:a>
@@ -65,7 +53,7 @@
 					class="collapse navbar-collapse navbar-ex1-collapse">
 					<n:ul class="nav navbar-nav">
 
-						<n:li style="cursor:pointer">
+						<n:li class="active" style="cursor:pointer">
 							<n:a id="masterDataBttn">
 								${labels.main.menu.masterData}
 							</n:a>
@@ -86,47 +74,7 @@
 					</n:ul>
 
 					<n:ul class="nav navbar-nav navbar-right">
-
-						<n:li style="cursor:pointer">
-							<n:a id="backBttn"
-								class="glyphicon glyphicon-chevron-left">
-							</n:a>
-						</n:li>
-
-						<n:li style="cursor:pointer">
-							<n:a id="fowardBttn"
-								class="glyphicon glyphicon-chevron-right">
-							</n:a>
-						</n:li>
-						<n:li class="dropdown"
-							style="margin-right:10px">
-							<n:a class="dropdown-toggle"
-								data-toggle="dropdown" style="cursor:pointer">
-								<label id="distributionCenterCurrentLbl"
-									style="font-size: 14px;" />
-								<n:b class="caret"></n:b>
-							</n:a>
-							<n:ul id="distributionCentersUl"
-								class="dropdown-menu" />
-						</n:li>
-						<n:li style="cursor:pointer;height:50px">
-							<n:a id="mailboxBttn"
-								tooltiptext="${labels.app.mailbox}" class="z-icon-inbox"
-								style="font-size:22px;height:50px">
-								<n:span id="unprocessedMessagesSpn"
-									visible="false" class="badge"
-									style="padding: 1px 5px !important;background-color: #D25B5B;color: #FFFFFF;">
-									<label id="unprocessedMessagesLbl"
-										style="font-size: 12px;" />
-								</n:span>
-							</n:a>
-						</n:li>
-						<n:li style="cursor:pointer;"
-							tooltiptext="${labels.app.activeTravels}">
-							<n:a id="activeTravelsBttn"
-								class="z-icon-truck" style="font-size:22px;height:50px">
-							</n:a>
-						</n:li>
+						
 						<n:li class="dropdown"
 							style="margin-right:10px">
 							<n:a href="#" class="dropdown-toggle"
@@ -157,6 +105,7 @@
 							</n:ul>
 						</n:li>
 					</n:ul>
+
 				</div>
 			</n:nav>
 		</div>
@@ -166,28 +115,6 @@
 			<div id="interfacesDv" visible="false" vflex="1" />
 			<div id="acondicionadorDv" visible="false" vflex="1" />
 		</div>
-
-		<popup id="activeTravelsPopup">
-			<separator orient="horizontal" spacing="10px" />
-			<n:div class="row">
-				<n:div class="col-md-9">
-					<label value="${labels.app.activeTravels}"
-						style="font-size: 20px;" />
-				</n:div>
-				<n:div class="col-md-2">
-					<n:a id="refreshActiveTravelsBttn"
-						class="pull-right z-icon-refresh"
-						tooltiptext="${labels.app.refresh}"
-						style="cursor:pointer;font-size:20px;padding-top:6px;text-decoration:none;">
-					</n:a>
-				</n:div>
-			</n:div>
-			<separator orient="horizontal" bar="true" spacing="1px"
-				width="100%" sclass="separator-list-horizontal" />
-			<div id="activeTravelsDv" width="300px" height="500px"
-				style="padding: 5px;overflow-x: scroll;">
-			</div>
-		</popup>
 
 	</window>
 </zk>

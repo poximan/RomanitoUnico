@@ -24,7 +24,7 @@ import javax.persistence.TableGenerator;
 @Entity
 @Table(name = "contratista")
 @NamedQuery(name = "contratista.buscarPorId", query = "SELECT tabla FROM Contratista tabla WHERE tabla.id = ?1")
-public class Contratista implements Serializable {
+public class Contratista extends BaseEntity implements Serializable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -37,7 +37,10 @@ public class Contratista implements Serializable {
 	@Column(name = "ID_CONTRATISTA")
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "gen_contratista")
 	@TableGenerator(name = "gen_contratista", initialValue = 1, allocationSize = 1)
-	private long id;
+	private Integer id;
+
+	@Column(name = "NOMBRE", length = 50)
+	private String nombre;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -52,12 +55,37 @@ public class Contratista implements Serializable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public enum Filters {
+
+		BY_FIRST_NAME("nombre");
+
+		private String value;
+
+		public String getValue() {
+			return value;
+		}
+
+		Filters(String value) {
+			this.value = value;
+		}
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public long getId() {
+	public Integer getId() {
+		return id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	@Override
+	public Object getPK() {
+
 		return id;
 	}
 
@@ -66,7 +94,17 @@ public class Contratista implements Serializable {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	@Override
+	public void setPK(Object id) {
+
+		this.id = (Integer) id;
 	}
 }

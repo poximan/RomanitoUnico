@@ -510,14 +510,6 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 		return null;
 	}
 
-	public void onClick$listToExcelButton(Event event) {
-		try {
-			exportListboxToExcel(getListComponent());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * Componente que muestra el listado obtenido en la consulta
 	 * 

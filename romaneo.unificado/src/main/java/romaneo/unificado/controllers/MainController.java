@@ -15,7 +15,6 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Label;
-import org.zkoss.zul.Popup;
 import org.zkoss.zul.Window;
 
 /**
@@ -30,13 +29,11 @@ public class MainController extends BaseController {
 	@Wire
 	private Window mainWndw;
 	@Wire
-	private Popup activeTravelsPopup;
-	@Wire
 	private A interfacesBttn, masterDataBttn;
 	@Wire
-	private A backBttn, fowardBttn, mailboxBttn, systemManagementBttn;
+	private A backBttn, fowardBttn, systemManagementBttn;
 	@Wire
-	private Div containerDv, interfacesDv, acondicionadorDv, productorDv;
+	private Div containerDv, interfacesDv, acondicionadorDv, productorDv, establecimientoDv, contratistaDv;
 	@Wire
 	private Div mobileDeviceDv, messageTypeDv;
 	@Wire
@@ -74,7 +71,7 @@ public class MainController extends BaseController {
 		getNavigationHistoryService().setMain(mainWndw);
 		getNavigationHistoryService().setMainButtons(menus);
 
-		navigationToAcondicionadores();		
+		navigationToAcondicionadores();
 	}
 
 	@Listen("onClick = #editAccountBttn")
@@ -107,6 +104,16 @@ public class MainController extends BaseController {
 	@Listen("onGoToProductores = #mainWndw")
 	public void navigationToProductores() {
 		createWindow(Labels.getLabel("url.productorList"), productorDv, masterDataBttn, false, null);
+	}
+
+	@Listen("onGoToEstablecimientos = #mainWndw")
+	public void navigationToEstablecimientos() {
+		createWindow(Labels.getLabel("url.establecimientoList"), establecimientoDv, masterDataBttn, false, null);
+	}
+
+	@Listen("onGoToContratistas = #mainWndw")
+	public void navigationToContratistas() {
+		createWindow(Labels.getLabel("url.contratistaList"), contratistaDv, masterDataBttn, false, null);
 	}
 
 	// **** ADMINISTRACION DEL SISTEMA **** //

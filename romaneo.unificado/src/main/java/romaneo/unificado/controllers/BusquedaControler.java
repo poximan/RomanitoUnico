@@ -11,8 +11,8 @@ import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Textbox;
 
 import romaneo.unificado.domain.Acondicionador;
-import romaneo.unificado.services.AcondicionadorService;
-import romaneo.unificado.services.AcondicionadorServiceImple;
+import romaneo.unificado.services.acondicionador.AcondicionadorService;
+import romaneo.unificado.services.acondicionador.AcondicionadorServiceImple;
 
 public class BusquedaControler extends SelectorComposer<Component> {
 	/**

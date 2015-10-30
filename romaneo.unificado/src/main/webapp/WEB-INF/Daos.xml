@@ -12,6 +12,19 @@
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 
+	<beans:bean id="ProductorDao" class="romaneo.unificado.daos.ProductorDaoImple">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="EstablecimientoDao"
+		class="romaneo.unificado.daos.EstablecimientoDaoImple">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="ContratistaDao" class="romaneo.unificado.daos.ContratistaDaoImple">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+
 	<beans:bean id="InterfaceDao" class="romaneo.unificado.daos.InterfaceDaoImple">
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>

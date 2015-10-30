@@ -1,15 +1,11 @@
 package romaneo.unificado.controllers;
 
-import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.zkoss.bind.annotation.BindingParam;
-import org.zkoss.bind.annotation.Command;
 import org.zkoss.spring.SpringUtil;
-import org.zkoss.util.media.AMedia;
 import org.zkoss.zhtml.A;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
@@ -18,15 +14,13 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Div;
-import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Label;
-import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Window;
 
 import romaneo.unificado.domain.AppSettings;
 import romaneo.unificado.services.UsuarioService;
+import romaneo.unificado.services.acondicionador.AcondicionadorService;
 import romaneo.unificado.services.BaseService;
-import romaneo.unificado.services.AcondicionadorService;
 import romaneo.unificado.services.LocalidadService;
 
 public abstract class BaseController extends SelectorComposer<Component> {
@@ -117,15 +111,6 @@ public abstract class BaseController extends SelectorComposer<Component> {
 		cal.set(Calendar.SECOND, 59); // set second in minute
 		cal.set(Calendar.MILLISECOND, 999); // set millis in second
 		return cal.getTime();
-	}
-
-	@Command
-	public void exportListboxToExcel(@BindingParam("ref") Listbox listbox) throws Exception {
-		ByteArrayOutputStream out = new ByteArrayOutputStream();
-
-		AMedia amedia = new AMedia("FirstReport.xlsx", "xls", "application/file", out.toByteArray());
-		Filedownload.save(amedia);
-		out.close();
 	}
 
 	// SERVICES

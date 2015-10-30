@@ -9,8 +9,23 @@
 	</beans:bean>
 
 	<beans:bean id="AcondicionadorService"
-		class="romaneo.unificado.services.AcondicionadorServiceImple">
+		class="romaneo.unificado.services.acondicionador.AcondicionadorServiceImple">
 		<beans:property name="dao" ref="AcondicionadorDao" />
+	</beans:bean>
+
+	<beans:bean id="ProductorService"
+		class="romaneo.unificado.services.productor.ProductorServiceImple">
+		<beans:property name="dao" ref="ProductorDao" />
+	</beans:bean>
+
+	<beans:bean id="EstablecimientoService"
+		class="romaneo.unificado.services.establecimiento.EstablecimientoServiceImple">
+		<beans:property name="dao" ref="EstablecimientoDao" />
+	</beans:bean>
+
+	<beans:bean id="ContratistaService"
+		class="romaneo.unificado.services.contratista.ContratistaServiceImple">
+		<beans:property name="dao" ref="ContratistaDao" />
 	</beans:bean>
 
 	<beans:bean id="InterfaceFactory"

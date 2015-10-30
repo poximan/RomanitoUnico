@@ -1,7 +1,7 @@
 <zk xmlns:n="xhtml">
-	<window id="acondicionadoresListWndw" border="none" hflex="1"
+	<window id="contratistaListWndw" border="none" hflex="1"
 		sclass="normal-window"
-		apply="romaneo.unificado.controllers.acondicionador.AcondicionadorListController">
+		apply="romaneo.unificado.controllers.contratista.ContratistaListController">
 
 		<style src="/css/list.css" />
 
@@ -10,26 +10,26 @@
 			<n:div class="col-md-2">
 				<n:ul class="nav nav-pills nav-stacked">
 
-					<n:li class="active">
-						<n:a id="acondicionadoresSubmenuA1">
+					<n:li>
+						<n:a id="acondicionadoresSubmenuA4">
 							${labels.masterData.menu.acondicionadores}
 						</n:a>
 					</n:li>
 
 					<n:li>
-						<n:a id="productoresSubmenuA1">
+						<n:a id="productoresSubmenuA4">
 							${labels.masterData.menu.productores}
 						</n:a>
 					</n:li>
 
 					<n:li>
-						<n:a id="establecimientosSubmenuA1">
+						<n:a id="establecimientosSubmenuA4">
 							${labels.masterData.menu.establecimientos}
 						</n:a>
 					</n:li>
 
-					<n:li>
-						<n:a id="contratistasSubmenuA1">
+					<n:li class="active">
+						<n:a id="contratistasSubmenuA4">
 							${labels.masterData.menu.contratistas}
 						</n:a>
 					</n:li>
@@ -40,25 +40,15 @@
 			<n:div class="col-md-10">
 
 				<n:h1 style="margin-top:5px">
-					${labels.masterData.menu.acondicionadores}
+					${labels.masterData.menu.contratistas}
 				</n:h1>
 				<separator />
 
 				<n:div class="filters-panel panel">
 					<n:div class="row">
-						<n:div class="col-md-3">
+						<n:div class="col-md-4">
 							<textbox id="filterByLastNameTxtbx"
-								placeholder="${labels.acondicionador.lastName}"
-								class="form-control" />
-						</n:div>
-						<n:div class="col-md-3">
-							<textbox id="filterByFirstNameTxtbx"
-								placeholder="${labels.acondicionador.firstName}"
-								class="form-control" />
-						</n:div>
-						<n:div class="col-md-3">
-							<intbox id="filterByDniIntbx"
-								placeholder="${labels.acondicionador.dni}" class="form-control" />
+								placeholder="${labels.contratista.nombre}" class="form-control" />
 						</n:div>
 					</n:div>
 
@@ -82,36 +72,27 @@
 					</n:div>
 				</n:div>
 
-				<listbox id="acondicionadoresLstbx" rows="10">
+				<listbox id="contratistasLstbx" rows="10">
 					<listhead>
-						<listheader
-							label="${labels.acondicionador.lastName}" hflex="min"
-							align="center" />
-						<listheader
-							label="${labels.acondicionador.firstName}" align="center" />
-						<listheader
-							label="${labels.acondicionador.phones}" align="center" />
-						<listheader
-							label="${labels.acondicionador.email}" align="center" />
+						<listheader label="${labels.contratisa.nombre}"
+							hflex="min" align="center" />
 					</listhead>
 				</listbox>
 
 				<div class="panel-footer custom-list-paging">
 					<n:div class="row">
 						<n:div class="col-md-3">
-							<paging id="acondicionadoresPgn"
-								pageSize="10" />
+							<paging id="contratistasPgn" pageSize="10" />
 						</n:div>
 						<n:div class="col-md-4">
 							<hbox align="center">
 								<label value="${labels.app.listSize}" />
-								<combobox
-									id="acondicionadoresPageSizeCmbbx" width="80px"
-									sclass="input-group" value="10">
+								<combobox id="contratistasPageSizeCmbbx"
+									width="80px" sclass="input-group" value="10">
 									<comboitem value="5" label="5" />
 									<comboitem value="10" label="10" />
 									<comboitem value="15" label="15" />
-									<comboitem value="20" label="20" />
+									<comboitem value="40" label="20" />
 								</combobox>
 							</hbox>
 						</n:div>

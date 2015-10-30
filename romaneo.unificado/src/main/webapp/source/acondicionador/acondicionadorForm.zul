@@ -2,7 +2,7 @@
 <zk>
 	<window id="acondicionadorFormWndw" border="normal" width="450px"
 		closable="true"
-		apply="romaneo.unificado.controllers.AcondicionadorFormController">
+		apply="romaneo.unificado.controllers.acondicionador.AcondicionadorFormController">
 
 		<style src="/css/form.css" />
 
@@ -16,13 +16,15 @@
 				<rows>
 
 					<row sclass="row-form">
-						<label value="${labels.acondicionador.firstName}" />
+						<label
+							value="${labels.acondicionador.firstName}" />
 						<textbox id="firstNameTxtbx" maxlength="50"
 							hflex="1" class="form-control" />
 					</row>
 
 					<row sclass="row-form">
-						<label value="${labels.acondicionador.lastName}" />
+						<label
+							value="${labels.acondicionador.lastName}" />
 						<textbox id="lastNameTxtbx" maxlength="50"
 							hflex="1" class="form-control" />
 					</row>

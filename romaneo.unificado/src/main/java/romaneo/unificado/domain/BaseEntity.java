@@ -33,7 +33,7 @@ public abstract class BaseEntity implements Serializable {
 
 	public abstract Object getPK();
 
-	public abstract void setPK(Object Id);
+	public abstract void setPK(Object id);
 
 	public Timestamp getVersion() {
 		return version;

@@ -61,6 +61,21 @@ public class Productor extends BaseEntity implements Serializable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public enum Filters {
+
+		BY_FIRST_NAME("nombre");
+
+		private String value;
+
+		public String getValue() {
+			return value;
+		}
+
+		Filters(String value) {
+			this.value = value;
+		}
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
