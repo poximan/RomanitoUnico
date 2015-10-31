@@ -25,10 +25,6 @@
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 
-	<beans:bean id="InterfaceDao" class="romaneo.unificado.daos.InterfaceDaoImple">
-		<beans:property name="sessionFactory" ref="sessionFactory" />
-	</beans:bean>
-
 	<beans:bean id="LocalidadDao" class="romaneo.unificado.daos.LocalidadDaoImple">
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>

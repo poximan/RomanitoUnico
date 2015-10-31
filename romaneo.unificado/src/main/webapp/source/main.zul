@@ -55,12 +55,6 @@
 						</n:li>
 
 						<n:li style="cursor:pointer">
-							<n:a id="interfacesBttn">
-								${labels.main.menu.interfaces}
-							</n:a>
-						</n:li>
-
-						<n:li style="cursor:pointer">
 							<n:a id="systemManagementBttn">
 								${labels.main.menu.systemManagement}
 							</n:a>
@@ -107,7 +101,6 @@
 
 		<div id="containerDv" class="container-fluid" width="100%"
 			vflex="1">
-			<div id="interfacesDv" visible="false" vflex="1" />
 			<div id="acondicionadorDv" visible="false" vflex="1" />
 			<div id="productorDv" visible="false" vflex="1" />
 			<div id="establecimientoDv" visible="false" vflex="1" />

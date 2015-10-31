@@ -122,27 +122,27 @@ public abstract class BaseController extends SelectorComposer<Component> {
 		return (AppSettings) SpringUtil.getBean(AppSettings.class.getSimpleName());
 	}
 
-	/** @return el servicio de usuarios. */
+	/** @return el servicio de usuario. */
 	protected UsuarioService getUsuarioService() {
 		return (UsuarioService) SpringUtil.getBean(UsuarioService.class.getSimpleName());
 	}
 
-	/** @return el servicio de choferes. */
+	/** @return el servicio de acondicionadores. */
 	protected AcondicionadorService getAcondicionadorService() {
 		return (AcondicionadorService) SpringUtil.getBean(AcondicionadorService.class.getSimpleName());
 	}
 
-	/** @return el servicio de choferes. */
+	/** @return el servicio de productores. */
 	protected ProductorService getProductorService() {
 		return (ProductorService) SpringUtil.getBean(ProductorService.class.getSimpleName());
 	}
-	
-	/** @return el servicio de choferes. */
+
+	/** @return el servicio de establecimientos. */
 	protected EstablecimientoService getEstablecimientoService() {
 		return (EstablecimientoService) SpringUtil.getBean(EstablecimientoService.class.getSimpleName());
 	}
-	
-	/** @return el servicio de choferes. */
+
+	/** @return el servicio de contratistas. */
 	protected ContratistaService getContratistaService() {
 		return (ContratistaService) SpringUtil.getBean(ContratistaService.class.getSimpleName());
 	}

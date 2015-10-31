@@ -15,7 +15,7 @@ import romaneo.unificado.services.MessageTypeService;
 
 public class MessageTypeListController extends BasePagedListController<MessageType> {
 
-	private static final long serialVersionUID = 8786850921227139645L;
+	private static final long serialVersionUID = 1L;
 
 	@Wire
 	private Window messageTypesListWndw;

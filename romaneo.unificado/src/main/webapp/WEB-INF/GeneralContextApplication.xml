@@ -70,13 +70,6 @@
 		<beans:property name="packagesToScan" value="romaneo.unificado.domain" />
 	</beans:bean>
 
-	<beans:bean name="WebAppFolder" class="java.lang.String">
-
-		<beans:constructor-arg
-			value="D:\workspace_java\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\Unificado" />
-
-	</beans:bean>
-
 	<!-- TRANSACCIONES -->
 	<beans:bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">

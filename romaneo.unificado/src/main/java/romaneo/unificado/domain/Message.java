@@ -25,7 +25,7 @@ public class Message extends BaseEntity implements Serializable {
 	@Column(nullable = false)
 	private Timestamp created;
 
-	@Column(length = 2147483647)
+	@Column(length = 60)
 	private String data;
 
 	private Timestamp processed;

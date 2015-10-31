@@ -28,28 +28,6 @@
 		<beans:property name="dao" ref="ContratistaDao" />
 	</beans:bean>
 
-	<beans:bean id="InterfaceFactory"
-		class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean">
-		<beans:property name="serviceLocatorInterface"
-			value="romaneo.unificado.services.InterfaceFactory" />
-		<beans:property name="serviceMappings">
-			<beans:props>
-				<beans:prop key="InterfaceSheetsService">InterfaceSheetsService</beans:prop>
-			</beans:props>
-		</beans:property>
-	</beans:bean>
-
-	<beans:bean id="InterfaceSheetsService"
-		class="romaneo.unificado.services.InterfaceSheetsServiceImple">
-
-		<beans:property name="webAppFolder" ref="WebAppFolder" />
-		<beans:property name="folder" value="/interfaces/sheets" />
-		<beans:property name="dao" ref="InterfaceDao" />
-		<beans:property name="usuarioService" ref="UsuarioService" />
-		<beans:property name="localidadService" ref="LocalidadService" />
-
-	</beans:bean>
-
 	<beans:bean id="LocalidadService"
 		class="romaneo.unificado.services.LocalidadServiceImple">
 		<beans:property name="dao" ref="LocalidadDao" />
@@ -58,24 +36,6 @@
 	<beans:bean id="LoggingService"
 		class="romaneo.unificado.services.LoggingServiceImple">
 		<beans:property name="dao" ref="LoggingDao" />
-	</beans:bean>
-
-	<beans:bean id="ProcessInterfacesFactory"
-		class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean">
-		<beans:property name="serviceLocatorInterface"
-			value="romaneo.unificado.services.ProcessInterfacesFactory" />
-		<beans:property name="serviceMappings">
-			<beans:props>
-				<beans:prop key="processInterfacesSheets">ProcessInterfacesSheets</beans:prop>
-			</beans:props>
-		</beans:property>
-	</beans:bean>
-
-	<beans:bean id="ProcessInterfacesSheets"
-		class="romaneo.unificado.services.ProcessInterfacesSheets">
-		<beans:property name="interfaceService" ref="InterfaceSheetsService" />
-		<beans:property name="interfaceType" value="sheets" />
-		<beans:property name="taskExecutor" ref="taskExecutor" />
 	</beans:bean>
 
 	<!-- VELOCITY ENGINE -->

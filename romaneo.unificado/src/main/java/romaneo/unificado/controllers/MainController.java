@@ -6,42 +6,31 @@ import java.util.Map;
 
 import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.A;
-import org.zkoss.zhtml.Span;
-import org.zkoss.zhtml.Ul;
 import org.zkoss.zhtml.impl.AbstractTag;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Div;
-import org.zkoss.zul.Label;
 import org.zkoss.zul.Window;
 
 /**
  * Controller de la página principal
  * 
- * @author ehidalgo
+ * @author hugo
  */
 public class MainController extends BaseController {
 
-	private static final long serialVersionUID = -816259781842142975L;
+	private static final long serialVersionUID = 1L;
 
 	@Wire
 	private Window mainWndw;
 	@Wire
-	private A interfacesBttn, masterDataBttn;
-	@Wire
-	private A backBttn, fowardBttn, systemManagementBttn;
+	private A masterDataBttn, systemManagementBttn;
 	@Wire
 	private Div containerDv, interfacesDv, acondicionadorDv, productorDv, establecimientoDv, contratistaDv;
 	@Wire
 	private Div mobileDeviceDv, messageTypeDv;
-	@Wire
-	private Ul distributionCentersUl;
-	@Wire
-	private Label distributionCenterCurrentLbl, unprocessedMessagesLbl;
-	@Wire
-	private Span unprocessedMessagesSpn;
 
 	@Override
 	public String getClassName() {
@@ -64,8 +53,7 @@ public class MainController extends BaseController {
 
 		// Construir el servicio de navegación
 		List<A> menus = new ArrayList<>();
-		menus.add(masterDataBttn);
-		menus.add(interfacesBttn);
+		menus.add(masterDataBttn);		
 		menus.add(systemManagementBttn);
 
 		getNavigationHistoryService().setMain(mainWndw);
@@ -87,6 +75,11 @@ public class MainController extends BaseController {
 	@Listen("onClick = #logoutBttn")
 	public void logout() {
 		Executions.getCurrent().sendRedirect("j_spring_security_logout");
+	}
+
+	@Listen("onClick = #masterDataBttn")
+	public void navigationToMasterData() {
+		navigationToAcondicionadores();
 	}
 
 	@Listen("onClick = #systemManagementBttn")
