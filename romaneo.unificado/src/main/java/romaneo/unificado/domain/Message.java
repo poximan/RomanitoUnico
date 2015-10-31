@@ -17,9 +17,9 @@ import javax.persistence.Table;
 public class Message extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(unique = true, nullable = false)
+	@Id
+	@Column(name = "ID")
 	private Integer id;
 
 	@Column(nullable = false)

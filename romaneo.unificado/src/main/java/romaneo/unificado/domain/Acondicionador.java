@@ -35,9 +35,8 @@ public class Acondicionador extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
+	@Id
 	@Column(name = "ID")
 	private Integer id;
 

@@ -17,7 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.TableGenerator;
 
 /* ............................................. */
 /* ............................................. */
@@ -36,10 +35,9 @@ public class Productor extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	@Column(name = "ID_PRODUCTOR")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "gen_productor")
-	@TableGenerator(name = "gen_productor", initialValue = 1, allocationSize = 1)
+	@Column(name = "ID")
 	private Integer id;
 
 	@Column(name = "NOMBRE", nullable = true)

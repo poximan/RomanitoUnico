@@ -13,6 +13,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -35,9 +37,9 @@ public class Rol extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	@Basic(optional = false)
-	@Column(name = "ID", nullable = false)
+	@Column(name = "ID")
 	private Integer id;
 
 	@Basic(optional = false)

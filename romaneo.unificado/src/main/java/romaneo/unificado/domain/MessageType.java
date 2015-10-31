@@ -5,43 +5,47 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="message_types")
+@Table(name = "message_types")
 public class MessageType extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	@Column(unique=true, nullable=false)
+	@Column(name = "ID")
 	private Integer id;
 
-	@Column(name="data_class", nullable=false, length=150)
+	@Column(name = "data_class", nullable = false, length = 150)
 	private String dataClass;
 
-	@Column(nullable=false, length=45)
+	@Column(nullable = false, length = 45)
 	private String name;
 
-	@Column(name="procedure")
+	@Column(name = "procedure")
 	private String procedure;
 
 	private Integer priority;
 
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private Integer retries;
 
-	@Column(nullable=false, length=1)
+	@Column(nullable = false, length = 1)
 	private String sychronised;
 
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private Integer timeout;
 
-	@OneToMany(mappedBy="messageType")
+	@OneToMany(mappedBy = "messageType")
 	private List<Message> messages;
 
-	public MessageType() {}
+	public MessageType() {
+	}
 
 	public Integer getId() {
 		return this.id;
@@ -136,7 +140,7 @@ public class MessageType extends BaseEntity implements Serializable {
 
 	@Override
 	public void setPK(Object Id) {
-		setId((Integer)Id);
+		setId((Integer) Id);
 	}
 
 	@Override

@@ -21,10 +21,9 @@ public class Logging extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
-	@Column(name = "id")
+	@Id
+	@Column(name = "ID")
 	private Integer id;
 
 	@Basic(optional = false)
@@ -56,7 +55,7 @@ public class Logging extends BaseEntity implements Serializable {
 	private Integer userId;
 
 	@Column(name = "log_datetime", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)    
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date logDateTime;
 
 	@Lob
@@ -73,7 +72,8 @@ public class Logging extends BaseEntity implements Serializable {
 		this.logDateTime = new Date();
 	}
 
-	public Logging(Integer id, String typeObject, String nameObject, int idObject, String stateFrom, String stateTo, String action, Integer userId, Integer messageId) {
+	public Logging(Integer id, String typeObject, String nameObject, int idObject, String stateFrom, String stateTo,
+			String action, Integer userId, Integer messageId) {
 		this.id = id;
 		this.typeObject = typeObject;
 		this.nameObject = nameObject;
@@ -84,7 +84,8 @@ public class Logging extends BaseEntity implements Serializable {
 		this.logDateTime = new Date();
 	}
 
-	public Logging(Integer id, String typeObject, String nameObject, int idObject, String stateFrom, String event, String stateTo, String action, Integer userId, Integer messageId) {
+	public Logging(Integer id, String typeObject, String nameObject, int idObject, String stateFrom, String event,
+			String stateTo, String action, Integer userId, Integer messageId) {
 		this.id = id;
 		this.typeObject = typeObject;
 		this.nameObject = nameObject;
@@ -228,8 +229,7 @@ public class Logging extends BaseEntity implements Serializable {
 
 	public enum NameObject {
 
-		DOCUMENT("document"),
-		TRAVEL("travel");
+		DOCUMENT("document"), TRAVEL("travel");
 
 		private String value;
 
