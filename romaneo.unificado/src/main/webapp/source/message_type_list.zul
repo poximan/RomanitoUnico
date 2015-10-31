@@ -1,7 +1,6 @@
 <zk xmlns:n="xhtml">
 	<window id="messageTypesListWndw" border="none" hflex="1"
-		sclass="normal-window"
-		apply="romaneo.unificado.controllers.MessageTypeListController">
+		sclass="normal-window" apply="romaneo.unificado.controllers.MessageTypeListController">
 
 		<style src="/css/list.css" />
 
@@ -28,18 +27,16 @@
 					<separator height="10px" orient="vertical" />
 
 					<n:div class="panel-footer text-right">
-						<button id="editBttn" disabled="true"
-							iconSclass="z-icon-edit" label="${labels.app.edit}"
-							class="btn btn-sm btn-default" />
+						<button id="editBttn" disabled="true" iconSclass="z-icon-edit"
+							label="${labels.app.edit}" class="btn btn-sm btn-default" />
 					</n:div>
 				</n:div>
 
 				<listbox id="messageTypesLstbx" rows="10">
 					<listhead>
-						<listheader label="${labels.messageType.name}"
+						<listheader label="${labels.messageType.name}" align="center" />
+						<listheader label="${labels.messageType.procedure}"
 							align="center" />
-						<listheader
-							label="${labels.messageType.procedure}" align="center" />
 					</listhead>
 				</listbox>
 
@@ -51,8 +48,8 @@
 						<n:div class="col-md-4">
 							<hbox align="center">
 								<label value="${labels.app.listSize}" />
-								<combobox id="messageTypesPageSizeCmbbx"
-									width="80px" sclass="input-group" value="10">
+								<combobox id="messageTypesPageSizeCmbbx" width="80px"
+									sclass="input-group" value="10">
 									<comboitem value="5" label="5" />
 									<comboitem value="10" label="10" />
 									<comboitem value="15" label="15" />

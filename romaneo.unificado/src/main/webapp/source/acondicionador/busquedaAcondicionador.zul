@@ -12,8 +12,7 @@
 		</hbox>
 
 		<listbox class="table table-striped col-md-8" id="aconListbox"
-			mold="paging" pageSize="10"
-			emptyMessage="acondicionador no encontrado">
+			mold="paging" pageSize="10" emptyMessage="acondicionador no encontrado">
 			<listhead>
 				<listheader label="Nombre" />
 				<listheader label="Apellido" />
@@ -32,8 +31,7 @@
 							</n:span>
 						</n:button>
 						<n:button type="button" class="btn-danger">
-							<n:span
-								class="glyphicon glyphicon-remove-circle">
+							<n:span class="glyphicon glyphicon-remove-circle">
 							</n:span>
 						</n:button>
 					</listcell>

@@ -1,7 +1,6 @@
 <zk>
 	<window id="messageTypeFormWndw" border="normal" closable="true"
-		width="450px"
-		apply="romaneo.unificado.controllers.MessageTypeFormController">
+		width="450px" apply="romaneo.unificado.controllers.MessageTypeFormController">
 
 		<style src="/css/form.css" />
 
@@ -16,13 +15,13 @@
 
 					<row sclass="row-form">
 						<label value="${labels.messageType.name}" />
-						<textbox id="nameTxtbx" maxlength="100"
-							readonly="true" hflex="1" class="form-control" />
+						<textbox id="nameTxtbx" maxlength="100" readonly="true"
+							hflex="1" class="form-control" />
 					</row>
 					<row sclass="row-form">
 						<label value="${labels.messageType.procedure}" />
-						<textbox id="procedureTxtbx" maxlength="250"
-							rows="7" hflex="1" class="form-control" />
+						<textbox id="procedureTxtbx" maxlength="250" rows="7"
+							hflex="1" class="form-control" />
 					</row>
 
 				</rows>
@@ -32,10 +31,10 @@
 
 		<div sclass="container-buttons-form">
 			<hbox pack="end" width="100%">
-				<button id="acceptBttn" iconSclass="z-icon-check"
-					label="${labels.app.accept}" sclass="btn btn-primary btn-sm" />
-				<button id="cancelBttn" iconSclass="z-icon-times"
-					label="${labels.app.cancel}" sclass="btn btn-default btn-sm" />
+				<button id="acceptBttn" iconSclass="z-icon-check" label="${labels.app.accept}"
+					sclass="btn btn-primary btn-sm" />
+				<button id="cancelBttn" iconSclass="z-icon-times" label="${labels.app.cancel}"
+					sclass="btn btn-default btn-sm" />
 			</hbox>
 		</div>
 	</window>

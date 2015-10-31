@@ -37,8 +37,8 @@ public class Localidad extends BaseEntity implements Serializable {
 	@Column(name = "ID")
 	private Integer id;
 
-	@Column(name = "LOCALIDAD")
-	private String localidad;
+	@Column(name = "NOMBRE_LOCALIDAD")
+	private String nombre_localidad;
 
 	@Column(name = "COD_POSTAL")
 	private String codigo_postal;
@@ -81,7 +81,7 @@ public class Localidad extends BaseEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return localidad;
+		return nombre_localidad;
 	}
 
 	/* ............................................. */
@@ -98,8 +98,8 @@ public class Localidad extends BaseEntity implements Serializable {
 		return id;
 	}
 
-	public String getLocalidad() {
-		return localidad;
+	public String getNombre_localidad() {
+		return nombre_localidad;
 	}
 
 	public String getCodigo_postal() {
@@ -119,8 +119,8 @@ public class Localidad extends BaseEntity implements Serializable {
 		this.id = id;
 	}
 
-	public void setLocalidad(String localidad) {
-		this.localidad = localidad;
+	public void setNombre_localidad(String localidad) {
+		this.nombre_localidad = localidad;
 	}
 
 	public void setCodigo_postal(String codigo_postal) {

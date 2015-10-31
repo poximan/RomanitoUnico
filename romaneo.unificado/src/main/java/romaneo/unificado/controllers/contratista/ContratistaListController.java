@@ -99,7 +99,7 @@ public class ContratistaListController extends BasePagedListController<Contratis
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
 		if (filterByNombreTxtbx.getValue() != null && !filterByNombreTxtbx.getValue().trim().isEmpty()) {
-			parameters.put(Contratista.Filters.BY_FIRST_NAME.getValue(), filterByNombreTxtbx.getValue());
+			parameters.put(Contratista.Filters.BY_NOMBRE.getValue(), filterByNombreTxtbx.getValue());
 		}
 
 		executeAndRenderPagedQuery(parameters);

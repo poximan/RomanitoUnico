@@ -17,7 +17,7 @@
 
 					<row sclass="row-form">
 						<label value="${labels.establecimiento.nombre}" />
-						<textbox id="firstNameTxtbx" maxlength="50"
+						<textbox id="nombreTxtbx" maxlength="50"
 							hflex="1" class="form-control" />
 					</row>
 

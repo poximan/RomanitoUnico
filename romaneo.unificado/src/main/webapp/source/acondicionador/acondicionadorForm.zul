@@ -16,16 +16,15 @@
 				<rows>
 
 					<row sclass="row-form">
-						<label
-							value="${labels.acondicionador.firstName}" />
-						<textbox id="firstNameTxtbx" maxlength="50"
+						<label value="${labels.acondicionador.nombre}" />
+						<textbox id="nombreTxtbx" maxlength="50"
 							hflex="1" class="form-control" />
 					</row>
 
 					<row sclass="row-form">
 						<label
-							value="${labels.acondicionador.lastName}" />
-						<textbox id="lastNameTxtbx" maxlength="50"
+							value="${labels.acondicionador.apellido}" />
+						<textbox id="apellidoTxtbx" maxlength="50"
 							hflex="1" class="form-control" />
 					</row>
 

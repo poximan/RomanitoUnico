@@ -26,7 +26,7 @@ public class ProductorFormController extends BaseFormController {
 	private static final long serialVersionUID = 1L;
 
 	@Wire
-	private Textbox firstNameTxtbx;
+	private Textbox nombreTxtbx;
 
 	@Wire
 	private Window productorFormWndw;
@@ -66,7 +66,7 @@ public class ProductorFormController extends BaseFormController {
 	 *            el formulario.
 	 */
 	private void fillFields(Productor productor) {
-		firstNameTxtbx.setValue(productor.getNombre_productor());
+		nombreTxtbx.setValue(productor.getNombre_productor());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -74,7 +74,7 @@ public class ProductorFormController extends BaseFormController {
 	@Override
 	public void accept() {
 
-		productor.setNombre_productor(firstNameTxtbx.getValue());
+		productor.setNombre_productor(nombreTxtbx.getValue());
 
 		try {
 			if (productor.getId() == null) {
@@ -90,7 +90,7 @@ public class ProductorFormController extends BaseFormController {
 			// Errores de validacion
 			for (FieldResourceError fieldError : e.getError().getFieldErrors()) {
 				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("productor.nombre"))) {
-					firstNameTxtbx.setErrorMessage(fieldError.getMessage());
+					nombreTxtbx.setErrorMessage(fieldError.getMessage());
 				}
 			}
 		} catch (Exception e) {

@@ -21,11 +21,11 @@ public class LocalidadDaoImple extends BaseDaoImple<Localidad, String> implement
 		StringBuffer query = new StringBuffer("");
 		query.append("FROM " + Localidad.class.getSimpleName() + " e ");
 		query.append("WHERE 1 = 1 ");
-		query.append("AND upper(e.localidad) LIKE :name");
+		query.append("AND upper(e.nombre_localidad) LIKE :nombre_localidad");
 
 		// Parametros
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("name", "%" + name.trim().toUpperCase() + "%");
+		parameters.put("nombre_localidad", "%" + name.trim().toUpperCase() + "%");
 
 		return doQueryByParameters(query.toString(), parameters);
 
@@ -38,13 +38,13 @@ public class LocalidadDaoImple extends BaseDaoImple<Localidad, String> implement
 		StringBuffer query = new StringBuffer("");
 		query.append("FROM " + Localidad.class.getSimpleName() + " e ");
 		query.append("WHERE 1 = 1 ");
-		query.append("AND upper(e.localidad) like :name ");
-		query.append("AND upper(e.localidad.codpart.provincia.provincia) = :state ");
+		query.append("AND upper(e.localidad) like :nombre_localidad ");
+		query.append("AND upper(e.localidad.partido.provincia.nombre_provincia) = :nombre_provincia ");
 
 		// Parametros
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("name", "%" + name.trim().toUpperCase() + "%");
-		parameters.put("state", state.trim().toUpperCase());
+		parameters.put("nombre_localidad", "%" + name.trim().toUpperCase() + "%");
+		parameters.put("nombre_provincia", state.trim().toUpperCase());
 
 		List<Localidad> list = doQueryByParameters(query.toString(), parameters);
 		if (list.size() > 1) {

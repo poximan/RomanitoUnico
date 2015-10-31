@@ -99,7 +99,7 @@ public class ProductorListController extends BasePagedListController<Productor> 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
 		if (filterByNombre.getValue() != null && !filterByNombre.getValue().trim().isEmpty()) {
-			parameters.put(Productor.Filters.BY_FIRST_NAME.getValue(), filterByNombre.getValue());
+			parameters.put(Productor.Filters.BY_NOMBRE.getValue(), filterByNombre.getValue());
 		}
 
 		executeAndRenderPagedQuery(parameters);

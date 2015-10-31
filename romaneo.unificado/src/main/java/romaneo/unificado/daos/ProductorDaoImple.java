@@ -39,15 +39,15 @@ public class ProductorDaoImple extends BaseDaoImple<Productor, Integer> implemen
 			Map<String, Object> parameters) {
 
 		StringBuffer query = new StringBuffer();
-		query.append("SELECT e FROM " + Productor.class.getSimpleName() + " e ");
+		query.append("SELECT e FROM " + Productor.class.getSimpleName() + " e WHERE 1 = 1 ");
 
 		Map<String, Object> queryParameters = new HashMap<String, Object>();
 
 		if (parameters != null) {
 			for (String filterKey : parameters.keySet()) {
-				if (filterKey.equalsIgnoreCase(Productor.Filters.BY_FIRST_NAME.getValue())) {
-					query.append("AND UPPER(e.firstName) LIKE :firstName ");
-					queryParameters.put("firstName",
+				if (filterKey.equalsIgnoreCase(Productor.Filters.BY_NOMBRE.getValue())) {
+					query.append("AND UPPER(e.nombre) LIKE :nombre ");
+					queryParameters.put("nombre",
 							"%" + ((String) parameters.get(filterKey)).trim().toUpperCase() + "%");
 				}
 			}

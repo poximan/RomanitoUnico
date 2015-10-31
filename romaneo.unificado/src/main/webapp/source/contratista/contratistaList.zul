@@ -47,35 +47,31 @@
 				<n:div class="filters-panel panel">
 					<n:div class="row">
 						<n:div class="col-md-3">
-							<textbox id="filterByNombreTxtbx"
-								placeholder="${labels.contratista.nombre}" class="form-control" />
+							<textbox id="filterByNombreTxtbx" placeholder="${labels.contratista.nombre}"
+								class="form-control" />
 						</n:div>
 					</n:div>
 
 					<separator height="10px" orient="vertical" />
 
 					<n:div class="panel-footer text-right">
-						<button id="filterBttn"
-							iconSclass="z-icon-filter" label="${labels.app.filter}"
+						<button id="filterBttn" iconSclass="z-icon-filter" label="${labels.app.filter}"
 							class="btn btn-sm btn-default" />
-						<button id="cleanFiltersBttn"
-							iconSclass="z-icon-undo" label="${labels.app.cleanFilters}"
-							class="btn btn-sm btn-default" />
-						<button id="newBttn" iconSclass="z-icon-plus"
-							label="${labels.app.create}" class="btn btn-sm btn-primary" />
-						<button id="editBttn" disabled="true"
-							iconSclass="z-icon-edit" label="${labels.app.edit}"
-							class="btn btn-sm btn-default" />
-						<button id="deleteBttn" disabled="true"
-							iconSclass="z-icon-times" label="${labels.app.delete}"
-							class="btn btn-sm btn-default" />
+						<button id="cleanFiltersBttn" iconSclass="z-icon-undo"
+							label="${labels.app.cleanFilters}" class="btn btn-sm btn-default" />
+						<button id="newBttn" iconSclass="z-icon-plus" label="${labels.app.create}"
+							class="btn btn-sm btn-primary" />
+						<button id="editBttn" disabled="true" iconSclass="z-icon-edit"
+							label="${labels.app.edit}" class="btn btn-sm btn-default" />
+						<button id="deleteBttn" disabled="true" iconSclass="z-icon-times"
+							label="${labels.app.delete}" class="btn btn-sm btn-default" />
 					</n:div>
 				</n:div>
 
 				<listbox id="contratistasLstbx" rows="10">
 					<listhead>
-						<listheader label="${labels.contratista.nombre}"
-							hflex="min" align="center" />
+						<listheader label="${labels.contratista.nombre}" hflex="min"
+							align="center" />
 					</listhead>
 				</listbox>
 
@@ -87,8 +83,8 @@
 						<n:div class="col-md-4">
 							<hbox align="center">
 								<label value="${labels.app.listSize}" />
-								<combobox id="contratistasPageSizeCmbbx"
-									width="80px" sclass="input-group" value="10">
+								<combobox id="contratistasPageSizeCmbbx" width="80px"
+									sclass="input-group" value="10">
 									<comboitem value="5" label="5" />
 									<comboitem value="10" label="10" />
 									<comboitem value="15" label="15" />

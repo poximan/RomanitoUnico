@@ -39,13 +39,13 @@ public class EstablecimientoDaoImple extends BaseDaoImple<Establecimiento, Integ
 			Map<String, Object> parameters) {
 
 		StringBuffer query = new StringBuffer();
-		query.append("SELECT e FROM " + Establecimiento.class.getSimpleName() + " e ");
+		query.append("SELECT e FROM " + Establecimiento.class.getSimpleName() + " e WHERE 1 = 1 ");
 
 		Map<String, Object> queryParameters = new HashMap<String, Object>();
 
 		if (parameters != null) {
 			for (String filterKey : parameters.keySet()) {
-				if (filterKey.equalsIgnoreCase(Establecimiento.Filters.BY_FIRST_NAME.getValue())) {
+				if (filterKey.equalsIgnoreCase(Establecimiento.Filters.BY_NOMBRE.getValue())) {
 					query.append("AND UPPER(e.nombre) LIKE :nombre ");
 					queryParameters.put("nombre",
 							"%" + ((String) parameters.get(filterKey)).trim().toUpperCase() + "%");

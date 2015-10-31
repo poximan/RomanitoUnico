@@ -1,0 +1,27 @@
+<zk>
+	<window id="deleteFormWndw" title="Eliminar" border="normal"
+		width="350px" apply="romaneo.unificado.controllers.DeleteFormController">
+
+		<style src="/css/form.css" />
+
+		<vlayout style="margin: 15px;">
+
+			<div align="center" style="align:center" vflex="1">
+				<separator />
+				<label value="${labels.app.deleteQuestion}" width="340px"
+					style="font-size:14px;text-align:center" />
+				<separator />
+			</div>
+
+		</vlayout>
+
+		<div sclass="container-buttons-form">
+			<hbox pack="end" width="100%">
+				<button id="acceptBttn" iconSclass="z-icon-check" label="${labels.app.accept}"
+					sclass="btn btn-primary btn-sm" />
+				<button id="cancelBttn" iconSclass="z-icon-times" label="${labels.app.cancel}"
+					sclass="btn btn-default btn-sm" />
+			</hbox>
+		</div>
+	</window>
+</zk>

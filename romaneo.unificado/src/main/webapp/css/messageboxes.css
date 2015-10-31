@@ -1,7 +1,5 @@
-.message_box_info, 
-.message_box_success, 
-.message_box_warning, 
-.message_box_error {
+.message_box_info, .message_box_success, .message_box_warning,
+	.message_box_error {
 	margin_bottom: 5px;
 	padding: 8px;
 	_moz-border-radius: 5px;
@@ -34,10 +32,8 @@
 	color: #B94A48;
 }
 
-.message_box_info i, 
-.message_box_success i, 
-.message_box_warning i, 
-.message_box_error i {
+.message_box_info i, .message_box_success i, .message_box_warning i,
+	.message_box_error i {
 	margin: 5px 14px;
 	font-size: 2em;
 	vertical-align: middle;

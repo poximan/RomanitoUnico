@@ -36,7 +36,7 @@ public class Provincia extends BaseEntity implements Serializable {
 	private Integer id;
 
 	@Column(name = "PROVINCIA")
-	private String provincia;
+	private String nombre_provincia;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -89,8 +89,8 @@ public class Provincia extends BaseEntity implements Serializable {
 		return id;
 	}
 
-	public String getProvincia() {
-		return provincia;
+	public String getNombre_provincia() {
+		return nombre_provincia;
 	}
 
 	/* ............................................. */
@@ -102,8 +102,8 @@ public class Provincia extends BaseEntity implements Serializable {
 		this.id = id;
 	}
 
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
+	public void setNombre_provincia(String nombre_provincia) {
+		this.nombre_provincia = nombre_provincia;
 	}
 
 	@Override

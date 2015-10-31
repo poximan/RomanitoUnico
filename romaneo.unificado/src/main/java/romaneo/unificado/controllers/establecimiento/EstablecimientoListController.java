@@ -99,7 +99,7 @@ public class EstablecimientoListController extends BasePagedListController<Estab
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
 		if (filterByNombre.getValue() != null && !filterByNombre.getValue().trim().isEmpty()) {
-			parameters.put(Establecimiento.Filters.BY_FIRST_NAME.getValue(), filterByNombre.getValue());
+			parameters.put(Establecimiento.Filters.BY_NOMBRE.getValue(), filterByNombre.getValue());
 		}
 
 		executeAndRenderPagedQuery(parameters);

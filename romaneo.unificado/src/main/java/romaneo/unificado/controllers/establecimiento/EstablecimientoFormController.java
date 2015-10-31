@@ -25,7 +25,7 @@ public class EstablecimientoFormController extends BaseFormController {
 	private static final long serialVersionUID = 1L;
 
 	@Wire
-	private Textbox firstNameTxtbx;
+	private Textbox nombreTxtbx;
 
 	@Wire
 	private Window establecimientoFormWndw;
@@ -65,7 +65,7 @@ public class EstablecimientoFormController extends BaseFormController {
 	 *            el formulario.
 	 */
 	private void fillFields(Establecimiento establecimiento) {
-		firstNameTxtbx.setValue(establecimiento.getNombre_establecimiento());
+		nombreTxtbx.setValue(establecimiento.getNombre_establecimiento());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -73,7 +73,7 @@ public class EstablecimientoFormController extends BaseFormController {
 	@Override
 	public void accept() {
 
-		establecimiento.setNombre_establecimiento(firstNameTxtbx.getValue());
+		establecimiento.setNombre_establecimiento(nombreTxtbx.getValue());
 
 		try {
 			if (establecimiento.getId() == null) {
@@ -89,7 +89,7 @@ public class EstablecimientoFormController extends BaseFormController {
 			// Errores de validacion
 			for (FieldResourceError fieldError : e.getError().getFieldErrors()) {
 				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("establecimiento.nombre"))) {
-					firstNameTxtbx.setErrorMessage(fieldError.getMessage());
+					nombreTxtbx.setErrorMessage(fieldError.getMessage());
 				}
 			}
 		} catch (Exception e) {

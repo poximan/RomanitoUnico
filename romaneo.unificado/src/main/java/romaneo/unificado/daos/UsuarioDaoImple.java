@@ -33,5 +33,4 @@ public class UsuarioDaoImple extends BaseDaoImple<Usuario, Integer> implements U
 		List<Usuario> result = findQueryByParameters(query.toString(), parameters);
 		return result.isEmpty() ? null : result.get(0);
 	}
-
 }

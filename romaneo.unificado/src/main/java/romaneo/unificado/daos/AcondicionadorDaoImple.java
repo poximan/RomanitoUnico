@@ -39,20 +39,20 @@ public class AcondicionadorDaoImple extends BaseDaoImple<Acondicionador, Integer
 			Map<String, Object> parameters) {
 
 		StringBuffer query = new StringBuffer();
-		query.append("SELECT e FROM " + Acondicionador.class.getSimpleName() + " e ");
-		
+		query.append("SELECT e FROM " + Acondicionador.class.getSimpleName() + " e WHERE 1 = 1 ");
+
 		Map<String, Object> queryParameters = new HashMap<String, Object>();
 
 		if (parameters != null) {
 			for (String filterKey : parameters.keySet()) {
-				if (filterKey.equalsIgnoreCase(Acondicionador.Filters.BY_FIRST_NAME.getValue())) {
-					query.append("AND UPPER(e.firstName) LIKE :firstName ");
-					queryParameters.put("firstName",
+				if (filterKey.equalsIgnoreCase(Acondicionador.Filters.BY_NOMBRE.getValue())) {
+					query.append("AND UPPER(e.nombre) LIKE :nombre ");
+					queryParameters.put("nombre",
 							"%" + ((String) parameters.get(filterKey)).trim().toUpperCase() + "%");
 				}
-				if (filterKey.equalsIgnoreCase(Acondicionador.Filters.BY_LAST_NAME.getValue())) {
-					query.append("AND UPPER(e.lastName) LIKE :lastName ");
-					queryParameters.put("lastName",
+				if (filterKey.equalsIgnoreCase(Acondicionador.Filters.BY_APELLIDO.getValue())) {
+					query.append("AND UPPER(e.apellido) LIKE :apellido ");
+					queryParameters.put("apellido",
 							"%" + ((String) parameters.get(filterKey)).trim().toUpperCase() + "%");
 				}
 				if (filterKey.equalsIgnoreCase(Acondicionador.Filters.BY_DNI.getValue())) {

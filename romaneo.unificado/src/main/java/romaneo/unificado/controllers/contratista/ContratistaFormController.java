@@ -25,7 +25,7 @@ public class ContratistaFormController extends BaseFormController {
 	private static final long serialVersionUID = 1L;
 
 	@Wire
-	private Textbox firstNameTxtbx;
+	private Textbox nombreTxtbx;
 	@Wire
 	private Window contratistaFormWndw;
 
@@ -64,7 +64,7 @@ public class ContratistaFormController extends BaseFormController {
 	 *            el formulario.
 	 */
 	private void fillFields(Contratista contratista) {
-		firstNameTxtbx.setValue(contratista.getNombre());
+		nombreTxtbx.setValue(contratista.getNombre());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -72,7 +72,7 @@ public class ContratistaFormController extends BaseFormController {
 	@Override
 	public void accept() {
 
-		contratista.setNombre(firstNameTxtbx.getValue());
+		contratista.setNombre(nombreTxtbx.getValue());
 
 		try {
 			if (contratista.getId() == null) {
@@ -88,7 +88,7 @@ public class ContratistaFormController extends BaseFormController {
 			// Errores de validacion
 			for (FieldResourceError fieldError : e.getError().getFieldErrors()) {
 				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("contratista.nombre"))) {
-					firstNameTxtbx.setErrorMessage(fieldError.getMessage());
+					nombreTxtbx.setErrorMessage(fieldError.getMessage());
 				}
 			}
 		} catch (Exception e) {

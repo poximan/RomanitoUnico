@@ -80,7 +80,7 @@ public class Productor extends BaseEntity implements Serializable {
 
 	public enum Filters {
 
-		BY_FIRST_NAME("nombre");
+		BY_NOMBRE("nombre");
 
 		private String value;
 

@@ -19,17 +19,15 @@
 	<!-- VENTANA PRINCIPAL ...................................... -->
 	<!-- ........................................................ -->
 
-	<window id="mainWndw"
-		apply="romaneo.unificado.controllers.MainController" width="100%"
-		height="100%">
+	<window id="mainWndw" apply="romaneo.unificado.controllers.MainController"
+		width="100%" height="100%">
 
 		<timer id="mainTmr" delay="5000" running="true" repeats="true" />
 		<timer id="activeTravelsTmr" delay="30000" running="true"
 			repeats="true" />
 
 		<div height="65px">
-			<n:nav class="navbar navbar-default navbar-fixed-top"
-				role="navigation">
+			<n:nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 
 				<!-- ........................................................ -->
 				<!-- ENCABEZADO ............................................. -->
@@ -44,8 +42,7 @@
 					</n:a>
 				</div>
 
-				<div
-					class="collapse navbar-collapse navbar-ex1-collapse">
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<n:ul class="nav navbar-nav">
 
 						<n:li class="active" style="cursor:pointer">
@@ -64,12 +61,9 @@
 
 					<n:ul class="nav navbar-nav navbar-right">
 
-						<n:li class="dropdown"
-							style="margin-right:10px">
-							<n:a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">
-								<n:span class="glyphicon glyphicon-user"
-									aria-hidden="true">
+						<n:li class="dropdown" style="margin-right:10px">
+							<n:a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<n:span class="glyphicon glyphicon-user" aria-hidden="true">
 								</n:span>
 								${labels.main.menu.account}
 								<n:b class="caret"></n:b>
@@ -99,8 +93,7 @@
 			</n:nav>
 		</div>
 
-		<div id="containerDv" class="container-fluid" width="100%"
-			vflex="1">
+		<div id="containerDv" class="container-fluid" width="100%" vflex="1">
 			<div id="acondicionadorDv" visible="false" vflex="1" />
 			<div id="productorDv" visible="false" vflex="1" />
 			<div id="establecimientoDv" visible="false" vflex="1" />

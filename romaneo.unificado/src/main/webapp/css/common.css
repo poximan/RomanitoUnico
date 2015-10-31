@@ -29,13 +29,12 @@
 	margin: 0;
 }
 
-.grid-row .z-row-content, 
-.z-row-inner {
+.grid-row .z-row-content, .z-row-inner {
 	background: #FFFFFF !important;
 }
 
-.normal-window .z-window .z-window-noborder .z-window-noheader .z-window-embedded, 
-.z-window-content {
+.normal-window .z-window .z-window-noborder .z-window-noheader .z-window-embedded,
+	.z-window-content {
 	overflow-y: auto !important;
 	overflow-x: hidden !important;
 }

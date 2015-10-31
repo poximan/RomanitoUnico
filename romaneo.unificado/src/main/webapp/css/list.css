@@ -8,8 +8,7 @@
 	border: none;
 }
 
-.row-list .z-row-content, 
-.z-row-inner {
+.row-list .z-row-content, .z-row-inner {
 	background: #FFFFFF !important;
 }
 

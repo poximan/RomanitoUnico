@@ -69,7 +69,7 @@ public class Acondicionador extends BaseEntity implements Serializable {
 	@JoinColumn(name = "ID_LOCALIDAD", referencedColumnName = "id", nullable = false)
 	@ManyToOne(optional = false)
 	@NotNull
-	private Localidad id_localidad;
+	private Localidad localidad;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -114,7 +114,7 @@ public class Acondicionador extends BaseEntity implements Serializable {
 
 	public enum Filters {
 
-		BY_FIRST_NAME("nombre"), BY_LAST_NAME("apellido"), BY_DNI("dni");
+		BY_NOMBRE("nombre"), BY_APELLIDO("apellido"), BY_DNI("dni");
 
 		private String value;
 
@@ -165,8 +165,8 @@ public class Acondicionador extends BaseEntity implements Serializable {
 		return email;
 	}
 
-	public Localidad getId_localidad() {
-		return id_localidad;
+	public Localidad getLocalidad() {
+		return localidad;
 	}
 
 	/* ............................................. */
@@ -202,8 +202,8 @@ public class Acondicionador extends BaseEntity implements Serializable {
 		this.email = email;
 	}
 
-	public void setId_localidad(Localidad localidad) {
-		this.id_localidad = localidad;
+	public void setLocalidad(Localidad localidad) {
+		this.localidad = localidad;
 	}
 
 	@Override

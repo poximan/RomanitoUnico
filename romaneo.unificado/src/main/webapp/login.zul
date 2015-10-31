@@ -19,22 +19,20 @@
 					<n:span class="input-group-addon">
 						<n:i class="glyphicon glyphicon-user"></n:i>
 					</n:span>
-					<textbox placeholder="Usuario" id="u"
-						name="j_username" width="310px" height="35px"
-						sclass="form-control input-sm" />
+					<textbox placeholder="Usuario" id="u" name="j_username"
+						width="310px" height="35px" sclass="form-control input-sm" />
 				</n:div>
 
 				<n:div class="input-group" style="width=350px">
 					<n:span class="input-group-addon">
 						<n:i class="glyphicon glyphicon-lock"></n:i>
 					</n:span>
-					<textbox placeholder="Contraseña" id="p"
-						type="password" name="j_password" width="310px" height="35px"
-						sclass="form-control" />
+					<textbox placeholder="Contraseña" id="p" type="password"
+						name="j_password" width="310px" height="35px" sclass="form-control" />
 				</n:div>
 
-				<button type="submit" label="${labels.app.in}"
-					sclass="btn btn-primary btn-sm" width="350px" />
+				<button type="submit" label="${labels.app.in}" sclass="btn btn-primary btn-sm"
+					width="350px" />
 			</vlayout>
 		</n:form>
 	</window>

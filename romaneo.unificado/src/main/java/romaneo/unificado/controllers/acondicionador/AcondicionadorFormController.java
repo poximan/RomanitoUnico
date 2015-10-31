@@ -33,7 +33,7 @@ public class AcondicionadorFormController extends BaseFormController {
 	private static final long serialVersionUID = 1L;
 
 	@Wire
-	private Textbox firstNameTxtbx, lastNameTxtbx, phonesTxtbx, emailTxtbx, addressTxtbx;
+	private Textbox nombreTxtbx, apellidoTxtbx, phonesTxtbx, emailTxtbx, addressTxtbx;
 	@Wire
 	private Textbox citySearchTxtbx;
 	@Wire
@@ -66,8 +66,8 @@ public class AcondicionadorFormController extends BaseFormController {
 		super.doAfterCompose(comp);
 
 		if ((acondicionador = (Acondicionador) Executions.getCurrent().getArg().get(SELECTED)) != null) {
-			cityBndbx.setValue(acondicionador.getId_localidad().getLocalidad());
-			cityBndbx.setAttribute(ENTITY, acondicionador.getId_localidad().getLocalidad());
+			cityBndbx.setValue(acondicionador.getLocalidad().getNombre_localidad());
+			cityBndbx.setAttribute(ENTITY, acondicionador.getLocalidad().getNombre_localidad());
 			fillFields(acondicionador);
 		} else {
 			acondicionador = new Acondicionador();
@@ -82,8 +82,8 @@ public class AcondicionadorFormController extends BaseFormController {
 	 *            el formulario.
 	 */
 	private void fillFields(Acondicionador acondicionador) {
-		firstNameTxtbx.setValue(acondicionador.getNombre());
-		lastNameTxtbx.setValue(acondicionador.getApellido());
+		nombreTxtbx.setValue(acondicionador.getNombre());
+		apellidoTxtbx.setValue(acondicionador.getApellido());
 		phonesTxtbx.setValue(acondicionador.getTelefono());
 		emailTxtbx.setValue(acondicionador.getEmail());
 		addressTxtbx.setValue(acondicionador.getDireccion());
@@ -98,7 +98,7 @@ public class AcondicionadorFormController extends BaseFormController {
 		citiesLstbx.setItemRenderer(new ListitemRenderer<Localidad>() {
 			@Override
 			public void render(Listitem item, Localidad city, int arg2) throws Exception {
-				item.setLabel(city.getLocalidad());
+				item.setLabel(city.getNombre_localidad());
 				item.setAttribute(ENTITY, city);
 			}
 		});
@@ -118,13 +118,13 @@ public class AcondicionadorFormController extends BaseFormController {
 	@Override
 	public void accept() {
 
-		acondicionador.setNombre(firstNameTxtbx.getValue());
-		acondicionador.setApellido(lastNameTxtbx.getValue());
+		acondicionador.setNombre(nombreTxtbx.getValue());
+		acondicionador.setApellido(apellidoTxtbx.getValue());
 		acondicionador.setDni(dniIntbx.getValue());
 		acondicionador.setTelefono(phonesTxtbx.getValue());
 		acondicionador.setEmail(emailTxtbx.getValue());
 		acondicionador.setDireccion(addressTxtbx.getValue());
-		acondicionador.setId_localidad((Localidad) cityBndbx.getAttribute(ENTITY));
+		acondicionador.setLocalidad((Localidad) cityBndbx.getAttribute(ENTITY));
 
 		try {
 			if (acondicionador.getId() == null) {
@@ -139,11 +139,11 @@ public class AcondicionadorFormController extends BaseFormController {
 			e.printStackTrace();
 			// Errores de validacion
 			for (FieldResourceError fieldError : e.getError().getFieldErrors()) {
-				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.firstName"))) {
-					firstNameTxtbx.setErrorMessage(fieldError.getMessage());
+				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.nombre"))) {
+					nombreTxtbx.setErrorMessage(fieldError.getMessage());
 				}
-				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.lastName"))) {
-					lastNameTxtbx.setErrorMessage(fieldError.getMessage());
+				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.apellido"))) {
+					apellidoTxtbx.setErrorMessage(fieldError.getMessage());
 				}
 				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.dni"))) {
 					dniIntbx.setErrorMessage(fieldError.getMessage());

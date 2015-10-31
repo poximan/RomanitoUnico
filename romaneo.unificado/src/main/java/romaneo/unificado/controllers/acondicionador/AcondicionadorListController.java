@@ -108,10 +108,10 @@ public class AcondicionadorListController extends BasePagedListController<Acondi
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
 		if (filterByNombreTxtbx.getValue() != null && !filterByNombreTxtbx.getValue().trim().isEmpty()) {
-			parameters.put(Acondicionador.Filters.BY_FIRST_NAME.getValue(), filterByNombreTxtbx.getValue());
+			parameters.put(Acondicionador.Filters.BY_NOMBRE.getValue(), filterByNombreTxtbx.getValue());
 		}
 		if (filterByApellidoTxtbx.getValue() != null && !filterByApellidoTxtbx.getValue().trim().isEmpty()) {
-			parameters.put(Acondicionador.Filters.BY_LAST_NAME.getValue(), filterByApellidoTxtbx.getValue());
+			parameters.put(Acondicionador.Filters.BY_APELLIDO.getValue(), filterByApellidoTxtbx.getValue());
 		}
 		if (filterByDni.getValue() != null) {
 			parameters.put(Acondicionador.Filters.BY_DNI.getValue(), filterByDni.getValue());

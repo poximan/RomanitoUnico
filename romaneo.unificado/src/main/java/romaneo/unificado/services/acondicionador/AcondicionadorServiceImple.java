@@ -52,18 +52,18 @@ public class AcondicionadorServiceImple extends BaseServiceImple<Acondicionador,
 		ResourceError error = new ResourceError();
 
 		if (entity.getNombre() == null || entity.getNombre().isEmpty()) {
-			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.firstName"),
+			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.nombre"),
 					null, Labels.getLabel("acondicionador.firstNameError")));
 		}
 		if (entity.getApellido() == null || entity.getApellido().isEmpty()) {
-			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.lastName"),
+			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.apellido"),
 					null, Labels.getLabel("acondicionador.lastNameError")));
 		}
 		if (entity.getDni() == null) {
 			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.dni"), null,
 					Labels.getLabel("acondicionador.dniError")));
 		}
-		if (entity.getId_localidad() == null) {
+		if (entity.getLocalidad() == null) {
 			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.city"), null,
 					Labels.getLabel("acondicionador.cityError")));
 		}

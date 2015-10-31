@@ -3,13 +3,9 @@
 	border-top-width: 1px;
 }
 
-
-.olPopup .olFramedCloudPopupContent h1, 
-.olPopup .olFramedCloudPopupContent h2, 
-.olPopup .olFramedCloudPopupContent h3, 
-.olPopup .olFramedCloudPopupContent h4, 
-.olPopup .olFramedCloudPopupContent h5
-{
+.olPopup .olFramedCloudPopupContent h1, .olPopup .olFramedCloudPopupContent h2,
+	.olPopup .olFramedCloudPopupContent h3, .olPopup .olFramedCloudPopupContent h4,
+	.olPopup .olFramedCloudPopupContent h5 {
 	color: #336633;
 	border-bottom-style: solid;
 	font-size: 18px;

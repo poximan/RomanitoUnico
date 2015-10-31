@@ -1,12 +1,4 @@
-﻿TRUNCATE TABLE usuario_rol CASCADE;
-TRUNCATE TABLE usuario CASCADE; --
-TRUNCATE TABLE rol CASCADE;
-TRUNCATE TABLE acondicionador CASCADE;
-TRUNCATE TABLE localidad CASCADE;
-TRUNCATE TABLE partido CASCADE;
-TRUNCATE TABLE provincia CASCADE;
-
--- provincia --
+﻿-- provincia --
 INSERT INTO provincia(provincia)
 
     VALUES
@@ -36,7 +28,7 @@ INSERT INTO partido(nombre, provincia)
     ('telsen', 1);
     
 -- localidad --
-INSERT INTO localidad(cod_postal, localidad, id_partido)
+INSERT INTO localidad(cod_postal, nombre_localidad, id_partido)
 
     VALUES (9120, 'puerto madryn', 1);
 
