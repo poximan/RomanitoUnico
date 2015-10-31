@@ -47,7 +47,7 @@
 				<n:div class="filters-panel panel">
 					<n:div class="row">
 						<n:div class="col-md-3">
-							<textbox id="filterByLastNameTxtbx"
+							<textbox id="filterByNombre"
 								placeholder="${labels.establecimiento.nombre}" class="form-control" />
 						</n:div>
 					</n:div>

@@ -22,6 +22,7 @@ import romaneo.unificado.services.productor.ProductorService;
  * @author hugo
  */
 public class ProductorFormController extends BaseFormController {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Wire

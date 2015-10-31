@@ -29,6 +29,7 @@ import romaneo.unificado.services.acondicionador.AcondicionadorService;
  * @author hugo
  */
 public class AcondicionadorListController extends BasePagedListController<Acondicionador> {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Wire
@@ -42,11 +43,11 @@ public class AcondicionadorListController extends BasePagedListController<Acondi
 
 	// **** FILTROS **** //
 	@Wire
-	private Textbox filterByLastNameTxtbx;
+	private Textbox filterByApellidoTxtbx;
 	@Wire
-	private Textbox filterByFirstNameTxtbx;
+	private Textbox filterByNombreTxtbx;
 	@Wire
-	private Intbox filterByDniIntbx;
+	private Intbox filterByDni;
 
 	@Override
 	protected ListitemRenderer<Acondicionador> getListitemRender() {
@@ -106,14 +107,14 @@ public class AcondicionadorListController extends BasePagedListController<Acondi
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
-		if (filterByFirstNameTxtbx.getValue() != null && !filterByFirstNameTxtbx.getValue().trim().isEmpty()) {
-			parameters.put(Acondicionador.Filters.BY_FIRST_NAME.getValue(), filterByFirstNameTxtbx.getValue());
+		if (filterByNombreTxtbx.getValue() != null && !filterByNombreTxtbx.getValue().trim().isEmpty()) {
+			parameters.put(Acondicionador.Filters.BY_FIRST_NAME.getValue(), filterByNombreTxtbx.getValue());
 		}
-		if (filterByLastNameTxtbx.getValue() != null && !filterByLastNameTxtbx.getValue().trim().isEmpty()) {
-			parameters.put(Acondicionador.Filters.BY_LAST_NAME.getValue(), filterByLastNameTxtbx.getValue());
+		if (filterByApellidoTxtbx.getValue() != null && !filterByApellidoTxtbx.getValue().trim().isEmpty()) {
+			parameters.put(Acondicionador.Filters.BY_LAST_NAME.getValue(), filterByApellidoTxtbx.getValue());
 		}
-		if (filterByDniIntbx.getValue() != null) {
-			parameters.put(Acondicionador.Filters.BY_DNI.getValue(), filterByDniIntbx.getValue());
+		if (filterByDni.getValue() != null) {
+			parameters.put(Acondicionador.Filters.BY_DNI.getValue(), filterByDni.getValue());
 		}
 
 		executeAndRenderPagedQuery(parameters);
@@ -126,16 +127,44 @@ public class AcondicionadorListController extends BasePagedListController<Acondi
 
 	@Listen("onClick = #cleanFiltersBttn")
 	public void cleanFilters() {
-		filterByFirstNameTxtbx.setValue(null);
-		filterByLastNameTxtbx.setValue(null);
-		filterByDniIntbx.setValue(null);
+		filterByNombreTxtbx.setValue(null);
+		filterByApellidoTxtbx.setValue(null);
+		filterByDni.setValue(null);
 	}
+
+	/* ------------------------------------------------------------------ */
+	/* onClick - navegacion contenedor ---------------------------------- */
+	/* ------------------------------------------------------------------ */
 
 	@Listen("onClick = #acondicionadoresSubmenuA1")
 	public void navigationToAcondicionadores() {
 		if (Path.getComponent("//mainPage/mainWndw") != null) {
 			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
 			Events.sendEvent("onGoToAcondicionadores", mainWndw, null);
+		}
+	}
+
+	@Listen("onClick = #productoresSubmenuA1")
+	public void navigationToProductores() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToProductores", mainWndw, null);
+		}
+	}
+
+	@Listen("onClick = #establecimientosSubmenuA1")
+	public void navigationToEstablecimiento() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToEstablecimientos", mainWndw, null);
+		}
+	}
+
+	@Listen("onClick = #contratistasSubmenuA1")
+	public void navigationToContratistas() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToContratistas", mainWndw, null);
 		}
 	}
 }

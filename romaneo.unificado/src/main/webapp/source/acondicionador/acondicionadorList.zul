@@ -47,17 +47,17 @@
 				<n:div class="filters-panel panel">
 					<n:div class="row">
 						<n:div class="col-md-3">
-							<textbox id="filterByLastNameTxtbx"
+							<textbox id="filterByApellidoTxtbx"
 								placeholder="${labels.acondicionador.lastName}"
 								class="form-control" />
 						</n:div>
 						<n:div class="col-md-3">
-							<textbox id="filterByFirstNameTxtbx"
+							<textbox id="filterByNombreTxtbx"
 								placeholder="${labels.acondicionador.firstName}"
 								class="form-control" />
 						</n:div>
 						<n:div class="col-md-3">
-							<intbox id="filterByDniIntbx"
+							<intbox id="filterByDni"
 								placeholder="${labels.acondicionador.dni}" class="form-control" />
 						</n:div>
 					</n:div>

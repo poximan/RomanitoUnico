@@ -10,7 +10,6 @@ import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Combobox;
-import org.zkoss.zul.Intbox;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Listcell;
 import org.zkoss.zul.Listitem;
@@ -29,6 +28,7 @@ import romaneo.unificado.services.contratista.ContratistaService;
  * @author hugo
  */
 public class ContratistaListController extends BasePagedListController<Contratista> {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Wire
@@ -42,11 +42,7 @@ public class ContratistaListController extends BasePagedListController<Contratis
 
 	// **** FILTROS **** //
 	@Wire
-	private Textbox filterByLastNameTxtbx;
-	@Wire
-	private Textbox filterByFirstNameTxtbx;
-	@Wire
-	private Intbox filterByDniIntbx;
+	private Textbox filterByNombreTxtbx;
 
 	@Override
 	protected ListitemRenderer<Contratista> getListitemRender() {
@@ -102,8 +98,8 @@ public class ContratistaListController extends BasePagedListController<Contratis
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
-		if (filterByFirstNameTxtbx.getValue() != null && !filterByFirstNameTxtbx.getValue().trim().isEmpty()) {
-			parameters.put(Contratista.Filters.BY_FIRST_NAME.getValue(), filterByFirstNameTxtbx.getValue());
+		if (filterByNombreTxtbx.getValue() != null && !filterByNombreTxtbx.getValue().trim().isEmpty()) {
+			parameters.put(Contratista.Filters.BY_FIRST_NAME.getValue(), filterByNombreTxtbx.getValue());
 		}
 
 		executeAndRenderPagedQuery(parameters);
@@ -116,9 +112,35 @@ public class ContratistaListController extends BasePagedListController<Contratis
 
 	@Listen("onClick = #cleanFiltersBttn")
 	public void cleanFilters() {
-		filterByFirstNameTxtbx.setValue(null);
-		filterByLastNameTxtbx.setValue(null);
-		filterByDniIntbx.setValue(null);
+		filterByNombreTxtbx.setValue(null);
+	}
+
+	/* ------------------------------------------------------------------ */
+	/* onClick - navegacion contenedor ---------------------------------- */
+	/* ------------------------------------------------------------------ */
+
+	@Listen("onClick = #acondicionadoresSubmenuA4")
+	public void navigationToAcondicionadores() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToAcondicionadores", mainWndw, null);
+		}
+	}
+
+	@Listen("onClick = #productoresSubmenuA4")
+	public void navigationToProductores() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToProductores", mainWndw, null);
+		}
+	}
+
+	@Listen("onClick = #establecimientosSubmenuA4")
+	public void navigationToEstablecimiento() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToEstablecimientos", mainWndw, null);
+		}
 	}
 
 	@Listen("onClick = #contratistasSubmenuA4")

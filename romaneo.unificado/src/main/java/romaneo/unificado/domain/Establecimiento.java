@@ -59,6 +59,25 @@ public class Establecimiento extends BaseEntity implements Serializable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (id != null ? id.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (!(object instanceof Establecimiento)) {
+			return false;
+		}
+		Establecimiento other = (Establecimiento) object;
+		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+			return false;
+		}
+		return true;
+	}
+
 	public enum Filters {
 
 		BY_FIRST_NAME("nombre");

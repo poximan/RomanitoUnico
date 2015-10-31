@@ -1,5 +1,5 @@
 <zk xmlns:n="xhtml">
-	<window id="contratistaListWndw" border="none" hflex="1"
+	<window id="contratistasListWndw" border="none" hflex="1"
 		sclass="normal-window"
 		apply="romaneo.unificado.controllers.contratista.ContratistaListController">
 
@@ -46,8 +46,8 @@
 
 				<n:div class="filters-panel panel">
 					<n:div class="row">
-						<n:div class="col-md-4">
-							<textbox id="filterByLastNameTxtbx"
+						<n:div class="col-md-3">
+							<textbox id="filterByNombreTxtbx"
 								placeholder="${labels.contratista.nombre}" class="form-control" />
 						</n:div>
 					</n:div>
@@ -74,7 +74,7 @@
 
 				<listbox id="contratistasLstbx" rows="10">
 					<listhead>
-						<listheader label="${labels.contratisa.nombre}"
+						<listheader label="${labels.contratista.nombre}"
 							hflex="min" align="center" />
 					</listhead>
 				</listbox>

@@ -41,7 +41,7 @@ public class ProductorListController extends BasePagedListController<Productor> 
 
 	// **** FILTROS **** //
 	@Wire
-	private Textbox filterByFirstNameTxtbx;
+	private Textbox filterByNombre;
 
 	@Override
 	protected ListitemRenderer<Productor> getListitemRender() {
@@ -98,8 +98,8 @@ public class ProductorListController extends BasePagedListController<Productor> 
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
-		if (filterByFirstNameTxtbx.getValue() != null && !filterByFirstNameTxtbx.getValue().trim().isEmpty()) {
-			parameters.put(Productor.Filters.BY_FIRST_NAME.getValue(), filterByFirstNameTxtbx.getValue());
+		if (filterByNombre.getValue() != null && !filterByNombre.getValue().trim().isEmpty()) {
+			parameters.put(Productor.Filters.BY_FIRST_NAME.getValue(), filterByNombre.getValue());
 		}
 
 		executeAndRenderPagedQuery(parameters);
@@ -112,7 +112,19 @@ public class ProductorListController extends BasePagedListController<Productor> 
 
 	@Listen("onClick = #cleanFiltersBttn")
 	public void cleanFilters() {
-		filterByFirstNameTxtbx.setValue(null);
+		filterByNombre.setValue(null);
+	}
+
+	/* ------------------------------------------------------------------ */
+	/* onClick - navegacion contenedor ---------------------------------- */
+	/* ------------------------------------------------------------------ */
+
+	@Listen("onClick = #acondicionadoresSubmenuA2")
+	public void navigationToAcondicionadores() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToAcondicionadores", mainWndw, null);
+		}
 	}
 
 	@Listen("onClick = #productoresSubmenuA2")
@@ -120,6 +132,22 @@ public class ProductorListController extends BasePagedListController<Productor> 
 		if (Path.getComponent("//mainPage/mainWndw") != null) {
 			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
 			Events.sendEvent("onGoToProductores", mainWndw, null);
+		}
+	}
+
+	@Listen("onClick = #establecimientosSubmenuA2")
+	public void navigationToEstablecimiento() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToEstablecimientos", mainWndw, null);
+		}
+	}
+
+	@Listen("onClick = #contratistasSubmenuA2")
+	public void navigationToContratistas() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToContratistas", mainWndw, null);
 		}
 	}
 }

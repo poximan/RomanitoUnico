@@ -28,6 +28,7 @@ import romaneo.unificado.services.establecimiento.EstablecimientoService;
  * @author hugo
  */
 public class EstablecimientoListController extends BasePagedListController<Establecimiento> {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Wire
@@ -41,7 +42,7 @@ public class EstablecimientoListController extends BasePagedListController<Estab
 
 	// **** FILTROS **** //
 	@Wire
-	private Textbox filterByFirstNameTxtbx;
+	private Textbox filterByNombre;
 
 	@Override
 	protected ListitemRenderer<Establecimiento> getListitemRender() {
@@ -97,8 +98,8 @@ public class EstablecimientoListController extends BasePagedListController<Estab
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
-		if (filterByFirstNameTxtbx.getValue() != null && !filterByFirstNameTxtbx.getValue().trim().isEmpty()) {
-			parameters.put(Establecimiento.Filters.BY_FIRST_NAME.getValue(), filterByFirstNameTxtbx.getValue());
+		if (filterByNombre.getValue() != null && !filterByNombre.getValue().trim().isEmpty()) {
+			parameters.put(Establecimiento.Filters.BY_FIRST_NAME.getValue(), filterByNombre.getValue());
 		}
 
 		executeAndRenderPagedQuery(parameters);
@@ -111,7 +112,27 @@ public class EstablecimientoListController extends BasePagedListController<Estab
 
 	@Listen("onClick = #cleanFiltersBttn")
 	public void cleanFilters() {
-		filterByFirstNameTxtbx.setValue(null);
+		filterByNombre.setValue(null);
+	}
+
+	/* ------------------------------------------------------------------ */
+	/* onClick - navegacion contenedor ---------------------------------- */
+	/* ------------------------------------------------------------------ */
+
+	@Listen("onClick = #acondicionadoresSubmenuA3")
+	public void navigationToAcondicionadores() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToAcondicionadores", mainWndw, null);
+		}
+	}
+
+	@Listen("onClick = #productoresSubmenuA3")
+	public void navigationToProductores() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToProductores", mainWndw, null);
+		}
 	}
 
 	@Listen("onClick = #establecimientosSubmenuA3")
@@ -119,6 +140,14 @@ public class EstablecimientoListController extends BasePagedListController<Estab
 		if (Path.getComponent("//mainPage/mainWndw") != null) {
 			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
 			Events.sendEvent("onGoToEstablecimientos", mainWndw, null);
+		}
+	}
+
+	@Listen("onClick = #contratistasSubmenuA3")
+	public void navigationToContratistas() {
+		if (Path.getComponent("//mainPage/mainWndw") != null) {
+			Window mainWndw = (Window) Path.getComponent("//mainPage/mainWndw");
+			Events.sendEvent("onGoToContratistas", mainWndw, null);
 		}
 	}
 }
