@@ -26,7 +26,7 @@ public class MainController extends BaseController {
 	@Wire
 	private Window mainWndw;
 	@Wire
-	private A masterDataBttn, systemManagementBttn;
+	private A masterDataBttn;
 	@Wire
 	private Div containerDv, interfacesDv, acondicionadorDv, productorDv, establecimientoDv, contratistaDv;
 	@Wire
@@ -53,8 +53,7 @@ public class MainController extends BaseController {
 
 		// Construir el servicio de navegación
 		List<A> menus = new ArrayList<>();
-		menus.add(masterDataBttn);		
-		menus.add(systemManagementBttn);
+		menus.add(masterDataBttn);
 
 		getNavigationHistoryService().setMain(mainWndw);
 		getNavigationHistoryService().setMainButtons(menus);
@@ -82,10 +81,6 @@ public class MainController extends BaseController {
 		navigationToAcondicionadores();
 	}
 
-	@Listen("onClick = #systemManagementBttn")
-	public void navigationToSystemManagement() {
-		navigationToMessageTypes();
-	}
 
 	// **** MAESTRO DE DATOS **** //
 
@@ -110,10 +105,12 @@ public class MainController extends BaseController {
 	}
 
 	// **** ADMINISTRACION DEL SISTEMA **** //
+	/*
 	@Listen("onGoToMessageTypes = #mainWndw")
 	public void navigationToMessageTypes() {
 		createWindow(Labels.getLabel("url.messageTypeList"), messageTypeDv, systemManagementBttn, false, null);
 	}
+	*/
 
 	/**
 	 * Crear ventana

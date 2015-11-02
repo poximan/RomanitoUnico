@@ -37,16 +37,5 @@ public class WindowsController extends SelectorComposer<Component> {
 		extPage.setSrc("http://prolana.magyp.gob.ar/");
 	}
 
-	@Listen("onClick = #btnIngresar")
-	public void buscar() {
-		System.out.print("ingresar");
-		Executions.getCurrent().sendRedirect("/source/main.zul");
-	}
 
-	@Listen("onClick = #btnIniciar")
-	public void iniciar()
-	{
-		System.out.print("iniciar");
-		Executions.getCurrent().sendRedirect("/mainPage.zul");
-	}
 }
