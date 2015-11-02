@@ -85,10 +85,9 @@
 								<label value="${labels.app.listSize}" />
 								<combobox id="productoresPageSizeCmbbx" width="80px"
 									sclass="input-group" value="10">
-									<comboitem value="5" label="5" />
 									<comboitem value="10" label="10" />
-									<comboitem value="15" label="15" />
-									<comboitem value="20" label="20" />
+									<comboitem value="25" label="25" />
+									<comboitem value="50" label="50" />
 								</combobox>
 							</hbox>
 						</n:div>
