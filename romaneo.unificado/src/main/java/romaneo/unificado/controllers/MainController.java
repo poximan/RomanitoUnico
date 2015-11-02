@@ -68,12 +68,12 @@ public class MainController extends BaseController {
 
 	@Listen("onClick = #changePasswordBttn")
 	public void changePassword() {
-		((Window) Executions.createComponents(Labels.getLabel("url.changePasswordForm"), null, null)).doModal();
+		//((Window) Executions.createComponents(Labels.getLabel("url.changePasswordForm"), null, null)).doModal();
 	}
 
 	@Listen("onClick = #logoutBttn")
 	public void logout() {
-		Executions.getCurrent().sendRedirect("j_spring_security_logout");
+		Executions.getCurrent().sendRedirect("/j_spring_security_logout");
 	}
 
 	@Listen("onClick = #masterDataBttn")

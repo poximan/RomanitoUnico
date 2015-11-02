@@ -13,6 +13,8 @@
 			authentication-failure-url="/login.zul?login_error=1" />
 	</http>
 
+	
+	
 	<global-method-security secured-annotations="enabled"
 		pre-post-annotations="enabled" />
 

@@ -62,7 +62,7 @@
 
 			</n:ul>
 
-			<n:form role="search" class="navbar-form navbar-left">
+			<n:form role="search" class="navbar-form navbar-left ">
 
 				<n:div class="form-group">
 
@@ -74,12 +74,12 @@
 
 			</n:form>
 
-			<n:ul class="nav navbar-nav navbar-right navbar-default"
+			<n:ul class="nav navbar-nav navbar-right "
 				mode="overlapped">
 				<n:li class="dropdown">
 					<n:a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">
-						<n:b>${labels.app.in}</n:b>
+						<n:b>${labels.app.login}</n:b>
 						<n:span class="caret"></n:span>
 					</n:a>
 
@@ -118,7 +118,7 @@
 										</n:div>
 
 										<button type="submit"
-											label="${labels.app.in}" />
+											label="${labels.app.in}" sclass=  "btn btn-primary btn-sm"/>
 
 
 									</n:form>

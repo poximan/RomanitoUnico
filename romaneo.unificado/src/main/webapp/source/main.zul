@@ -52,9 +52,6 @@
 				<!-- ........................................................ -->
 
 				<div class="navbar-header">
-					<image id="logoImg" class="pull-left"
-						style="cursor:default;max-height:61px;max-width:61px;padding-left:11px;"
-						src="/imagenes/SheepFINAL.png" />
 					<n:a class="navbar-brand" style="font-size:20px;">
 						${labels.app.name}
 					</n:a>
