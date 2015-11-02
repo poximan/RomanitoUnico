@@ -1,17 +1,15 @@
 package romaneo.unificado.controllers;
 
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.Path;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.A;
 import org.zkoss.zul.Iframe;
 import org.zkoss.zul.Include;
-import org.zkoss.zul.Window;
 
-public class WindowsController extends SelectorComposer<Component> {
+public class WindowsController extends SelectorComposer<Component>
+{
 	/**
 	 * 
 	 */
@@ -21,21 +19,23 @@ public class WindowsController extends SelectorComposer<Component> {
 	private Include ventana;
 	@Wire
 	private A boton;
+	@Wire
+	private Iframe noticias;
 
 	@Listen("onClick = #btnRomaneo")
-	public void romaneo() {
-		System.out.println("Romaneo");
+	public void romaneo()
+	{
+		noticias.setVisible(false);
+		ventana.setVisible(true);
+		ventana.setSrc("principal.zul");
 	}
 
 	@Listen("onClick = #btnNoticias")
-	public void noticias() {
-		Window window = (Window) Path.getComponent("//indexPage/window");
-		Include frame = (Include) window.getFellowIfAny("ventana");
-		frame.setVisible(false);
-		Iframe extPage = (Iframe) window.getFellowIfAny("extPage");
-		extPage.setVisible(true);
-		extPage.setSrc("http://prolana.magyp.gob.ar/");
+	public void noticias()
+	{
+		ventana.setVisible(false);
+		noticias.setVisible(true);
+		noticias.setSrc("http://prolana.magyp.gob.ar/");
 	}
-
 
 }
