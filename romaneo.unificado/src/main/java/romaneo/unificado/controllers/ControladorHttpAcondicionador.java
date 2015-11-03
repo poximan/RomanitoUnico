@@ -7,7 +7,7 @@ package romaneo.unificado.controllers;
 
 import java.util.List;
 
-import romaneo.unificado.entities.Acondicionador;
+import romaneo.unificado.domain.Acondicionador;
 import romaneo.unificado.services.JSONParser;
 import romaneo.utileria.HttpHelper;
 import romaneo.utileria.Constantes;
