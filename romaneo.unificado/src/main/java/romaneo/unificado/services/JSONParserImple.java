@@ -10,8 +10,8 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
+import org.zkoss.json.JSONArray;
 
 /* ............................................. */
 /* ............................................. */
@@ -25,7 +25,7 @@ import org.json.JSONObject;
  * @param <T>
  *            el tipo de objeto del/hacia el cual se convertira.
  */
-public class JSONParser<T> {
+public class JSONParserImple<T> {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -40,7 +40,7 @@ public class JSONParser<T> {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public JSONParser(Class<?> clazz) {
+	public JSONParserImple(Class<?> clazz) {
 
 		this.clazz = clazz;
 
@@ -64,14 +64,16 @@ public class JSONParser<T> {
 	 */
 	public List<T> parseArray(String array) {
 		try {
-			JSONArray jsonArray = new JSONArray(array);
+			JSONArray jsonArray = new JSONArray();
+			jsonArray.add(array);
+
 			List<T> list = new ArrayList<T>();
 
-			if (jsonArray.length() == 0)
+			if (jsonArray.size() == 0)
 				return list;
 
-			for (int i = 0; i < jsonArray.length(); i++)
-				list.add(fromJson(jsonArray.getJSONObject(i)));
+			for (int i = 0; i < jsonArray.size(); i++)
+				list.add(fromJson((JSONArray) jsonArray.get(i)));
 
 			return list;
 		} catch (Exception e) {
@@ -86,7 +88,7 @@ public class JSONParser<T> {
 	 *            el objeto a transformar.
 	 * @return el objeto transformado. Null si fallo.
 	 */
-	public T fromJson(JSONObject object) {
+	public T fromJson(JSONArray object) {
 		return fromJson(object.toString());
 	}
 

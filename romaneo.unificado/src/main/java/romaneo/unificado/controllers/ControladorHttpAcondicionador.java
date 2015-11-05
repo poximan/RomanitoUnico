@@ -3,12 +3,10 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package romaneo.unificado.controllers;
-
 import java.util.List;
 
-import romaneo.unificado.entities.Acondicionador;
-import romaneo.unificado.services.JSONParser;
+import romaneo.unificado.domain.Acondicionador;
+import romaneo.unificado.services.JSONParserImple;
 import romaneo.utileria.HttpHelper;
 import romaneo.utileria.Constantes;
 
@@ -26,7 +24,7 @@ public class ControladorHttpAcondicionador {
 
 	private HttpHelper helper;
 
-	private JSONParser<Acondicionador> parser;
+	private JSONParserImple<Acondicionador> parser;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,7 +34,7 @@ public class ControladorHttpAcondicionador {
 	public ControladorHttpAcondicionador() {
 
 		helper = new HttpHelper(Constantes.URL_COMPLETA + Constantes.ConstAcondicionador.PATH);
-		parser = new JSONParser<>(Acondicionador.class);
+		parser = new JSONParserImple<>(Acondicionador.class);
 	}
 
 	/* ............................................. */
