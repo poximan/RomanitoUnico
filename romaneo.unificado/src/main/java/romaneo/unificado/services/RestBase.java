@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package romaneo.unificado.rest;
+package romaneo.unificado.services;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

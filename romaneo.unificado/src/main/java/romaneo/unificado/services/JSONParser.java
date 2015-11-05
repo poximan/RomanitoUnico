@@ -7,10 +7,11 @@ package romaneo.unificado.services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import org.zkoss.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /* ............................................. */
 /* ............................................. */
@@ -62,8 +63,6 @@ public class JSONParser<T> {
 	 * @return una lista que contiene los objetos, null si fallo.
 	 */
 	public List<T> parseArray(String array) {
-		
-		/*
 		try {
 			JSONArray jsonArray = new JSONArray(array);
 			List<T> list = new ArrayList<T>();
@@ -78,8 +77,6 @@ public class JSONParser<T> {
 		} catch (Exception e) {
 			return null;
 		}
-		*/
-		return null;
 	}
 
 	/**
