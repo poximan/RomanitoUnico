@@ -71,7 +71,8 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 
 		Map<String, Entity> arg = new HashMap<String, Entity>();
 		arg.put(SELECTED, (Entity) getListComponent().getSelectedItem().getAttribute(ENTITY));
-		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg)).doModal();
+		//((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg)).doModal();
+		Executions.sendRedirect("acondicionador/viewEditAcondicionador.zul");
 	}
 
 	/** Eliminar */
