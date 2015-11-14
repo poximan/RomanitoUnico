@@ -38,15 +38,4 @@
 		<beans:property name="dao" ref="LoggingDao" />
 	</beans:bean>
 
-	<!-- VELOCITY ENGINE -->
-	<beans:bean id="velocityEngine"
-		class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
-		<beans:property name="velocityProperties">
-			<beans:value>
-				resource.loader=class
-				class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-			</beans:value>
-		</beans:property>
-	</beans:bean>
-
 </beans:beans>
