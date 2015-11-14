@@ -1,14 +1,34 @@
-<?page title="editarAcondicionador" contentType="text/html;charset=UTF-8"?>
-<zk>
-	<ul class="nav nav-tabs">
-		<li role="presentation" class="active">
-			<a href="#">Home</a>
-		</li>
-		<li role="presentation">
-			<a href="#">Profile</a>
-		</li>
-		<li role="presentation">
-			<a href="#">Messages</a>
-		</li>
-	</ul>
+<zk xmlns:w="client" xmlns:n="xhtml">
+	<n:div>
+		<script src="/css/bootstrap/js/bootstrap.js" />
+		<style src="/css/bootstrap/css/bootstrap.css" />
+
+		<n:ul class="nav nav-tabs">
+			<n:li role="presentation" class="active">
+				<n:a href="#">${labels.app.general}</n:a>
+			</n:li>
+			<n:li role="presentation">
+				<n:a href="#">${labels.app.domicilios}</n:a>
+			</n:li>
+			<n:li role="presentation">
+				<n:a href="#">${labels.app.contactos}</n:a>
+			</n:li>
+		</n:ul>
+
+
+		<!-- Tab panes -->
+		<n:div class="tab-content">
+			<n:div role="tabpanel" class="tab-pane active"
+				id="general">
+				...
+			</n:div>
+			<n:div role="tabpanel" class="tab-pane" id="domicilio">
+				...
+			</n:div>
+			<n:div role="tabpanel" class="tab-pane" id="contactos">
+				...
+			</n:div>
+		</n:div>
+
+	</n:div>
 </zk>
