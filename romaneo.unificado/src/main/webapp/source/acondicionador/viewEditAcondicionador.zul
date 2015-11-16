@@ -1,34 +1,144 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="viewEditAcondicionador" ?>
 <zk xmlns:w="client" xmlns:n="xhtml">
-	<n:div>
+<window id="viewEditAcondicionador">
+	<n:div
+		apply="romaneo.unificado.controllers.acondicionador.ViewEditController">
 		<script src="/css/bootstrap/js/bootstrap.js" />
 		<style src="/css/bootstrap/css/bootstrap.css" />
 
-		<n:ul class="nav nav-tabs">
-			<n:li role="presentation" class="active">
-				<n:a href="#">${labels.app.general}</n:a>
-			</n:li>
-			<n:li role="presentation">
-				<n:a href="#">${labels.app.domicilios}</n:a>
-			</n:li>
-			<n:li role="presentation">
-				<n:a href="#">${labels.app.contactos}</n:a>
-			</n:li>
-		</n:ul>
+		<n:div>
+			<!-- Nav tabs -->
+			<n:ul class="nav nav-tabs" role="tablist">
+				<n:li role="presentation" class="active">
+					<n:a href="#general" aria-controls="general"
+						role="tab" data-toggle="tab">
+						${labels.app.general}
+					</n:a>
+				</n:li>
+				<n:li role="presentation">
+					<n:a href="#domicilios" aria-controls="domicilios"
+						role="tab" data-toggle="tab">
+						${labels.app.domicilios }
+					</n:a>
+				</n:li>
+				<n:li role="presentation">
+					<n:a href="#contactos" aria-controls="contactos"
+						role="tab" data-toggle="tab">
+						${labels.app.contactos }
+					</n:a>
+				</n:li>
+				<n:li role="presentation">
+					<n:a href="#otros" aria-controls="otros" role="tab"
+						data-toggle="tab">
+						Otros
+					</n:a>
+				</n:li>
+			</n:ul>
 
+			<!-- Tab panes -->
+			<n:div class="tab-content">
+				<n:div role="tabpanel" class="tab-pane active"
+					id="general">
+					<label value="${labels.acondicionador.nombre}" />
+					<textbox id="nombreTxtbx" maxlength="50" hflex="1"
+						class="form-control" />
+					<label value="${labels.acondicionador.apellido}" />
+					<textbox id="apellidoTxtbx" maxlength="50" hflex="1"
+						class="form-control" />
+					<label value="${labels.acondicionador.dni}" />
+					<intbox id="dniIntbx" maxlength="8"
+						constraint="no negative" hflex="1" class="form-control" />
+				</n:div>
 
-		<!-- Tab panes -->
-		<n:div class="tab-content">
-			<n:div role="tabpanel" class="tab-pane active"
-				id="general">
-				...
+				<n:div role="tabpanel" class="tab-pane"
+					id="domicilios">
+					<n:div class="col-md-12">
+						<n:span class="pull-right">
+							<n:div class="btn-group">
+								<button id="newBttnVE"
+									iconSclass="z-icon-plus" label="${labels.app.create}"
+									class="btn btn-sm btn-primary" />
+								<button id="editBttnVE" disabled="true"
+									iconSclass="z-icon-edit" label="${labels.app.edit}"
+									class="btn btn-sm btn-default" />
+								<button id="deleteBttnVE" disabled="true"
+									iconSclass="z-icon-times" label="${labels.app.delete}"
+									class="btn btn-sm btn-default" />
+							</n:div>
+						</n:span>
+						<label value="Domicilios" />
+						<listbox id="domiciliosLstbx" rows="10">
+							<listhead>
+								<listheader label="Dirección"
+									hflex="min" align="center" />
+							</listhead>
+						</listbox>
+					</n:div>
+
+				</n:div>
+
+				<n:div role="tabpanel" class="tab-pane"
+					id="contactos">
+					<n:div class="col-md-12">
+						<n:span class="pull-right">
+							<n:div class="btn-group">
+								<button id="newBttnContactos"
+									iconSclass="z-icon-plus" label="${labels.app.create}"
+									class="btn btn-sm btn-primary" />
+								<button id="editBttnContactos"
+									disabled="true" iconSclass="z-icon-edit"
+									label="${labels.app.edit}" class="btn btn-sm btn-default" />
+								<button id="deleteBttnContoctas"
+									disabled="true" iconSclass="z-icon-times"
+									label="${labels.app.delete}" class="btn btn-sm btn-default" />
+							</n:div>
+						</n:span>
+					</n:div>
+
+					<label value="Telefonos" />
+					<listbox id="telefonoLstbx" rows="10">
+						<listhead>
+							<listheader label="Telefonos" hflex="min"
+								align="center" />
+						</listhead>
+					</listbox>
+
+					<label value="E-mail" />
+					<listbox id="emailLstbx " rows="10">
+						<listhead>
+							<listheader label="E-mail" hflex="min"
+								align="center" />
+						</listhead>
+					</listbox>
+
+				</n:div>
+
+				<n:div role="tabpanel" class="tab-pane" id="otros">
+					Otros
+				</n:div>
+
 			</n:div>
-			<n:div role="tabpanel" class="tab-pane" id="domicilio">
-				...
-			</n:div>
-			<n:div role="tabpanel" class="tab-pane" id="contactos">
-				...
-			</n:div>
+
+		</n:div>
+
+		<n:div class="col-md-12">
+			<n:span class="pull-right">
+				<n:span class="pull-down">
+					<n:div class="btn-group">
+						<n:button class="btn" id="btnVolverVE">
+							Volver
+						</n:button>
+						<n:button class="btn" id="btnEditarVE">
+							Editar
+						</n:button>
+						<n:button class="btn" id="btnGuardarVE">
+							Guardar
+						</n:button>
+					</n:div>
+				</n:span>
+			</n:span>
 		</n:div>
 
 	</n:div>
+	</window>
 </zk>

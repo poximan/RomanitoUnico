@@ -103,11 +103,6 @@ public class Acondicionador extends BaseEntity implements Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return apellido + " " + nombre;
-	}
-
 	public String getFullName() {
 		return apellido + " " + nombre;
 	}
@@ -209,5 +204,12 @@ public class Acondicionador extends BaseEntity implements Serializable {
 	@Override
 	public void setPK(Object Id) {
 		this.id = (Integer) Id;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Acondicionador [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
+				+ ", dni=" + dni + ", telefono=" + telefono + ", email=" + email + ", localidad=" + localidad + "]";
 	}
 }
