@@ -18,7 +18,7 @@ public class ViewEditController extends BaseFormController {
 	private Acondicionador acondicionador;
 
 	@Wire
-	private Window acondicionadorFormWndw;
+	private Window viewEditAcondicionador;
 
 	@Wire
 	Textbox nombreTxtbx;
@@ -67,6 +67,6 @@ public class ViewEditController extends BaseFormController {
 
 	@Override
 	protected Window getWindowComponent() {
-		return acondicionadorFormWndw;
+		return viewEditAcondicionador;
 	}
 }

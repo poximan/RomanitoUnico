@@ -12,8 +12,6 @@ import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.Session;
-import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.annotation.Listen;
@@ -39,14 +37,11 @@ import org.zkoss.zul.Window;
 
 import romaneo.unificado.daos.BaseDao;
 import romaneo.unificado.daos.PagedQueryResponse;
-import romaneo.unificado.domain.Acondicionador;
 import romaneo.unificado.domain.BaseEntity;
 import romaneo.unificado.services.BaseService;
 
 public abstract class BasePagedListController<Entity extends Serializable> extends BaseController {
 	private static final long serialVersionUID = 1L;
-	
-
 
 	protected List<Entity> all = new ArrayList<Entity>();
 	protected String sortField = null;
@@ -74,13 +69,9 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 			return;
 		}
 
-//		Map<String, Entity> arg = new HashMap<String, Entity>();
-//		arg.put(SELECTED, (Entity) getListComponent().getSelectedItem().getAttribute(ENTITY));
-		//((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg)).doModal();
-		//Sessions.getCurrent().setAttribute(SELECTED, (Entity) getListComponent().getSelectedItem().getAttribute(ENTITY));
-		Acondicionador acondicionador = (Acondicionador) getListComponent().getSelectedItem().getAttribute(ENTITY);
-		Executions.sendRedirect("acondicionador/viewEditAcondicionador.zul?id="+acondicionador.getId());
-//		Executions.createComponents("acondicionador/viewEditAcondicionador.zul", getWindowComponent(), arg);
+		Map<String, Entity> arg = new HashMap<String, Entity>();
+		arg.put(SELECTED, (Entity) getListComponent().getSelectedItem().getAttribute(ENTITY));
+		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg)).doModal();
 	}
 
 	/** Eliminar */

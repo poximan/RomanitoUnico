@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "contacto")
 @NamedQuery(name = "contacto.buscarPorId", query = "SELECT tabla FROM Contacto tabla WHERE tabla.id = ?1")
-public class Contacto implements Serializable {
+public class Contacto extends BaseEntity implements Serializable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -43,17 +43,15 @@ public class Contacto implements Serializable {
 	@Column(name = "TELEFONO")
 	private String telefono;
 
+	@Column(name = "DIRECCION")
+	private String direccion;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
 	public Contacto() {
-	}
-
-	public Contacto(String email, String telefono) {
-		this.email = email;
-		this.telefono = telefono;
 	}
 
 	/* ............................................. */
@@ -70,6 +68,23 @@ public class Contacto implements Serializable {
 		return id;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	@Override
+	public Object getPK() {
+		return id;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */
@@ -79,20 +94,20 @@ public class Contacto implements Serializable {
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getTelefono() {
-		return telefono;
 	}
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	@Override
+	public void setPK(Object id) {
+		this.id = (Integer) id;
+	}
 }
