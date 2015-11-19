@@ -64,6 +64,11 @@ public class Contacto extends BaseEntity implements Serializable {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
+	@Override
+	public Object getPK() {
+		return id;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -80,15 +85,15 @@ public class Contacto extends BaseEntity implements Serializable {
 		return direccion;
 	}
 
-	@Override
-	public Object getPK() {
-		return id;
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
+
+	@Override
+	public void setPK(Object id) {
+		this.id = (Integer) id;
+	}
 
 	public void setId(long id) {
 		this.id = id;
@@ -104,10 +109,5 @@ public class Contacto extends BaseEntity implements Serializable {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}
-
-	@Override
-	public void setPK(Object id) {
-		this.id = (Integer) id;
 	}
 }

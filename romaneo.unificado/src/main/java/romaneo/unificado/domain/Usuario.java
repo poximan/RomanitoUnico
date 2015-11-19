@@ -6,7 +6,6 @@
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -16,10 +15,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /* ............................................. */
 /* ............................................. */
@@ -42,54 +41,26 @@ public class Usuario extends BaseEntity implements Serializable {
 	@Column(name = "ID")
 	private Integer id;
 
+	@OneToOne
+	@JoinColumn(name = "ID_PERSONA", referencedColumnName = "id")
+	private Persona persona;
+
+	@Basic(optional = false)
+	@Column(name = "NOMBRE_USUARIO", nullable = false, length = 40)
+	private String nombre_usuario;
+
+	@Column(name = "CLAVE_USUARIO", length = 40)
+	private String clave_usuario;
+
+	@Column(name = "DESCRIPCION", length = 100)
+	private String descripcion;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_usuario")
+	private List<UsuarioRol> roles;
+
 	@Basic(optional = false)
 	@Column(name = "ESTA_ACTIVO", nullable = false)
 	private Character activo;
-
-	@Basic(optional = false)
-	@Column(name = "FECHA_CREACION", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fecha_creacion;
-
-	@Basic(optional = false)
-	@Column(name = "CREADO_POR", nullable = false)
-	private int creado_por;
-
-	@Basic(optional = false)
-	@Column(name = "FECHA_MODIFICACION", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fecha_modificado;
-
-	@Basic(optional = false)
-	@Column(name = "MODIFICADO_POR", nullable = false)
-	private int modificado_por;
-
-	@Basic(optional = false)
-	@Column(name = "NOMBRE", nullable = false, length = 60)
-	private String nombre;
-
-	@Column(name = "DESCRIPCION", length = 255)
-	private String descripcion;
-
-	@Column(name = "PASSWORD", length = 40)
-	private String password;
-
-	@Column(name = "EMAIL", length = 60)
-	private String email;
-
-	@Column(name = "TELEFONO", length = 40)
-	private String telefono;
-
-	@Column(name = "FECHA_NACIMIENTO")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fecha_nacimiento;
-
-	@Basic(optional = false)
-	@Column(name = "ACCESO_SISTEMA", nullable = false)
-	private Character acceso_sistema;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_usuario")
-	private List<UsuarioRol> lista_adUserRoles;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -99,21 +70,12 @@ public class Usuario extends BaseEntity implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(Integer id) {
-		this.id = id;
-	}
-
-	public Usuario(Integer id, Character activo, Calendar fecha_creacion, int creado_por, Calendar fecha_modificado,
-			int modificado_por, String nombre, Character acceso_sistema) {
-
-		this.id = id;
-		this.activo = activo;
-		this.fecha_creacion = fecha_creacion;
-		this.creado_por = creado_por;
-		this.fecha_modificado = fecha_modificado;
-		this.modificado_por = modificado_por;
-		this.nombre = nombre;
-		this.acceso_sistema = acceso_sistema;
+	public Usuario(Persona persona, String nombre_usuario, String clave_usuario, String descripcion) {
+		super();
+		this.persona = persona;
+		this.nombre_usuario = nombre_usuario;
+		this.clave_usuario = clave_usuario;
+		this.descripcion = descripcion;
 	}
 
 	/* ............................................. */
@@ -140,11 +102,6 @@ public class Usuario extends BaseEntity implements Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "domain.usuario[ id=" + id + " Name=" + nombre + "]";
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
@@ -159,56 +116,28 @@ public class Usuario extends BaseEntity implements Serializable {
 		return id;
 	}
 
-	public Character getActivo() {
-		return activo;
+	public Persona getPersona() {
+		return persona;
 	}
 
-	public Calendar getFecha_creacion() {
-		return fecha_creacion;
+	public String getNombre_usuario() {
+		return nombre_usuario;
 	}
 
-	public int getCreado_por() {
-		return creado_por;
-	}
-
-	public Calendar getFecha_modificado() {
-		return fecha_modificado;
-	}
-
-	public int getModificado_por() {
-		return modificado_por;
-	}
-
-	public String getNombre() {
-		return nombre;
+	public String getClave_usuario() {
+		return clave_usuario;
 	}
 
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-	public String getPassword() {
-		return password;
+	public List<UsuarioRol> getRoles() {
+		return roles;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public Calendar getFecha_nacimiento() {
-		return fecha_nacimiento;
-	}
-
-	public Character getAcceso_sistema() {
-		return acceso_sistema;
-	}
-
-	public List<UsuarioRol> getLista_adUserRoles() {
-		return lista_adUserRoles;
+	public Character getActivo() {
+		return activo;
 	}
 
 	/* ............................................. */
@@ -216,64 +145,36 @@ public class Usuario extends BaseEntity implements Serializable {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
+	@Override
+	public void setPK(Object id) {
+		this.id = (Integer) id;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public void setActivo(Character activo) {
-		this.activo = activo;
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 
-	public void setFecha_creacion(Calendar fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
+	public void setNombre_usuario(String nombre_usuario) {
+		this.nombre_usuario = nombre_usuario;
 	}
 
-	public void setCreado_por(int creado_por) {
-		this.creado_por = creado_por;
-	}
-
-	public void setFecha_modificado(Calendar fecha_modificado) {
-		this.fecha_modificado = fecha_modificado;
-	}
-
-	public void setModificado_por(int modificado_por) {
-		this.modificado_por = modificado_por;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setClave_usuario(String clave_usuario) {
+		this.clave_usuario = clave_usuario;
 	}
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setRoles(List<UsuarioRol> roles) {
+		this.roles = roles;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
-	public void setFecha_nacimiento(Calendar fecha_nacimiento) {
-		this.fecha_nacimiento = fecha_nacimiento;
-	}
-
-	public void setAcceso_sistema(Character acceso_sistema) {
-		this.acceso_sistema = acceso_sistema;
-	}
-
-	public void setLista_adUserRoles(List<UsuarioRol> lista_adUserRoles) {
-		this.lista_adUserRoles = lista_adUserRoles;
-	}
-
-	@Override
-	public void setPK(Object id) {
-		this.id = (Integer) id;
+	public void setActivo(Character activo) {
+		this.activo = activo;
 	}
 }

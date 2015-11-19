@@ -6,7 +6,6 @@
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -18,8 +17,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /* ............................................. */
 /* ............................................. */
@@ -41,19 +38,6 @@ public class Rol extends BaseEntity implements Serializable {
 	@Id
 	@Column(name = "ID")
 	private Integer id;
-
-	@Basic(optional = false)
-	@Column(name = "ESTA_ACTIVO", nullable = false)
-	private Character activo;
-
-	@Basic(optional = false)
-	@Column(name = "FECHA_CREACION", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fecha_creacion;
-
-	@Basic(optional = false)
-	@Column(name = "CREADO_POR", nullable = false)
-	private int creado_por;
 
 	@Basic(optional = false)
 	@Column(name = "NOMBRE", nullable = false, length = 60)
@@ -101,11 +85,6 @@ public class Rol extends BaseEntity implements Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "domain.AdRole[ id=" + id + " ]";
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
@@ -118,18 +97,6 @@ public class Rol extends BaseEntity implements Serializable {
 
 	public Integer getId() {
 		return id;
-	}
-
-	public Character getActivo() {
-		return activo;
-	}
-
-	public Calendar getFecha_creacion() {
-		return fecha_creacion;
-	}
-
-	public int getCreado_por() {
-		return creado_por;
 	}
 
 	public String getNombre() {
@@ -156,18 +123,6 @@ public class Rol extends BaseEntity implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public void setActivo(Character activo) {
-		this.activo = activo;
-	}
-
-	public void setFecha_creacion(Calendar fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
-	}
-
-	public void setCreado_por(int creado_por) {
-		this.creado_por = creado_por;
 	}
 
 	public void setNombre(String nombre) {
