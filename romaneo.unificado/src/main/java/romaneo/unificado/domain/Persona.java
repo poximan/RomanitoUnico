@@ -9,17 +9,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
+@Entity
+@Table(name = "persona")
 public class Persona extends BaseEntity implements Serializable {
 
 	/* ............................................. */
@@ -43,7 +48,7 @@ public class Persona extends BaseEntity implements Serializable {
 	@Column(name = "APELLIDO")
 	private String apellido;
 
-	@OneToMany(mappedBy = "contacto")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Contacto> contactos = new ArrayList<Contacto>();
 
 	/* ............................................. */

@@ -48,7 +48,6 @@ public class ClaseLana extends BaseEntity implements Serializable {
 	private String descripcion;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@Column(name = "TARJETAS", nullable = true)
 	private Collection<ClaseLanaTipoTarjeta> tarjetas;
 
 	/* ............................................. */

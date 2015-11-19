@@ -42,7 +42,7 @@ public class Usuario extends BaseEntity implements Serializable {
 	private Integer id;
 
 	@OneToOne
-	@JoinColumn(name = "ID_PERSONA", referencedColumnName = "id")
+	@JoinColumn(name = "ID_PERSONA", referencedColumnName = "ID")
 	private Persona persona;
 
 	@Basic(optional = false)
