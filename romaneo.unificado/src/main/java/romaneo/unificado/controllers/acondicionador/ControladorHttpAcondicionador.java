@@ -1,3 +1,4 @@
+package romaneo.unificado.controllers.acondicionador;
 /* ............................................. */
 /* ............................................. */
 /* PRELIMINAR .................................. */
@@ -44,18 +45,6 @@ public class ControladorHttpAcondicionador {
 
 	public List<Acondicionador> getAcondicionadores() {
 		String res = helper.doGet(Constantes.ConstAcondicionador.TODOS);
-
-		return parser.parseArray(res);
-	}
-
-	public List<Acondicionador> getAcondicionadores(String nombre) {
-		String res = helper.doGet(Constantes.ConstAcondicionador.NOMBRE + "?nombre=" + nombre);
-
-		return parser.parseArray(res);
-	}
-
-	public List<Acondicionador> getAcodicionadores(long dni) {
-		String res = helper.doGet(Constantes.ConstAcondicionador.DNI + "?dni=" + dni);
 
 		return parser.parseArray(res);
 	}

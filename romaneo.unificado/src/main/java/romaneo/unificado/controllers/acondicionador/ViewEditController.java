@@ -41,7 +41,6 @@ public class ViewEditController extends BaseFormController {
 
 	@Listen("onClick = #btnGuardar")
 	public void guardar() {
-		nombreTxtbx.setText("chupalaaaaaa..!");
 		System.out.println("btnGuardar...!");
 	}
 
