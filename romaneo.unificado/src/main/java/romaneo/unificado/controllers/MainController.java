@@ -21,8 +21,7 @@ import org.zkoss.zul.Window;
  * 
  * @author hugo
  */
-public class MainController extends BaseController
-{
+public class MainController extends BaseController {
 
 	private static final long serialVersionUID = 1L;
 
@@ -42,26 +41,22 @@ public class MainController extends BaseController
 	private Iframe noticias;
 
 	@Override
-	public String getClassName()
-	{
+	public String getClassName() {
 		return null;
 	}
 
 	@Override
-	protected String getEntityService()
-	{
+	protected String getEntityService() {
 		return null;
 	}
 
 	@Override
-	protected Window getWindowComponent()
-	{
+	protected Window getWindowComponent() {
 		return mainWndw;
 	}
 
 	@Override
-	public void doAfterCompose(Component comp) throws Exception
-	{
+	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 
 		// Construir el servicio de navegación
@@ -75,28 +70,22 @@ public class MainController extends BaseController
 	}
 
 	@Listen("onClick = #editAccountBttn")
-	public void editAccount()
-	{
+	public void editAccount() {
 		alert("Editar cuenta");
 	}
 
 	@Listen("onClick = #changePasswordBttn")
-	public void changePassword()
-	{
-		// ((Window)
-		// Executions.createComponents(Labels.getLabel("url.changePasswordForm"),
-		// null, null)).doModal();
+	public void changePassword() {
+		((Window) Executions.createComponents(Labels.getLabel("url.changePasswordForm"), null, null)).doOverlapped();
 	}
 
 	@Listen("onClick = #logoutBttn")
-	public void logout()
-	{
+	public void logout() {
 		Executions.getCurrent().sendRedirect("/j_spring_security_logout");
 	}
 
 	@Listen("onClick = #btnRomaneo")
-	public void romaneo()
-	{
+	public void romaneo() {
 		containerDv.setVisible(false);
 		noticias.setVisible(false);
 		ventana.setVisible(true);
@@ -105,8 +94,7 @@ public class MainController extends BaseController
 	}
 
 	@Listen("onClick = #masterDataBttn")
-	public void navigationToMasterData()
-	{
+	public void navigationToMasterData() {
 		ventana.setVisible(false);
 		noticias.setVisible(false);
 		containerDv.setVisible(true);
@@ -114,8 +102,7 @@ public class MainController extends BaseController
 	}
 
 	@Listen("onClick = #btnNoticias")
-	public void noticias()
-	{
+	public void noticias() {
 		ventana.setVisible(false);
 		containerDv.setVisible(false);
 		noticias.setVisible(true);
@@ -125,26 +112,22 @@ public class MainController extends BaseController
 	// **** MAESTRO DE DATOS **** //
 
 	@Listen("onGoToAcondicionadores = #mainWndw")
-	public void navigationToAcondicionadores()
-	{
+	public void navigationToAcondicionadores() {
 		createWindow(Labels.getLabel("url.acondicionadorList"), acondicionadorDv, masterDataBttn, false, null);
 	}
 
 	@Listen("onGoToProductores = #mainWndw")
-	public void navigationToProductores()
-	{
+	public void navigationToProductores() {
 		createWindow(Labels.getLabel("url.productorList"), productorDv, masterDataBttn, false, null);
 	}
 
 	@Listen("onGoToEstablecimientos = #mainWndw")
-	public void navigationToEstablecimientos()
-	{
+	public void navigationToEstablecimientos() {
 		createWindow(Labels.getLabel("url.establecimientoList"), establecimientoDv, masterDataBttn, false, null);
 	}
 
 	@Listen("onGoToContratistas = #mainWndw")
-	public void navigationToContratistas()
-	{
+	public void navigationToContratistas() {
 		createWindow(Labels.getLabel("url.contratistaList"), contratistaDv, masterDataBttn, false, null);
 	}
 
@@ -163,8 +146,7 @@ public class MainController extends BaseController
 	 * @param args
 	 *            Argumentos que se le pasa a la ventana
 	 */
-	private void createWindow(String url, Div div, AbstractTag button, Boolean modal, Map<String, Object> args)
-	{
+	private void createWindow(String url, Div div, AbstractTag button, Boolean modal, Map<String, Object> args) {
 		NavigationPage<A, A, Div> navigationPage = new NavigationPageImple((A) button, null, div, url);
 		getNavigationHistoryService().addPageToNavigationList(url, args, navigationPage);
 	}

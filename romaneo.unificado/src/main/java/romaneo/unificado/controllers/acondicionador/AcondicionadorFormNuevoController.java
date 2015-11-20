@@ -29,12 +29,12 @@ import romaneo.unificado.services.acondicionador.AcondicionadorService;
  * 
  * @author hugo
  */
-public class AcondicionadorFormController extends BaseFormController {
-	
+public class AcondicionadorFormNuevoController extends BaseFormController {
+
 	private static final long serialVersionUID = 1L;
 
 	@Wire
-	private Textbox nombreTxtbx, apellidoTxtbx, phonesTxtbx, emailTxtbx, addressTxtbx;
+	private Textbox nombreTxtbx, apellidoTxtbx;
 	@Wire
 	private Textbox citySearchTxtbx;
 	@Wire
@@ -66,13 +66,11 @@ public class AcondicionadorFormController extends BaseFormController {
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 
-		if ((acondicionador = (Acondicionador) Executions.getCurrent().getArg().get(SELECTED)) != null) {
-			cityBndbx.setValue(acondicionador.getLocalidad().getNombre_localidad());
-			cityBndbx.setAttribute(ENTITY, acondicionador.getLocalidad().getNombre_localidad());
+		if ((acondicionador = (Acondicionador) Executions.getCurrent().getArg().get(SELECTED)) != null)
 			fillFields(acondicionador);
-		} else {
+
+		else
 			acondicionador = new Acondicionador();
-		}
 	}
 
 	/**
@@ -85,9 +83,6 @@ public class AcondicionadorFormController extends BaseFormController {
 	private void fillFields(Acondicionador acondicionador) {
 		nombreTxtbx.setValue(acondicionador.getNombre());
 		apellidoTxtbx.setValue(acondicionador.getApellido());
-		phonesTxtbx.setValue(acondicionador.getTelefono());
-		emailTxtbx.setValue(acondicionador.getEmail());
-		addressTxtbx.setValue(acondicionador.getDireccion());
 		dniIntbx.setValue(acondicionador.getDni());
 	}
 
@@ -122,9 +117,6 @@ public class AcondicionadorFormController extends BaseFormController {
 		acondicionador.setNombre(nombreTxtbx.getValue());
 		acondicionador.setApellido(apellidoTxtbx.getValue());
 		acondicionador.setDni(dniIntbx.getValue());
-		acondicionador.setTelefono(phonesTxtbx.getValue());
-		acondicionador.setEmail(emailTxtbx.getValue());
-		acondicionador.setDireccion(addressTxtbx.getValue());
 		acondicionador.setLocalidad((Localidad) cityBndbx.getAttribute(ENTITY));
 
 		try {

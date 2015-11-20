@@ -355,31 +355,111 @@ INSERT INTO establecimiento(nombre, productor_id)
 	('Magna Duis Dignissim Incorporated',97),
 	('Duis Corp.',51);
 
--- usuario --
-INSERT INTO usuario(acceso_sistema, esta_activo, creado_por, descripcion, email, 
-            fecha_creacion, fecha_modificacion, fecha_nacimiento, modificado_por, 
-            nombre, password, telefono)   
-            
+-- persona --
+INSERT INTO persona(
+            apellido, dni, nombre)
+
     VALUES
-    ('Y', 'Y', 1, 'usuario hugo', 'hugo@hugo.com',
-    '2011-05-16 15:36:38', '2011-05-16 15:36:38', '2011-05-16 15:36:38', 1,
-    'hugo', 'hugo', 154322878),
-    ('Y', 'Y', 1, 'usuario jorge', 'jorge@jorge.com',
-    '2011-05-16 15:36:38', '2011-05-16 15:36:38', '2011-05-16 15:36:38', 1,
-    'jorge', 'jorge', 154322878),
-    ('Y', 'Y', 1, 'usuario felipe', 'felipe@felipecom',
-    '2011-05-16 15:36:38', '2011-05-16 15:36:38', '2011-05-16 15:36:38', 1,
-    'felipe', 'felipe', 154322878);
+	('Jacobs', 29471176, 'Robert'),
+	('Kelly', 27358659, 'Frank'),
+	('Matthews', 20787957, 'Kathleen'),
+	('Richards', 22879188, 'Kathy'),
+	('Little', 29839759, 'Jennifer'),
+	('Garcia', 28234690, 'Kenneth'),
+	('Butler', 27491744, 'Jennifer'),
+	('Allen', 26877265, 'Joe'),
+	('Howell', 22938604, 'Raymond'),
+	('Miller', 21711018, 'Adam'),
+	('Simmons', 21423681, 'Linda'),
+	('Miller', 25662036, 'Lori'),
+	('Rogers', 21088940, 'Keith'),
+	('Snyder', 27233607, 'Frank'),
+	('Mason', 20733438, 'Annie'),
+	('Willis', 21937590, 'Judy'),
+	('Rice', 26051930, 'Lawrence'),
+	('Carroll', 21981905, 'Brenda'),
+	('Ruiz', 21801015, 'Phillip'),
+	('Morrison', 24771337, 'Laura'),
+	('Carpenter', 25155709, 'Harry'),
+	('Mendoza', 24784423, 'Eric'),
+	('Mccoy', 26139559, 'Cynthia'),
+	('Campbell', 28299709, 'Amy'),
+	('Kelley', 25714232, 'Virginia'),
+	('Thompson', 28351258, 'Albert'),
+	('Peters', 28841689, 'Virginia'),
+	('James', 26033855, 'Philip'),
+	('Graham', 29212429, 'Joyce'),
+	('Hanson', 27792536, 'Lisa'),
+	('Parker', 25208722, 'Marie'),
+	('Nichols', 28420586, 'Ryan'),
+	('Wright', 24224026, 'Stephen'),
+	('Perez', 20896675, 'Rachel'),
+	('Cruz', 21337249, 'John'),
+	('Lawson', 27529085, 'David'),
+	('Andrews', 22214653, 'Ann'),
+	('Sanchez', 23155803, 'Diana'),
+	('Harvey', 22361221, 'Nicholas'),
+	('Frazier', 28351149, 'Andrea'),
+	('Garcia', 25745463, 'Joan'),
+	('Gardner', 28016268, 'Jeffrey'),
+	('Ray', 29425665, 'Sean'),
+	('Patterson', 23970083, 'Emily'),
+	('Payne', 20150722, 'Judy'),
+	('Lane', 25389290, 'Lisa'),
+	('Griffin', 29066664, 'William'),
+	('Taylor', 23276903, 'Arthur'),
+	('Cunningham', 20687712, 'Doris'),
+	('Smith', 20512996, 'Paula'),
+	('Henderson', 28268555, 'Pamela'),
+	('Rice', 29044778, 'Rose'),
+	('Ramirez', 25180879, 'Stephen'),
+	('Peterson', 22617357, 'Joseph'),
+	('Ross', 20772451, 'Christopher'),
+	('Mason', 24562569, 'Donald'),
+	('Grant', 25715365, 'Melissa'),
+	('Moreno', 29412615, 'Ralph'),
+	('Stewart', 28369462, 'Justin'),
+	('Elliott', 25362238, 'Judy'),
+	('Lewis', 26903991, 'Arthur'),
+	('Ward', 22559183, 'Lois'),
+	('Long', 27580693, 'Andrew'),
+	('Thomas', 22916850, 'Louis'),
+	('Clark', 30062943, 'Bruce'),
+	('Ramirez', 25615026, 'Janet'),
+	('Collins', 22516511, 'Sara'),
+	('Stewart', 22433178, 'Howard'),
+	('Mitchell', 28404243, 'Karen'),
+	('Nguyen', 21934284, 'Anna'),
+	('Day', 28433105, 'Denise'),
+	('Martin', 24590262, 'Nicholas'),
+	('Gilbert', 25787097, 'Cynthia'),
+	('Russell', 23412862, 'Robert'),
+	('Boyd', 28278306, 'Brandon'),
+	('Lee', 24728511, 'Patricia'),
+	('Duncan', 24749088, 'Jonathan'),
+	('donato', 25562908, 'hugo'),
+	('carou', 29532012, 'felipe'),
+	('di pasqua', 23391236, 'jorge');    
+    
+-- usuario --
+INSERT INTO usuario(
+            esta_activo, clave_usuario, descripcion, nombre_usuario, 
+            id_persona)    
+     
+    VALUES
+    ('Y', 'hugo', 'usuario hugo', 'hugo', 78),
+    ('Y', 'felipe', 'usuario hugo', 'felipe', 79),
+    ('Y', 'jorge', 'usuario hugo', 'jorge', 80);
 
 -- roles --
-INSERT INTO rol(esta_activo, creado_por, descripcion, fecha_creacion, nombre)       
+INSERT INTO rol(descripcion, nombre)       
 
     VALUES 
-    ('Y', 1, 'administrador', '2011-05-16 15:36:38', 'admin');
+    ('administrador', 'admin');
             
 
 -- tabla muchos a muchos, usuarios y roles --
-INSERT INTO usuario_rol(id_rol, id_usuario, esta_activo, creado_por, fecha_creacion)
+INSERT INTO usuario_rol(id_rol, id_usuario)
     
     VALUES
-    (1, 1, 'Y', 1, '2011-05-16 15:36:38');
+    (1, 1);

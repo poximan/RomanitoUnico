@@ -153,6 +153,7 @@ public abstract class BaseDaoImple<Entity extends Serializable, Id extends Seria
 
 	@Override
 	public List<Entity> findQueryByParameters(String query, Map<String, Object> parameters) throws DataAccessException {
+	
 		if (parameters == null) {
 			return findQuery(query);
 		}

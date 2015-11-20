@@ -17,10 +17,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jax-rs">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apacheWink">
 		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-			<attribute name="owner.project.facets" value="jst.jaxrs"/>
+			<attribute name="owner.project.facets" value="#system#;jst.jaxrs"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
