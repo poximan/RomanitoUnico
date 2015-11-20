@@ -29,7 +29,7 @@ import romaneo.unificado.services.acondicionador.AcondicionadorService;
  * 
  * @author hugo
  */
-public class AcondicionadorFormController extends BaseFormController {
+public class AcondicionadorFormNuevoController extends BaseFormController {
 	
 	private static final long serialVersionUID = 1L;
 
