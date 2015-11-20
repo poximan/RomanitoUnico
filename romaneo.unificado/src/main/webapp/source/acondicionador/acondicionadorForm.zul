@@ -1,5 +1,5 @@
 <?page contentType="text/html;charset=UTF-8"?>
-<zk>
+<zk xmlns:w="client" xmlns:n="xhtml">
 	<window id="acondicionadorFormWndw" border="normal" width="450px"
 		closable="true"
 		apply="romaneo.unificado.controllers.acondicionador.AcondicionadorFormController">
