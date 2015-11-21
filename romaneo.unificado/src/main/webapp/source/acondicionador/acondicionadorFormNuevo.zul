@@ -43,19 +43,21 @@
 					<!-- ............................................ -->
 					<n:div role="tabpanel" class="tab-pane active"
 						id="general">
+						<n:div class="col-md-12">
+							<label
+								value="${labels.acondicionador.nombre}" />
+							<textbox id="nombreTxtbx" maxlength="50"
+								hflex="1" class="form-control" />
 
-						<label value="${labels.acondicionador.nombre}" />
-						<textbox id="nombreTxtbx" maxlength="50"
-							hflex="1" class="form-control" />
+							<label
+								value="${labels.acondicionador.apellido}" />
+							<textbox id="apellidoTxtbx" maxlength="50"
+								hflex="1" class="form-control" />
 
-						<label
-							value="${labels.acondicionador.apellido}" />
-						<textbox id="apellidoTxtbx" maxlength="50"
-							hflex="1" class="form-control" />
-
-						<label value="${labels.acondicionador.dni}" />
-						<intbox id="dniIntbx" maxlength="8"
-							constraint="no negative" hflex="1" class="form-control" />
+							<label value="${labels.acondicionador.dni}" />
+							<intbox id="dniIntbx" maxlength="8"
+								constraint="no negative" hflex="1" class="form-control" />
+						</n:div>
 					</n:div>
 
 					<!-- ............................................ -->
