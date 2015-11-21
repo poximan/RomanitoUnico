@@ -37,6 +37,7 @@ import org.zkoss.zul.Window;
 
 import romaneo.unificado.daos.BaseDao;
 import romaneo.unificado.daos.PagedQueryResponse;
+import romaneo.unificado.domain.Acondicionador;
 import romaneo.unificado.domain.BaseEntity;
 import romaneo.unificado.services.BaseService;
 
@@ -69,9 +70,17 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 			return;
 		}
 
+		/*
 		Map<String, Entity> arg = new HashMap<String, Entity>();
 		arg.put(SELECTED, (Entity) getListComponent().getSelectedItem().getAttribute(ENTITY));
 		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg)).doOverlapped();
+		*/
+		// TODO basepaged
+		BaseEntity entidad = (BaseEntity) getListComponent().getSelectedItem().getAttribute(ENTITY);
+		
+		
+		
+		Executions.sendRedirect("acondicionador/acondicionadorFormNuevo.zul?id="+entidad.getPK());
 	}
 
 	/** Eliminar */
