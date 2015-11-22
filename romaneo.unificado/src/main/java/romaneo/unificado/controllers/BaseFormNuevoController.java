@@ -37,15 +37,18 @@ import org.zkoss.zul.Timebox;
 
 import romaneo.unificado.domain.BaseEntity;
 
-public abstract class BaseFormController extends BaseController {
+public abstract class BaseFormNuevoController extends BaseController {
 	@SuppressWarnings("rawtypes")
 	protected Map args;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
+		
 		super.doAfterCompose(comp);
+		
 		args = Executions.getCurrent().getArg();
+		
 		try {
 			Class entityClass = Class.forName(getClassName());
 			BaseEntity entity = null;
@@ -380,4 +383,5 @@ public abstract class BaseFormController extends BaseController {
 	public void cancel() {
 		getWindowComponent().onClose();
 	}
+
 }

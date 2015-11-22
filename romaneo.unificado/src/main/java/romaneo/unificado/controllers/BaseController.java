@@ -37,11 +37,6 @@ public abstract class BaseController extends SelectorComposer<Component> {
 	private BaseService service = null;
 	private NavigationHistoryService<A, A, Div, Window> navigationHistoryService = new NavigationHistoryServiceImple();
 
-	@Override
-	public void doAfterCompose(Component comp) throws Exception {
-		super.doAfterCompose(comp);
-	}
-
 	@SuppressWarnings("rawtypes")
 	public BaseController() {
 		super();

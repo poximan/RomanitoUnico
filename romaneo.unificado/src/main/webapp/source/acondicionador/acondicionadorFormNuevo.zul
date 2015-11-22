@@ -1,6 +1,6 @@
 <?page contentType="text/html;charset=UTF-8"?>
 <zk xmlns:w="client" xmlns:n="xhtml">
-	<window id="acondicionadorFormWndw" closable="true"
+	<window id="acondicionadorFormNuevoWndw" closable="true"
 		action="show: slideDown;hide: slideUp">
 		<n:div
 			apply="romaneo.unificado.controllers.acondicionador.AcondicionadorFormNuevoController">

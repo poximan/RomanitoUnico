@@ -1,5 +1,9 @@
 package romaneo.unificado.controllers.acondicionador;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
@@ -17,7 +21,8 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
-import romaneo.unificado.controllers.BaseFormController;
+import romaneo.unificado.controllers.BaseFormNuevoController;
+import romaneo.unificado.controllers.FormPageName;
 import romaneo.unificado.domain.Acondicionador;
 import romaneo.unificado.domain.Localidad;
 import romaneo.unificado.exceptions.FieldResourceError;
@@ -29,7 +34,7 @@ import romaneo.unificado.services.acondicionador.AcondicionadorService;
  * 
  * @author hugo
  */
-public class AcondicionadorFormNuevoController extends BaseFormController {
+public class AcondicionadorFormNuevoController extends BaseFormNuevoController implements FormPageName {
 
 	private static final long serialVersionUID = 1L;
 
@@ -42,7 +47,7 @@ public class AcondicionadorFormNuevoController extends BaseFormController {
 	@Wire
 	private Bandbox cityBndbx;
 	@Wire
-	private Window acondicionadorFormWndw;
+	private Window acondicionadorFormNuevoWndw;
 	@Wire
 	private Intbox dniIntbx;
 
@@ -60,16 +65,27 @@ public class AcondicionadorFormNuevoController extends BaseFormController {
 
 	@Override
 	protected Window getWindowComponent() {
-		return acondicionadorFormWndw;
+		return acondicionadorFormNuevoWndw;
 	}
 
 	public void doAfterCompose(Component comp) throws Exception {
-		super.doAfterCompose(comp);
 
-		if ((acondicionador = (Acondicionador) Executions.getCurrent().getArg().get(SELECTED)) != null)
+		String string_id;
+
+		if ((string_id = Executions.getCurrent().getParameter("id")) != null) {
+
+			acondicionador = (Acondicionador) getService().find(Integer.valueOf(string_id));
+
+			Map<String, Serializable> arg = new HashMap<String, Serializable>();
+			arg.put(SELECTED, (Serializable) acondicionador);
+			Component comp2 = Executions.createComponents(getFormPageName(), getWindowComponent(), arg);
+
+			super.doAfterCompose(comp2);
+
 			fillFields(acondicionador);
 
-		else
+		} else
+
 			acondicionador = new Acondicionador();
 	}
 
@@ -152,4 +168,8 @@ public class AcondicionadorFormNuevoController extends BaseFormController {
 		}
 	}
 
+	@Override
+	public String getFormPageName() {
+		return "acondicionadorFormNuevo.zul";
+	}
 }

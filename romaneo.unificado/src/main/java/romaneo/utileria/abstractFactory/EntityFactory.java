@@ -7,6 +7,9 @@ package romaneo.utileria.abstractFactory;
 
 import romaneo.unificado.domain.Acondicionador;
 import romaneo.unificado.domain.BaseEntity;
+import romaneo.unificado.domain.Contratista;
+import romaneo.unificado.domain.Establecimiento;
+import romaneo.unificado.domain.Productor;
 
 /* ............................................. */
 /* ............................................. */
@@ -36,6 +39,15 @@ public class EntityFactory extends FabricaAbstracta {
 		if (objeto instanceof Acondicionador)
 			return (Acondicionador) objeto;
 
-		return (Acondicionador) objeto;
+		if (objeto instanceof Productor)
+			return (Productor) objeto;
+
+		if (objeto instanceof Establecimiento)
+			return (Establecimiento) objeto;
+
+		if (objeto instanceof Contratista)
+			return (Contratista) objeto;
+
+		return null;
 	}
 }

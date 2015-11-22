@@ -37,9 +37,10 @@ import org.zkoss.zul.Window;
 
 import romaneo.unificado.daos.BaseDao;
 import romaneo.unificado.daos.PagedQueryResponse;
-import romaneo.unificado.domain.Acondicionador;
 import romaneo.unificado.domain.BaseEntity;
 import romaneo.unificado.services.BaseService;
+import romaneo.utileria.abstractFactory.FabricaAbstracta;
+import romaneo.utileria.abstractFactory.ProductorFabricas;
 
 public abstract class BasePagedListController<Entity extends Serializable> extends BaseController {
 	private static final long serialVersionUID = 1L;
@@ -60,8 +61,7 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), null)).doOverlapped();
 	}
 
-	/** Editar */
-	@SuppressWarnings("unchecked")
+	/** Editar */	
 	@Listen("onClick = #editBttn")
 	public void edit() {
 
@@ -73,14 +73,17 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 		/*
 		Map<String, Entity> arg = new HashMap<String, Entity>();
 		arg.put(SELECTED, (Entity) getListComponent().getSelectedItem().getAttribute(ENTITY));
-		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg)).doOverlapped();
+		Window ventana = (Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg);
 		*/
-		// TODO basepaged
-		BaseEntity entidad = (BaseEntity) getListComponent().getSelectedItem().getAttribute(ENTITY);
 		
-		
-		
-		Executions.sendRedirect("acondicionador/acondicionadorFormNuevo.zul?id="+entidad.getPK());
+		FabricaAbstracta fabrica = ProductorFabricas.getFabrica();
+		BaseEntity objeto_entidad = fabrica.getEntity(getListComponent().getSelectedItem().getAttribute(ENTITY));
+
+		String string_entidad = objeto_entidad.getClass().getSimpleName().toLowerCase();
+		String direccion = string_entidad + "/" + string_entidad + "FormNuevo.zul?id="
+				+ objeto_entidad.getPK().toString();
+
+		Executions.sendRedirect(direccion);
 	}
 
 	/** Eliminar */
@@ -95,7 +98,8 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 		Map<String, Object> arg = new HashMap<String, Object>();
 		arg.put(DeleteFormController.ARG_SELECTED, getListComponent().getSelectedItem().getAttribute(ENTITY));
 		arg.put(DeleteFormController.ARG_SERVICE, getService());
-		((Window) Executions.createComponents(Labels.getLabel("url.deleteForm"), getWindowComponent(), arg)).doOverlapped();
+		((Window) Executions.createComponents(Labels.getLabel("url.deleteForm"), getWindowComponent(), arg))
+				.doOverlapped();
 	}
 
 	@SuppressWarnings("unchecked")

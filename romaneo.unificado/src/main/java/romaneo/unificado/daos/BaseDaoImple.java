@@ -102,7 +102,7 @@ public abstract class BaseDaoImple<Entity extends Serializable, Id extends Seria
 	}
 
 	/**
-	 * Busca un obvjeto por su Id
+	 * Busca un objeto por su Id
 	 * 
 	 * @param id
 	 *            Id que identifica al objeto
