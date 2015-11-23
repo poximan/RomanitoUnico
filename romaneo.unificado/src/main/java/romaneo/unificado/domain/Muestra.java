@@ -38,7 +38,7 @@ public class Muestra extends BaseEntity implements Serializable {
 	private Integer id;
 
 	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
-	@JoinColumn(name = "ROMANEO", referencedColumnName = "ID", nullable = false)
+	@JoinColumn(name = "ID_ROMANEO", referencedColumnName = "ID", nullable = false)
 	private Romaneo romaneo;
 
 	/* ............................................. */

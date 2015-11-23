@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -42,9 +43,11 @@ public class Establecimiento extends BaseEntity implements Serializable {
 	private String nombre_establecimiento;
 
 	@ManyToOne
+	@JoinColumn(name = "ID_PRODUCTOR")
 	private Productor productor;
 
 	@ManyToOne
+	@JoinColumn(name = "ID_PARTIDO")
 	private Partido partido;
 
 	/* ............................................. */

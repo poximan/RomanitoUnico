@@ -6,6 +6,7 @@
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -47,7 +48,7 @@ public class Rol extends BaseEntity implements Serializable {
 	private String descripcion;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_rol")
-	private List<UsuarioRol> lista_adUserRoles;
+	private List<UsuarioRol> lista_adUserRoles = new ArrayList<UsuarioRol>();
 
 	/* ............................................. */
 	/* ............................................. */

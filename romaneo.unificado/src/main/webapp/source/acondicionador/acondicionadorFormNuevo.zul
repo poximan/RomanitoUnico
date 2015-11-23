@@ -1,15 +1,31 @@
 <?page contentType="text/html;charset=UTF-8"?>
 <zk xmlns:w="client" xmlns:n="xhtml">
-	<window id="acondicionadorFormNuevoWndw" closable="true"
+	<window id="acondicionadorFormNuevoWndw"
 		action="show: slideDown;hide: slideUp">
-		<n:div
+		<div
 			apply="romaneo.unificado.controllers.acondicionador.AcondicionadorFormNuevoController">
 			<script src="/css/bootstrap/js/bootstrap.js" />
 			<style src="/css/bootstrap/css/bootstrap.css" />
 
+			<n:span class="pull-bottom">
+				<n:div class="btn-group">
+
+					<button id="aceptarBttn"
+						label="${labels.app.aceptar}" class="btn btn-sm btn-primary" />
+
+					<button id="volverBttn" label="${labels.app.volver}"
+						class="btn btn-sm btn-default" />
+
+					<button id="editarBttn" iconSclass="z-icon-edit"
+						label="${labels.app.editar}" class="btn btn-sm btn-default" />
+
+				</n:div>
+			</n:span>
+
 			<n:div>
 				<!-- Nav tabs -->
 				<n:ul class="nav nav-tabs" role="tablist">
+
 					<n:li role="presentation" class="active">
 						<n:a href="#general" aria-controls="general"
 							role="tab" data-toggle="tab">
@@ -17,13 +33,7 @@
 						</n:a>
 					</n:li>
 					<n:li role="presentation">
-						<n:a href="#domicilios"
-							aria-controls="domicilios" role="tab" data-toggle="tab">
-							${labels.app.domicilios }
-						</n:a>
-					</n:li>
-					<n:li role="presentation">
-						<n:a href="#contactos" aria-controls="contactos"
+						<n:a href="#contacto" aria-controls="contacto"
 							role="tab" data-toggle="tab">
 							${labels.app.contactos }
 						</n:a>
@@ -44,115 +54,85 @@
 					<n:div role="tabpanel" class="tab-pane active"
 						id="general">
 						<n:div class="col-md-12">
-							<label
-								value="${labels.acondicionador.nombre}" />
-							<textbox id="nombreTxtbx" maxlength="50"
-								hflex="1" class="form-control" />
+							<label value="${labels.persona.nombre}" />
+							<textbox id="nombreTxtbx" hflex="1"
+								readonly="true" class="form-control" />
 
-							<label
-								value="${labels.acondicionador.apellido}" />
-							<textbox id="apellidoTxtbx" maxlength="50"
-								hflex="1" class="form-control" />
+							<label value="${labels.persona.apellido}" />
+							<textbox id="apellidoTxtbx" hflex="1"
+								readonly="true" class="form-control" />
 
-							<label value="${labels.acondicionador.dni}" />
+							<label value="${labels.persona.dni}" />
 							<intbox id="dniIntbx" maxlength="8"
-								constraint="no negative" hflex="1" class="form-control" />
+								readonly="true" constraint="no negative" hflex="1"
+								class="form-control" />
+
+							<label value="${labels.persona.localidad}" />
+							<bandbox id="localidadBndbx" hflex="1"
+								readonly="true" autodrop="true" class="form-control">
+								<bandpopup>
+									<vbox>
+										<hbox align="center"
+											pack="center">
+											<textbox
+												id="localidadSearchTxtbx" placeholder="${labels.app.search}"
+												hflex="1" class="form-control" />
+										</hbox>
+										<listbox id="localidadesLstbx"
+											height="300px" width="300px" mold="paging" pageSize="10"
+											onSelect="localidadBndbx.value=self.selectedItem.label; localidadBndbx.close();"
+											visible="false">
+											<listhead>
+												<listheader
+													label="${labels.persona.localidad}" sort="auto" />
+											</listhead>
+										</listbox>
+									</vbox>
+								</bandpopup>
+							</bandbox>
+
 						</n:div>
 					</n:div>
 
 					<!-- ............................................ -->
-					<!-- ......... domicilios ....................... -->
+					<!-- ......... contacto ......................... -->
 					<!-- ............................................ -->
 					<n:div role="tabpanel" class="tab-pane"
-						id="domicilios">
+						id="contacto">
 						<n:div class="col-md-12">
 
-							<n:span class="pull-right">
-								<n:div class="btn-group">
-									<button id="newBttnVE"
-										iconSclass="z-icon-plus" label="${labels.app.create}"
-										class="btn btn-sm btn-primary" />
-									<button id="editBttnVE"
-										disabled="true" iconSclass="z-icon-edit"
-										label="${labels.app.edit}" class="btn btn-sm btn-default" />
-									<button id="deleteBttnVE"
-										disabled="true" iconSclass="z-icon-times"
-										label="${labels.app.delete}" class="btn btn-sm btn-default" />
-								</n:div>
-							</n:span>
-
-							<label value="Domicilios" />
-							<listbox id="domiciliosLstbx" rows="10">
+							<listbox id="contactosLstbx" rows="10">
 								<listhead>
-									<listheader label="Dirección"
-										hflex="min" align="center" />
+									<listheader
+										label="${labels.persona.email}" align="center" />
+									<listheader
+										label="${labels.persona.telefono}" align="center" />
+									<listheader
+										label="${labels.persona.direccion}" align="center" />
 								</listhead>
 							</listbox>
+
+							<n:div class="btn-group">
+
+								<button id="newBttnVE"
+									iconSclass="z-icon-plus" label="${labels.app.create}"
+									class="btn btn-sm btn-primary" />
+
+								<button id="deleteBttnVE"
+									disabled="true" iconSclass="z-icon-times"
+									label="${labels.app.delete}" class="btn btn-sm btn-default" />
+
+							</n:div>
+
 						</n:div>
 
 					</n:div>
-
+					<!-- ......... fin contacto ..................... -->
 					<!-- ............................................ -->
-					<!-- ......... contactos ........................ -->
-					<!-- ............................................ -->
-					<n:div role="tabpanel" class="tab-pane"
-						id="contactos">
-						<n:div class="col-md-12">
-							<n:span class="pull-right">
-								<n:div class="btn-group">
-									<button id="newBttnContactos"
-										iconSclass="z-icon-plus" label="${labels.app.create}"
-										class="btn btn-sm btn-primary" />
-									<button id="editBttnContactos"
-										disabled="true" iconSclass="z-icon-edit"
-										label="${labels.app.edit}" class="btn btn-sm btn-default" />
-									<button id="deleteBttnContoctas"
-										disabled="true" iconSclass="z-icon-times"
-										label="${labels.app.delete}" class="btn btn-sm btn-default" />
-								</n:div>
-							</n:span>
-						</n:div>
-
-						<label value="Telefonos" />
-						<listbox id="telefonoLstbx" rows="10">
-							<listhead>
-								<listheader label="Telefonos"
-									hflex="min" align="center" />
-							</listhead>
-						</listbox>
-
-						<label value="E-mail" />
-						<listbox id="emailLstbx " rows="10">
-							<listhead>
-								<listheader label="E-mail" hflex="min"
-									align="center" />
-							</listhead>
-						</listbox>
-
-					</n:div>
 
 				</n:div>
-
 			</n:div>
+		</div>
 
-			<n:div class="col-md-12">
-				<n:span class="pull-right">
-					<n:span class="pull-down">
-						<n:div class="btn-group">
-							<n:button class="btn" id="btnVolverVE">
-								Volver
-							</n:button>
-							<n:button class="btn" id="btnEditarVE">
-								Editar
-							</n:button>
-							<n:button class="btn" id="btnGuardarVE">
-								Guardar
-							</n:button>
-						</n:div>
-					</n:span>
-				</n:span>
-			</n:div>
-
-		</n:div>
 	</window>
 </zk>

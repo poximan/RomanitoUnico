@@ -1,5 +1,6 @@
 package romaneo.unificado.controllers;
 
+import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -14,7 +15,6 @@ import org.springframework.util.StringUtils;
 import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
@@ -38,18 +38,14 @@ import org.zkoss.zul.Timebox;
 import romaneo.unificado.domain.BaseEntity;
 
 public abstract class BaseFormNuevoController extends BaseController {
+
 	@SuppressWarnings("rawtypes")
 	protected Map args;
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public void doAfterCompose(Component comp) throws Exception {
-		
-		super.doAfterCompose(comp);
-		
-		args = Executions.getCurrent().getArg();
-		
+	public void doCompose(Component comp) throws Exception {
+
 		try {
+			@SuppressWarnings("rawtypes")
 			Class entityClass = Class.forName(getClassName());
 			BaseEntity entity = null;
 
@@ -58,8 +54,6 @@ public abstract class BaseFormNuevoController extends BaseController {
 				entity = (BaseEntity) args.get(SELECTED);
 			}
 			if (entity != null) {
-
-				getWindowComponent().setTitle("Editar");
 
 				if (entity.getClass().getName().equalsIgnoreCase(getClassName())) {
 
@@ -86,7 +80,9 @@ public abstract class BaseFormNuevoController extends BaseController {
 												.getAnnotation(javax.persistence.Entity.class) != null) {
 
 											String query = "FROM " + meth.getReturnType().getName() + " e";
-											List<? extends BaseEntity> q = getService().findQuery(query);
+
+											@SuppressWarnings("unchecked")
+											List<BaseEntity> q = getService().findQuery(query);
 
 											((Combobox) element).setModel(new ListModelList<BaseEntity>(q));
 											((Combobox) element).setItemRenderer(new ComboitemRenderer<BaseEntity>() {
@@ -142,7 +138,7 @@ public abstract class BaseFormNuevoController extends BaseController {
 					}
 				}
 			} else {
-				getWindowComponent().setTitle("Nuevo");
+
 				Component element;
 				Object value = null;
 				// Completo solamente los combobox
@@ -160,7 +156,9 @@ public abstract class BaseFormNuevoController extends BaseController {
 								if (meth.getReturnType().getAnnotation(javax.persistence.Entity.class) != null) {
 
 									String query = "FROM " + meth.getReturnType().getName() + " e";
-									List<? extends BaseEntity> q = getService().findQuery(query);
+
+									@SuppressWarnings("unchecked")
+									List<BaseEntity> q = getService().findQuery(query);
 
 									if (q != null) {
 										((Combobox) element).setModel(new ListModelList<BaseEntity>(q));
@@ -196,7 +194,11 @@ public abstract class BaseFormNuevoController extends BaseController {
 					}
 				}
 			}
-		} catch (IllegalArgumentException | ClassNotFoundException | SecurityException e) {
+		} catch (IllegalArgumentException | ClassNotFoundException |
+
+		SecurityException e)
+
+		{
 			e.printStackTrace();
 		}
 	}
@@ -215,7 +217,7 @@ public abstract class BaseFormNuevoController extends BaseController {
 		ex.printStackTrace();
 	}
 
-	@Listen("onClick = #acceptBttn")
+	@Listen("onClick = #aceptarBttn")
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void accept() {
 		try {
@@ -379,9 +381,12 @@ public abstract class BaseFormNuevoController extends BaseController {
 		}
 	}
 
-	@Listen("onClick = #cancelBttn")
+	@Listen("onClick = #volverBttn")
 	public void cancel() {
 		getWindowComponent().onClose();
 	}
 
+	public void setArgs(Map<String, Serializable> args) {
+		this.args = args;
+	}
 }

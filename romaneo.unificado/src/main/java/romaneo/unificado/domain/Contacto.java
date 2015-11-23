@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -45,6 +47,10 @@ public class Contacto implements Serializable {
 
 	@Column(name = "DIRECCION")
 	private String direccion;
+
+	@ManyToOne
+	@JoinColumn(name = "ID_PERSONA")
+	private Persona persona;
 
 	/* ............................................. */
 	/* ............................................. */

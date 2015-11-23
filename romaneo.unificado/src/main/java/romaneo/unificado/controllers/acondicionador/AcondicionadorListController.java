@@ -29,7 +29,7 @@ import romaneo.unificado.services.acondicionador.AcondicionadorService;
  * @author hugo
  */
 public class AcondicionadorListController extends BasePagedListController<Acondicionador> {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Wire
@@ -55,13 +55,22 @@ public class AcondicionadorListController extends BasePagedListController<Acondi
 		return new ListitemRenderer<Acondicionador>() {
 			@Override
 			public void render(Listitem item, Acondicionador acondicionador, int arg) throws Exception {
-				(new Listcell("" + acondicionador.getApellido() != null ? acondicionador.getApellido() : ""))
-						.setParent(item);
-				(new Listcell("" + acondicionador.getNombre() != null ? acondicionador.getNombre() : ""))
-						.setParent(item);
-				(new Listcell("" + acondicionador.getTelefono() != null ? acondicionador.getTelefono() : ""))
-						.setParent(item);
-				(new Listcell("" + acondicionador.getEmail() != null ? acondicionador.getEmail() : "")).setParent(item);
+
+				(new Listcell("" + acondicionador.getPersona().getApellido() != null
+						? acondicionador.getPersona().getApellido() : "")).setParent(item);
+
+				(new Listcell("" + acondicionador.getPersona().getNombre() != null
+						? acondicionador.getPersona().getNombre() : "")).setParent(item);
+
+				(new Listcell("" + acondicionador.getLocalidad().getNombre_localidad() != null
+						? acondicionador.getLocalidad().getNombre_localidad() : "")).setParent(item);
+
+				try {
+					(new Listcell("" + acondicionador.getPersona().getContactos().get(0).getTelefono() != null
+							? acondicionador.getPersona().getContactos().get(0).getTelefono() : "")).setParent(item);
+				} catch (IndexOutOfBoundsException excepcion) {
+				}
+
 				item.setAttribute(ENTITY, acondicionador);
 			}
 		};

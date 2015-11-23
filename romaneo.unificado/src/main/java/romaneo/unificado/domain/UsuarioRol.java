@@ -32,12 +32,12 @@ public class UsuarioRol extends BaseEntity implements Serializable {
 	@EmbeddedId
 	protected UsuarioRolPK usuarioRolPK;
 
-	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
 	private Usuario id_usuario;
 
-	@JoinColumn(name = "ID_ROL", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "ID_ROL", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
 	private Rol id_rol;
 
 	/* ............................................. */

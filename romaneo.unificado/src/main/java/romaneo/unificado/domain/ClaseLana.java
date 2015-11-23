@@ -6,6 +6,7 @@
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Basic;
@@ -48,7 +49,7 @@ public class ClaseLana extends BaseEntity implements Serializable {
 	private String descripcion;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private Collection<ClaseLanaTipoTarjeta> tarjetas;
+	private Collection<ClaseLanaTipoTarjeta> tarjetas = new ArrayList<ClaseLanaTipoTarjeta>();
 
 	/* ............................................. */
 	/* ............................................. */

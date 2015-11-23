@@ -38,19 +38,19 @@ public class Fardo extends BaseEntity implements Serializable {
 	private Integer id;
 
 	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
-	@JoinColumn(name = "TIPO_TARJETA", referencedColumnName = "ID", nullable = false)
+	@JoinColumn(name = "ID_TIPO_TARJETA", referencedColumnName = "ID", nullable = false)
 	private TipoTarjeta tipoTarjeta;
 
 	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
-	@JoinColumn(name = "CLASE_LANA", referencedColumnName = "ID", nullable = false)
+	@JoinColumn(name = "ID_CLASE_LANA", referencedColumnName = "ID", nullable = false)
 	private ClaseLana claseLana;
 
 	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
-	@JoinColumn(name = "CATEGORIA_ANIMAL", referencedColumnName = "ID", nullable = false)
+	@JoinColumn(name = "ID_CATEGORIA_ANIMAL", referencedColumnName = "ID", nullable = false)
 	private CategoriaAnimal categoriaAnimal;
 
 	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
-	@JoinColumn(name = "ROMANEO", referencedColumnName = "ID", nullable = false)
+	@JoinColumn(name = "ID_ROMANEO", referencedColumnName = "ID", nullable = false)
 	private Romaneo romaneo;
 
 	@Column(name = "PESO", nullable = true)

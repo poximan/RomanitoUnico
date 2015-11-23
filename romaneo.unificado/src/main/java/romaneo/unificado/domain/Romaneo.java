@@ -6,6 +6,7 @@
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 
@@ -44,24 +45,24 @@ public class Romaneo extends BaseEntity implements Serializable {
 	private Integer id;
 
 	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
-	@JoinColumn(name = "ACONDICIONADOR", referencedColumnName = "ID", nullable = false)
+	@JoinColumn(name = "ID_ACONDICIONADOR", referencedColumnName = "ID", nullable = false)
 	private Acondicionador acondicionador;
 
 	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
-	@JoinColumn(name = "ESTABLECIMIENTO", referencedColumnName = "ID", nullable = false)
+	@JoinColumn(name = "ID_ESTABLECIMIENTO", referencedColumnName = "ID", nullable = false)
 	private Establecimiento establecimiento;
 
 	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
-	@JoinColumn(name = "CONTRATISTA", referencedColumnName = "ID", nullable = false)
+	@JoinColumn(name = "ID_CONTRATISTA", referencedColumnName = "ID", nullable = false)
 	private Contratista contratista;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@Column(name = "FARDOS", nullable = true)
-	private Collection<Fardo> fardos;
+	private Collection<Fardo> fardos = new ArrayList<Fardo>();
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@Column(name = "MUESTRAS", nullable = true)
-	private Collection<Muestra> muestras;
+	private Collection<Muestra> muestras = new ArrayList<Muestra>();
 
 	@Column(name = "FECHA_INICIO", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)

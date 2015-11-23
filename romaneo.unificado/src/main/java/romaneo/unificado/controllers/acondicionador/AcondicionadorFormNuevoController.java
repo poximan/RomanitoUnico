@@ -8,7 +8,6 @@ import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Bandbox;
@@ -41,11 +40,11 @@ public class AcondicionadorFormNuevoController extends BaseFormNuevoController i
 	@Wire
 	private Textbox nombreTxtbx, apellidoTxtbx;
 	@Wire
-	private Textbox citySearchTxtbx;
+	private Textbox localidadSearchTxtbx;
 	@Wire
-	private Listbox citiesLstbx;
+	private Listbox localidadesLstbx, contactosLstbx;
 	@Wire
-	private Bandbox cityBndbx;
+	private Bandbox localidadBndbx;
 	@Wire
 	private Window acondicionadorFormNuevoWndw;
 	@Wire
@@ -70,23 +69,24 @@ public class AcondicionadorFormNuevoController extends BaseFormNuevoController i
 
 	public void doAfterCompose(Component comp) throws Exception {
 
+		super.doAfterCompose(comp);
+
 		String string_id;
 
 		if ((string_id = Executions.getCurrent().getParameter("id")) != null) {
 
 			acondicionador = (Acondicionador) getService().find(Integer.valueOf(string_id));
-
-			Map<String, Serializable> arg = new HashMap<String, Serializable>();
-			arg.put(SELECTED, (Serializable) acondicionador);
-			Component comp2 = Executions.createComponents(getFormPageName(), getWindowComponent(), arg);
-
-			super.doAfterCompose(comp2);
-
+			localidadBndbx.setValue(acondicionador.getLocalidad().getNombre_localidad());
+			localidadBndbx.setAttribute(ENTITY, acondicionador.getLocalidad());
 			fillFields(acondicionador);
 
-		} else
+		}
 
-			acondicionador = new Acondicionador();
+		Map<String, Serializable> arg = new HashMap<String, Serializable>();
+		arg.put(SELECTED, (Serializable) acondicionador);
+
+		setArgs(arg);
+		doCompose(comp);
 	}
 
 	/**
@@ -97,43 +97,52 @@ public class AcondicionadorFormNuevoController extends BaseFormNuevoController i
 	 *            el formulario.
 	 */
 	private void fillFields(Acondicionador acondicionador) {
-		nombreTxtbx.setValue(acondicionador.getNombre());
-		apellidoTxtbx.setValue(acondicionador.getApellido());
-		dniIntbx.setValue(acondicionador.getDni());
+		nombreTxtbx.setValue(acondicionador.getPersona().getNombre());
+		apellidoTxtbx.setValue(acondicionador.getPersona().getApellido());
+		dniIntbx.setValue(acondicionador.getPersona().getDni());
 	}
 
-	@Listen("onOK = #citySearchTxtbx")
+	@Listen("onOK = #localidadSearchTxtbx")
 	public void findCity(Event event) {
-		citiesLstbx.setVisible(true);
-		citiesLstbx
-				.setModel(new ListModelList<Localidad>(getLocalidadService().findByName(citySearchTxtbx.getValue())));
-		citiesLstbx.setItemRenderer(new ListitemRenderer<Localidad>() {
+		localidadesLstbx.setVisible(true);
+		localidadesLstbx.setModel(
+				new ListModelList<Localidad>(getLocalidadService().findByName(localidadSearchTxtbx.getValue())));
+		localidadesLstbx.setItemRenderer(new ListitemRenderer<Localidad>() {
 			@Override
 			public void render(Listitem item, Localidad city, int arg2) throws Exception {
 				item.setLabel(city.getNombre_localidad());
 				item.setAttribute(ENTITY, city);
 			}
 		});
-		citiesLstbx.renderAll();
+		localidadesLstbx.renderAll();
 	}
 
-	@Listen("onSelect = #citiesLstbx")
+	@Listen("onSelect = #localidadesLstbx")
 	public void selectCity() {
-		if (citiesLstbx.getSelectedItem() == null) {
+		if (localidadesLstbx.getSelectedItem() == null) {
 			return;
 		}
-		cityBndbx.setAttribute(ENTITY, citiesLstbx.getSelectedItem().getAttribute(ENTITY));
+		localidadBndbx.setAttribute(ENTITY, localidadesLstbx.getSelectedItem().getAttribute(ENTITY));
+	}
+
+	@Listen("onClick = #editarBttn")
+	public void edit() {
+
+		nombreTxtbx.setReadonly(false);
+		apellidoTxtbx.setReadonly(false);
+		localidadBndbx.setReadonly(false);
+		dniIntbx.setReadonly(false);
 	}
 
 	@SuppressWarnings("unchecked")
-	@Listen("onClick = #acceptBttn")
+	@Listen("onClick = #aceptarBttn")
 	@Override
 	public void accept() {
 
-		acondicionador.setNombre(nombreTxtbx.getValue());
-		acondicionador.setApellido(apellidoTxtbx.getValue());
-		acondicionador.setDni(dniIntbx.getValue());
-		acondicionador.setLocalidad((Localidad) cityBndbx.getAttribute(ENTITY));
+		acondicionador.getPersona().setNombre(nombreTxtbx.getValue());
+		acondicionador.getPersona().setApellido(apellidoTxtbx.getValue());
+		acondicionador.getPersona().setDni(dniIntbx.getValue());
+		acondicionador.setLocalidad((Localidad) localidadBndbx.getAttribute(ENTITY));
 
 		try {
 			if (acondicionador.getId() == null) {
@@ -142,23 +151,24 @@ public class AcondicionadorFormNuevoController extends BaseFormNuevoController i
 				getService().update(acondicionador);
 			}
 			// Refrescar la lista
-			Events.sendEvent("onRefresh", getWindowComponent().getParent(), null);
+			//Events.sendEvent("onRefresh", getWindowComponent().getParent(), null);
 			getWindowComponent().onClose();
+
 		} catch (ValidationException e) {
 			e.printStackTrace();
 			// Errores de validacion
 			for (FieldResourceError fieldError : e.getError().getFieldErrors()) {
-				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.nombre"))) {
+				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("persona.nombre"))) {
 					nombreTxtbx.setErrorMessage(fieldError.getMessage());
 				}
-				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.apellido"))) {
+				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("persona.apellido"))) {
 					apellidoTxtbx.setErrorMessage(fieldError.getMessage());
 				}
-				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.dni"))) {
+				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("persona.dni"))) {
 					dniIntbx.setErrorMessage(fieldError.getMessage());
 				}
-				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("acondicionador.city"))) {
-					cityBndbx.setErrorMessage(fieldError.getMessage());
+				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("persona.localidad"))) {
+					localidadBndbx.setErrorMessage(fieldError.getMessage());
 				}
 			}
 		} catch (Exception e) {

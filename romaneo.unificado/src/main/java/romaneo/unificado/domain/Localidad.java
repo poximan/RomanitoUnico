@@ -43,8 +43,8 @@ public class Localidad extends BaseEntity implements Serializable {
 	@Column(name = "COD_POSTAL")
 	private String codigo_postal;
 
-	@JoinColumn(name = "ID_PARTIDO", referencedColumnName = "id")
 	@ManyToOne
+	@JoinColumn(name = "ID_PARTIDO")
 	private Partido partido;
 
 	/* ............................................. */

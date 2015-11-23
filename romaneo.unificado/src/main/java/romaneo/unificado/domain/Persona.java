@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,7 +48,7 @@ public class Persona extends BaseEntity implements Serializable {
 	@Column(name = "APELLIDO")
 	private String apellido;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "persona")
 	private List<Contacto> contactos = new ArrayList<Contacto>();
 
 	/* ............................................. */
@@ -75,10 +75,50 @@ public class Persona extends BaseEntity implements Serializable {
 		return id;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public Integer getDni() {
+		return dni;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public List<Contacto> getContactos() {
+		return contactos;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setDni(Integer dni) {
+		this.dni = dni;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public void setContactos(List<Contacto> contactos) {
+		this.contactos = contactos;
+	}
 
 	@Override
 	public void setPK(Object id) {

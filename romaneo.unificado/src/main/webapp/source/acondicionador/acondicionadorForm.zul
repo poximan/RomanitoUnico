@@ -2,7 +2,7 @@
 <zk xmlns:w="client" xmlns:n="xhtml">
 	<window id="acondicionadorFormWndw" border="normal" width="450px"
 		closable="true"
-		apply="romaneo.unificado.controllers.acondicionador.AcondicionadorFormNuevoController">
+		apply="romaneo.unificado.controllers.acondicionador.AcondicionadorFormController">
 
 		<style src="/css/form.css" />
 
@@ -16,44 +16,44 @@
 				<rows>
 
 					<row sclass="row-form">
-						<label value="${labels.acondicionador.nombre}" />
+						<label value="${labels.persona.nombre}" />
 						<textbox id="nombreTxtbx" maxlength="50"
 							hflex="1" class="form-control" />
 					</row>
 
 					<row sclass="row-form">
 						<label
-							value="${labels.acondicionador.apellido}" />
+							value="${labels.persona.apellido}" />
 						<textbox id="apellidoTxtbx" maxlength="50"
 							hflex="1" class="form-control" />
 					</row>
 
 					<row sclass="row-form">
-						<label value="${labels.acondicionador.dni}" />
+						<label value="${labels.persona.dni}" />
 						<intbox id="dniIntbx" maxlength="8"
 							constraint="no negative" hflex="1" class="form-control" />
 					</row>
 
 					<row sclass="row-form">
-						<label value="${labels.acondicionador.phones}" />
+						<label value="${labels.persona.telefono}" />
 						<textbox id="phonesTxtbx" maxlength="30"
 							hflex="1" class="form-control" />
 					</row>
 
 					<row sclass="row-form">
-						<label value="${labels.acondicionador.email}" />
+						<label value="${labels.persona.email}" />
 						<textbox id="emailTxtbx" maxlength="70"
 							hflex="1" class="form-control" />
 					</row>
 
 					<row sclass="row-form">
-						<label value="${labels.acondicionador.address}" />
+						<label value="${labels.persona.direccion}" />
 						<textbox id="addressTxtbx" maxlength="150"
 							hflex="1" class="form-control" />
 					</row>
 
 					<row sclass="row-form">
-						<label value="${labels.acondicionador.city}" />
+						<label value="${labels.persona.localidad}" />
 						<bandbox id="cityBndbx" hflex="1"
 							readonly="true" autodrop="true">
 							<bandpopup>
@@ -70,7 +70,7 @@
 										visible="false">
 										<listhead>
 											<listheader
-												label="${labels.acondicionador.city}" sort="auto" />
+												label="${labels.persona.localidad}" sort="auto" />
 										</listhead>
 									</listbox>
 								</vbox>

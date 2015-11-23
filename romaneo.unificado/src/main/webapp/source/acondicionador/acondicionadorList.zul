@@ -47,15 +47,15 @@
 				<n:div class="filters-panel panel">
 					<n:div class="row">
 						<n:div class="col-md-3">
-							<textbox id="filterByApellidoTxtbx" placeholder="${labels.acondicionador.apellido}"
+							<textbox id="filterByApellidoTxtbx" placeholder="${labels.persona.apellido}"
 								class="form-control" />
 						</n:div>
 						<n:div class="col-md-3">
-							<textbox id="filterByNombreTxtbx" placeholder="${labels.acondicionador.nombre}"
+							<textbox id="filterByNombreTxtbx" placeholder="${labels.persona.nombre}"
 								class="form-control" />
 						</n:div>
 						<n:div class="col-md-3">
-							<intbox id="filterByDni" placeholder="${labels.acondicionador.dni}"
+							<intbox id="filterByDni" placeholder="${labels.persona.dni}"
 								class="form-control" />
 						</n:div>
 					</n:div>
@@ -78,13 +78,13 @@
 
 				<listbox id="acondicionadoresLstbx" rows="10">
 					<listhead>
-						<listheader label="${labels.acondicionador.apellido}"
+						<listheader label="${labels.persona.apellido}"
 							hflex="min" align="center" />
-						<listheader label="${labels.acondicionador.nombre}"
+						<listheader label="${labels.persona.nombre}"
 							align="center" />
-						<listheader label="${labels.acondicionador.phones}"
+						<listheader label="${labels.persona.telefono}"
 							align="center" />
-						<listheader label="${labels.acondicionador.email}"
+						<listheader label="${labels.persona.email}"
 							align="center" />
 					</listhead>
 				</listbox>

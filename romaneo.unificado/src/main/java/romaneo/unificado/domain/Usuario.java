@@ -6,6 +6,7 @@
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -56,7 +57,7 @@ public class Usuario extends BaseEntity implements Serializable {
 	private String descripcion;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_usuario")
-	private List<UsuarioRol> roles;
+	private List<UsuarioRol> roles = new ArrayList<UsuarioRol>();
 
 	@Basic(optional = false)
 	@Column(name = "ESTA_ACTIVO", nullable = false)

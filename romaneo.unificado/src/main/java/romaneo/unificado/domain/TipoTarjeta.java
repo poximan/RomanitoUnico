@@ -6,6 +6,7 @@
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -43,7 +44,7 @@ public class TipoTarjeta extends BaseEntity implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@Column(name = "CLASES_LANA", nullable = true)
-	private Collection<ClaseLanaTipoTarjeta> clases_Lana;
+	private Collection<ClaseLanaTipoTarjeta> clases_Lana = new ArrayList<ClaseLanaTipoTarjeta>();
 
 	/* ............................................. */
 	/* ............................................. */

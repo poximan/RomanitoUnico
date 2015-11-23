@@ -26,8 +26,8 @@ public class AcondicionadorServiceImple extends BaseServiceImple<Acondicionador,
 
 		// Agrego un item para obtener todas
 		Acondicionador allDrv = new Acondicionador();
-		allDrv.setNombre(Labels.getLabel("allMasc"));
-		allDrv.setApellido("");
+		allDrv.getPersona().setNombre(Labels.getLabel("allMasc"));
+		allDrv.getPersona().setApellido("");
 		acondicionadores.add(allDrv);
 
 		return acondicionadores;
@@ -51,15 +51,15 @@ public class AcondicionadorServiceImple extends BaseServiceImple<Acondicionador,
 	public void validate(Acondicionador entity) throws ValidationException {
 		ResourceError error = new ResourceError();
 
-		if (entity.getNombre() == null || entity.getNombre().isEmpty()) {
-			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.nombre"),
-					null, Labels.getLabel("acondicionador.firstNameError")));
+		if (entity.getPersona().getNombre() == null || entity.getPersona().getNombre().isEmpty()) {
+			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.nombre"), null,
+					Labels.getLabel("acondicionador.firstNameError")));
 		}
-		if (entity.getApellido() == null || entity.getApellido().isEmpty()) {
+		if (entity.getPersona().getApellido() == null || entity.getPersona().getApellido().isEmpty()) {
 			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.apellido"),
 					null, Labels.getLabel("acondicionador.lastNameError")));
 		}
-		if (entity.getDni() == null) {
+		if (entity.getPersona().getDni() == null) {
 			error.addFieldError(new FieldResourceError("acondicionador", Labels.getLabel("acondicionador.dni"), null,
 					Labels.getLabel("acondicionador.dniError")));
 		}

@@ -40,8 +40,8 @@ public class Partido extends BaseEntity implements Serializable {
 	@Column(name = "NOMBRE")
 	private String nombre;
 
-	@JoinColumn(name = "PROVINCIA", referencedColumnName = "id")
 	@ManyToOne
+	@JoinColumn(name = "ID_PROVINCIA", referencedColumnName = "id")
 	private Provincia provincia;
 
 	/* ............................................. */

@@ -98,6 +98,12 @@ public class Productor extends BaseEntity implements Serializable {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
+	@Override
+	public Object getPK() {
+
+		return id;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -106,16 +112,20 @@ public class Productor extends BaseEntity implements Serializable {
 		return nombre_productor;
 	}
 
-	@Override
-	public Object getPK() {
-
-		return id;
+	public List<Establecimiento> getEstablecimientos() {
+		return establecimientos;
 	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
+
+	@Override
+	public void setPK(Object id) {
+
+		this.id = (Integer) id;
+	}
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -125,9 +135,7 @@ public class Productor extends BaseEntity implements Serializable {
 		this.nombre_productor = nombre_productor;
 	}
 
-	@Override
-	public void setPK(Object id) {
-
-		this.id = (Integer) id;
+	public void setEstablecimientos(List<Establecimiento> establecimientos) {
+		this.establecimientos = establecimientos;
 	}
 }

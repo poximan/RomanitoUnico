@@ -83,12 +83,12 @@ public class AcondicionadorFormController extends BaseFormController {
 	 *            el formulario.
 	 */
 	private void fillFields(Acondicionador acondicionador) {
-		nombreTxtbx.setValue(acondicionador.getNombre());
-		apellidoTxtbx.setValue(acondicionador.getApellido());
-		phonesTxtbx.setValue(acondicionador.getTelefono());
-		emailTxtbx.setValue(acondicionador.getEmail());
-		addressTxtbx.setValue(acondicionador.getDireccion());
-		dniIntbx.setValue(acondicionador.getDni());
+		nombreTxtbx.setValue(acondicionador.getPersona().getNombre());
+		apellidoTxtbx.setValue(acondicionador.getPersona().getApellido());
+		phonesTxtbx.setValue(acondicionador.getPersona().getContactos().get(0).getTelefono());
+		emailTxtbx.setValue(acondicionador.getPersona().getContactos().get(0).getEmail());
+		addressTxtbx.setValue(acondicionador.getPersona().getContactos().get(0).getDireccion());
+		dniIntbx.setValue(acondicionador.getPersona().getDni());
 	}
 
 	@Listen("onOK = #citySearchTxtbx")
@@ -119,12 +119,12 @@ public class AcondicionadorFormController extends BaseFormController {
 	@Override
 	public void accept() {
 
-		acondicionador.setNombre(nombreTxtbx.getValue());
-		acondicionador.setApellido(apellidoTxtbx.getValue());
-		acondicionador.setDni(dniIntbx.getValue());
-		acondicionador.setTelefono(phonesTxtbx.getValue());
-		acondicionador.setEmail(emailTxtbx.getValue());
-		acondicionador.setDireccion(addressTxtbx.getValue());
+		acondicionador.getPersona().setNombre(nombreTxtbx.getValue());
+		acondicionador.getPersona().setApellido(apellidoTxtbx.getValue());
+		acondicionador.getPersona().setDni(dniIntbx.getValue());
+		acondicionador.getPersona().getContactos().get(0).setTelefono(phonesTxtbx.getValue());
+		acondicionador.getPersona().getContactos().get(0).setEmail(emailTxtbx.getValue());
+		acondicionador.getPersona().getContactos().get(0).setDireccion(addressTxtbx.getValue());
 		acondicionador.setLocalidad((Localidad) cityBndbx.getAttribute(ENTITY));
 
 		try {

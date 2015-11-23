@@ -61,7 +61,7 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), null)).doOverlapped();
 	}
 
-	/** Editar */	
+	/** Editar */
 	@Listen("onClick = #editBttn")
 	public void edit() {
 
@@ -74,7 +74,7 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 		Map<String, Entity> arg = new HashMap<String, Entity>();
 		arg.put(SELECTED, (Entity) getListComponent().getSelectedItem().getAttribute(ENTITY));
 		Window ventana = (Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg);
-		*/
+		*/		
 		
 		FabricaAbstracta fabrica = ProductorFabricas.getFabrica();
 		BaseEntity objeto_entidad = fabrica.getEntity(getListComponent().getSelectedItem().getAttribute(ENTITY));
@@ -83,7 +83,7 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 		String direccion = string_entidad + "/" + string_entidad + "FormNuevo.zul?id="
 				+ objeto_entidad.getPK().toString();
 
-		Executions.sendRedirect(direccion);
+		Executions.sendRedirect(direccion);		
 	}
 
 	/** Eliminar */

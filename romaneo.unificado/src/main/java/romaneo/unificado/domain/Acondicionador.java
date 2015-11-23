@@ -7,7 +7,6 @@ package romaneo.unificado.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,9 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 /* ............................................. */
 /* ............................................. */
@@ -40,35 +38,12 @@ public class Acondicionador extends BaseEntity implements Serializable {
 	@Column(name = "ID")
 	private Integer id;
 
-	@Column(name = "NOMBRE", length = 50)
-	private String nombre;
+	@OneToOne
+	@JoinColumn(name = "ID_PERSONA")
+	private Persona persona;
 
-	@Basic(optional = false)
-	@Column(name = "APELLIDO", nullable = false, length = 50)
-	@NotNull
-	private String apellido;
-
-	@Basic(optional = false)
-	@Column(name = "DIRECCION", nullable = false, length = 150)
-	@NotNull
-	@Pattern(regexp = "[A-Za-z0-9-_:., ]{1,150}")
-	private String direccion;
-
-	@Basic(optional = false)
-	@Column(name = "DNI", nullable = false)
-	@NotNull
-	private Integer dni;
-
-	@Column(name = "TELEFONO", length = 30)
-	@Pattern(regexp = "[A-Za-z0-9-_:., ]{1,30}")
-	private String telefono;
-
-	@Column(name = "EMAIL", length = 70)
-	private String email;
-
-	@JoinColumn(name = "ID_LOCALIDAD", referencedColumnName = "id", nullable = false)
-	@ManyToOne(optional = false)
-	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "ID_LOCALIDAD")
 	private Localidad localidad;
 
 	/* ............................................. */
@@ -103,10 +78,6 @@ public class Acondicionador extends BaseEntity implements Serializable {
 		return true;
 	}
 
-	public String getFullName() {
-		return apellido + " " + nombre;
-	}
-
 	public enum Filters {
 
 		BY_NOMBRE("nombre"), BY_APELLIDO("apellido"), BY_DNI("dni");
@@ -136,28 +107,8 @@ public class Acondicionador extends BaseEntity implements Serializable {
 		return id;
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public Integer getDni() {
-		return dni;
-	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public String getEmail() {
-		return email;
+	public Persona getPersona() {
+		return persona;
 	}
 
 	public Localidad getLocalidad() {
@@ -169,47 +120,20 @@ public class Acondicionador extends BaseEntity implements Serializable {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
-	public void setDni(Integer dni) {
-		this.dni = dni;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setLocalidad(Localidad localidad) {
-		this.localidad = localidad;
-	}
-
 	@Override
 	public void setPK(Object Id) {
 		this.id = (Integer) Id;
 	}
-	
-	@Override
-	public String toString()
-	{
-		return "Acondicionador [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
-				+ ", dni=" + dni + ", telefono=" + telefono + ", email=" + email + ", localidad=" + localidad + "]";
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	public void setLocalidad(Localidad localidad) {
+		this.localidad = localidad;
 	}
 }

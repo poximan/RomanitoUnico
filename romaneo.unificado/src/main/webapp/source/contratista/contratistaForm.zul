@@ -16,7 +16,7 @@
 				<rows>
 
 					<row sclass="row-form">
-						<label value="${labels.contratista.nombre}" />
+						<label value="${labels.persona.nombre}" />
 						<textbox id="nombreTxtbx" maxlength="50" hflex="1"
 							class="form-control" />
 					</row>

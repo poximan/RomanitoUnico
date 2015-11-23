@@ -32,12 +32,12 @@ public class ClaseLanaTipoTarjeta extends BaseEntity implements Serializable {
 	@EmbeddedId
 	protected ClaseLanaTipoTarjetaPK clase_lana_tipo_tarjeta_PK;
 
-	@JoinColumn(name = "ID_CLASE_LANA", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "ID_CLASE_LANA", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
 	private ClaseLana id_clase_lana;
 
-	@JoinColumn(name = "ID_TIPO_TARJETA", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "ID_TIPO_TARJETA", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
 	private TipoTarjeta id_tipo_tarjeta;
 
 	/* ............................................. */
