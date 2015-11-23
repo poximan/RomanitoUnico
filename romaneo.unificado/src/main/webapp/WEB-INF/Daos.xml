@@ -7,6 +7,10 @@
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 
+	<beans:bean id="ContactoDao" class="romaneo.unificado.daos.ContactoDaoImple">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+
 	<beans:bean id="AcondicionadorDao"
 		class="romaneo.unificado.daos.AcondicionadorDaoImple">
 		<beans:property name="sessionFactory" ref="sessionFactory" />

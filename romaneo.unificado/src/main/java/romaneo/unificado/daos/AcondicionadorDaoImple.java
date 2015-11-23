@@ -87,5 +87,4 @@ public class AcondicionadorDaoImple extends BaseDaoImple<Acondicionador, Integer
 
 		return response;
 	}
-
 }

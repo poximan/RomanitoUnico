@@ -112,6 +112,30 @@
 								</listhead>
 							</listbox>
 
+							<div
+								class="panel-footer custom-list-paging">
+								<n:div class="row">
+									<n:div class="col-md-3">
+										<paging id="contactosPgn"
+											pageSize="10" />
+									</n:div>
+									<n:div class="col-md-4">
+										<hbox align="center">
+											<label
+												value="${labels.app.listSize}" />
+											<combobox
+												id="contactosPageSizeCmbbx" width="80px"
+												sclass="input-group" value="5">
+												<comboitem value="5"
+													label="5" />
+												<comboitem value="10"
+													label="10" />
+											</combobox>
+										</hbox>
+									</n:div>
+								</n:div>
+							</div>
+
 							<n:div class="btn-group">
 
 								<button id="newBttnVE"

@@ -35,6 +35,7 @@ public abstract class BaseController extends SelectorComposer<Component> {
 
 	@SuppressWarnings("rawtypes")
 	private BaseService service = null;
+
 	private NavigationHistoryService<A, A, Div, Window> navigationHistoryService = new NavigationHistoryServiceImple();
 
 	@SuppressWarnings("rawtypes")
@@ -86,7 +87,7 @@ public abstract class BaseController extends SelectorComposer<Component> {
 	@SuppressWarnings("rawtypes")
 	protected BaseService getService() {
 		return service;
-	}
+	}	
 
 	public Date timeToZero(Date date) {
 		Calendar cal = Calendar.getInstance(); // get calendar instance

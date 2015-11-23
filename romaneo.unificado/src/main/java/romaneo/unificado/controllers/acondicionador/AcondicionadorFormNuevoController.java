@@ -1,7 +1,9 @@
 package romaneo.unificado.controllers.acondicionador;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.zkoss.util.resource.Labels;
@@ -11,18 +13,22 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Bandbox;
+import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Intbox;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
+import org.zkoss.zul.Listcell;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.ListitemRenderer;
 import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Paging;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
-import romaneo.unificado.controllers.BaseFormNuevoController;
+import romaneo.unificado.controllers.BaseTabFormList;
 import romaneo.unificado.controllers.FormPageName;
 import romaneo.unificado.domain.Acondicionador;
+import romaneo.unificado.domain.Contacto;
 import romaneo.unificado.domain.Localidad;
 import romaneo.unificado.exceptions.FieldResourceError;
 import romaneo.unificado.exceptions.ValidationException;
@@ -33,10 +39,16 @@ import romaneo.unificado.services.acondicionador.AcondicionadorService;
  * 
  * @author hugo
  */
-public class AcondicionadorFormNuevoController extends BaseFormNuevoController implements FormPageName {
+public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicionador> implements FormPageName {
 
 	private static final long serialVersionUID = 1L;
 
+	protected List<Contacto> all = new ArrayList<Contacto>();
+
+	@Wire
+	private Combobox contactosPageSizeCmbbx;
+	@Wire
+	private Paging contactosPgn;	
 	@Wire
 	private Textbox nombreTxtbx, apellidoTxtbx;
 	@Wire
@@ -49,8 +61,10 @@ public class AcondicionadorFormNuevoController extends BaseFormNuevoController i
 	private Window acondicionadorFormNuevoWndw;
 	@Wire
 	private Intbox dniIntbx;
-
+	
 	private Acondicionador acondicionador;
+
+	protected boolean executeAndRenderPagedQueryInitial = true;
 
 	@Override
 	public String getClassName() {
@@ -61,12 +75,7 @@ public class AcondicionadorFormNuevoController extends BaseFormNuevoController i
 	protected String getEntityService() {
 		return AcondicionadorService.class.getSimpleName();
 	}
-
-	@Override
-	protected Window getWindowComponent() {
-		return acondicionadorFormNuevoWndw;
-	}
-
+	
 	public void doAfterCompose(Component comp) throws Exception {
 
 		super.doAfterCompose(comp);
@@ -79,7 +88,6 @@ public class AcondicionadorFormNuevoController extends BaseFormNuevoController i
 			localidadBndbx.setValue(acondicionador.getLocalidad().getNombre_localidad());
 			localidadBndbx.setAttribute(ENTITY, acondicionador.getLocalidad());
 			fillFields(acondicionador);
-
 		}
 
 		Map<String, Serializable> arg = new HashMap<String, Serializable>();
@@ -104,6 +112,7 @@ public class AcondicionadorFormNuevoController extends BaseFormNuevoController i
 
 	@Listen("onOK = #localidadSearchTxtbx")
 	public void findCity(Event event) {
+
 		localidadesLstbx.setVisible(true);
 		localidadesLstbx.setModel(
 				new ListModelList<Localidad>(getLocalidadService().findByName(localidadSearchTxtbx.getValue())));
@@ -151,7 +160,8 @@ public class AcondicionadorFormNuevoController extends BaseFormNuevoController i
 				getService().update(acondicionador);
 			}
 			// Refrescar la lista
-			//Events.sendEvent("onRefresh", getWindowComponent().getParent(), null);
+			// Events.sendEvent("onRefresh", getWindowComponent().getParent(),
+			// null);
 			getWindowComponent().onClose();
 
 		} catch (ValidationException e) {
@@ -176,6 +186,61 @@ public class AcondicionadorFormNuevoController extends BaseFormNuevoController i
 			// Otro error
 			Messagebox.show(e.getMessage(), "Error", Messagebox.OK, Messagebox.ERROR);
 		}
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* LISTA ....................................... */
+	/* ............................................. */
+	
+	@Override
+	protected ListitemRenderer<Contacto> getListitemRender() {
+
+		return new ListitemRenderer<Contacto>() {
+			@Override
+			public void render(Listitem item, Contacto contacto, int arg) throws Exception {
+
+				(new Listcell("" + contacto.getEmail() != null ? contacto.getEmail() : "")).setParent(item);
+
+				(new Listcell("" + contacto.getTelefono() != null ? contacto.getTelefono() : "")).setParent(item);
+
+				(new Listcell("" + contacto.getDireccion() != null ? contacto.getDireccion() : "")).setParent(item);
+
+				item.setAttribute(ENTITY, contacto);
+			}
+		};
+	}
+
+	@Override
+	protected Listbox getListComponent() {
+		return contactosLstbx;
+	}
+
+	@Override
+	protected Window getWindowComponent() {
+		return acondicionadorFormNuevoWndw;
+	}
+
+	@Override
+	public void buildParameters() {
+
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		executeAndRenderPagedQuery(parameters);
+	}
+
+	@Override
+	protected Paging getPagingComponent() {
+		return contactosPgn;
+	}
+
+	@Override
+	protected Combobox getPageSizeComponent() {
+		return contactosPageSizeCmbbx;
+	}
+	
+	@Listen("onSelect = #acondicionadoresLstbx")
+	public void onSelect$acondicionadoresLstbx(Event event) {
+		super.enableButtons();
 	}
 
 	@Override

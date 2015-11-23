@@ -25,7 +25,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "contacto")
 @NamedQuery(name = "contacto.buscarPorId", query = "SELECT tabla FROM Contacto tabla WHERE tabla.id = ?1")
-public class Contacto implements Serializable {
+public class Contacto extends BaseEntity implements Serializable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -37,7 +37,7 @@ public class Contacto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "ID")
-	private long id;
+	private Integer id;
 
 	@Column(name = "EMAIL")
 	private String email;
@@ -65,12 +65,37 @@ public class Contacto implements Serializable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (id != null ? id.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+
+		if (!(object instanceof Contacto)) {
+			return false;
+		}
+		Contacto other = (Contacto) object;
+		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+			return false;
+		}
+		return true;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public long getId() {
+	@Override
+	public Object getPK() {
+		return this.id;
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
@@ -91,7 +116,12 @@ public class Contacto implements Serializable {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
-	public void setId(long id) {
+	@Override
+	public void setPK(Object id) {
+		this.id = (Integer) id;
+	}
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

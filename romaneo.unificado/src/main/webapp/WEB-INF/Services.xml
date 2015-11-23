@@ -13,6 +13,11 @@
 		<beans:property name="dao" ref="AcondicionadorDao" />
 	</beans:bean>
 
+	<beans:bean id="ContactoService"
+		class="romaneo.unificado.services.ContactoServiceImple">
+		<beans:property name="dao" ref="ContactoDao" />
+	</beans:bean>
+
 	<beans:bean id="ProductorService"
 		class="romaneo.unificado.services.productor.ProductorServiceImple">
 		<beans:property name="dao" ref="ProductorDao" />
