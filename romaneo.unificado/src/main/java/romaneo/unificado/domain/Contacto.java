@@ -85,6 +85,21 @@ public class Contacto extends BaseEntity implements Serializable {
 		return true;
 	}
 
+	public enum Filters {
+
+		BY_PERSONA("persona");
+
+		private String value;
+
+		public String getValue() {
+			return value;
+		}
+
+		Filters(String value) {
+			this.value = value;
+		}
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

@@ -1,8 +1,13 @@
 package romaneo.unificado.daos;
 
-import romaneo.unificado.domain.Contacto;
+import java.util.List;
 
-/** @author Eric Hidalgo */
+import romaneo.unificado.domain.Contacto;
+import romaneo.unificado.domain.Persona;
+
+/**
+ * @author Eric Hidalgo
+ */
 public interface ContactoDao extends BaseDao<Contacto, Integer> {
 
 	Contacto findByEmail(String email);
@@ -10,4 +15,6 @@ public interface ContactoDao extends BaseDao<Contacto, Integer> {
 	Contacto findByTelefono(String telefono);
 
 	Contacto findByDireccion(String direccion);
+
+	List<Contacto> findByPersona(Persona persona);
 }

@@ -46,6 +46,7 @@ import org.zkoss.zul.Window;
 
 import romaneo.unificado.daos.BaseDao;
 import romaneo.unificado.daos.PagedQueryResponse;
+import romaneo.unificado.domain.Acondicionador;
 import romaneo.unificado.domain.BaseEntity;
 import romaneo.unificado.domain.Contacto;
 import romaneo.unificado.services.BaseService;
@@ -458,6 +459,8 @@ public abstract class BaseTabFormList<Entity extends Serializable> extends BaseC
 		getListComponent().renderAll();
 
 	}
+
+	public abstract Acondicionador getAcondicionador();
 
 	/**
 	 * Dado un componente obtiene el valor del mismo

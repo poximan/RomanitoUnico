@@ -39,7 +39,7 @@ import romaneo.unificado.services.acondicionador.AcondicionadorService;
  * 
  * @author hugo
  */
-public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicionador> implements FormPageName {
+public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicionador>implements FormPageName {
 
 	private static final long serialVersionUID = 1L;
 
@@ -48,7 +48,7 @@ public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicio
 	@Wire
 	private Combobox contactosPageSizeCmbbx;
 	@Wire
-	private Paging contactosPgn;	
+	private Paging contactosPgn;
 	@Wire
 	private Textbox nombreTxtbx, apellidoTxtbx;
 	@Wire
@@ -61,7 +61,7 @@ public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicio
 	private Window acondicionadorFormNuevoWndw;
 	@Wire
 	private Intbox dniIntbx;
-	
+
 	private Acondicionador acondicionador;
 
 	protected boolean executeAndRenderPagedQueryInitial = true;
@@ -75,7 +75,7 @@ public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicio
 	protected String getEntityService() {
 		return AcondicionadorService.class.getSimpleName();
 	}
-	
+
 	public void doAfterCompose(Component comp) throws Exception {
 
 		super.doAfterCompose(comp);
@@ -137,14 +137,21 @@ public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicio
 	@Listen("onClick = #editarBttn")
 	public void edit() {
 
-		nombreTxtbx.setReadonly(false);
-		apellidoTxtbx.setReadonly(false);
-		localidadBndbx.setReadonly(false);
-		dniIntbx.setReadonly(false);
+		if (nombreTxtbx.isReadonly()) {
+			nombreTxtbx.setReadonly(false);
+			apellidoTxtbx.setReadonly(false);
+			localidadBndbx.setReadonly(false);
+			dniIntbx.setReadonly(false);
+		} else {
+			nombreTxtbx.setReadonly(true);
+			apellidoTxtbx.setReadonly(true);
+			localidadBndbx.setReadonly(true);
+			dniIntbx.setReadonly(true);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
-	@Listen("onClick = #aceptarBttn")
+	@Listen("onClick = #volverBttn")
 	@Override
 	public void accept() {
 
@@ -192,7 +199,7 @@ public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicio
 	/* ............................................. */
 	/* LISTA ....................................... */
 	/* ............................................. */
-	
+
 	@Override
 	protected ListitemRenderer<Contacto> getListitemRender() {
 
@@ -211,6 +218,10 @@ public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicio
 		};
 	}
 
+	public Acondicionador getAcondicionador() {
+		return acondicionador;
+	}
+
 	@Override
 	protected Listbox getListComponent() {
 		return contactosLstbx;
@@ -225,6 +236,11 @@ public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicio
 	public void buildParameters() {
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
+
+		if (acondicionador.getPersona() != null) {
+			parameters.put(Contacto.Filters.BY_PERSONA.getValue(), acondicionador.getPersona().getPK().toString());
+		}
+
 		executeAndRenderPagedQuery(parameters);
 	}
 
@@ -237,7 +253,7 @@ public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicio
 	protected Combobox getPageSizeComponent() {
 		return contactosPageSizeCmbbx;
 	}
-	
+
 	@Listen("onSelect = #acondicionadoresLstbx")
 	public void onSelect$acondicionadoresLstbx(Event event) {
 		super.enableButtons();

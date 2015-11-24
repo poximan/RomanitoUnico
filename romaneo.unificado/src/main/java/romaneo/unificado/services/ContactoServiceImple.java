@@ -14,7 +14,7 @@ import romaneo.unificado.exceptions.ValidationException;
  * 
  * @author Eric Hidalgo
  */
-public class ContactoServiceImple extends BaseServiceImple<Contacto, ContactoDao> implements ContactoService {
+public class ContactoServiceImple extends BaseServiceImple<Contacto, ContactoDao>implements ContactoService {
 
 	@Override
 	public void validate(Contacto entity) throws ValidationException {

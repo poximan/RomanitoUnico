@@ -6,8 +6,8 @@ import java.util.Map;
 
 import org.hibernate.Query;
 
-import romaneo.unificado.domain.Acondicionador;
 import romaneo.unificado.domain.Contacto;
+import romaneo.unificado.domain.Persona;
 
 /**
  * Clase Dao que permirte hacer CRUD (Create/Read/Update/Delete). Extiende de
@@ -15,7 +15,7 @@ import romaneo.unificado.domain.Contacto;
  * 
  * @author Eric Hidalgo
  */
-public class ContactoDaoImple extends BaseDaoImple<Contacto, Integer> implements ContactoDao {
+public class ContactoDaoImple extends BaseDaoImple<Contacto, Integer>implements ContactoDao {
 
 	@Override
 	protected Class<Contacto> getEntityClass() {
@@ -34,10 +34,13 @@ public class ContactoDaoImple extends BaseDaoImple<Contacto, Integer> implements
 
 		if (parameters != null) {
 			for (String filterKey : parameters.keySet()) {
-
+				if (filterKey.equalsIgnoreCase(Contacto.Filters.BY_PERSONA.getValue())) {
+					query.append("AND UPPER(e.persona) LIKE :persona ");
+					queryParameters.put("persona",
+							"%" + ((String) parameters.get(filterKey)).trim().toUpperCase() + "%");
+				}
 			}
 		}
-		// TODO: Ordenar la consulta
 
 		// Crear las consultas
 		Query hQuery = getSession().createQuery(query.toString());
@@ -107,5 +110,20 @@ public class ContactoDaoImple extends BaseDaoImple<Contacto, Integer> implements
 
 		List<Contacto> result = findQueryByParameters(query.toString(), parameters);
 		return result.isEmpty() ? null : result.get(0);
+	}
+
+	@Override
+	public List<Contacto> findByPersona(Persona persona) {
+
+		StringBuffer query = new StringBuffer("");
+		query.append("FROM " + Contacto.class.getSimpleName() + " u ");
+		query.append("WHERE 1 = 1 ");
+		query.append("AND u.persona = :persona");
+
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("persona", persona);
+
+		List<Contacto> result = findQueryByParameters(query.toString(), parameters);
+		return result;
 	}
 }

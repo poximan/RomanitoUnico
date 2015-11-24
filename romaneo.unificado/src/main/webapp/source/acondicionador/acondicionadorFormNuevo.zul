@@ -10,9 +10,6 @@
 			<n:span class="pull-bottom">
 				<n:div class="btn-group">
 
-					<button id="aceptarBttn"
-						label="${labels.app.aceptar}" class="btn btn-sm btn-primary" />
-
 					<button id="volverBttn" label="${labels.app.volver}"
 						class="btn btn-sm btn-default" />
 
