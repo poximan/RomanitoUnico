@@ -29,7 +29,7 @@ public class AcondicionadorDaoImple extends BaseDaoImple<Acondicionador, Integer
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("dni", dni);
 
-		List<Acondicionador> list = doQueryByParameters(query, parameters);
+		List<Acondicionador> list = findQueryByParameters(query, parameters);
 		return list.isEmpty() ? null : list.get(0);
 	}
 

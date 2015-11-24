@@ -151,9 +151,10 @@ public abstract class BaseDaoImple<Entity extends Serializable, Id extends Seria
 		return getSession().createQuery(query).list();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List<Entity> findQueryByParameters(String query, Map<String, Object> parameters) throws DataAccessException {
-	
+
 		if (parameters == null) {
 			return findQuery(query);
 		}
@@ -164,7 +165,10 @@ public abstract class BaseDaoImple<Entity extends Serializable, Id extends Seria
 		Query hQuery = getSession().createQuery(query);
 
 		for (String key : parameters.keySet()) {
-			hQuery.setParameter(key, parameters.get(key));
+			if (parameters.get(key) instanceof List)
+				hQuery.setParameterList(key, (List) parameters.get(key));
+			else
+				hQuery.setParameter(key, parameters.get(key));
 		}
 
 		@SuppressWarnings("unchecked")
@@ -205,29 +209,4 @@ public abstract class BaseDaoImple<Entity extends Serializable, Id extends Seria
 			Map<String, Object> parameters) {
 		throw new UnsupportedOperationException();
 	}
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public List<Entity> doQueryByParameters(String query, Map<String, Object> parameters) {
-
-		logger.setLevel(Level.OFF);
-
-		if (parameters == null) {
-			return findQuery(query);
-		}
-
-		if (getSession().isOpen())
-			getSession().flush();
-		Query hQuery = getSession().createQuery(query);
-
-		for (String key : parameters.keySet()) {
-			if (parameters.get(key) instanceof List)
-				hQuery.setParameterList(key, (List) parameters.get(key));
-			else
-				hQuery.setParameter(key, parameters.get(key));
-		}
-
-		return hQuery.list();
-	}
-
 }

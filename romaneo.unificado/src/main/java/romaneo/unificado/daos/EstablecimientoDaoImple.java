@@ -29,7 +29,7 @@ public class EstablecimientoDaoImple extends BaseDaoImple<Establecimiento, Integ
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("dni", dni);
 
-		List<Establecimiento> list = doQueryByParameters(query, parameters);
+		List<Establecimiento> list = findQueryByParameters(query, parameters);
 		return list.isEmpty() ? null : list.get(0);
 	}
 

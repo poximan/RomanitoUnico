@@ -238,7 +238,7 @@ public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicio
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
 		if (acondicionador.getPersona() != null) {
-			parameters.put(Contacto.Filters.BY_PERSONA.getValue(), acondicionador.getPersona().getPK().toString());
+			parameters.put(Contacto.Filters.BY_PERSONA.getValue(), acondicionador.getPersona());
 		}
 
 		executeAndRenderPagedQuery(parameters);

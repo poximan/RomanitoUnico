@@ -8,5 +8,4 @@ public class LoggingDaoImple extends BaseDaoImple<Logging, Integer> implements L
 	protected Class<Logging> getEntityClass() {
 		return Logging.class;
 	}
-
 }

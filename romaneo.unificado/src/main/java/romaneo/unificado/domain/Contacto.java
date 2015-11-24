@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -24,7 +25,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "contacto")
-@NamedQuery(name = "contacto.buscarPorId", query = "SELECT tabla FROM Contacto tabla WHERE tabla.id = ?1")
+@NamedQueries({ //
+		@NamedQuery(name = "Contacto.buscTodos", query = "SELECT tabla FROM Contacto tabla"),
+		@NamedQuery(name = "Contacto.buscPersona", query = "SELECT tabla FROM Contacto tabla WHERE tabla.persona.id = :id"), })
 public class Contacto extends BaseEntity implements Serializable {
 
 	/* ............................................. */

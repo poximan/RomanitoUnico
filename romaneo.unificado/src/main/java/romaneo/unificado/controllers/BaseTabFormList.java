@@ -457,7 +457,6 @@ public abstract class BaseTabFormList<Entity extends Serializable> extends BaseC
 		getWindowComponent().setAttribute(LIST, all);
 		getWindowComponent().setAttribute(LIST_COMPONENT, getListComponent());
 		getListComponent().renderAll();
-
 	}
 
 	public abstract Acondicionador getAcondicionador();

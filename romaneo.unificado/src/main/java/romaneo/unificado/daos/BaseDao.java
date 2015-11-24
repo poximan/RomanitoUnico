@@ -36,7 +36,4 @@ public interface BaseDao<Entity, Id> {
 
 	PagedQueryResponse pagedFindAll(Integer page, Integer pageSize, String sortField, String sortOrder,
 			Map<String, Object> parameters);
-
-	List<Entity> doQueryByParameters(String query, Map<String, Object> parameters);
-
 }

@@ -29,7 +29,7 @@ public class ProductorDaoImple extends BaseDaoImple<Productor, Integer> implemen
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("dni", dni);
 
-		List<Productor> list = doQueryByParameters(query, parameters);
+		List<Productor> list = findQueryByParameters(query, parameters);
 		return list.isEmpty() ? null : list.get(0);
 	}
 

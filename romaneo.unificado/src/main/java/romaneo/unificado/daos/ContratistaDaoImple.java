@@ -29,7 +29,7 @@ public class ContratistaDaoImple extends BaseDaoImple<Contratista, Integer> impl
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("dni", dni);
 
-		List<Contratista> list = doQueryByParameters(query, parameters);
+		List<Contratista> list = findQueryByParameters(query, parameters);
 		return list.isEmpty() ? null : list.get(0);
 	}
 

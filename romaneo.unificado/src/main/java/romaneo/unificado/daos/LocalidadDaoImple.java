@@ -27,8 +27,7 @@ public class LocalidadDaoImple extends BaseDaoImple<Localidad, String> implement
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("nombre_localidad", "%" + name.trim().toUpperCase() + "%");
 
-		return doQueryByParameters(query.toString(), parameters);
-
+		return findQueryByParameters(query.toString(), parameters);
 	}
 
 	@Override
@@ -46,7 +45,7 @@ public class LocalidadDaoImple extends BaseDaoImple<Localidad, String> implement
 		parameters.put("nombre_localidad", "%" + name.trim().toUpperCase() + "%");
 		parameters.put("nombre_provincia", state.trim().toUpperCase());
 
-		List<Localidad> list = doQueryByParameters(query.toString(), parameters);
+		List<Localidad> list = findQueryByParameters(query.toString(), parameters);
 		if (list.size() > 1) {
 			throw new NotUniqueResultException();
 		}

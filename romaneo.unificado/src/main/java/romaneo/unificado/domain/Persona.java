@@ -72,6 +72,7 @@ public class Persona extends BaseEntity implements Serializable {
 
 	@Override
 	public Object getPK() {
+
 		return id;
 	}
 
@@ -100,6 +101,12 @@ public class Persona extends BaseEntity implements Serializable {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
+	@Override
+	public void setPK(Object id) {
+
+		this.id = (Integer) id;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -118,10 +125,5 @@ public class Persona extends BaseEntity implements Serializable {
 
 	public void setContactos(List<Contacto> contactos) {
 		this.contactos = contactos;
-	}
-
-	@Override
-	public void setPK(Object id) {
-		this.id = (Integer) id;
 	}
 }

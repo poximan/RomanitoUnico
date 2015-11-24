@@ -15,7 +15,7 @@ import romaneo.unificado.domain.Persona;
  * 
  * @author Eric Hidalgo
  */
-public class ContactoDaoImple extends BaseDaoImple<Contacto, Integer>implements ContactoDao {
+public class ContactoDaoImple extends BaseDaoImple<Contacto, Integer> implements ContactoDao {
 
 	@Override
 	protected Class<Contacto> getEntityClass() {
@@ -35,9 +35,8 @@ public class ContactoDaoImple extends BaseDaoImple<Contacto, Integer>implements 
 		if (parameters != null) {
 			for (String filterKey : parameters.keySet()) {
 				if (filterKey.equalsIgnoreCase(Contacto.Filters.BY_PERSONA.getValue())) {
-					query.append("AND UPPER(e.persona) LIKE :persona ");
-					queryParameters.put("persona",
-							"%" + ((String) parameters.get(filterKey)).trim().toUpperCase() + "%");
+					query.append("AND e.persona = :persona ");
+					queryParameters.put("persona", parameters.get(filterKey));
 				}
 			}
 		}
