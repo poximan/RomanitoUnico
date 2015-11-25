@@ -18,6 +18,7 @@ public class NavigationPageImple implements NavigationPage<A, A, Div> {
 	 * @param url URL
 	 */
 	public NavigationPageImple(A menu, A submenu, Div page, String url) {
+		
 		super();
 		this.menu = menu;
 		this.submenu = submenu;

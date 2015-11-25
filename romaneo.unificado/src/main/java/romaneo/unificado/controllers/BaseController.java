@@ -152,24 +152,4 @@ public abstract class BaseController extends SelectorComposer<Component> {
 	protected NavigationHistoryService<A, A, Div, Window> getNavigationHistoryService() {
 		return navigationHistoryService;
 	}
-
-	protected void addMarker(String mapName, Float lon, Float lat) {
-		String jsCommand = mapName + ".addMarker(" + lon + "," + lat + ")";
-		Clients.evalJavaScript(jsCommand);
-	}
-
-	protected void removeAllLayers(String mapName) {
-		String jsCommand = mapName + ".removeAllLayers()";
-		Clients.evalJavaScript(jsCommand);
-	}
-
-	protected void removeLayersByName(String mapName, String layerName) {
-		String jsCommand = mapName + ".removeLayer(\"" + layerName + "\")";
-		Clients.evalJavaScript(jsCommand);
-	}
-
-	protected void zoomToAllLayers(String mapName) {
-		String jsCommand = mapName + ".zoomToAllLayers()";
-		Clients.evalJavaScript(jsCommand);
-	}
 }
