@@ -76,13 +76,6 @@
 		<servlet-class>org.zkoss.zk.au.http.DHtmlUpdateServlet</servlet-class>
 	</servlet>
 
-	<servlet>
-		<description>JAX-RS Tools Generated - Do not modify</description>
-		<servlet-name>JAX-RS Servlet</servlet-name>
-		<servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
 	<!-- ................ servlet mapping ................ -->
 	<servlet-mapping>
 		<servlet-name>zkLoader</servlet-name>
@@ -92,11 +85,6 @@
 	<servlet-mapping>
 		<servlet-name>auEngine</servlet-name>
 		<url-pattern>/zkau/*</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>JAX-RS Servlet</servlet-name>
-		<url-pattern>/jaxrs/*</url-pattern>
 	</servlet-mapping>
 
 	<!-- ................ pagina inicio ................ -->

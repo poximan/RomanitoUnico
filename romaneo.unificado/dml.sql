@@ -490,10 +490,26 @@ INSERT INTO rol(descripcion, nombre)
 
     VALUES 
     ('administrador', 'admin');
-            
-
+  
 -- tabla muchos a muchos, usuarios y roles --
 INSERT INTO usuario_rol(id_rol, id_usuario)
     
     VALUES
     (1, 1);
+
+-- mensajes --
+INSERT INTO messages(
+            asunto, fecha_creado, mensaje, 
+            tipo_mensaje, id_usuario)
+
+    VALUES
+    ('prueba1', clock_timestamp(), 'esto es una prueba',0,1),
+    ('prueba2', clock_timestamp(), 'esto es otra prueba',0,1),
+    ('prueba3', clock_timestamp(), 'esto es una tercer prueba',0,1),
+    ('prueba4', clock_timestamp(), 'todo lo que voy a hacer, es una prueba',0,1),
+    ('prueba5', clock_timestamp(), 'porque no se que mas, es otra prueba',0,1),
+    ('prueba6', clock_timestamp(), 'el segundo, es despues del primero',0,1),
+    ('prueba7', clock_timestamp(), 'al infinito, y mas alla',0,1),
+    ('prueba8', clock_timestamp(), 'la vieja mula, ahora es lo que era',0,1),
+    ('prueba9', clock_timestamp(), 'y va siendo la novena prueba',0,1),
+    ('prueba10', clock_timestamp(), 'ultima prueba',0,1);

@@ -43,7 +43,7 @@ public class Usuario extends BaseEntity implements Serializable {
 	private Integer id;
 
 	@OneToOne
-	@JoinColumn(name = "ID_PERSONA", referencedColumnName = "ID")
+	@JoinColumn(name = "ID_PERSONA", referencedColumnName = "id")
 	private Persona persona;
 
 	@Basic(optional = false)
@@ -58,7 +58,7 @@ public class Usuario extends BaseEntity implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_usuario")
 	private List<UsuarioRol> roles = new ArrayList<UsuarioRol>();
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_usuario")
 	private List<UsuarioMovil> moviles = new ArrayList<UsuarioMovil>();
 

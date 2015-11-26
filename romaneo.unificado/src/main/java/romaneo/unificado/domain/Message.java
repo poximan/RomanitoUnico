@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -59,7 +61,8 @@ public class Message extends BaseEntity implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fecha_leido_ack;
 
-	@Column(name = "ID_USUARIO")
+	@OneToOne
+	@JoinColumn(name = "ID_USUARIO")
 	private Usuario usuario;
 
 	/* ............................................. */

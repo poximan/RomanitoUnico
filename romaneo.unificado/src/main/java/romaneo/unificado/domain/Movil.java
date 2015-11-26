@@ -20,7 +20,7 @@ import javax.persistence.Table;
 /* ............................................. */
 
 @Entity
-@Table(name = "rol")
+@Table(name = "movil")
 public class Movil extends BaseEntity implements Serializable {
 
 	/* ............................................. */

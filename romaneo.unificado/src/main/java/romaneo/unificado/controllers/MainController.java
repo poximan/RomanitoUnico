@@ -36,9 +36,6 @@ public class MainController extends BaseController {
 	@Wire
 	private Div containerDvMensajes, entradaDv, salidaDv;
 	@Wire
-	private Div mobileDeviceDv, messageTypeDv;
-
-	@Wire
 	private Iframe noticias;
 
 	@Override
