@@ -1,12 +1,11 @@
 package romaneo.unificado.services;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import java.util.Calendar;
 
 import romaneo.unificado.daos.MessageDao;
 import romaneo.unificado.domain.Message;
 
-public class MessageServiceImple extends BaseServiceImple<Message, MessageDao> implements MessageService {
+public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>implements MessageService {
 
 	@Override
 	public Integer countUnprocessedTheLastDays(Integer numberOfDays) {
@@ -15,8 +14,8 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao> i
 
 	@Override
 	public void markAsProcessed(Message message) {
-		Timestamp now = new Timestamp(new Date().getTime());
-		message.setProcessed(now);
+		Calendar now = Calendar.getInstance();
+		message.setFecha_recibido_ack(now);
 		update(message);
 	}
 }

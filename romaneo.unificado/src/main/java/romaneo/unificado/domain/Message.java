@@ -6,7 +6,7 @@
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /* ............................................. */
 /* ............................................. */
@@ -37,12 +39,28 @@ public class Message extends BaseEntity implements Serializable {
 	private Integer id;
 
 	@Column(nullable = false)
-	private Timestamp created;
+	private String asunto;
 
-	@Column(length = 60)
-	private String data;
+	@Column(nullable = false)
+	private String mensaje;
 
-	private Timestamp processed;
+	@Column(nullable = false)
+	private TipoMensaje tipo_mensaje;
+
+	@Column(name = "FECHA_CREADO", nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar fecha_creado;
+
+	@Column(name = "FECHA_RECIBIDO", nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar fecha_recibido_ack;
+
+	@Column(name = "FECHA_LEIDO", nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar fecha_leido_ack;
+
+	@Column(name = "ID_USUARIO")
+	private Usuario usuario;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -72,6 +90,21 @@ public class Message extends BaseEntity implements Serializable {
 		}
 	}
 
+	public enum TipoMensaje {
+
+		NORMAL("normal"), URGENTE("urgente");
+
+		private String value;
+
+		public String getValue() {
+			return value;
+		}
+
+		TipoMensaje(String value) {
+			this.value = value;
+		}
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
@@ -79,27 +112,39 @@ public class Message extends BaseEntity implements Serializable {
 
 	@Override
 	public Object getPK() {
-		return getId();
+		return id;
 	}
 
 	public Integer getId() {
-		return this.id;
+		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public String getAsunto() {
+		return asunto;
 	}
 
-	public Timestamp getCreated() {
-		return this.created;
+	public String getMensaje() {
+		return mensaje;
 	}
 
-	public void setCreated(Timestamp created) {
-		this.created = created;
+	public TipoMensaje getTipo_mensaje() {
+		return tipo_mensaje;
 	}
 
-	public String getData() {
-		return this.data;
+	public Calendar getFecha_creado() {
+		return fecha_creado;
+	}
+
+	public Calendar getFecha_recibido_ack() {
+		return fecha_recibido_ack;
+	}
+
+	public Calendar getFecha_leido_ack() {
+		return fecha_leido_ack;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
 	/* ............................................. */
@@ -107,20 +152,40 @@ public class Message extends BaseEntity implements Serializable {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setAsunto(String asunto) {
+		this.asunto = asunto;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+
+	public void setTipo_mensaje(TipoMensaje tipo_mensaje) {
+		this.tipo_mensaje = tipo_mensaje;
+	}
+
+	public void setFecha_creado(Calendar fecha_creado) {
+		this.fecha_creado = fecha_creado;
+	}
+
+	public void setFecha_recibido_ack(Calendar fecha_recibido_ack) {
+		this.fecha_recibido_ack = fecha_recibido_ack;
+	}
+
+	public void setFecha_leido_ack(Calendar fecha_leido_ack) {
+		this.fecha_leido_ack = fecha_leido_ack;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	@Override
 	public void setPK(Object Id) {
 		id = (Integer) Id;
-	}
-
-	public void setData(String data) {
-		this.data = data;
-	}
-
-	public Timestamp getProcessed() {
-		return this.processed;
-	}
-
-	public void setProcessed(Timestamp processed) {
-		this.processed = processed;
 	}
 }

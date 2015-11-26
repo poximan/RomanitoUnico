@@ -83,9 +83,11 @@ public class mensajeEntradaListController extends BasePagedListController<Messag
 
 				(new Listcell("" + (Message.getId() != null ? Message.getId() : ""))).setParent(item);
 
-				(new Listcell("" + Message.getData() != null ? Message.getData() : "")).setParent(item);
+				(new Listcell("" + (Message.getFecha_creado() != null ? Message.getFecha_creado() : "")))
+						.setParent(item);
 
-				(new Listcell("" + (Message.getCreated() != null ? Message.getCreated() : ""))).setParent(item);
+				(new Listcell("" + (Message.getFecha_creado() != null ? Message.getFecha_creado() : "")))
+						.setParent(item);
 
 				item.setAttribute(ENTITY, Message);
 			}
@@ -111,11 +113,10 @@ public class mensajeEntradaListController extends BasePagedListController<Messag
 	protected Window getWindowComponent() {
 		return mensajeEntradaListWndw;
 	}
-	
+
 	/* ------------------------------------------------------------------ */
 	/* onClick - filtros ------------------------------------------------ */
 	/* ------------------------------------------------------------------ */
-	
 
 	/* ------------------------------------------------------------------ */
 	/* onClick - navegacion contenedor ---------------------------------- */
