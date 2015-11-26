@@ -27,13 +27,14 @@ public class MainController extends BaseController {
 
 	@Wire
 	private Include ventana;
-
 	@Wire
 	private Window mainWndw;
 	@Wire
 	private A romaneoBttn, noticiasBttn, masterDataBttn, mensajesBttn;
 	@Wire
-	private Div containerDv, interfacesDv, acondicionadorDv, productorDv, establecimientoDv, contratistaDv;
+	private Div containerDvABMC, acondicionadorDv, productorDv, establecimientoDv, contratistaDv;
+	@Wire
+	private Div containerDvMensajes, entradaDv, salidaDv;
 	@Wire
 	private Div mobileDeviceDv, messageTypeDv;
 
@@ -62,11 +63,58 @@ public class MainController extends BaseController {
 		// Construir el servicio de navegación
 		List<A> menus = new ArrayList<>();
 		menus.add(masterDataBttn);
+		menus.add(mensajesBttn);
 
 		getNavigationHistoryService().setMain(mainWndw);
 		getNavigationHistoryService().setMainButtons(menus);
 
 		navigationToAcondicionadores();
+	}
+
+	// **** BARRA PRINCIPAL **** //
+
+	@Listen("onClick = #btnRomaneo")
+	public void romaneo() {
+
+		ventana.setVisible(true);
+		noticias.setVisible(false);
+		containerDvABMC.setVisible(false);
+		containerDvMensajes.setVisible(false);
+
+		ventana.setSrc("/principal.zul");
+	}
+
+	@Listen("onClick = #btnNoticias")
+	public void noticias() {
+
+		ventana.setVisible(false);
+		noticias.setVisible(true);
+		containerDvABMC.setVisible(false);
+		containerDvMensajes.setVisible(false);
+
+		noticias.setSrc("http://prolana.magyp.gob.ar/");
+	}
+
+	@Listen("onClick = #masterDataBttn")
+	public void navigationToMasterData() {
+
+		ventana.setVisible(false);
+		noticias.setVisible(false);
+		containerDvABMC.setVisible(true);
+		containerDvMensajes.setVisible(false);
+
+		navigationToAcondicionadores();
+	}
+
+	@Listen("onClick = #mensajesBttn")
+	public void navigationToMensajes() {
+
+		ventana.setVisible(false);
+		noticias.setVisible(false);
+		containerDvABMC.setVisible(false);
+		containerDvMensajes.setVisible(true);
+
+		navigationToMensajesEntrada();
 	}
 
 	@Listen("onClick = #editAccountBttn")
@@ -84,51 +132,38 @@ public class MainController extends BaseController {
 		Executions.getCurrent().sendRedirect("/j_spring_security_logout");
 	}
 
-	@Listen("onClick = #btnRomaneo")
-	public void romaneo() {
-		containerDv.setVisible(false);
-		noticias.setVisible(false);
-		ventana.setVisible(true);
-		ventana.setSrc("/principal.zul");
+	// **** MENSAJES **** //
 
+	@Listen("onGoToMensajesEntrada = #mainWndw")
+	public void navigationToMensajesEntrada() {
+		createWindow(Labels.getLabel("url.mensajeEntrada"), entradaDv, mensajesBttn, null);
 	}
 
-	@Listen("onClick = #masterDataBttn")
-	public void navigationToMasterData() {
-		ventana.setVisible(false);
-		noticias.setVisible(false);
-		containerDv.setVisible(true);
-		navigationToAcondicionadores();
-	}
-
-	@Listen("onClick = #btnNoticias")
-	public void noticias() {
-		ventana.setVisible(false);
-		containerDv.setVisible(false);
-		noticias.setVisible(true);
-		noticias.setSrc("http://prolana.magyp.gob.ar/");
+	@Listen("onGoToMensajesSalida = #mainWndw")
+	public void navigationToMensajesSalida() {
+		createWindow(Labels.getLabel("url.mensajeSalida"), salidaDv, mensajesBttn, null);
 	}
 
 	// **** MAESTRO DE DATOS **** //
 
 	@Listen("onGoToAcondicionadores = #mainWndw")
 	public void navigationToAcondicionadores() {
-		createWindow(Labels.getLabel("url.acondicionadorList"), acondicionadorDv, masterDataBttn, false, null);
+		createWindow(Labels.getLabel("url.acondicionadorList"), acondicionadorDv, masterDataBttn, null);
 	}
 
 	@Listen("onGoToProductores = #mainWndw")
 	public void navigationToProductores() {
-		createWindow(Labels.getLabel("url.productorList"), productorDv, masterDataBttn, false, null);
+		createWindow(Labels.getLabel("url.productorList"), productorDv, masterDataBttn, null);
 	}
 
 	@Listen("onGoToEstablecimientos = #mainWndw")
 	public void navigationToEstablecimientos() {
-		createWindow(Labels.getLabel("url.establecimientoList"), establecimientoDv, masterDataBttn, false, null);
+		createWindow(Labels.getLabel("url.establecimientoList"), establecimientoDv, masterDataBttn, null);
 	}
 
 	@Listen("onGoToContratistas = #mainWndw")
 	public void navigationToContratistas() {
-		createWindow(Labels.getLabel("url.contratistaList"), contratistaDv, masterDataBttn, false, null);
+		createWindow(Labels.getLabel("url.contratistaList"), contratistaDv, masterDataBttn, null);
 	}
 
 	/**
@@ -146,7 +181,7 @@ public class MainController extends BaseController {
 	 * @param args
 	 *            Argumentos que se le pasa a la ventana
 	 */
-	private void createWindow(String url, Div div, AbstractTag button, Boolean modal, Map<String, Object> args) {
+	private void createWindow(String url, Div div, AbstractTag button, Map<String, Object> args) {
 		NavigationPage<A, A, Div> navigationPage = new NavigationPageImple((A) button, null, div, url);
 		getNavigationHistoryService().addPageToNavigationList(url, args, navigationPage);
 	}

@@ -53,24 +53,28 @@
 			<n:li class="nav navbar-nav">
 
 				<n:a id="romaneoBttn" href="#" class="navbar-brand">
-					${labels.app.name}
+					${labels.main.menu.name}
 				</n:a>
 
 				<n:a id="noticiasBttn" href="#" class="navbar-brand">
-					${labels.app.noticias}
+					${labels.main.menu.noticias}
 				</n:a>
 
-				<n:a id="masterDataBttn" class="navbar-brand">
+				<n:a id="masterDataBttn" href="#"
+					class="navbar-brand">
 					${labels.main.menu.masterData}
+				</n:a>
+
+				<n:a id="mensajesBttn" href="#" class="navbar-brand">
+					${labels.main.menu.mensajes}
 				</n:a>
 
 			</n:li>
 
-			<n:ul class="nav navbar-nav navbar-right "
-				mode="overlapped">
+			<n:ul class="nav navbar-nav navbar-right ">
 
 				<n:li class="dropdown">
-					<n:a href="#" class="dropdown-toggle"
+					<n:a href="#" class="navbar-brand"
 						data-toggle="dropdown">
 						${labels.app.in}
 					</n:a>
@@ -99,13 +103,20 @@
 			</n:ul>
 		</n:nav>
 
-		<div id="containerDv" class="container-fluid" width="100%"
+		<div id="containerDvABMC" class="container-fluid" width="100%"
 			vflex="1">
 			<div id="acondicionadorDv" visible="false" vflex="1" />
 			<div id="productorDv" visible="false" vflex="1" />
 			<div id="establecimientoDv" visible="false" vflex="1" />
 			<div id="contratistaDv" visible="false" vflex="1" />
 		</div>
+
+		<div id="containerDvMensajes" class="container-fluid"
+			width="100%" vflex="1">
+			<div id="entradaDv" visible="false" vflex="1" />
+			<div id="salidaDv" visible="false" vflex="1" />
+		</div>
+
 		<include id="ventana" visible="false" />
 		<iframe id="noticias" visible="false"
 			style="width:100%; height:650px;border:3px inset;" />

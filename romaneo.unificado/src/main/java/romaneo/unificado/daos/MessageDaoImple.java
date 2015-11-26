@@ -1,5 +1,7 @@
 package romaneo.unificado.daos;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -81,6 +83,29 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 		response.setCount(count.intValue());
 
 		return response;
+	}
+
+	@Override
+	public Integer countUnprocessedTheLastDays(Integer numberOfDays) {
+
+		StringBuffer query = new StringBuffer(
+				"SELECT COUNT(DISTINCT e.id) FROM " + Message.class.getSimpleName() + " e ");
+		query.append("WHERE 1 = 1 ");
+		query.append("AND e.travel.distributionCenter = :distributionCenter ");
+		query.append("AND e.created >= :dateFrom ");
+		query.append("AND e.created <= :dateTo ");
+		query.append("AND e.processed IS NULL ");
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.DATE, numberOfDays < 0 ? numberOfDays : (numberOfDays * (-1)));
+
+		Query hQuery = getSession().createQuery(query.toString());
+		hQuery.setParameter("dateFrom", calendar.getTime());
+		hQuery.setParameter("dateTo", new Date());
+
+		Long count = (Long) hQuery.uniqueResult();
+
+		return count.intValue();
 	}
 
 }

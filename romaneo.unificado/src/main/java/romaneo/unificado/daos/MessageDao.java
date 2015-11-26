@@ -4,4 +4,6 @@ import romaneo.unificado.domain.Message;
 
 public interface MessageDao extends BaseDao<Message, Integer> {
 
+	Integer countUnprocessedTheLastDays(Integer numberOfDays);
+
 }
