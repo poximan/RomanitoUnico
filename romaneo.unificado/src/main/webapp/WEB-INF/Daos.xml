@@ -33,6 +33,10 @@
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 
+	<beans:bean id="MessageDao" class="romaneo.unificado.daos.MessageDaoImple">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+
 	<beans:bean id="LoggingDao" class="romaneo.unificado.daos.LoggingDaoImple">
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>

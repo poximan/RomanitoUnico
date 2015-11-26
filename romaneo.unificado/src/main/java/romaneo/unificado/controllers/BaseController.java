@@ -23,6 +23,7 @@ import romaneo.unificado.services.establecimiento.EstablecimientoService;
 import romaneo.unificado.services.productor.ProductorService;
 import romaneo.unificado.services.BaseService;
 import romaneo.unificado.services.LocalidadService;
+import romaneo.unificado.services.MessageService;
 
 public abstract class BaseController extends SelectorComposer<Component> {
 	private static final long serialVersionUID = 1L;
@@ -150,5 +151,10 @@ public abstract class BaseController extends SelectorComposer<Component> {
 	/** @return el servicio de navegacion del usuario. */
 	protected NavigationHistoryService<A, A, Div, Window> getNavigationHistoryService() {
 		return navigationHistoryService;
+	}
+
+	/** @return el servicio de mensajes. */
+	protected MessageService getMessageService() {
+		return (MessageService) SpringUtil.getBean(MessageService.class.getSimpleName());
 	}
 }

@@ -25,8 +25,7 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 		StringBuffer query = new StringBuffer();
 		Map<String, Object> queryParameters = new HashMap<String, Object>();
 
-		query.append("SELECT distinct e FROM " + Message.class.getName()
-				+ " e INNER JOIN e.travel t INNER JOIN t.dock d WHERE 1 = 1 ");
+		query.append("SELECT distinct e FROM " + Message.class.getName() + " WHERE 1 = 1 ");
 
 		if (parameters != null) {
 			for (Iterator<String> it = parameters.keySet().iterator(); it.hasNext();) {

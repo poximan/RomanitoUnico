@@ -1,3 +1,8 @@
+/* ............................................. */
+/* ............................................. */
+/* PRELIMINAR .................................. */
+/* ............................................. */
+
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
@@ -12,10 +17,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/* ............................................. */
+/* ............................................. */
+/* CLASE ....................................... */
+/* ............................................. */
+
 @Entity
 @Table(name = "messages")
 public class Message extends BaseEntity implements Serializable {
-	
+
+	/* ............................................. */
+	/* ............................................. */
+	/* ATRIBUTOS ................................... */
+	/* ............................................. */
+
 	private static final long serialVersionUID = 1L;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +50,42 @@ public class Message extends BaseEntity implements Serializable {
 	@JoinColumn(name = "cod_message", nullable = false)
 	private MessageType messageType;
 
+	/* ............................................. */
+	/* ............................................. */
+	/* CONSTRUCTOR ................................. */
+	/* ............................................. */
+
 	public Message() {
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
+	/* ............................................. */
+
+	public enum Filters {
+
+		BY_FROM_DATE("fromDate"), BY_TO_DATE("toDate"), BY_MESSAGE_TYPE("messageTyper"), BY_UNPROCESSED("unprocessed");
+
+		private String value;
+
+		public String getValue() {
+			return value;
+		}
+
+		Filters(String value) {
+			this.value = value;
+		}
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	@Override
+	public Object getPK() {
+		return getId();
 	}
 
 	public Integer getId() {
@@ -58,6 +108,16 @@ public class Message extends BaseEntity implements Serializable {
 		return this.data;
 	}
 
+	/* ............................................. */
+	/* ............................................. */
+	/* SET'S ....................................... */
+	/* ............................................. */
+
+	@Override
+	public void setPK(Object Id) {
+		id = (Integer) Id;
+	}
+
 	public void setData(String data) {
 		this.data = data;
 	}
@@ -77,31 +137,4 @@ public class Message extends BaseEntity implements Serializable {
 	public void setMessageType(MessageType messageType) {
 		this.messageType = messageType;
 	}
-
-	@Override
-	public Object getPK() {
-		return getId();
-	}
-
-	@Override
-	public void setPK(Object Id) {
-		setId((Integer) Id);
-	}
-
-	public enum Filters {
-
-		BY_FROM_DATE("fromDate"), BY_TO_DATE("toDate"), BY_MESSAGE_TYPE("messageTyper"), BY_UNPROCESSED("unprocessed");
-
-		private String value;
-
-		public String getValue() {
-			return value;
-		}
-
-		Filters(String value) {
-			this.value = value;
-		}
-
-	}
-
 }

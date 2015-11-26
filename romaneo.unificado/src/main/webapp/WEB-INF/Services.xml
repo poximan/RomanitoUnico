@@ -38,6 +38,11 @@
 		<beans:property name="dao" ref="LocalidadDao" />
 	</beans:bean>
 
+	<beans:bean id="MessageService"
+		class="romaneo.unificado.services.MessageServiceImple">
+		<beans:property name="dao" ref="MessageDao" />
+	</beans:bean>
+
 	<beans:bean id="LoggingService"
 		class="romaneo.unificado.services.LoggingServiceImple">
 		<beans:property name="dao" ref="LoggingDao" />
