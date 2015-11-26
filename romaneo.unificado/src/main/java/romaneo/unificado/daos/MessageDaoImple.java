@@ -34,12 +34,12 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer>implements Me
 				Object filterValue = parameters.get(filterProperty);
 
 				if (filterProperty.equalsIgnoreCase(Message.FiltersFecha.BY_FROM_DATE.getValue())) {
-					query.append(" AND e.created >= :dateFrom ");
+					query.append(" AND e.fecha_creado >= :dateFrom ");
 					queryParameters.put("dateFrom", filterValue);
 				}
 
 				if (filterProperty.equalsIgnoreCase(Message.FiltersFecha.BY_TO_DATE.getValue())) {
-					query.append(" AND e.created <= :dateTo ");
+					query.append(" AND e.fecha_creado <= :dateTo ");
 					queryParameters.put("dateTo", filterValue);
 				}
 			}
@@ -79,10 +79,8 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer>implements Me
 		StringBuffer query = new StringBuffer(
 				"SELECT COUNT(DISTINCT e.id) FROM " + Message.class.getSimpleName() + " e ");
 		query.append("WHERE 1 = 1 ");
-		query.append("AND e.travel.distributionCenter = :distributionCenter ");
-		query.append("AND e.created >= :dateFrom ");
-		query.append("AND e.created <= :dateTo ");
-		query.append("AND e.processed IS NULL ");
+		query.append("AND e.fecha_creado >= :dateFrom ");
+		query.append("AND e.fecha_creado <= :dateTo ");
 
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.DATE, numberOfDays < 0 ? numberOfDays : (numberOfDays * (-1)));
