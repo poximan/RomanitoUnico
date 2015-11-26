@@ -6,19 +6,12 @@
 package romaneo.unificado.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /* ............................................. */
@@ -27,8 +20,8 @@ import javax.persistence.Table;
 /* ............................................. */
 
 @Entity
-@Table(name = "usuario")
-public class Usuario extends BaseEntity implements Serializable {
+@Table(name = "rol")
+public class Movil extends BaseEntity implements Serializable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -42,44 +35,19 @@ public class Usuario extends BaseEntity implements Serializable {
 	@Column(name = "ID")
 	private Integer id;
 
-	@OneToOne
-	@JoinColumn(name = "ID_PERSONA", referencedColumnName = "ID")
-	private Persona persona;
-
-	@Basic(optional = false)
-	@Column(name = "NOMBRE_USUARIO", nullable = false, length = 40)
-	private String nombre_usuario;
-
-	@Column(name = "CLAVE_USUARIO", length = 40)
-	private String clave_usuario;
-
-	@Column(name = "DESCRIPCION", length = 100)
-	private String descripcion;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_usuario")
-	private List<UsuarioRol> roles = new ArrayList<UsuarioRol>();
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_usuario")
-	private List<UsuarioMovil> moviles = new ArrayList<UsuarioMovil>();
-
-	@Basic(optional = false)
-	@Column(name = "ESTA_ACTIVO", nullable = false)
-	private Character activo;
+	@Column(name = "IMEI", nullable = false, length = 60)
+	private String IMEI;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public Usuario() {
+	public Movil() {
 	}
 
-	public Usuario(Persona persona, String nombre_usuario, String clave_usuario, String descripcion) {
-		super();
-		this.persona = persona;
-		this.nombre_usuario = nombre_usuario;
-		this.clave_usuario = clave_usuario;
-		this.descripcion = descripcion;
+	public Movil(Integer id) {
+		this.id = id;
 	}
 
 	/* ............................................. */
@@ -96,10 +64,10 @@ public class Usuario extends BaseEntity implements Serializable {
 
 	@Override
 	public boolean equals(Object object) {
-		if (!(object instanceof Usuario)) {
+		if (!(object instanceof Movil)) {
 			return false;
 		}
-		Usuario other = (Usuario) object;
+		Movil other = (Movil) object;
 		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}
@@ -120,28 +88,8 @@ public class Usuario extends BaseEntity implements Serializable {
 		return id;
 	}
 
-	public Persona getPersona() {
-		return persona;
-	}
-
-	public String getNombre_usuario() {
-		return nombre_usuario;
-	}
-
-	public String getClave_usuario() {
-		return clave_usuario;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public List<UsuarioRol> getRoles() {
-		return roles;
-	}
-
-	public Character getActivo() {
-		return activo;
+	public String getIMEI() {
+		return IMEI;
 	}
 
 	/* ............................................. */
@@ -158,27 +106,7 @@ public class Usuario extends BaseEntity implements Serializable {
 		this.id = id;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
-
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
-	}
-
-	public void setClave_usuario(String clave_usuario) {
-		this.clave_usuario = clave_usuario;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public void setRoles(List<UsuarioRol> roles) {
-		this.roles = roles;
-	}
-
-	public void setActivo(Character activo) {
-		this.activo = activo;
+	public void setIMEI(String iMEI) {
+		IMEI = iMEI;
 	}
 }
