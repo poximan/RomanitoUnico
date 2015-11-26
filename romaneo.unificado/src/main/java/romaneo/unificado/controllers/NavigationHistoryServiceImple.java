@@ -150,7 +150,7 @@ public class NavigationHistoryServiceImple implements NavigationHistoryService<A
 		incrementActual();
 		return map.get(history.get(actual));
 	}
-	
+
 	@Override
 	public NavigationPage<A, A, Div> actual() {
 		return map.get(history.get(actual));

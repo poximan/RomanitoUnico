@@ -12,7 +12,6 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.SelectorComposer;
-import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Window;
 
@@ -87,7 +86,7 @@ public abstract class BaseController extends SelectorComposer<Component> {
 	@SuppressWarnings("rawtypes")
 	protected BaseService getService() {
 		return service;
-	}	
+	}
 
 	public Date timeToZero(Date date) {
 		Calendar cal = Calendar.getInstance(); // get calendar instance
