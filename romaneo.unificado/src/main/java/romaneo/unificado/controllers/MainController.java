@@ -31,7 +31,7 @@ public class MainController extends BaseController {
 	@Wire
 	private Window mainWndw;
 	@Wire
-	private A masterDataBttn, btnNoticias;
+	private A romaneoBttn, noticiasBttn, masterDataBttn, mensajesBttn;
 	@Wire
 	private Div containerDv, interfacesDv, acondicionadorDv, productorDv, establecimientoDv, contratistaDv;
 	@Wire

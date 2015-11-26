@@ -1,5 +1,5 @@
 <zk xmlns:n="xhtml">
-	<window title="Principal" border="normal">
+	<window border="normal">
 		<image src="/imagenes/oveja.png"
 			class="img-responsive center-block" />
 	</window>

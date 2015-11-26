@@ -4,35 +4,27 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.A;
 import org.zkoss.zul.Iframe;
 import org.zkoss.zul.Include;
 
-public class WindowsController extends SelectorComposer<Component>
-{
-	/**
-	 * 
-	 */
+public class WindowsController extends SelectorComposer<Component> {
+
 	private static final long serialVersionUID = 1L;
 
 	@Wire
 	private Include ventana;
 	@Wire
-	private A boton;
-	@Wire
 	private Iframe noticias;
 
-	@Listen("onClick = #btnRomaneo")
-	public void romaneo()
-	{
+	@Listen("onClick = #romaneoBttn")
+	public void romaneo() {
 		noticias.setVisible(false);
 		ventana.setVisible(true);
-		ventana.setSrc("principal.zul");
+		ventana.setSrc("general.zul");
 	}
 
-	@Listen("onClick = #btnNoticias")
-	public void noticias()
-	{
+	@Listen("onClick = #noticiasBttn")
+	public void noticias() {
 		ventana.setVisible(false);
 		noticias.setVisible(true);
 		noticias.setSrc("http://prolana.magyp.gob.ar/");
