@@ -11,7 +11,7 @@ import org.hibernate.Query;
 
 import romaneo.unificado.domain.Message;
 
-public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements MessageDao {
+public class MessageDaoImple extends BaseDaoImple<Message, Integer>implements MessageDao {
 
 	@Override
 	protected Class<Message> getEntityClass() {
@@ -33,25 +33,14 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 				String filterProperty = it.next();
 				Object filterValue = parameters.get(filterProperty);
 
-				if (filterProperty.equalsIgnoreCase(Message.Filters.BY_FROM_DATE.getValue())) {
+				if (filterProperty.equalsIgnoreCase(Message.FiltersFecha.BY_FROM_DATE.getValue())) {
 					query.append(" AND e.created >= :dateFrom ");
 					queryParameters.put("dateFrom", filterValue);
 				}
 
-				if (filterProperty.equalsIgnoreCase(Message.Filters.BY_TO_DATE.getValue())) {
+				if (filterProperty.equalsIgnoreCase(Message.FiltersFecha.BY_TO_DATE.getValue())) {
 					query.append(" AND e.created <= :dateTo ");
 					queryParameters.put("dateTo", filterValue);
-				}
-
-				if (filterProperty.equalsIgnoreCase(Message.Filters.BY_MESSAGE_TYPE.getValue())) {
-					query.append(" AND e.messageType = :messageType ");
-					queryParameters.put("messageType", filterValue);
-				}
-
-				if (filterProperty.equalsIgnoreCase(Message.Filters.BY_UNPROCESSED.getValue())) {
-					if ((Boolean) filterValue) {
-						query.append(" AND e.processed IS NULL");
-					}
 				}
 			}
 		}

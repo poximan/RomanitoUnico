@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /* ............................................. */
@@ -46,10 +44,6 @@ public class Message extends BaseEntity implements Serializable {
 
 	private Timestamp processed;
 
-	@ManyToOne
-	@JoinColumn(name = "cod_message", nullable = false)
-	private MessageType messageType;
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -63,9 +57,9 @@ public class Message extends BaseEntity implements Serializable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public enum Filters {
+	public enum FiltersFecha {
 
-		BY_FROM_DATE("fromDate"), BY_TO_DATE("toDate"), BY_MESSAGE_TYPE("messageTyper"), BY_UNPROCESSED("unprocessed");
+		BY_FROM_DATE("fromDate"), BY_TO_DATE("toDate");
 
 		private String value;
 
@@ -73,7 +67,7 @@ public class Message extends BaseEntity implements Serializable {
 			return value;
 		}
 
-		Filters(String value) {
+		FiltersFecha(String value) {
 			this.value = value;
 		}
 	}
@@ -128,13 +122,5 @@ public class Message extends BaseEntity implements Serializable {
 
 	public void setProcessed(Timestamp processed) {
 		this.processed = processed;
-	}
-
-	public MessageType getMessageType() {
-		return this.messageType;
-	}
-
-	public void setMessageType(MessageType messageType) {
-		this.messageType = messageType;
 	}
 }
