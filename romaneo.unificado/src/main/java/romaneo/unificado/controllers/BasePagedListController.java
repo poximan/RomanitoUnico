@@ -58,7 +58,7 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 	/** Nuevo */
 	@Listen("onClick = #newBttn")
 	public void create() {
-		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), null)).doOverlapped();
+		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), null)).doModal();
 	}
 
 	/** Editar */
@@ -73,8 +73,8 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 		/*
 		Map<String, Entity> arg = new HashMap<String, Entity>();
 		arg.put(SELECTED, (Entity) getListComponent().getSelectedItem().getAttribute(ENTITY));
-		Window ventana = (Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg);
-		*/		
+		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg)).doModal();
+		*/
 		
 		FabricaAbstracta fabrica = ProductorFabricas.getFabrica();
 		BaseEntity objeto_entidad = fabrica.getEntity(getListComponent().getSelectedItem().getAttribute(ENTITY));
@@ -98,8 +98,7 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 		Map<String, Object> arg = new HashMap<String, Object>();
 		arg.put(DeleteFormController.ARG_SELECTED, getListComponent().getSelectedItem().getAttribute(ENTITY));
 		arg.put(DeleteFormController.ARG_SERVICE, getService());
-		((Window) Executions.createComponents(Labels.getLabel("url.deleteForm"), getWindowComponent(), arg))
-				.doOverlapped();
+		((Window) Executions.createComponents(Labels.getLabel("url.deleteForm"), getWindowComponent(), arg)).doModal();
 	}
 
 	@SuppressWarnings("unchecked")
