@@ -113,6 +113,12 @@ public class Message extends BaseEntity implements Serializable {
 		}
 	}
 
+	@Override
+	public String toString() {
+
+		return asunto;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

@@ -24,6 +24,7 @@ import romaneo.unificado.services.productor.ProductorService;
 import romaneo.unificado.services.BaseService;
 import romaneo.unificado.services.LocalidadService;
 import romaneo.unificado.services.MessageService;
+import romaneo.unificado.services.PersonaService;
 
 public abstract class BaseController extends SelectorComposer<Component> {
 	private static final long serialVersionUID = 1L;
@@ -116,6 +117,11 @@ public abstract class BaseController extends SelectorComposer<Component> {
 	 */
 	protected AppSettings getAppSettings() {
 		return (AppSettings) SpringUtil.getBean(AppSettings.class.getSimpleName());
+	}
+
+	/** @return el servicio de persona. */
+	protected PersonaService getPersonaService() {
+		return (PersonaService) SpringUtil.getBean(PersonaService.class.getSimpleName());
 	}
 
 	/** @return el servicio de usuario. */

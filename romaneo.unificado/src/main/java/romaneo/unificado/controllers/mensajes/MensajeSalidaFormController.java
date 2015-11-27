@@ -124,12 +124,37 @@ public class MensajeSalidaFormController extends BaseFormController {
 		tipoLstbx.renderAll();
 	}
 
-	@Listen("onSelect = #citiesLstbx")
-	public void selectCity() {
+	@Listen("onSelect = #tipoLstbx")
+	public void selectTipo() {
 		if (tipoLstbx.getSelectedItem() == null) {
 			return;
 		}
 		tipoLstbx.setAttribute(ENTITY, tipoLstbx.getSelectedItem().getAttribute(ENTITY));
+	}
+
+	@Listen("onOK = #destinatarioSearchTxtbx")
+	public void findDestinatarioTipo(Event event) {
+
+		destinatarioLstbx.setVisible(true);
+		destinatarioLstbx.setModel(
+				new ListModelList<Persona>(getPersonaService().findByName(destinatarioSearchTxtbx.getValue())));
+		destinatarioLstbx.setItemRenderer(new ListitemRenderer<Persona>() {
+
+			@Override
+			public void render(Listitem item, Persona tipo, int arg2) throws Exception {
+				item.setLabel(tipo.getNombre());
+				item.setAttribute(ENTITY, tipo);
+			}
+		});
+		destinatarioLstbx.renderAll();
+	}
+
+	@Listen("onSelect = #destinatarioLstbx")
+	public void selectDestinatario() {
+		if (destinatarioLstbx.getSelectedItem() == null) {
+			return;
+		}
+		destinatarioLstbx.setAttribute(ENTITY, destinatarioLstbx.getSelectedItem().getAttribute(ENTITY));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -162,6 +187,9 @@ public class MensajeSalidaFormController extends BaseFormController {
 					contenidoTxtbx.setErrorMessage(fieldError.getMessage());
 				}
 				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("mensaje.tipo"))) {
+					tipoBndbx.setErrorMessage(fieldError.getMessage());
+				}
+				if (fieldError.getField().equalsIgnoreCase(Labels.getLabel("mensaje.destinatario"))) {
 					destinatarioBndbx.setErrorMessage(fieldError.getMessage());
 				}
 			}
