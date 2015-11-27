@@ -8,11 +8,10 @@
 
 	<http auto-config='true' use-expressions="true">
 		<intercept-url pattern="/source/**" access="isAuthenticated()" />
-		<form-login login-page="/login.zul"
-		default-target-url="/source/main.zul"
+		<form-login login-page="/login.zul" default-target-url="/source/main.zul"
 			authentication-failure-url="/login.zul?login_error=1" />
 	</http>
-	
+
 	<global-method-security secured-annotations="enabled"
 		pre-post-annotations="enabled" />
 

@@ -17,8 +17,8 @@
 
 					<row sclass="row-form">
 						<label value="${labels.persona.nombre}" />
-						<textbox id="nombreTxtbx" maxlength="50"
-							hflex="1" class="form-control" />
+						<textbox id="nombreTxtbx" maxlength="50" hflex="1"
+							class="form-control" />
 					</row>
 
 				</rows>
@@ -28,10 +28,10 @@
 
 		<div sclass="container-buttons-form">
 			<hbox pack="end" width="100%">
-				<button id="acceptBttn" iconSclass="z-icon-check"
-					label="${labels.app.accept}" sclass="btn btn-primary btn-sm" />
-				<button id="cancelBttn" iconSclass="z-icon-times"
-					label="${labels.app.cancel}" sclass="btn btn-default btn-sm" />
+				<button id="acceptBttn" iconSclass="z-icon-check" label="${labels.app.accept}"
+					sclass="btn btn-primary btn-sm" />
+				<button id="cancelBttn" iconSclass="z-icon-times" label="${labels.app.cancel}"
+					sclass="btn btn-default btn-sm" />
 			</hbox>
 		</div>
 	</window>

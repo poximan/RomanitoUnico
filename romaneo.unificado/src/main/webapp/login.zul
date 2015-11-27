@@ -13,14 +13,14 @@
 		<hbox width="100%">
 			<hbox hflex="1">
 				<n:a href="http://www.minagri.gob.ar/sitio/">
-					<image src="/imagenes/logo_minagri.png"
-						class="img-rounded" style="margin-top:50px;" />
+					<image src="/imagenes/logo_minagri.png" class="img-rounded"
+						style="margin-top:50px;" />
 				</n:a>
 			</hbox>
 			<hbox hflex="1" pack="end">
 				<n:a href="https://prolana.magyp.gob.ar/">
-					<image src="/imagenes/logo_prolana.jpg"
-						class="img-rounded" style="margin-top:40px;" />
+					<image src="/imagenes/logo_prolana.jpg" class="img-rounded"
+						style="margin-top:40px;" />
 				</n:a>
 			</hbox>
 
@@ -44,45 +44,37 @@
 
 			</n:ul>
 
-			<n:ul class="nav navbar-nav navbar-right "
-				mode="overlapped">
+			<n:ul class="nav navbar-nav navbar-right " mode="overlapped">
 
 				<n:li class="dropdown">
-					<n:a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">
+					<n:a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						${labels.app.in}
 					</n:a>
 
-					<n:ul id="login-dp"
-						class="dropdown-menu navbar-default">
+					<n:ul id="login-dp" class="dropdown-menu navbar-default">
 
-						<n:form id="f" name="f"
-							action="j_spring_security_check" method="POST">
+						<n:form id="f" name="f" action="j_spring_security_check"
+							method="POST">
 
-							<n:div class="input-group"
-								style="width=350px">
+							<n:div class="input-group" style="width=350px">
 								<n:span class="input-group-addon">
-									<n:i
-										class="glyphicon glyphicon-user">
+									<n:i class="glyphicon glyphicon-user">
 									</n:i>
 								</n:span>
-								<textbox placeholder="Usuario" id="u"
-									name="j_username" sclass="form-control input-sm" />
+								<textbox placeholder="Usuario" id="u" name="j_username"
+									sclass="form-control input-sm" />
 							</n:div>
 
-							<n:div class="input-group"
-								style="width=350px">
+							<n:div class="input-group" style="width=350px">
 								<n:span class="input-group-addon">
-									<n:i
-										class="glyphicon glyphicon-lock">
+									<n:i class="glyphicon glyphicon-lock">
 									</n:i>
 								</n:span>
-								<textbox placeholder="Contraseña" id="p"
-									type="password" name="j_password" sclass="form-control" />
+								<textbox placeholder="Contraseña" id="p" type="password"
+									name="j_password" sclass="form-control" />
 							</n:div>
 
-							<button type="submit"
-								label="${labels.app.in}" sclass="btn btn-primary btn-sm" />
+							<button type="submit" label="${labels.app.in}" sclass="btn btn-primary btn-sm" />
 
 						</n:form>
 

@@ -1,7 +1,6 @@
 <?page contentType="text/html;charset=UTF-8"?>
 <zk xmlns:w="client" xmlns:n="xhtml">
-	<window id="acondicionadorFormNuevoWndw"
-		action="show: slideDown;hide: slideUp">
+	<window id="acondicionadorFormNuevoWndw" action="show: slideDown;hide: slideUp">
 		<div
 			apply="romaneo.unificado.controllers.acondicionador.AcondicionadorFormNuevoController">
 			<script src="/css/bootstrap/js/bootstrap.js" />
@@ -10,11 +9,10 @@
 			<n:span class="pull-bottom">
 				<n:div class="btn-group">
 
-					<button id="volverBttn" label="${labels.app.volver}"
-						class="btn btn-sm btn-default" />
+					<button id="volverBttn" label="${labels.app.volver}" class="btn btn-sm btn-default" />
 
-					<button id="editarBttn" iconSclass="z-icon-edit"
-						label="${labels.app.editar}" class="btn btn-sm btn-default" />
+					<button id="editarBttn" iconSclass="z-icon-edit" label="${labels.app.editar}"
+						class="btn btn-sm btn-default" />
 
 				</n:div>
 			</n:span>
@@ -24,14 +22,14 @@
 				<n:ul class="nav nav-tabs" role="tablist">
 
 					<n:li role="presentation" class="active">
-						<n:a href="#general" aria-controls="general"
-							role="tab" data-toggle="tab">
+						<n:a href="#general" aria-controls="general" role="tab"
+							data-toggle="tab">
 							${labels.app.general}
 						</n:a>
 					</n:li>
 					<n:li role="presentation">
-						<n:a href="#contacto" aria-controls="contacto"
-							role="tab" data-toggle="tab">
+						<n:a href="#contacto" aria-controls="contacto" role="tab"
+							data-toggle="tab">
 							${labels.app.contactos }
 						</n:a>
 					</n:li>
@@ -48,40 +46,36 @@
 					<!-- ............................................ -->
 					<!-- ......... general .......................... -->
 					<!-- ............................................ -->
-					<n:div role="tabpanel" class="tab-pane active"
-						id="general">
+					<n:div role="tabpanel" class="tab-pane active" id="general">
 						<n:div class="col-md-12">
 							<label value="${labels.persona.nombre}" />
-							<textbox id="nombreTxtbx" hflex="1"
-								readonly="true" class="form-control" />
-
-							<label value="${labels.persona.apellido}" />
-							<textbox id="apellidoTxtbx" hflex="1"
-								readonly="true" class="form-control" />
-
-							<label value="${labels.persona.dni}" />
-							<intbox id="dniIntbx" maxlength="8"
-								readonly="true" constraint="no negative" hflex="1"
+							<textbox id="nombreTxtbx" hflex="1" readonly="true"
 								class="form-control" />
 
+							<label value="${labels.persona.apellido}" />
+							<textbox id="apellidoTxtbx" hflex="1" readonly="true"
+								class="form-control" />
+
+							<label value="${labels.persona.dni}" />
+							<intbox id="dniIntbx" maxlength="8" readonly="true"
+								constraint="no negative" hflex="1" class="form-control" />
+
 							<label value="${labels.persona.localidad}" />
-							<bandbox id="localidadBndbx" hflex="1"
-								readonly="true" autodrop="true" class="form-control">
+							<bandbox id="localidadBndbx" hflex="1" readonly="true"
+								autodrop="true" class="form-control">
 								<bandpopup>
 									<vbox>
-										<hbox align="center"
-											pack="center">
-											<textbox
-												id="localidadSearchTxtbx" placeholder="${labels.app.search}"
+										<hbox align="center" pack="center">
+											<textbox id="localidadSearchTxtbx" placeholder="${labels.app.search}"
 												hflex="1" class="form-control" />
 										</hbox>
-										<listbox id="localidadesLstbx"
-											height="300px" width="300px" mold="paging" pageSize="10"
+										<listbox id="localidadesLstbx" height="300px" width="300px"
+											mold="paging" pageSize="10"
 											onSelect="localidadBndbx.value=self.selectedItem.label; localidadBndbx.close();"
 											visible="false">
 											<listhead>
-												<listheader
-													label="${labels.persona.localidad}" sort="auto" />
+												<listheader label="${labels.persona.localidad}"
+													sort="auto" />
 											</listhead>
 										</listbox>
 									</vbox>
@@ -94,39 +88,31 @@
 					<!-- ............................................ -->
 					<!-- ......... contacto ......................... -->
 					<!-- ............................................ -->
-					<n:div role="tabpanel" class="tab-pane"
-						id="contacto">
+					<n:div role="tabpanel" class="tab-pane" id="contacto">
 						<n:div class="col-md-12">
 
 							<listbox id="contactosLstbx" rows="10">
 								<listhead>
-									<listheader
-										label="${labels.persona.email}" align="center" />
-									<listheader
-										label="${labels.persona.telefono}" align="center" />
-									<listheader
-										label="${labels.persona.direccion}" align="center" />
+									<listheader label="${labels.persona.email}" align="center" />
+									<listheader label="${labels.persona.telefono}"
+										align="center" />
+									<listheader label="${labels.persona.direccion}"
+										align="center" />
 								</listhead>
 							</listbox>
 
-							<div
-								class="panel-footer custom-list-paging">
+							<div class="panel-footer custom-list-paging">
 								<n:div class="row">
 									<n:div class="col-md-3">
-										<paging id="contactosPgn"
-											pageSize="10" />
+										<paging id="contactosPgn" pageSize="10" />
 									</n:div>
 									<n:div class="col-md-4">
 										<hbox align="center">
-											<label
-												value="${labels.app.listSize}" />
-											<combobox
-												id="contactosPageSizeCmbbx" width="80px"
+											<label value="${labels.app.listSize}" />
+											<combobox id="contactosPageSizeCmbbx" width="80px"
 												sclass="input-group" value="5">
-												<comboitem value="5"
-													label="5" />
-												<comboitem value="10"
-													label="10" />
+												<comboitem value="5" label="5" />
+												<comboitem value="10" label="10" />
 											</combobox>
 										</hbox>
 									</n:div>
@@ -135,12 +121,10 @@
 
 							<n:div class="btn-group">
 
-								<button id="newBttnVE"
-									iconSclass="z-icon-plus" label="${labels.app.create}"
+								<button id="newBttnVE" iconSclass="z-icon-plus" label="${labels.app.create}"
 									class="btn btn-sm btn-primary" />
 
-								<button id="deleteBttnVE"
-									disabled="true" iconSclass="z-icon-times"
+								<button id="deleteBttnVE" disabled="true" iconSclass="z-icon-times"
 									label="${labels.app.delete}" class="btn btn-sm btn-default" />
 
 							</n:div>

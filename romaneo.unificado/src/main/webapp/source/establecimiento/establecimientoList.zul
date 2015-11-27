@@ -70,8 +70,8 @@
 
 				<listbox id="establecimientosLstbx" rows="10">
 					<listhead>
-						<listheader label="${labels.persona.nombre}"
-							hflex="min" align="center" />
+						<listheader label="${labels.persona.nombre}" hflex="min"
+							align="center" />
 					</listhead>
 				</listbox>
 

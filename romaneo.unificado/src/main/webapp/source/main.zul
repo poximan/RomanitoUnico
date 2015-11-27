@@ -19,9 +19,8 @@
 	<!-- VENTANA PRINCIPAL ...................................... -->
 	<!-- ........................................................ -->
 
-	<window id="mainWndw"
-		apply="romaneo.unificado.controllers.MainController" width="100%"
-		height="100%">
+	<window id="mainWndw" apply="romaneo.unificado.controllers.MainController"
+		width="100%" height="100%">
 
 		<!-- ............................................................... -->
 		<!-- logo institucional ministerio agricultura y prolana ........... -->
@@ -30,14 +29,14 @@
 		<hbox width="100%">
 			<hbox hflex="1">
 				<n:a href="http://www.minagri.gob.ar/sitio/">
-					<image src="/imagenes/logo_minagri.png"
-						class="img-rounded" style="margin-top:50px;" />
+					<image src="/imagenes/logo_minagri.png" class="img-rounded"
+						style="margin-top:50px;" />
 				</n:a>
 			</hbox>
 			<hbox hflex="1" pack="end">
 				<n:a href="https://prolana.magyp.gob.ar/">
-					<image src="/imagenes/logo_prolana.jpg"
-						class="img-rounded" style="margin-top:40px;" />
+					<image src="/imagenes/logo_prolana.jpg" class="img-rounded"
+						style="margin-top:40px;" />
 				</n:a>
 			</hbox>
 
@@ -60,8 +59,7 @@
 					${labels.main.menu.noticias}
 				</n:a>
 
-				<n:a id="masterDataBttn" href="#"
-					class="navbar-brand">
+				<n:a id="masterDataBttn" href="#" class="navbar-brand">
 					${labels.main.menu.masterData}
 				</n:a>
 
@@ -74,8 +72,7 @@
 			<n:ul class="nav navbar-nav navbar-right ">
 
 				<n:li class="dropdown">
-					<n:a href="#" class="navbar-brand"
-						data-toggle="dropdown">
+					<n:a href="#" class="navbar-brand" data-toggle="dropdown">
 						${labels.app.in}
 					</n:a>
 
@@ -111,8 +108,8 @@
 			<div id="contratistaDv" visible="false" vflex="1" />
 		</div>
 
-		<div id="containerDvMensajes" class="container-fluid"
-			width="100%" vflex="1">
+		<div id="containerDvMensajes" class="container-fluid" width="100%"
+			vflex="1">
 			<div id="entradaDv" visible="false" vflex="1" />
 			<div id="salidaDv" visible="false" vflex="1" />
 		</div>
