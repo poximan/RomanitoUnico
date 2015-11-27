@@ -46,18 +46,22 @@
 
 				<n:div class="filters-panel panel">
 					<n:div class="row">
+
 						<n:div class="col-md-3">
 							<textbox id="filterByApellidoTxtbx"
 								placeholder="${labels.persona.apellido}" class="form-control" />
 						</n:div>
+
 						<n:div class="col-md-3">
 							<textbox id="filterByNombreTxtbx"
 								placeholder="${labels.persona.nombre}" class="form-control" />
 						</n:div>
+
 						<n:div class="col-md-3">
 							<intbox id="filterByDni"
 								placeholder="${labels.persona.dni}" class="form-control" />
 						</n:div>
+
 					</n:div>
 
 					<separator height="10px" orient="vertical" />

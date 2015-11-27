@@ -1,6 +1,6 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
 <?taglib uri="http://www.zkoss.org/zkspring/security" prefix="sec"?>
-<?page id="mainPage" title="${labels.app.name}" contentType="text/html;charset=UTF-8"?>
+<?page id="mainPage" title="${labels.main.menu.name}" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="xhtml">
 
 	<script src="/css/bootstrap/js/bootstrap.min.js" />

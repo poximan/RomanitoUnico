@@ -29,7 +29,7 @@
 			<n:div class="col-md-10">
 
 				<n:h1 style="margin-top:5px">
-					${labels.main.menu.mensajes}
+					${labels.mensaje.menu.entrada}
 				</n:h1>
 				<separator />
 

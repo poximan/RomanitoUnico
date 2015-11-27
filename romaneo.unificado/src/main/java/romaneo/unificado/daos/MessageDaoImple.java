@@ -11,7 +11,7 @@ import org.hibernate.Query;
 
 import romaneo.unificado.domain.Message;
 
-public class MessageDaoImple extends BaseDaoImple<Message, Integer>implements MessageDao {
+public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements MessageDao {
 
 	@Override
 	protected Class<Message> getEntityClass() {
@@ -22,10 +22,11 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer>implements Me
 	@Override
 	public PagedQueryResponse pagedFindAll(Integer page, Integer pageSize, String sortField, String sortOrder,
 			Map<String, Object> parameters) {
-		StringBuffer query = new StringBuffer();
-		Map<String, Object> queryParameters = new HashMap<String, Object>();
 
-		query.append("SELECT distinct e FROM " + Message.class.getName() + " WHERE 1 = 1 ");
+		StringBuffer query = new StringBuffer();
+		query.append("SELECT distinct e FROM " + Message.class.getSimpleName() + " e WHERE 1 = 1 ");
+
+		Map<String, Object> queryParameters = new HashMap<String, Object>();
 
 		if (parameters != null) {
 			for (Iterator<String> it = parameters.keySet().iterator(); it.hasNext();) {
@@ -33,14 +34,14 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer>implements Me
 				String filterProperty = it.next();
 				Object filterValue = parameters.get(filterProperty);
 
-				if (filterProperty.equalsIgnoreCase(Message.FiltersFecha.BY_FROM_DATE.getValue())) {
-					query.append(" AND e.fecha_creado >= :dateFrom ");
-					queryParameters.put("dateFrom", filterValue);
+				if (filterProperty.equalsIgnoreCase(Message.Filters.BY_DESDE.getValue())) {
+					query.append(" AND e.fecha_creado >= :desde ");
+					queryParameters.put("desde", filterValue);
 				}
 
-				if (filterProperty.equalsIgnoreCase(Message.FiltersFecha.BY_TO_DATE.getValue())) {
-					query.append(" AND e.fecha_creado <= :dateTo ");
-					queryParameters.put("dateTo", filterValue);
+				if (filterProperty.equalsIgnoreCase(Message.Filters.BY_HASTA.getValue())) {
+					query.append(" AND e.fecha_creado <= :hasta ");
+					queryParameters.put("hasta", filterValue);
 				}
 			}
 		}

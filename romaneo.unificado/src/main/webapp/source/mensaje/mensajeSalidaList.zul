@@ -1,4 +1,4 @@
-<?page title="Entrada" contentType="text/html;charset=UTF-8"?>
+<?page title="Salida" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="xhtml">
 	<window id="mensajeSalidaListWndw" border="none" hflex="1"
 		sclass="normal-window"
@@ -29,41 +29,81 @@
 			<n:div class="col-md-10">
 
 				<n:h1 style="margin-top:5px">
-					${labels.main.menu.mensajes}
+					${labels.mensaje.menu.salida}
 				</n:h1>
+				
 				<separator />
 
 				<n:div class="filters-panel panel">
 					<n:div class="row">
-						<n:div class="col-md-3">
-							<textbox id="filterByNombre"
-								placeholder="${labels.persona.nombre}" class="form-control" />
+
+						<n:div class="col-md-2">
+							<datebox id="filterByFechaDesde"
+								placeholder="${labels.mensaje.filters.fechaDesde}" />
 						</n:div>
+
+						<n:div class="col-md-2">
+							<datebox id="filterByFechaHasta"
+								placeholder="${labels.mensaje.filters.fechaHasta}" />
+						</n:div>
+
+						<n:div class="col-md-3">
+							<textbox id="filterByDestinatario"
+								placeholder="${labels.mensaje.destinatario}"
+								class="form-control" />
+						</n:div>
+
+						<n:div class="col-md-4">
+							<textbox id="filterByAsunto"
+								placeholder="${labels.mensaje.asunto}" class="form-control" />
+						</n:div>
+
+						<n:div class="col-md-1">
+							<textbox id="filterByEstado"
+								placeholder="${labels.mensaje.estado}" class="form-control" />
+						</n:div>
+
 					</n:div>
 
 					<separator height="10px" orient="vertical" />
 
 					<n:div class="panel-footer text-right">
+
 						<button id="filterBttn"
 							iconSclass="z-icon-filter" label="${labels.app.filter}"
 							class="btn btn-sm btn-default" />
+
 						<button id="cleanFiltersBttn"
 							iconSclass="z-icon-undo" label="${labels.app.cleanFilters}"
 							class="btn btn-sm btn-default" />
+
 						<button id="newBttn" iconSclass="z-icon-plus"
 							label="${labels.app.create}" class="btn btn-sm btn-primary" />
+
 						<button id="editBttn" disabled="true"
 							iconSclass="z-icon-edit" label="${labels.app.edit}"
 							class="btn btn-sm btn-default" />
+
 						<button id="deleteBttn" disabled="true"
 							iconSclass="z-icon-times" label="${labels.app.delete}"
 							class="btn btn-sm btn-default" />
+
 					</n:div>
 				</n:div>
 
 				<listbox id="mensajesSalidaLstbx" rows="10">
 					<listhead>
-						<listheader label="${labels.persona.nombre}"
+						<listheader label="${labels.mensaje.fecha}"
+							hflex="min" align="center" />
+
+						<listheader
+							label="${labels.mensaje.destinatario}" hflex="min"
+							align="center" />
+
+						<listheader label="${labels.mensaje.asunto}"
+							hflex="min" align="center" />
+
+						<listheader label="${labels.mensaje.estado}"
 							hflex="min" align="center" />
 					</listhead>
 				</listbox>
@@ -88,6 +128,7 @@
 						</n:div>
 					</n:div>
 				</div>
+				
 			</n:div>
 
 		</n:div>

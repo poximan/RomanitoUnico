@@ -111,6 +111,10 @@ public class AcondicionadorListController extends BasePagedListController<Acondi
 		return acondicionadoresPageSizeCmbbx;
 	}
 
+	/* ------------------------------------------------------------------ */
+	/* filtros ---------------------------------------------------------- */
+	/* ------------------------------------------------------------------ */
+	
 	@Override
 	public void buildParameters() {
 

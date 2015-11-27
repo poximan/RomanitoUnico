@@ -5,7 +5,7 @@ import java.util.Calendar;
 import romaneo.unificado.daos.MessageDao;
 import romaneo.unificado.domain.Message;
 
-public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>implements MessageService {
+public class MessageServiceImple extends BaseServiceImple<Message, MessageDao> implements MessageService {
 
 	@Override
 	public Integer countUnprocessedTheLastDays(Integer numberOfDays) {

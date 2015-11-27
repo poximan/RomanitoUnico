@@ -25,5 +25,4 @@ public interface MessageService extends BaseService<Message, MessageDao> {
 	 */
 	@Transactional(rollbackFor = Exception.class)
 	void markAsProcessed(Message message);
-
 }

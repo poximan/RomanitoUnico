@@ -67,6 +67,7 @@ public abstract class BaseTabFormList<Entity extends Serializable> extends BaseC
 	@SuppressWarnings("rawtypes")
 	private BaseService service_contacto = null;
 
+	@SuppressWarnings("rawtypes")
 	public BaseTabFormList() {
 		super();
 

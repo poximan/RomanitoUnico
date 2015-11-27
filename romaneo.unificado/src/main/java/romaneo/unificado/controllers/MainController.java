@@ -111,7 +111,7 @@ public class MainController extends BaseController {
 		containerDvABMC.setVisible(false);
 		containerDvMensajes.setVisible(true);
 
-		navigationToMensajesEntrada();
+		navigationToMensajesSalida();
 	}
 
 	@Listen("onClick = #editAccountBttn")

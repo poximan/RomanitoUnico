@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -65,6 +66,10 @@ public class Message extends BaseEntity implements Serializable {
 	@JoinColumn(name = "ID_USUARIO")
 	private Usuario usuario;
 
+	@ManyToOne
+	@JoinColumn(name = "ID_ESTADO", referencedColumnName = "id")
+	private Estado estado;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -78,9 +83,9 @@ public class Message extends BaseEntity implements Serializable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public enum FiltersFecha {
+	public enum Filters {
 
-		BY_FROM_DATE("fromDate"), BY_TO_DATE("toDate");
+		BY_DESDE("desde"), BY_HASTA("hasta"), BY_DESTINATADIO("destinatario"), BY_ASUNTO("asunto"), BY_ESTADO("estado");
 
 		private String value;
 
@@ -88,7 +93,7 @@ public class Message extends BaseEntity implements Serializable {
 			return value;
 		}
 
-		FiltersFecha(String value) {
+		Filters(String value) {
 			this.value = value;
 		}
 	}
@@ -150,10 +155,18 @@ public class Message extends BaseEntity implements Serializable {
 		return usuario;
 	}
 
+	public Estado getEstado() {
+		return estado;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 
 	public void setId(Integer id) {
 		this.id = id;
