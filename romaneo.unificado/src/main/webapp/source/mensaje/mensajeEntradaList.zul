@@ -2,7 +2,7 @@
 <zk xmlns:n="xhtml">
 	<window id="mensajeEntradaListWndw" border="none" hflex="1"
 		sclass="normal-window"
-		apply="romaneo.unificado.controllers.mensajes.mensajeEntradaListController">
+		apply="romaneo.unificado.controllers.mensajes.MensajeEntradaListController">
 
 		<style src="/css/list.css" />
 

@@ -39,8 +39,6 @@ import romaneo.unificado.daos.BaseDao;
 import romaneo.unificado.daos.PagedQueryResponse;
 import romaneo.unificado.domain.BaseEntity;
 import romaneo.unificado.services.BaseService;
-import romaneo.utileria.abstractFactory.FabricaAbstracta;
-import romaneo.utileria.abstractFactory.ProductorFabricas;
 
 public abstract class BasePagedListController<Entity extends Serializable> extends BaseController {
 	private static final long serialVersionUID = 1L;
@@ -73,7 +71,7 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 
 		Map<String, Entity> arg = new HashMap<String, Entity>();
 		arg.put(SELECTED, (Entity) getListComponent().getSelectedItem().getAttribute(ENTITY));
-		
+
 		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg)).doModal();
 	}
 

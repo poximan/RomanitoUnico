@@ -10,6 +10,7 @@ import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Bandbox;
@@ -39,7 +40,7 @@ import romaneo.unificado.services.acondicionador.AcondicionadorService;
  * 
  * @author hugo
  */
-public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicionador>implements FormPageName {
+public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicionador> implements FormPageName {
 
 	private static final long serialVersionUID = 1L;
 
@@ -167,8 +168,7 @@ public class AcondicionadorFormNuevoController extends BaseTabFormList<Acondicio
 				getService().update(acondicionador);
 			}
 			// Refrescar la lista
-			// Events.sendEvent("onRefresh", getWindowComponent().getParent(),
-			// null);
+			Events.sendEvent("onRefresh", getWindowComponent().getParent(), null);
 			getWindowComponent().onClose();
 
 		} catch (ValidationException e) {

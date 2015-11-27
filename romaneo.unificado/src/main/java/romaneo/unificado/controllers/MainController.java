@@ -133,12 +133,12 @@ public class MainController extends BaseController {
 
 	@Listen("onGoToMensajesEntrada = #mainWndw")
 	public void navigationToMensajesEntrada() {
-		createWindow(Labels.getLabel("url.mensajeEntrada"), entradaDv, mensajesBttn, null);
+		createWindow(Labels.getLabel("url.mensajeEntradaList"), entradaDv, mensajesBttn, null);
 	}
 
 	@Listen("onGoToMensajesSalida = #mainWndw")
 	public void navigationToMensajesSalida() {
-		createWindow(Labels.getLabel("url.mensajeSalida"), salidaDv, mensajesBttn, null);
+		createWindow(Labels.getLabel("url.mensajeSalidaList"), salidaDv, mensajesBttn, null);
 	}
 
 	// **** MAESTRO DE DATOS **** //
