@@ -70,6 +70,12 @@ public class Estado extends BaseEntity implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+
+		return nombre;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

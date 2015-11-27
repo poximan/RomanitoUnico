@@ -5,6 +5,7 @@
 
 package romaneo.unificado.controllers.mensajes;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ import romaneo.unificado.services.MessageService;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class mensajeSalidaListController extends BasePagedListController<Message> {
+public class MensajeSalidaListController extends BasePagedListController<Message> {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -68,7 +69,7 @@ public class mensajeSalidaListController extends BasePagedListController<Message
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public mensajeSalidaListController() {
+	public MensajeSalidaListController() {
 
 	}
 
@@ -99,8 +100,9 @@ public class mensajeSalidaListController extends BasePagedListController<Message
 			@Override
 			public void render(Listitem item, Message mensaje, int arg) throws Exception {
 
-				(new Listcell("" + (mensaje.getFecha_creado() != null ? mensaje.getFecha_creado() : "")))
-						.setParent(item);
+				(new Listcell(
+						"" + (mensaje.getFecha_creado().getTime() != null ? mensaje.getFecha_creado().getTime() : "")))
+								.setParent(item);
 
 				(new Listcell("" + (mensaje.getUsuario() != null ? mensaje.getUsuario().getPersona() : "")))
 						.setParent(item);
@@ -144,10 +146,16 @@ public class mensajeSalidaListController extends BasePagedListController<Message
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
 		if (filterByFechaDesde.getValue() != null && !filterByFechaDesde.getValue().toString().trim().isEmpty()) {
-			parameters.put(Message.Filters.BY_DESDE.getValue(), filterByFechaDesde.getValue());
+
+			Calendar desde = Calendar.getInstance();
+			desde.setTime(filterByFechaDesde.getValue());
+			parameters.put(Message.Filters.BY_DESDE.getValue(), desde);
 		}
 		if (filterByFechaHasta.getValue() != null && !filterByFechaHasta.getValue().toString().trim().isEmpty()) {
-			parameters.put(Message.Filters.BY_HASTA.getValue(), filterByFechaHasta.getValue());
+
+			Calendar hasta = Calendar.getInstance();
+			hasta.setTime(filterByFechaHasta.getValue());
+			parameters.put(Message.Filters.BY_HASTA.getValue(), hasta);
 		}
 		if (filterByDestinatario.getValue() != null && !filterByDestinatario.getValue().trim().isEmpty()) {
 			parameters.put(Message.Filters.BY_DESTINATADIO.getValue(), filterByDestinatario.getValue());

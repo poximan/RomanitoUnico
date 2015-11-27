@@ -1,9 +1,12 @@
 package romaneo.unificado.services;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import romaneo.unificado.daos.MessageDao;
 import romaneo.unificado.domain.Message;
+import romaneo.unificado.domain.Message.TipoMensaje;
 
 public interface MessageService extends BaseService<Message, MessageDao> {
 
@@ -25,4 +28,7 @@ public interface MessageService extends BaseService<Message, MessageDao> {
 	 */
 	@Transactional(rollbackFor = Exception.class)
 	void markAsProcessed(Message message);
+
+	@Transactional(readOnly = true)
+	List<TipoMensaje> findByTipo(String value);
 }

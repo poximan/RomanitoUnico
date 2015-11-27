@@ -61,7 +61,8 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), null)).doModal();
 	}
 
-	/** Editar */
+	/** Ver */
+	@SuppressWarnings("unchecked")
 	@Listen("onClick = #editBttn")
 	public void edit() {
 
@@ -70,20 +71,10 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 			return;
 		}
 
-		/*
 		Map<String, Entity> arg = new HashMap<String, Entity>();
 		arg.put(SELECTED, (Entity) getListComponent().getSelectedItem().getAttribute(ENTITY));
-		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg)).doModal();
-		*/
 		
-		FabricaAbstracta fabrica = ProductorFabricas.getFabrica();
-		BaseEntity objeto_entidad = fabrica.getEntity(getListComponent().getSelectedItem().getAttribute(ENTITY));
-
-		String string_entidad = objeto_entidad.getClass().getSimpleName().toLowerCase();
-		String direccion = string_entidad + "/" + string_entidad + "FormNuevo.zul?id="
-				+ objeto_entidad.getPK().toString();
-
-		Executions.sendRedirect(direccion);		
+		((Window) Executions.createComponents(getFormPageName(), getWindowComponent(), arg)).doModal();
 	}
 
 	/** Eliminar */

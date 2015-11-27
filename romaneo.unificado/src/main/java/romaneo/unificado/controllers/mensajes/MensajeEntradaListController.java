@@ -27,7 +27,7 @@ import romaneo.unificado.services.MessageService;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class mensajeEntradaListController extends BasePagedListController<Message> {
+public class MensajeEntradaListController extends BasePagedListController<Message> {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -50,7 +50,7 @@ public class mensajeEntradaListController extends BasePagedListController<Messag
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public mensajeEntradaListController() {
+	public MensajeEntradaListController() {
 
 	}
 

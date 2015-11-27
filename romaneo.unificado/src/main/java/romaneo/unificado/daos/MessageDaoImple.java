@@ -3,7 +3,6 @@ package romaneo.unificado.daos;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -29,19 +28,33 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 		Map<String, Object> queryParameters = new HashMap<String, Object>();
 
 		if (parameters != null) {
-			for (Iterator<String> it = parameters.keySet().iterator(); it.hasNext();) {
+			for (String filterKey : parameters.keySet()) {
 
-				String filterProperty = it.next();
-				Object filterValue = parameters.get(filterProperty);
+				Object filterValue = parameters.get(filterKey);
 
-				if (filterProperty.equalsIgnoreCase(Message.Filters.BY_DESDE.getValue())) {
+				if (filterKey.equalsIgnoreCase(Message.Filters.BY_DESDE.getValue())) {
 					query.append(" AND e.fecha_creado >= :desde ");
 					queryParameters.put("desde", filterValue);
 				}
 
-				if (filterProperty.equalsIgnoreCase(Message.Filters.BY_HASTA.getValue())) {
+				if (filterKey.equalsIgnoreCase(Message.Filters.BY_HASTA.getValue())) {
 					query.append(" AND e.fecha_creado <= :hasta ");
 					queryParameters.put("hasta", filterValue);
+				}
+
+				if (filterKey.equalsIgnoreCase(Message.Filters.BY_DESTINATADIO.getValue())) {
+					query.append(" AND e.usuario LIKE :usuario ");
+					queryParameters.put("usuario", "%" + filterValue + "%");
+				}
+
+				if (filterKey.equalsIgnoreCase(Message.Filters.BY_ASUNTO.getValue())) {
+					query.append(" AND e.asunto LIKE :asunto ");
+					queryParameters.put("asunto", "%" + filterValue + "%");
+				}
+
+				if (filterKey.equalsIgnoreCase(Message.Filters.BY_ESTADO.getValue())) {
+					query.append(" AND e.estado.nombre = :estado ");
+					queryParameters.put("estado", filterValue);
 				}
 			}
 		}

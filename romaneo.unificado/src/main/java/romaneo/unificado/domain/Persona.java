@@ -65,6 +65,11 @@ public class Persona extends BaseEntity implements Serializable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	@Override
+	public String toString() {
+		return nombre + " " + apellido;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

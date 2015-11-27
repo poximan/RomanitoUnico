@@ -81,7 +81,7 @@
 							label="${labels.app.create}" class="btn btn-sm btn-primary" />
 
 						<button id="editBttn" disabled="true"
-							iconSclass="z-icon-edit" label="${labels.app.edit}"
+							iconSclass="z-icon-view" label="${labels.app.view}"
 							class="btn btn-sm btn-default" />
 
 						<button id="deleteBttn" disabled="true"
