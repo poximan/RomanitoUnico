@@ -9,7 +9,7 @@
 		<n:div class="row">
 
 			<n:div class="col-md-2">
-				<n:ul class="nav nav-pills nav-stacked">
+				<n:ul class="nav">
 
 					<n:li>
 						<n:a id="mensajeEntradaSubmenuA2">

@@ -1,5 +1,7 @@
 package romaneo.unificado.controllers.mensajes;
 
+import java.util.Calendar;
+
 import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
@@ -162,6 +164,7 @@ public class MensajeSalidaFormController extends BaseFormController {
 	@Override
 	public void accept() {
 
+		mensaje.setFecha_creado(Calendar.getInstance());
 		mensaje.setAsunto(asuntoTxtbx.getValue());
 		mensaje.setMensaje(contenidoTxtbx.getValue());
 		mensaje.setUsuario((Usuario) destinatarioBndbx.getAttribute(ENTITY));
