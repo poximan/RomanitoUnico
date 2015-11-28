@@ -33,4 +33,19 @@ public class UsuarioDaoImple extends BaseDaoImple<Usuario, Integer> implements U
 		List<Usuario> result = findQueryByParameters(query.toString(), parameters);
 		return result.isEmpty() ? null : result.get(0);
 	}
+
+	@Override
+	public List<Usuario> findByLikeName(String nombre_usuario) {
+
+		StringBuffer query = new StringBuffer("");
+		query.append("FROM " + Usuario.class.getSimpleName() + " u ");
+		query.append("WHERE 1 = 1 ");
+		query.append("AND u.nombre_usuario LIKE :nombre_usuario");
+
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("nombre_usuario", "%" + nombre_usuario + "%");
+
+		List<Usuario> result = findQueryByParameters(query.toString(), parameters);
+		return result.isEmpty() ? null : result;
+	}
 }

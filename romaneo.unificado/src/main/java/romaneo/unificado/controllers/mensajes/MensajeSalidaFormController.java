@@ -19,7 +19,7 @@ import org.zkoss.zul.Window;
 import romaneo.unificado.controllers.BaseFormController;
 import romaneo.unificado.domain.Message;
 import romaneo.unificado.domain.Message.TipoMensaje;
-import romaneo.unificado.domain.Persona;
+import romaneo.unificado.domain.Usuario;
 import romaneo.unificado.exceptions.FieldResourceError;
 import romaneo.unificado.exceptions.ValidationException;
 import romaneo.unificado.services.MessageService;
@@ -87,8 +87,8 @@ public class MensajeSalidaFormController extends BaseFormController {
 			tipoBndbx.setValue(mensaje.getTipo_mensaje().getValue());
 			tipoBndbx.setAttribute(ENTITY, mensaje.getTipo_mensaje().getValue());
 
-			destinatarioBndbx.setValue(mensaje.getUsuario().getPersona().getClass().getSimpleName());
-			destinatarioBndbx.setAttribute(ENTITY, mensaje.getUsuario().getPersona());
+			destinatarioBndbx.setValue(mensaje.getUsuario().getPersona().getNombre());
+			destinatarioBndbx.setAttribute(ENTITY, mensaje.getUsuario());
 
 			fillFields(mensaje);
 		} else {
@@ -129,7 +129,7 @@ public class MensajeSalidaFormController extends BaseFormController {
 		if (tipoLstbx.getSelectedItem() == null) {
 			return;
 		}
-		tipoLstbx.setAttribute(ENTITY, tipoLstbx.getSelectedItem().getAttribute(ENTITY));
+		tipoBndbx.setAttribute(ENTITY, tipoLstbx.getSelectedItem().getAttribute(ENTITY));
 	}
 
 	@Listen("onOK = #destinatarioSearchTxtbx")
@@ -137,12 +137,12 @@ public class MensajeSalidaFormController extends BaseFormController {
 
 		destinatarioLstbx.setVisible(true);
 		destinatarioLstbx.setModel(
-				new ListModelList<Persona>(getPersonaService().findByName(destinatarioSearchTxtbx.getValue())));
-		destinatarioLstbx.setItemRenderer(new ListitemRenderer<Persona>() {
+				new ListModelList<Usuario>(getUsuarioService().findByLikeName(destinatarioSearchTxtbx.getValue())));
+		destinatarioLstbx.setItemRenderer(new ListitemRenderer<Usuario>() {
 
 			@Override
-			public void render(Listitem item, Persona tipo, int arg2) throws Exception {
-				item.setLabel(tipo.getNombre());
+			public void render(Listitem item, Usuario tipo, int arg2) throws Exception {
+				item.setLabel(tipo.getPersona().getNombre());
 				item.setAttribute(ENTITY, tipo);
 			}
 		});
@@ -154,7 +154,7 @@ public class MensajeSalidaFormController extends BaseFormController {
 		if (destinatarioLstbx.getSelectedItem() == null) {
 			return;
 		}
-		destinatarioLstbx.setAttribute(ENTITY, destinatarioLstbx.getSelectedItem().getAttribute(ENTITY));
+		destinatarioBndbx.setAttribute(ENTITY, destinatarioLstbx.getSelectedItem().getAttribute(ENTITY));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -164,7 +164,8 @@ public class MensajeSalidaFormController extends BaseFormController {
 
 		mensaje.setAsunto(asuntoTxtbx.getValue());
 		mensaje.setMensaje(contenidoTxtbx.getValue());
-		mensaje.getUsuario().setPersona((Persona) destinatarioBndbx.getAttribute(destinatarioBndbx.getValue()));
+		mensaje.setUsuario((Usuario) destinatarioBndbx.getAttribute(ENTITY));
+		mensaje.setTipo_mensaje((TipoMensaje) tipoBndbx.getAttribute(ENTITY));
 
 		try {
 			if (mensaje.getId() == null) {

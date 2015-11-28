@@ -1,5 +1,7 @@
 package romaneo.unificado.services;
 
+import java.util.List;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -53,4 +55,5 @@ public interface UsuarioService extends BaseService<Usuario, UsuarioDao> {
 	void changePassword(String name, String oldPassword, String newPassword, String reNewPassword)
 			throws UsernameNotFoundException;
 
+	List<Usuario> findByLikeName(String value);
 }

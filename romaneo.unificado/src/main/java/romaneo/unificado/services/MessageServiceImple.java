@@ -1,5 +1,6 @@
 package romaneo.unificado.services;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -23,7 +24,11 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao> i
 
 	@Override
 	public List<TipoMensaje> findByTipo(String value) {
-		
-		return null;
+
+		List<TipoMensaje> lista = new ArrayList<>(2);
+		lista.add(TipoMensaje.NORMAL);
+		lista.add(TipoMensaje.URGENTE);
+
+		return lista;
 	}
 }

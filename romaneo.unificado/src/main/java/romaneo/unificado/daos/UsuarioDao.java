@@ -1,5 +1,7 @@
 package romaneo.unificado.daos;
 
+import java.util.List;
+
 import romaneo.unificado.domain.Usuario;
 
 /** @author Eric Hidalgo */
@@ -14,4 +16,5 @@ public interface UsuarioDao extends BaseDao<Usuario, Integer> {
 	 */
 	Usuario findByName(String name);
 
+	List<Usuario> findByLikeName(String nombre);
 }

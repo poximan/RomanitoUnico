@@ -97,4 +97,10 @@ public class UsuarioServiceImple extends BaseServiceImple<Usuario, UsuarioDao>
 			throw new ValidationException(error);
 
 	}
+
+	@Override
+	public List<Usuario> findByLikeName(String nombre) {
+
+		return dao.findByLikeName(nombre);
+	}
 }

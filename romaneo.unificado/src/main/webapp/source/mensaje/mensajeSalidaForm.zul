@@ -77,9 +77,9 @@
 
 		<div sclass="container-buttons-form">
 			<hbox pack="end" width="100%">
-				<button id="acceptBttn" iconSclass="z-icon-check" label="${labels.app.accept}"
+				<button id="acceptBttn" iconSclass="z-icon-check" label="${labels.app.aceptar}"
 					sclass="btn btn-primary btn-sm" />
-				<button id="cancelBttn" iconSclass="z-icon-times" label="${labels.app.cancel}"
+				<button id="cancelBttn" iconSclass="z-icon-times" label="${labels.app.cancelar}"
 					sclass="btn btn-default btn-sm" />
 			</hbox>
 		</div>
