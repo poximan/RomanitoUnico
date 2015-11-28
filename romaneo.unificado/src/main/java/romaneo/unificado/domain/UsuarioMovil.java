@@ -38,19 +38,19 @@ public class UsuarioMovil extends BaseEntity implements Serializable {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-	private Usuario id_usuario;
+	private Usuario idUsuario;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "ID_MOVIL", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-	private Movil id_movil;
+	private Movil idMovil;
 
 	@Column(name = "FECHA_INICIO", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fecha_inicio;
+	private Calendar fechaInicio;
 
 	@Column(name = "FECHA_FIN", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fecha_fin;
+	private Calendar fechaFin;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -100,19 +100,19 @@ public class UsuarioMovil extends BaseEntity implements Serializable {
 	}
 
 	public Usuario getId_usuario() {
-		return id_usuario;
+		return idUsuario;
 	}
 
 	public Movil getId_movil() {
-		return id_movil;
+		return idMovil;
 	}
 
 	public Calendar getFecha_inicio() {
-		return fecha_inicio;
+		return fechaInicio;
 	}
 
 	public Calendar getFecha_fin() {
-		return fecha_fin;
+		return fechaFin;
 	}
 
 	/* ............................................. */
@@ -121,11 +121,11 @@ public class UsuarioMovil extends BaseEntity implements Serializable {
 	/* ............................................. */
 
 	public void setFecha_inicio(Calendar fecha_inicio) {
-		this.fecha_inicio = fecha_inicio;
+		this.fechaInicio = fecha_inicio;
 	}
 
 	public void setFecha_fin(Calendar fecha_fin) {
-		this.fecha_fin = fecha_fin;
+		this.fechaFin = fecha_fin;
 	}
 
 	public void setUsuarioMovilPK(UsuarioMovilPK usuarioMovilPK) {
@@ -133,11 +133,11 @@ public class UsuarioMovil extends BaseEntity implements Serializable {
 	}
 
 	public void setId_usuario(Usuario id_usuario) {
-		this.id_usuario = id_usuario;
+		this.idUsuario = id_usuario;
 	}
 
 	public void setId_movil(Movil id_movil) {
-		this.id_movil = id_movil;
+		this.idMovil = id_movil;
 	}
 
 	@Override

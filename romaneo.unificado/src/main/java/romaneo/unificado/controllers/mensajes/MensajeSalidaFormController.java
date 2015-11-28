@@ -19,8 +19,6 @@ import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import romaneo.unificado.controllers.BaseFormController;
-import romaneo.unificado.domain.Estado;
-import romaneo.unificado.domain.Estado.EstadosPosibles;
 import romaneo.unificado.domain.Message;
 import romaneo.unificado.domain.Message.TipoMensaje;
 import romaneo.unificado.domain.Usuario;
