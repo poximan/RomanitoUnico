@@ -171,7 +171,7 @@ public class MensajeSalidaFormController extends BaseFormController {
 		mensaje.setMensaje(contenidoTxtbx.getValue());
 		mensaje.setUsuario((Usuario) destinatarioBndbx.getAttribute(ENTITY));
 		mensaje.setTipo_mensaje((TipoMensaje) tipoBndbx.getAttribute(ENTITY));
-		mensaje.setEstado(getEstadoService().getEstado(EstadosPosibles.GENERADO));
+		//mensaje.setEstado(getEstadoService().getEstado(EstadosPosibles.GENERADO));
 
 		try {
 			if (mensaje.getId() == null) {
