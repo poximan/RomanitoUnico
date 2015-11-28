@@ -76,6 +76,21 @@ public class Estado extends BaseEntity implements Serializable {
 		return nombre;
 	}
 
+	public enum EstadosPosibles {
+
+		GENERADO("generado"), ENVIADO("enviado"), ERROR("error"), RECIBIDO("recibido"), LEIDO("leido");
+
+		private String value;
+
+		public String getValue() {
+			return value;
+		}
+
+		EstadosPosibles(String value) {
+			this.value = value;
+		}
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

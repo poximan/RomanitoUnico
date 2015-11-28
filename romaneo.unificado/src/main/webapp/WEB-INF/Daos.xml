@@ -15,6 +15,10 @@
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 
+	<beans:bean id="EstadoDao" class="romaneo.unificado.daos.EstadoDaoImple">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+
 	<beans:bean id="AcondicionadorDao"
 		class="romaneo.unificado.daos.AcondicionadorDaoImple">
 		<beans:property name="sessionFactory" ref="sessionFactory" />

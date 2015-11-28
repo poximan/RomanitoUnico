@@ -22,6 +22,8 @@ import romaneo.unificado.services.contratista.ContratistaService;
 import romaneo.unificado.services.establecimiento.EstablecimientoService;
 import romaneo.unificado.services.productor.ProductorService;
 import romaneo.unificado.services.BaseService;
+import romaneo.unificado.services.ContactoService;
+import romaneo.unificado.services.EstadoService;
 import romaneo.unificado.services.LocalidadService;
 import romaneo.unificado.services.MessageService;
 import romaneo.unificado.services.PersonaService;
@@ -119,48 +121,81 @@ public abstract class BaseController extends SelectorComposer<Component> {
 		return (AppSettings) SpringUtil.getBean(AppSettings.class.getSimpleName());
 	}
 
-	/** @return el servicio de persona. */
+	/**
+	 * @return el servicio de persona.
+	 */
 	protected PersonaService getPersonaService() {
 		return (PersonaService) SpringUtil.getBean(PersonaService.class.getSimpleName());
 	}
 
-	/** @return el servicio de usuario. */
+	/**
+	 * @return el servicio de usuario.
+	 */
 	protected UsuarioService getUsuarioService() {
 		return (UsuarioService) SpringUtil.getBean(UsuarioService.class.getSimpleName());
 	}
 
-	/** @return el servicio de acondicionadores. */
+	/**
+	 * @return el servicio de usuario.
+	 */
+	protected ContactoService getContactoService() {
+		return (ContactoService) SpringUtil.getBean(ContactoService.class.getSimpleName());
+	}
+
+	/**
+	 * @return el servicio de usuario.
+	 */
+	protected EstadoService getEstadoService() {
+		return (EstadoService) SpringUtil.getBean(EstadoService.class.getSimpleName());
+	}
+
+	/**
+	 * @return el servicio de acondicionadores.
+	 */
 	protected AcondicionadorService getAcondicionadorService() {
 		return (AcondicionadorService) SpringUtil.getBean(AcondicionadorService.class.getSimpleName());
 	}
 
-	/** @return el servicio de productores. */
+	/**
+	 * @return el servicio de productores.
+	 */
 	protected ProductorService getProductorService() {
 		return (ProductorService) SpringUtil.getBean(ProductorService.class.getSimpleName());
 	}
 
-	/** @return el servicio de establecimientos. */
+	/**
+	 * @return el servicio de establecimientos.
+	 */
 	protected EstablecimientoService getEstablecimientoService() {
 		return (EstablecimientoService) SpringUtil.getBean(EstablecimientoService.class.getSimpleName());
 	}
 
-	/** @return el servicio de contratistas. */
+	/**
+	 * @return el servicio de contratistas.
+	 */
 	protected ContratistaService getContratistaService() {
 		return (ContratistaService) SpringUtil.getBean(ContratistaService.class.getSimpleName());
 	}
 
-	/** @return el servicio de localidades. */
+	/**
+	 * @return el servicio de localidades.
+	 */
 	protected LocalidadService getLocalidadService() {
 		return (LocalidadService) SpringUtil.getBean(LocalidadService.class.getSimpleName());
 	}
 
-	/** @return el servicio de navegacion del usuario. */
+	/**
+	 * @return el servicio de mensajes.
+	 */
+	protected MessageService getMessageService() {
+		return (MessageService) SpringUtil.getBean(MessageService.class.getSimpleName());
+	}
+
+	/**
+	 * @return el servicio de navegacion del usuario.
+	 */
 	protected NavigationHistoryService<A, A, Div, Window> getNavigationHistoryService() {
 		return navigationHistoryService;
 	}
 
-	/** @return el servicio de mensajes. */
-	protected MessageService getMessageService() {
-		return (MessageService) SpringUtil.getBean(MessageService.class.getSimpleName());
-	}
 }

@@ -13,14 +13,19 @@
 		<beans:property name="dao" ref="UsuarioDao" />
 	</beans:bean>
 
-	<beans:bean id="AcondicionadorService"
-		class="romaneo.unificado.services.acondicionador.AcondicionadorServiceImple">
-		<beans:property name="dao" ref="AcondicionadorDao" />
-	</beans:bean>
-
 	<beans:bean id="ContactoService"
 		class="romaneo.unificado.services.ContactoServiceImple">
 		<beans:property name="dao" ref="ContactoDao" />
+	</beans:bean>
+
+	<beans:bean id="EstadoService"
+		class="romaneo.unificado.services.EstadoServiceImple">
+		<beans:property name="dao" ref="EstadoDao" />
+	</beans:bean>
+
+	<beans:bean id="AcondicionadorService"
+		class="romaneo.unificado.services.acondicionador.AcondicionadorServiceImple">
+		<beans:property name="dao" ref="AcondicionadorDao" />
 	</beans:bean>
 
 	<beans:bean id="ProductorService"
