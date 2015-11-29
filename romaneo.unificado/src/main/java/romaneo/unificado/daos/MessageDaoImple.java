@@ -107,7 +107,4 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 
 		return count.intValue();
 	}
-	
-	
-
 }

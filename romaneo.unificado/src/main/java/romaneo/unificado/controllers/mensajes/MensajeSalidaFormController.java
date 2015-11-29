@@ -19,6 +19,7 @@ import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import romaneo.unificado.controllers.BaseFormController;
+import romaneo.unificado.domain.Estado.EstadosPosibles;
 import romaneo.unificado.domain.Message;
 import romaneo.unificado.domain.Message.TipoMensaje;
 import romaneo.unificado.domain.Usuario;
@@ -169,7 +170,7 @@ public class MensajeSalidaFormController extends BaseFormController {
 		mensaje.setMensaje(contenidoTxtbx.getValue());
 		mensaje.setUsuario((Usuario) destinatarioBndbx.getAttribute(ENTITY));
 		mensaje.setTipo_mensaje((TipoMensaje) tipoBndbx.getAttribute(ENTITY));
-		//mensaje.setEstado(getEstadoService().getEstado(EstadosPosibles.GENERADO));
+		mensaje.setEstado(getEstadoService().getEstado(EstadosPosibles.GENERADO));
 
 		try {
 			if (mensaje.getId() == null) {
