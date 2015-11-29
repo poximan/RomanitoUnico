@@ -205,5 +205,4 @@ public class MensajeSalidaFormController extends BaseFormController {
 			Messagebox.show(e.getMessage(), "Error", Messagebox.OK, Messagebox.ERROR);
 		}
 	}
-
 }
