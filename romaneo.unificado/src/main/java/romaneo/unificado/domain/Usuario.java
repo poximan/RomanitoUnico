@@ -59,7 +59,7 @@ public class Usuario extends BaseEntity implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_usuario")
 	private List<UsuarioRol> roles = new ArrayList<UsuarioRol>();
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_usuario")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
 	private List<UsuarioMovil> moviles = new ArrayList<UsuarioMovil>();
 
 	@Basic(optional = false)

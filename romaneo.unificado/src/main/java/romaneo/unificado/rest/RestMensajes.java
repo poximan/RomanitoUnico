@@ -23,7 +23,7 @@ public class RestMensajes extends BaseRest {
 	public String fuckingPrueba() {
 		return "rest Funcionando";
 	}
-
+	
 	@GET
 	@Path("entrante")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -35,13 +35,13 @@ public class RestMensajes extends BaseRest {
 
 			Map<String, Object> parameters = new HashMap<String, Object>();
 			parameters.put("idUsuario", idUsuario);
+			parameters.put("estado.nombre", "leido");
 
 			mensajes = getMessageService().findQueryByParameters(null, parameters);
 		}
 
 		return mensajes;
 	}
-
 	public boolean autenticar(Integer idUsuario, String imei) {
 
 		UsuarioMovil usuario_con_movil = ((UsuarioMovilService) getService()).findByNameIMEI(idUsuario, imei);

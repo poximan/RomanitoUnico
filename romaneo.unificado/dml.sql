@@ -26,7 +26,7 @@ INSERT INTO partido(nombre, id_provincia)
     ('sarmiento', 1),
     ('tehuelches', 1),
     ('telsen', 1);
-    
+
 -- localidad --
 INSERT INTO localidad(cod_postal, nombre_localidad, id_partido)
 
@@ -37,7 +37,7 @@ INSERT INTO localidad(cod_postal, nombre_localidad, id_partido)
     (9120, 'arroyo verde', 1),
     (9120, 'puerto lobos', 1);
 
--- persona -- 
+-- persona --
 INSERT INTO persona(apellido, dni, nombre)
 
     VALUES
@@ -122,7 +122,7 @@ INSERT INTO persona(apellido, dni, nombre)
 	('carou', 29532012, 'felipe'),
 	('di pasqua', 23391236, 'jorge');
 
--- contacto -- 
+-- contacto --
 INSERT INTO contacto(direccion, email, telefono, id_persona)
 
     VALUES
@@ -227,7 +227,7 @@ INSERT INTO contacto(direccion, email, telefono, id_persona)
     ('Apartado núm.: 794, 8066 Ipsum Calle','Pellentesque.tincidunt.tempus@a.ca','6115995363',34),
     ('Apartado núm.: 334, 3371 Dictum ','justo.sit.amet@Cras.ca','2183047670',25);
 
--- acondicionador -- 
+-- acondicionador --
 INSERT INTO acondicionador(id_localidad, id_persona)
 
     VALUES
@@ -265,7 +265,7 @@ INSERT INTO acondicionador(id_localidad, id_persona)
     (1,21),
     (5,65);
 
--- productor -- 
+-- productor --
 INSERT INTO productor (nombre)
 
 	VALUES
@@ -474,26 +474,26 @@ INSERT INTO establecimiento(nombre, id_partido, id_productor)
     ('Donec Foundation',13,55),
     ('Ipsum Leo Limited',2,12),
     ('Ac Foundation',6,38);
-	    
+
 -- usuario --
 INSERT INTO usuario(
-            esta_activo, clave_usuario, descripcion, nombre_usuario, 
-            id_persona)    
-     
+            esta_activo, clave_usuario, descripcion, nombre_usuario,
+            id_persona)
+
     VALUES
     ('Y', 'hugo', 'usuario hugo', 'hugo', 78),
     ('Y', 'felipe', 'usuario hugo', 'felipe', 79),
     ('Y', 'jorge', 'usuario hugo', 'jorge', 80);
 
 -- roles --
-INSERT INTO rol(descripcion, nombre)       
+INSERT INTO rol(descripcion, nombre)
 
-    VALUES 
+    VALUES
     ('administrador', 'admin');
-  
+
 -- tabla muchos a muchos, usuarios y roles --
 INSERT INTO usuario_rol(id_rol, id_usuario)
-    
+
     VALUES
     (1, 1);
 
@@ -505,20 +505,28 @@ INSERT INTO estado(nombre)
     ('recibido'),
     ('error'),
     ('leido');
-    
--- mensajes --
-INSERT INTO messages(
-            asunto, fecha_creado, mensaje, 
-            tipo_mensaje, id_estado, id_usuario)
 
+-- moviles --
+INSERT INTO movil(imei)
     VALUES
-    ('prueba1', clock_timestamp(), 'esto es una prueba',0,1,1),
-    ('prueba2', clock_timestamp(), 'esto es otra prueba',0,1,1),
-    ('prueba3', clock_timestamp(), 'esto es una tercer prueba',0,1,1),
-    ('prueba4', clock_timestamp(), 'todo lo que voy a hacer, es una prueba',0,1,1),
-    ('prueba5', clock_timestamp(), 'porque no se que mas, es otra prueba',0,1,1),
-    ('prueba6', clock_timestamp(), 'el segundo, es despues del primero',0,1,1),
-    ('prueba7', clock_timestamp(), 'al infinito, y mas alla',0,1,1),
-    ('prueba8', clock_timestamp(), 'la vieja mula, ahora es lo que era',0,1,1),
-    ('prueba9', clock_timestamp(), 'y va siendo la novena prueba',0,1,1),
-    ('prueba10', clock_timestamp(), 'ultima prueba',0,1,1);
+    ('1234567'),
+    ('5555555'),
+    ('2345533');
+
+-- usuario movil --
+INSERT INTO usuario_movil(id_movil, id_usuario, fecha_fin,
+            fecha_inicio)
+    VALUES
+    ('1','1',null,clock_timestamp()),
+    ('2','2',null,clock_timestamp()),
+    ('3','3',null,clock_timestamp());
+
+-- mensajes --
+INSERT INTO messages(asunto, fecha_creado, fecha_leido,
+            fecha_recibido, mensaje, tipo_mensaje,
+            id_estado, id_usuario)
+    VALUES
+    ('prueba1',clock_timestamp(),null,null,'esto es una prueba','0','1','1'),
+    ('prueba2',clock_timestamp(),null,null,'esto es una prueba','0','1','1'),
+    ('prueba3',clock_timestamp(),null,null,'esto es una prueba','0','1','1'),
+    ('prueba4',clock_timestamp(),null,null,'esto es una prueba','0','1','1');

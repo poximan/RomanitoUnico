@@ -15,10 +15,12 @@ public class UsuarioMovilServiceImple extends BaseServiceImple<UsuarioMovil, Usu
 
 		// Consulta
 		StringBuffer query = new StringBuffer("");
-		query.append("FROM " + UsuarioMovil.class.getSimpleName() + " u ");
+		query.append("FROM " + UsuarioMovil.class.getSimpleName() + " um ");
 		query.append("WHERE 1 = 1 ");
-		query.append("AND u.idUsuario = :idUsuario");
-		query.append("AND u.idMovil.IMEI = :idMovil");
+		query.append("AND um.idUsuario = :idUsuario");
+		query.append("AND um.idMovil.IMEI = :idMovil");
+		query.append("AND un.fechaFin=NULL");
+
 
 		// Parametros
 		Map<String, Object> parameters = new HashMap<String, Object>();
