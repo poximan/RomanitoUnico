@@ -13,6 +13,11 @@
 		<beans:property name="dao" ref="UsuarioDao" />
 	</beans:bean>
 
+	<beans:bean id="UsuarioMovilService"
+		class="romaneo.unificado.services.UsuarioMovilServiceImple">
+		<beans:property name="dao" ref="UsuarioMovilDao" />
+	</beans:bean>
+
 	<beans:bean id="ContactoService"
 		class="romaneo.unificado.services.ContactoServiceImple">
 		<beans:property name="dao" ref="ContactoDao" />

@@ -1,6 +1,7 @@
 package romaneo.unificado.services;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,4 +32,6 @@ public interface MessageService extends BaseService<Message, MessageDao> {
 
 	@Transactional(readOnly = true)
 	List<TipoMensaje> findByTipo(String value);
+
+	public List<Message> findByParameters(Map<String, Object> parameters);
 }

@@ -2,7 +2,11 @@ package romaneo.unificado.services;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.hibernate.Query;
 
 import romaneo.unificado.daos.MessageDao;
 import romaneo.unificado.domain.Message;
@@ -30,5 +34,61 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao> i
 		lista.add(TipoMensaje.URGENTE);
 
 		return lista;
+	}
+
+	@Override
+	public List<Message> findByParameters(Map<String, Object> parameters) {
+
+		StringBuffer query = new StringBuffer();
+		query.append("SELECT distinct e FROM " + Message.class.getSimpleName() + " e WHERE 1 = 1 ");
+
+		Map<String, Object> queryParameters = new HashMap<String, Object>();
+
+		if (parameters != null) {
+			for (String filterKey : parameters.keySet()) {
+
+				Object filterValue = parameters.get(filterKey);
+
+				if (filterKey.equalsIgnoreCase(Message.Filters.BY_DESDE.getValue())) {
+					query.append(" AND e.fecha_creado >= :desde ");
+					queryParameters.put("desde", filterValue);
+				}
+
+				if (filterKey.equalsIgnoreCase(Message.Filters.BY_HASTA.getValue())) {
+					query.append(" AND e.fecha_creado <= :hasta ");
+					queryParameters.put("hasta", filterValue);
+				}
+
+				if (filterKey.equalsIgnoreCase(Message.Filters.BY_DESTINATADIO.getValue())) {
+					query.append(" AND e.usuario = :usuario ");
+					queryParameters.put("usuario", filterValue);
+				}
+
+				if (filterKey.equalsIgnoreCase(Message.Filters.BY_ASUNTO.getValue())) {
+					query.append(" AND e.asunto LIKE :asunto ");
+					queryParameters.put("asunto", "%" + filterValue + "%");
+				}
+
+				if (filterKey.equalsIgnoreCase(Message.Filters.BY_ESTADO.getValue())) {
+					query.append(" AND e.estado.nombre = :estado ");
+					queryParameters.put("estado", filterValue);
+				}
+			}
+		}
+
+		// Crear las consultas
+		Query hQuery = dao.getSession().createQuery(query.toString());
+
+		// Agrego los parametros
+		for (String key : queryParameters.keySet())
+
+			if (queryParameters.get(key) instanceof List)
+				hQuery.setParameterList(key, (List) queryParameters.get(key));
+			else
+				hQuery.setParameter(key, queryParameters.get(key));
+
+		@SuppressWarnings("unchecked")
+		List<Message> list = hQuery.list();
+		return list;
 	}
 }

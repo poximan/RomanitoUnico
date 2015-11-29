@@ -10,6 +10,10 @@
 	<beans:bean id="UsuarioDao" class="romaneo.unificado.daos.UsuarioDaoImple">
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
+	
+	<beans:bean id="UsuarioMovilDao" class="romaneo.unificado.daos.UsuarioMovilDaoImple">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
 
 	<beans:bean id="ContactoDao" class="romaneo.unificado.daos.ContactoDaoImple">
 		<beans:property name="sessionFactory" ref="sessionFactory" />
