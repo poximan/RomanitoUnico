@@ -106,6 +106,11 @@ public class Usuario extends BaseEntity implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return persona.toString();
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
