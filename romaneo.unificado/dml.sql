@@ -526,7 +526,19 @@ INSERT INTO messages(asunto, fecha_creado, fecha_leido,
             fecha_recibido, mensaje, tipo_mensaje,
             id_estado, id_usuario)
     VALUES
-    ('prueba1',clock_timestamp(),null,null,'esto es una prueba','0','1','1'),
-    ('prueba2',clock_timestamp(),null,null,'esto es una prueba','0','1','1'),
-    ('prueba3',clock_timestamp(),null,null,'esto es una prueba','0','1','1'),
-    ('prueba4',clock_timestamp(),null,null,'esto es una prueba','0','1','1');
+    ('primer mensaje enviado desde portal',clock_timestamp(),null,null,'esto es una prueba1','0','1','1'),
+    ('trae pan',clock_timestamp(),null,null,'esto es una prueba2','0','1','1'),
+    ('abri la tranquera',clock_timestamp(),null,null,'esto es una prueba3','0','1','1'),
+    ('el segundo es despues del primero','2015-11-20 17:25:38.144',null,null,'esto es una prueba4','0','1','2'),
+    ('prueba5','2015-11-20 17:25:38.144',null,null,'esto es una prueba5','0','1','2'),
+    ('prueba6','2015-10-30 17:25:38.144',null,null,'esto es una prueba6','0','1','2'),
+    ('prueba7','2015-10-30 17:25:38.144',null,null,'esto es una prueba7','0','1','3'),
+    ('prueba8','2015-10-30 17:25:38.144',null,null,'esto es una prueba8','0','1','3'),
+    ('prueba9',clock_timestamp(),null,null,'esto es una prueba9','0','2','1'),
+    ('prueba10',clock_timestamp(),null,null,'esto es una prueba10','0','2','1'),
+    ('prueba11',clock_timestamp(),null,null,'esto es una prueba11','0','2','1'),
+    ('prueba12','2015-11-20 17:25:38.144',null,null,'esto es una prueba12','0','2','2'),
+    ('prueba13','2015-11-20 17:25:38.144',null,null,'esto es una prueba13','0','2','2'),
+    ('prueba14','2015-10-30 17:25:38.144',null,null,'esto es una prueba14','0','2','2'),
+    ('prueba15','2015-10-30 17:25:38.144',null,null,'esto es una prueba15','0','2','3'),
+    ('prueba16','2015-10-30 17:25:38.144',null,null,'esto es una prueba15','0','2','3');
