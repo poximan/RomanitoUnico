@@ -43,8 +43,11 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 				}
 
 				if (filterKey.equalsIgnoreCase(Message.Filters.BY_DESTINATADIO.getValue())) {
-					query.append(" AND e.usuario LIKE :usuario ");
-					queryParameters.put("usuario", "%" + filterValue + "%");
+					
+					query.append(" AND ((e.usuario.persona.nombre LIKE :nombre) OR (e.usuario.persona.apellido LIKE :apellido)) ");
+					
+					queryParameters.put("nombre", "%" + filterValue + "%");
+					queryParameters.put("apellido", "%" + filterValue + "%");
 				}
 
 				if (filterKey.equalsIgnoreCase(Message.Filters.BY_ASUNTO.getValue())) {
