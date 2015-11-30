@@ -39,8 +39,9 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao> i
 	@Override
 	public List<Message> findByParameters(Map<String, Object> parameters) {
 
+		System.out.println("SERVICE MESSAGE");
 		StringBuffer query = new StringBuffer();
-		query.append("SELECT distinct e FROM " + Message.class.getSimpleName() + " e WHERE 1 = 1 ");
+		query.append("SELECT distinct e FROM " + Message.class.getSimpleName() + " e WHERE 1=1");
 
 		Map<String, Object> queryParameters = new HashMap<String, Object>();
 

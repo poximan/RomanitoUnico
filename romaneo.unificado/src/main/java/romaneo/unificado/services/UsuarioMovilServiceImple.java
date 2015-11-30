@@ -16,18 +16,18 @@ public class UsuarioMovilServiceImple extends BaseServiceImple<UsuarioMovil, Usu
 		// Consulta
 		StringBuffer query = new StringBuffer("");
 		query.append("FROM " + UsuarioMovil.class.getSimpleName() + " um ");
-		query.append("WHERE 1 = 1 ");
-		query.append("AND um.idUsuario = :idUsuario");
-		query.append("AND um.idMovil.IMEI = :idMovil");
-		query.append("AND un.fechaFin=NULL");
+		query.append("WHERE um.idUsuario.id = :idUsuario ");
+		query.append("AND um.idMovil.imei = :imei ");
+		query.append("AND um.fechaFin is null");
 
 
 		// Parametros
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("idUsuario", idUsuario);
-		parameters.put("idMovil", imei);
+		parameters.put("imei", imei);
 
 		List<UsuarioMovil> result = findQueryByParameters(query.toString(), parameters);
-		return result.isEmpty() ? null : result.get(0);
+		System.out.println("resultTam: "+result.size());
+		return result.size()==0 ? null : result.get(0);
 	}
 }

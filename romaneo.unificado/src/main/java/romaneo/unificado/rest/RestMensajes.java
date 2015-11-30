@@ -4,24 +4,39 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import romaneo.unificado.domain.Message;
-import romaneo.unificado.domain.UsuarioMovil;
+import romaneo.unificado.services.MessageService;
 import romaneo.unificado.services.UsuarioMovilService;
 
 @Path("mensaje")
-public class RestMensajes extends BaseRest {
-
+public class RestMensajes //extends BaseRest 
+{
+	@Context 
+	ServletContext server;
+	
+	
 	@GET
 	@Path("prueba")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String fuckingPrueba() {
-		return "rest Funcionando";
+		
+		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
+		MessageService mensajeS = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
+		System.out.println(mensajeS);
+		String respuesta ="rest Funcionando";
+		
+		return respuesta;
 	}
 	
 	@GET
@@ -29,32 +44,28 @@ public class RestMensajes extends BaseRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Message> mensajesRecibido(@QueryParam("idUsuario") Integer idUsuario, @QueryParam("imei") String imei) {
 
+		
 		List<Message> mensajes = null;
 
 		if (autenticar(idUsuario, imei)) {
-
+			ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
+			MessageService usuarioService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
+			System.out.println("ingeso");
 			Map<String, Object> parameters = new HashMap<String, Object>();
 			parameters.put("idUsuario", idUsuario);
-			parameters.put("estado.nombre", "leido");
-
-			mensajes = getMessageService().findQueryByParameters(null, parameters);
+			//parameters.put("estado.nombre", "leido");
+			mensajes = usuarioService.findByParameters(parameters);
+		}
+		else{
+			System.out.println("Error");
 		}
 
 		return mensajes;
 	}
+	
 	public boolean autenticar(Integer idUsuario, String imei) {
-
-		UsuarioMovil usuario_con_movil = ((UsuarioMovilService) getService()).findByNameIMEI(idUsuario, imei);
-		return usuario_con_movil == null ? false : true;
-	}
-
-	@Override
-	public String getClassName() {
-		return UsuarioMovil.class.getName();
-	}
-
-	@Override
-	protected String getEntityService() {
-		return UsuarioMovilService.class.getSimpleName();
+		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
+		UsuarioMovilService usMoService = (UsuarioMovilService) ctx.getBean(UsuarioMovilService.class.getSimpleName());
+		return usMoService.findByNameIMEI(idUsuario, imei) == null ? false : true;
 	}
 }

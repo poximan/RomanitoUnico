@@ -36,7 +36,7 @@ public class Movil extends BaseEntity implements Serializable {
 	private Integer id;
 
 	@Column(name = "IMEI", nullable = false, length = 60)
-	private String IMEI;
+	private String imei;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -88,8 +88,8 @@ public class Movil extends BaseEntity implements Serializable {
 		return id;
 	}
 
-	public String getIMEI() {
-		return IMEI;
+	public String getImei() {
+		return imei;
 	}
 
 	/* ............................................. */
@@ -106,7 +106,7 @@ public class Movil extends BaseEntity implements Serializable {
 		this.id = id;
 	}
 
-	public void setIMEI(String iMEI) {
-		IMEI = iMEI;
+	public void setImei(String iMEI) {
+		imei = iMEI;
 	}
 }

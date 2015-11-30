@@ -20,6 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -36,6 +37,7 @@ public class Message extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "ID")
@@ -47,8 +49,9 @@ public class Message extends BaseEntity implements Serializable {
 	@Column(nullable = false)
 	private String mensaje;
 
+
 	@Column(nullable = false)
-	private TipoMensaje tipo_mensaje;
+	private transient TipoMensaje tipo_mensaje;
 
 	@Column(name = "FECHA_CREADO", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -62,13 +65,14 @@ public class Message extends BaseEntity implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fecha_leido_ack;
 
+
 	@OneToOne
 	@JoinColumn(name = "ID_USUARIO")
-	private Usuario usuario;
+	private transient Usuario usuario;
 
 	@ManyToOne
 	@JoinColumn(name = "ID_ESTADO", referencedColumnName = "id")
-	private Estado estado;
+	private transient Estado estado;
 
 	/* ............................................. */
 	/* ............................................. */
