@@ -33,13 +33,18 @@ public class RestMensajes // extends BaseRest
 		MessageService mensajeS = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
 		System.out.println(mensajeS);
 		String respuesta = "rest Funcionando";
-
 		return respuesta;
 	}
 
-	public boolean ackMensaje(@QueryParam("nombreUsuario") String nombreUsuario, 
-						@QueryParam("imei") String imei,@QueryParam("idMensaje") Integer idMesaje)
+	@GET
+	@Path("ackMensaje")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean ackMensaje(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei,
+			@QueryParam("idMensaje") Integer idMensaje)
 	{
+		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
+		MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
+		mensajeService.mensajeRecibido(idMensaje);
 		return true;
 	}
 

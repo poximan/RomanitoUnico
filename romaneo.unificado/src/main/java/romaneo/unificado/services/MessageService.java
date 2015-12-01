@@ -38,4 +38,6 @@ public interface MessageService extends BaseService<Message, MessageDao> {
 	public List<Message> findByImei(String nombreUsuario, String imei);
 
 	public List<Message> findByParameters(Map<String, Object> parameters);
+
+	public boolean mensajeRecibido(Integer idMensaje);
 }

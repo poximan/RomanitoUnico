@@ -111,4 +111,14 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao> i
 		}
 		return null;
 	}
+
+	@Override
+	public boolean mensajeRecibido(Integer idMensaje)
+	{
+		Message mensaje;
+		mensaje = dao.findById(idMensaje);
+		mensaje.setFecha_recibido_ack(Calendar.getInstance());
+		dao.update(mensaje);
+		return true;
+	}
 }

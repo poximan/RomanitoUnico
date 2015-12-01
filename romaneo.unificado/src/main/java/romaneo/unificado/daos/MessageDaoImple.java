@@ -9,7 +9,6 @@ import java.util.Map;
 import org.hibernate.Query;
 
 import romaneo.unificado.domain.Message;
-import romaneo.unificado.domain.UsuarioMovil;
 
 public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements MessageDao {
 
@@ -123,7 +122,7 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 		StringBuffer query = new StringBuffer(
 				"SELECT m FROM " + Message.class.getSimpleName() + " m ");
 		query.append("WHERE m.usuario.nombre_usuario = :nombreUsuario");
-		query.append(" AND m.fecha_recibido_ack is null ");
+		query.append(" AND m.fecha_enviado is null ");
 	
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
