@@ -11,19 +11,19 @@ public class UsuarioMovilServiceImple extends BaseServiceImple<UsuarioMovil, Usu
 		implements UsuarioMovilService {
 
 	@Override
-	public UsuarioMovil findByNameIMEI(Integer idUsuario, String imei) {
+	public UsuarioMovil findByNameIMEI(String nombreUsuario, String imei) {
 
 		// Consulta
 		StringBuffer query = new StringBuffer("");
 		query.append("FROM " + UsuarioMovil.class.getSimpleName() + " um ");
-		query.append("WHERE um.idUsuario.id = :idUsuario ");
+		query.append("WHERE um.idUsuario.nombre_usuario = :nombreUsuario ");
 		query.append("AND um.idMovil.imei = :imei ");
 		query.append("AND um.fechaFin is null");
 
 
 		// Parametros
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("idUsuario", idUsuario);
+		parameters.put("nombreUsuario", nombreUsuario);
 		parameters.put("imei", imei);
 
 		List<UsuarioMovil> result = findQueryByParameters(query.toString(), parameters);

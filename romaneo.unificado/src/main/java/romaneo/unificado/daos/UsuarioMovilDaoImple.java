@@ -22,7 +22,7 @@ public class UsuarioMovilDaoImple extends BaseDaoImple<UsuarioMovil, Integer> im
 		StringBuffer query = new StringBuffer("");
 		query.append("FROM " + UsuarioMovil.class.getSimpleName() + " um ");
 		query.append("WHERE um.idUsuario= :idUsuario ");
-		query.append("AND um.fechaFin= NULL");
+		query.append("AND um.fechaFin is null");
 		
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("idUsuario", idUsuario);

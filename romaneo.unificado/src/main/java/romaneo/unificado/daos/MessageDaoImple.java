@@ -9,6 +9,7 @@ import java.util.Map;
 import org.hibernate.Query;
 
 import romaneo.unificado.domain.Message;
+import romaneo.unificado.domain.UsuarioMovil;
 
 public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements MessageDao {
 
@@ -109,5 +110,24 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 		Long count = (Long) hQuery.uniqueResult();
 
 		return count.intValue();
+	}
+
+	@Override
+	public List<Message> mensajesImei(Integer idUsuario, String imei)
+	{
+		StringBuffer query = new StringBuffer(
+				"SELECT m FROM " + Message.class.getSimpleName() + " m  JOIN "+UsuarioMovil.class.getName() + " um ");
+		query.append("WHERE u.id = um.idUsuario.id ");
+		query.append("AND u.id = :idUsuario ");
+		query.append("AND e.fecha_recibido_ack is null ");
+	
+
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("idUsuario", idUsuario);
+
+		List<Message> result = findQueryByParameters(query.toString(), parameters);
+		findQueryByParameters(query.toString(), parameters);
+		 
+		return result;
 	}
 }

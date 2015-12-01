@@ -5,5 +5,5 @@ import romaneo.unificado.domain.UsuarioMovil;
 
 public interface UsuarioMovilService extends BaseService<UsuarioMovil, UsuarioMovilDao> {
 
-	UsuarioMovil findByNameIMEI(Integer idUsuario, String imei);
+	UsuarioMovil findByNameIMEI(String nombreUsuario, String imei);
 }

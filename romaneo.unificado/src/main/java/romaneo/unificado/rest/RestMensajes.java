@@ -42,18 +42,17 @@ public class RestMensajes //extends BaseRest
 	@GET
 	@Path("entrante")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Message> mensajesRecibido(@QueryParam("idUsuario") Integer idUsuario, @QueryParam("imei") String imei) {
-
+	public List<Message> mensajesRecibido(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei) {
 		
 		List<Message> mensajes = null;
 
-		if (autenticar(idUsuario, imei)) {
+		if (autenticar(nombreUsuario, imei)) {
 			ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 			MessageService usuarioService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
 			System.out.println("ingeso");
 			Map<String, Object> parameters = new HashMap<String, Object>();
-			parameters.put("idUsuario", idUsuario);
-			//parameters.put("estado.nombre", "leido");
+			parameters.put("nombreUsuario", nombreUsuario);
+			parameters.put("idMovil.imei", "imei");
 			mensajes = usuarioService.findByParameters(parameters);
 		}
 		else{
@@ -63,9 +62,9 @@ public class RestMensajes //extends BaseRest
 		return mensajes;
 	}
 	
-	public boolean autenticar(Integer idUsuario, String imei) {
+	public boolean autenticar(String nombreUsuario, String imei) {
 		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 		UsuarioMovilService usMoService = (UsuarioMovilService) ctx.getBean(UsuarioMovilService.class.getSimpleName());
-		return usMoService.findByNameIMEI(idUsuario, imei) == null ? false : true;
+		return usMoService.findByNameIMEI(nombreUsuario, imei) == null ? false : true;
 	}
 }
