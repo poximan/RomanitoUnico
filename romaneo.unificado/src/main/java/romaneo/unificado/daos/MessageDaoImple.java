@@ -112,22 +112,28 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 		return count.intValue();
 	}
 
+	/*
+	 * hay que implementar que coincida con los imei
+	 * (non-Javadoc)
+	 * @see romaneo.unificado.daos.MessageDao#mensajesImei(java.lang.String, java.lang.String)
+	 */
 	@Override
-	public List<Message> mensajesImei(Integer idUsuario, String imei)
+	public List<Message> mensajesImei(String nombreUsuario, String imei)
 	{
 		StringBuffer query = new StringBuffer(
-				"SELECT m FROM " + Message.class.getSimpleName() + " m  JOIN "+UsuarioMovil.class.getName() + " um ");
-		query.append("WHERE u.id = um.idUsuario.id ");
-		query.append("AND u.id = :idUsuario ");
-		query.append("AND e.fecha_recibido_ack is null ");
+				"SELECT m FROM " + Message.class.getSimpleName() + " m ");
+		query.append("WHERE m.usuario.nombre_usuario = :nombreUsuario");
+		query.append(" AND m.fecha_recibido_ack is null ");
 	
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("idUsuario", idUsuario);
+		parameters.put("nombreUsuario", nombreUsuario);
 
 		List<Message> result = findQueryByParameters(query.toString(), parameters);
 		findQueryByParameters(query.toString(), parameters);
 		 
 		return result;
 	}
+
+
 }

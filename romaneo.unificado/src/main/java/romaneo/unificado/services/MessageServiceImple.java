@@ -92,4 +92,23 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao> i
 		List<Message> list = hQuery.list();
 		return list;
 	}
+
+	@Override
+	public List<Message> findByImei(String nombreUsuario, String imei)
+	{
+		
+		return dao.mensajesImei(nombreUsuario, imei);
+	}
+
+	@Override
+	public List<Message> setEnviado(List<Message> mensajes)
+	{
+		for(Message mensaje : mensajes)
+		{
+			
+			mensaje.setFecha_enviado(Calendar.getInstance());
+			dao.update(mensaje);
+		}
+		return null;
+	}
 }

@@ -32,6 +32,10 @@ public interface MessageService extends BaseService<Message, MessageDao> {
 
 	@Transactional(readOnly = true)
 	List<TipoMensaje> findByTipo(String value);
+	
+	public List<Message> setEnviado(List<Message> mensajes);
+	
+	public List<Message> findByImei(String nombreUsuario, String imei);
 
 	public List<Message> findByParameters(Map<String, Object> parameters);
 }

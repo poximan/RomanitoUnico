@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /* ............................................. */
 /* ............................................. */
@@ -49,13 +51,16 @@ public class Message extends BaseEntity implements Serializable {
 	@Column(nullable = false)
 	private String mensaje;
 
-
 	@Column(nullable = false)
-	private transient TipoMensaje tipo_mensaje;
+	private TipoMensaje tipo_mensaje;
 
 	@Column(name = "FECHA_CREADO", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fecha_creado;
+	
+	@Column(name = "FECHA_ENVIADO", nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar fecha_enviado;
 
 	@Column(name = "FECHA_RECIBIDO", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -66,13 +71,14 @@ public class Message extends BaseEntity implements Serializable {
 	private Calendar fecha_leido_ack;
 
 
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "ID_USUARIO")
-	private transient Usuario usuario;
+	private  Usuario usuario;
 
 	@ManyToOne
 	@JoinColumn(name = "ID_ESTADO", referencedColumnName = "id")
-	private transient Estado estado;
+	private  Estado estado;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -168,6 +174,11 @@ public class Message extends BaseEntity implements Serializable {
 	public Estado getEstado() {
 		return estado;
 	}
+	
+	public Calendar getFecha_enviado()
+	{
+		return fecha_enviado;
+	}
 
 	/* ............................................. */
 	/* ............................................. */
@@ -209,6 +220,12 @@ public class Message extends BaseEntity implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
+	public void setFecha_enviado(Calendar fecha_enviado)
+	{
+		this.fecha_enviado = fecha_enviado;
+	}
+
 
 	@Override
 	public void setPK(Object Id) {

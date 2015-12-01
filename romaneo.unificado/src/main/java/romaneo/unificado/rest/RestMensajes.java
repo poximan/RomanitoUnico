@@ -1,8 +1,6 @@
 package romaneo.unificado.rest;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
@@ -20,49 +18,57 @@ import romaneo.unificado.services.MessageService;
 import romaneo.unificado.services.UsuarioMovilService;
 
 @Path("mensaje")
-public class RestMensajes //extends BaseRest 
+public class RestMensajes // extends BaseRest
 {
-	@Context 
+	@Context
 	ServletContext server;
-	
-	
+
 	@GET
 	@Path("prueba")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String fuckingPrueba() {
-		
+	public String fuckingPrueba()
+	{
+
 		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 		MessageService mensajeS = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
 		System.out.println(mensajeS);
-		String respuesta ="rest Funcionando";
-		
+		String respuesta = "rest Funcionando";
+
 		return respuesta;
 	}
-	
+
+	public boolean ackMensaje(@QueryParam("nombreUsuario") String nombreUsuario, 
+						@QueryParam("imei") String imei,@QueryParam("idMensaje") Integer idMesaje)
+	{
+		return true;
+	}
+
 	@GET
 	@Path("entrante")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Message> mensajesRecibido(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei) {
-		
+	public List<Message> mensajesRecibido(@QueryParam("nombreUsuario") String nombreUsuario,
+			@QueryParam("imei") String imei)
+	{
+
 		List<Message> mensajes = null;
 
-		if (autenticar(nombreUsuario, imei)) {
+		if (autenticar(nombreUsuario, imei))
+		{
 			ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
-			MessageService usuarioService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
+			MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
 			System.out.println("ingeso");
-			Map<String, Object> parameters = new HashMap<String, Object>();
-			parameters.put("nombreUsuario", nombreUsuario);
-			parameters.put("idMovil.imei", "imei");
-			mensajes = usuarioService.findByParameters(parameters);
-		}
-		else{
+			mensajes = mensajeService.findByImei(nombreUsuario, imei);
+			mensajeService.setEnviado(mensajes);
+		} else
+		{
 			System.out.println("Error");
 		}
 
 		return mensajes;
 	}
-	
-	public boolean autenticar(String nombreUsuario, String imei) {
+
+	public boolean autenticar(String nombreUsuario, String imei)
+	{
 		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 		UsuarioMovilService usMoService = (UsuarioMovilService) ctx.getBean(UsuarioMovilService.class.getSimpleName());
 		return usMoService.findByNameIMEI(nombreUsuario, imei) == null ? false : true;

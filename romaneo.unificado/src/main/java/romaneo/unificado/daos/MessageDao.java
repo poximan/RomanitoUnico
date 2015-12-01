@@ -8,6 +8,6 @@ public interface MessageDao extends BaseDao<Message, Integer> {
 
 	Integer countUnprocessedTheLastDays(Integer numberOfDays);
 	
-	List<Message> mensajesImei(Integer idUsuario, String imei);
+	List<Message> mensajesImei(String nombreUsuario, String imei);
 
 }
