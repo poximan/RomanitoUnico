@@ -14,6 +14,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import romaneo.unificado.domain.Message;
+import romaneo.unificado.rest.exception.NotAuthorizedException;
+import romaneo.unificado.rest.exception.OkException;
 import romaneo.unificado.services.MessageService;
 import romaneo.unificado.services.UsuarioMovilService;
 
@@ -26,26 +28,33 @@ public class RestMensajes // extends BaseRest
 	@GET
 	@Path("prueba")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String fuckingPrueba()
+	public void fuckingPrueba()
 	{
 
 		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 		MessageService mensajeS = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
 		System.out.println(mensajeS);
-		String respuesta = "rest Funcionando";
-		return respuesta;
+		throw new NotAuthorizedException();
+
 	}
 
 	@GET
-	@Path("ackMensaje")
+	@Path("ackRecibido")
 	@Produces(MediaType.APPLICATION_JSON)
-	public boolean ackMensaje(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei,
+	public void ackMensaje(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei,
 			@QueryParam("idMensaje") Integer idMensaje)
 	{
-		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
-		MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
-		mensajeService.mensajeRecibido(idMensaje);
-		return true;
+
+		if (autenticar(nombreUsuario, imei))
+		{
+			ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
+			MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
+			mensajeService.mensajeRecibido(idMensaje);
+			throw new OkException();
+		} else
+		{
+			throw new NotAuthorizedException();
+		}
 	}
 
 	@GET
@@ -66,7 +75,7 @@ public class RestMensajes // extends BaseRest
 			mensajeService.setEnviado(mensajes);
 		} else
 		{
-			System.out.println("Error");
+			throw new NotAuthorizedException();
 		}
 
 		return mensajes;
