@@ -1,4 +1,4 @@
-﻿-- provincia --
+-- provincia --
 INSERT INTO provincia(provincia)
 
     VALUES
@@ -499,6 +499,7 @@ INSERT INTO usuario_rol(id_rol, id_usuario)
 
 -- estado --
 INSERT INTO estado(nombre)
+
     VALUES
     ('generado'),
     ('enviado'),
@@ -508,6 +509,7 @@ INSERT INTO estado(nombre)
 
 -- moviles --
 INSERT INTO movil(imei)
+
     VALUES
     ('1234567'),
     ('5555555'),
@@ -516,6 +518,7 @@ INSERT INTO movil(imei)
 -- usuario movil --
 INSERT INTO usuario_movil(id_movil, id_usuario, fecha_fin,
             fecha_inicio)
+            
     VALUES
     ('1','1',null,clock_timestamp()),
     ('2','2',null,clock_timestamp()),
@@ -525,6 +528,7 @@ INSERT INTO usuario_movil(id_movil, id_usuario, fecha_fin,
 INSERT INTO messages(asunto, fecha_creado,fecha_enviado, fecha_leido,
             fecha_recibido, mensaje, tipo_mensaje,
             id_estado, id_usuario)
+            
     VALUES
     ('primer mensaje enviado desde portal',clock_timestamp(),null,null,null,'esto es una prueba1','0','1','1'),
     ('trae pan',clock_timestamp(),null,null,null,'esto es una prueba2','0','1','1'),
@@ -534,11 +538,11 @@ INSERT INTO messages(asunto, fecha_creado,fecha_enviado, fecha_leido,
     ('prueba6','2015-10-30 17:25:38.144',null,null,null,'esto es una prueba6','0','1','2'),
     ('prueba7','2015-10-30 17:25:38.144',null,null,null,'esto es una prueba7','0','1','3'),
     ('prueba8','2015-10-30 17:25:38.144',null,null,null,'esto es una prueba8','0','1','3'),
-    ('prueba9',clock_timestamp(),null,null,null,'esto es una prueba9','0','2','1'),
-    ('prueba10',clock_timestamp(),null,null,null,'esto es una prueba10','0','2','1'),
-    ('prueba11',clock_timestamp(),null,null,null,'esto es una prueba11','0','2','1'),
-    ('prueba12','2015-11-20 17:25:38.144',null,null,null,'esto es una prueba12','0','2','2'),
-    ('prueba13','2015-11-20 17:25:38.144',null,null,null,'esto es una prueba13','0','2','2'),
-    ('prueba14','2015-10-30 17:25:38.144',null,null,null,'esto es una prueba14','0','2','2'),
-    ('prueba15','2015-10-30 17:25:38.144',null,null,null,'esto es una prueba15','0','2','3'),
-    ('prueba16','2015-10-30 17:25:38.144',null,null,null,'esto es una prueba15','0','2','3');
+    ('prueba9',clock_timestamp(),null,null,null,'esto es una prueba9','0','1','1'),
+    ('prueba10',clock_timestamp(),null,null,null,'esto es una prueba10','0','1','1'),
+    ('prueba11',clock_timestamp(),null,null,null,'esto es una prueba11','0','1','1'),
+    ('prueba12','2015-11-20 17:25:38.144',null,null,null,'esto es una prueba12','0','1','2'),
+    ('prueba13','2015-11-20 17:25:38.144',null,null,null,'esto es una prueba13','0','1','2'),
+    ('prueba14','2015-10-30 17:25:38.144',null,null,null,'esto es una prueba14','0','1','2'),
+    ('prueba15','2015-10-30 17:25:38.144',null,null,null,'esto es una prueba15','0','1','3'),
+    ('prueba16','2015-10-30 17:25:38.144',null,null,null,'esto es una prueba15','0','1','3');

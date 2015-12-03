@@ -14,8 +14,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import romaneo.unificado.domain.Message;
-import romaneo.unificado.rest.exception.NotAuthorizedException;
-import romaneo.unificado.rest.exception.OkException;
 import romaneo.unificado.services.MessageService;
 import romaneo.unificado.services.UsuarioMovilService;
 
@@ -28,61 +26,48 @@ public class RestMensajes // extends BaseRest
 	@GET
 	@Path("prueba")
 	@Produces(MediaType.APPLICATION_JSON)
-	public void fuckingPrueba()
-	{
+	public String fuckingPrueba() {
 
 		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 		MessageService mensajeS = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
 		System.out.println(mensajeS);
-		throw new NotAuthorizedException();
-
+		String respuesta = "rest Funcionando";
+		return respuesta;
 	}
 
 	@GET
-	@Path("ackRecibido")
+	@Path("ackMensaje")
 	@Produces(MediaType.APPLICATION_JSON)
-	public void ackMensaje(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei,
-			@QueryParam("idMensaje") Integer idMensaje)
-	{
-
-		if (autenticar(nombreUsuario, imei))
-		{
-			ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
-			MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
-			mensajeService.mensajeRecibido(idMensaje);
-			throw new OkException();
-		} else
-		{
-			throw new NotAuthorizedException();
-		}
+	public boolean ackMensaje(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei,
+			@QueryParam("idMensaje") Integer idMensaje) {
+		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
+		MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
+		mensajeService.mensajeRecibido(idMensaje);
+		return true;
 	}
 
 	@GET
 	@Path("entrante")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Message> mensajesRecibido(@QueryParam("nombreUsuario") String nombreUsuario,
-			@QueryParam("imei") String imei)
-	{
+			@QueryParam("imei") String imei) {
 
 		List<Message> mensajes = null;
 
-		if (autenticar(nombreUsuario, imei))
-		{
+		if (autenticar(nombreUsuario, imei)) {
 			ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 			MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
 			System.out.println("ingeso");
 			mensajes = mensajeService.findByImei(nombreUsuario, imei);
-			mensajeService.setEnviado(mensajes);
-		} else
-		{
-			throw new NotAuthorizedException();
+			mensajeService.setEnviado(mensajes, ctx);
+		} else {
+			System.out.println("Error");
 		}
 
 		return mensajes;
 	}
 
-	public boolean autenticar(String nombreUsuario, String imei)
-	{
+	public boolean autenticar(String nombreUsuario, String imei) {
 		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 		UsuarioMovilService usMoService = (UsuarioMovilService) ctx.getBean(UsuarioMovilService.class.getSimpleName());
 		return usMoService.findByNameIMEI(nombreUsuario, imei) == null ? false : true;

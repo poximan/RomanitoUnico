@@ -3,6 +3,7 @@ package romaneo.unificado.services;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import romaneo.unificado.daos.MessageDao;
@@ -33,7 +34,7 @@ public interface MessageService extends BaseService<Message, MessageDao> {
 	@Transactional(readOnly = true)
 	List<TipoMensaje> findByTipo(String value);
 	
-	public List<Message> setEnviado(List<Message> mensajes);
+	public List<Message> setEnviado(List<Message> mensajes, ApplicationContext ctx);
 	
 	public List<Message> findByImei(String nombreUsuario, String imei);
 
