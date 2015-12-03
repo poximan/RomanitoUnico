@@ -97,9 +97,8 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>im
 	}
 
 	@Override
-	public List<Message> findByImei(String nombreUsuario, String imei)
-	{
-		
+	public List<Message> findByImei(String nombreUsuario, String imei) {
+
 		return dao.mensajesImei(nombreUsuario, imei);
 	}
 
@@ -118,8 +117,7 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>im
 	}
 
 	@Override
-	public boolean mensajeRecibido(Integer idMensaje)
-	{
+	public boolean mensajeRecibido(Integer idMensaje) {
 		Message mensaje;
 		mensaje = dao.findById(idMensaje);
 		mensaje.setFecha_recibido_ack(Calendar.getInstance());

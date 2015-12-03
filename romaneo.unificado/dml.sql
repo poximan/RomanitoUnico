@@ -1,4 +1,4 @@
-﻿-- provincia --
+-- provincia --
 INSERT INTO provincia(provincia)
 
     VALUES
@@ -499,6 +499,7 @@ INSERT INTO usuario_rol(id_rol, id_usuario)
 
 -- estado --
 INSERT INTO estado(nombre)
+
     VALUES
     ('generado'),
     ('enviado'),
@@ -508,6 +509,7 @@ INSERT INTO estado(nombre)
 
 -- moviles --
 INSERT INTO movil(imei)
+
     VALUES
     ('1234567'),
     ('5555555'),
@@ -516,6 +518,7 @@ INSERT INTO movil(imei)
 -- usuario movil --
 INSERT INTO usuario_movil(id_movil, id_usuario, fecha_fin,
             fecha_inicio)
+            
     VALUES
     ('1','1',null,clock_timestamp()),
     ('2','2',null,clock_timestamp()),
