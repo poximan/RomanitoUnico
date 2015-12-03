@@ -41,7 +41,6 @@ public class RestMensajes // extends BaseRest
 	@Produces(MediaType.APPLICATION_JSON)
 	public boolean ackMensaje(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei,
 			@QueryParam("idMensaje") Integer idMensaje) {
-
 		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 		MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
 		mensajeService.mensajeRecibido(idMensaje);
@@ -62,15 +61,15 @@ public class RestMensajes // extends BaseRest
 			System.out.println("ingeso");
 			mensajes = mensajeService.findByImei(nombreUsuario, imei);
 			mensajeService.setEnviado(mensajes, ctx);
-		} else {
+		} else
+		{
 			throw new NotAuthorizedException();
-		}
+		} 
 
 		return mensajes;
 	}
 
 	public boolean autenticar(String nombreUsuario, String imei) {
-
 		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 		UsuarioMovilService usMoService = (UsuarioMovilService) ctx.getBean(UsuarioMovilService.class.getSimpleName());
 		return usMoService.findByNameIMEI(nombreUsuario, imei) == null ? false : true;
