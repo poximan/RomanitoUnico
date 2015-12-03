@@ -41,9 +41,14 @@ public class RestMensajes // extends BaseRest
 	@Produces(MediaType.APPLICATION_JSON)
 	public boolean ackMensaje(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei,
 			@QueryParam("idMensaje") Integer idMensaje) {
+		if (autenticar(nombreUsuario, imei)) {
 		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 		MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
 		mensajeService.mensajeRecibido(idMensaje);
+		} else
+		{
+			throw new NotAuthorizedException();
+		} 
 		return true;
 	}
 
