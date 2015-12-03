@@ -16,13 +16,41 @@
 				<rows>
 
 					<row sclass="row-form">
-						<label value="${labels.mensaje.asunto}" />
-						<textbox id="asuntoTxtbx" hflex="1" class="form-control" />
+						<label value="${labels.mensaje.destinatario}" />
+						<bandbox id="destinatarioBndbx" hflex="1">
+							<bandpopup>
+								<vbox>
+									<hbox align="center"
+										pack="center">
+										<textbox
+											id="destinatarioSearchTxtbx"
+											placeholder="${labels.app.search}" hflex="1"
+											class="form-control" />
+									</hbox>
+									<listbox id="destinatarioLstbx"
+										height="300px" width="300px" mold="paging" pageSize="10"
+										onSelect="destinatarioBndbx.setValue(self.getSelectedItem().getLabel()); destinatarioBndbx.close();"
+										visible="false">
+										<listhead>
+											<listheader
+												label="${labels.mensaje.destinatario}" sort="auto" />
+										</listhead>
+									</listbox>
+								</vbox>
+							</bandpopup>
+						</bandbox>
 					</row>
 
 					<row sclass="row-form">
 						<label value="${labels.mensaje.contenido}" />
-						<textbox id="contenidoTxtbx" hflex="1" class="form-control" />
+						<textbox id="contenidoTxtbx" hflex="1"
+							class="form-control" multiline="true" />
+					</row>
+
+					<row sclass="row-form">
+						<label value="${labels.mensaje.asunto}" />
+						<textbox id="asuntoTxtbx" hflex="1"
+							class="form-control" />
 					</row>
 
 					<row sclass="row-form">
@@ -30,46 +58,25 @@
 						<bandbox id="tipoBndbx" hflex="1">
 							<bandpopup>
 								<vbox>
-									<hbox align="center" pack="center">
-										<textbox id="tipoSearchTxtbx" placeholder="${labels.app.search}"
-											hflex="1" class="form-control" />
+									<hbox align="center"
+										pack="center">
+										<textbox id="tipoSearchTxtbx"
+											placeholder="${labels.app.search}" hflex="1"
+											class="form-control" />
 									</hbox>
-									<listbox id="tipoLstbx" height="300px" width="300px"
-										mold="paging" pageSize="10"
+									<listbox id="tipoLstbx"
+										height="300px" width="300px" mold="paging" pageSize="10"
 										onSelect="tipoBndbx.setValue(self.getSelectedItem().getLabel()); tipoBndbx.close();"
 										visible="false">
 										<listhead>
-											<listheader label="${labels.mensaje.tipo}" sort="auto" />
+											<listheader
+												label="${labels.mensaje.tipo}" sort="auto" />
 										</listhead>
 									</listbox>
 								</vbox>
 							</bandpopup>
 						</bandbox>
 					</row>
-
-					<row sclass="row-form">
-						<label value="${labels.mensaje.destinatario}" />
-						<bandbox id="destinatarioBndbx" hflex="1">
-							<bandpopup>
-								<vbox>
-									<hbox align="center" pack="center">
-										<textbox id="destinatarioSearchTxtbx" placeholder="${labels.app.search}"
-											hflex="1" class="form-control" />
-									</hbox>
-									<listbox id="destinatarioLstbx" height="300px" width="300px"
-										mold="paging" pageSize="10"
-										onSelect="destinatarioBndbx.setValue(self.getSelectedItem().getLabel()); destinatarioBndbx.close();"
-										visible="false">
-										<listhead>
-											<listheader label="${labels.mensaje.destinatario}"
-												sort="auto" />
-										</listhead>
-									</listbox>
-								</vbox>
-							</bandpopup>
-						</bandbox>
-					</row>
-
 				</rows>
 			</grid>
 
@@ -77,10 +84,10 @@
 
 		<div sclass="container-buttons-form">
 			<hbox pack="end" width="100%">
-				<button id="acceptBttn" iconSclass="z-icon-check" label="${labels.app.aceptar}"
-					sclass="btn btn-primary btn-sm" />
-				<button id="cancelBttn" iconSclass="z-icon-times" label="${labels.app.cancelar}"
-					sclass="btn btn-default btn-sm" />
+				<button id="acceptBttn" iconSclass="z-icon-check"
+					label="${labels.app.aceptar}" sclass="btn btn-primary btn-sm" />
+				<button id="cancelBttn" iconSclass="z-icon-times"
+					label="${labels.app.cancelar}" sclass="btn btn-default btn-sm" />
 			</hbox>
 		</div>
 	</window>
