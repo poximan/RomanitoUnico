@@ -7,12 +7,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Query;
+import org.springframework.context.ApplicationContext;
 
 import romaneo.unificado.daos.MessageDao;
+import romaneo.unificado.domain.Estado;
+import romaneo.unificado.domain.Estado.EstadosPosibles;
 import romaneo.unificado.domain.Message;
 import romaneo.unificado.domain.Message.TipoMensaje;
 
-public class MessageServiceImple extends BaseServiceImple<Message, MessageDao> implements MessageService {
+public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>implements MessageService {
 
 	@Override
 	public Integer countUnprocessedTheLastDays(Integer numberOfDays) {
@@ -101,12 +104,14 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao> i
 	}
 
 	@Override
-	public List<Message> setEnviado(List<Message> mensajes)
-	{
-		for(Message mensaje : mensajes)
-		{
-			
+	public List<Message> setEnviado(List<Message> mensajes, ApplicationContext ctx) {
+		for (Message mensaje : mensajes) {
+
+			EstadoService serv_estado = (EstadoService) ctx.getBean(EstadoService.class.getSimpleName());
+			Estado nuevo_estado = serv_estado.getEstado(EstadosPosibles.ENVIADO.getValue());
+
 			mensaje.setFecha_enviado(Calendar.getInstance());
+			mensaje.setEstado(nuevo_estado);
 			dao.update(mensaje);
 		}
 		return null;

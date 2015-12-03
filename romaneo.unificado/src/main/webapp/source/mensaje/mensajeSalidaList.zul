@@ -38,26 +38,29 @@
 					<n:div class="row">
 
 						<n:div class="col-md-2">
-							<datebox id="filterByFechaDesde" placeholder="${labels.mensaje.filters.fechaDesde}" />
+							<datebox id="filterByFechaDesde"
+								placeholder="${labels.mensaje.filters.fechaDesde}" />
 						</n:div>
 
 						<n:div class="col-md-2">
-							<datebox id="filterByFechaHasta" placeholder="${labels.mensaje.filters.fechaHasta}" />
+							<datebox id="filterByFechaHasta"
+								placeholder="${labels.mensaje.filters.fechaHasta}" />
 						</n:div>
 
 						<n:div class="col-md-3">
-							<textbox id="filterByDestinatario" placeholder="${labels.mensaje.destinatario}"
+							<textbox id="filterByDestinatario"
+								placeholder="${labels.mensaje.destinatario}"
 								class="form-control" />
 						</n:div>
 
 						<n:div class="col-md-4">
-							<textbox id="filterByAsunto" placeholder="${labels.mensaje.asunto}"
-								class="form-control" />
+							<textbox id="filterByAsunto"
+								placeholder="${labels.mensaje.asunto}" class="form-control" />
 						</n:div>
 
 						<n:div class="col-md-1">
-							<textbox id="filterByEstado" placeholder="${labels.mensaje.estado}"
-								class="form-control" />
+							<textbox id="filterByEstado"
+								placeholder="${labels.mensaje.estado}" class="form-control" />
 						</n:div>
 
 					</n:div>
@@ -66,49 +69,57 @@
 
 					<n:div class="panel-footer text-right">
 
-						<button id="filterBttn" iconSclass="z-icon-filter" label="${labels.app.filter}"
+						<button id="filterBttn"
+							iconSclass="z-icon-filter" label="${labels.app.filter}"
 							class="btn btn-sm btn-default" />
 
-						<button id="cleanFiltersBttn" iconSclass="z-icon-undo"
-							label="${labels.app.cleanFilters}" class="btn btn-sm btn-default" />
+						<button id="cleanFiltersBttn"
+							iconSclass="z-icon-undo" label="${labels.app.cleanFilters}"
+							class="btn btn-sm btn-default" />
 
-						<button id="newBttn" iconSclass="z-icon-plus" label="${labels.app.create}"
-							class="btn btn-sm btn-primary" />
+						<button id="newBttn" iconSclass="z-icon-plus"
+							label="${labels.app.create}" class="btn btn-sm btn-primary" />
 
-						<button id="editBttn" disabled="true" iconSclass="z-icon-view"
-							label="${labels.app.view}" class="btn btn-sm btn-default" />
+						<button id="editBttn" disabled="true"
+							iconSclass="z-icon-view" label="${labels.app.view}"
+							class="btn btn-sm btn-default" />
 
-						<button id="deleteBttn" disabled="true" iconSclass="z-icon-times"
-							label="${labels.app.delete}" class="btn btn-sm btn-default" />
+						<button id="deleteBttn" disabled="true"
+							iconSclass="z-icon-times" label="${labels.app.delete}"
+							class="btn btn-sm btn-default" />
 
 					</n:div>
 				</n:div>
 
 				<listbox id="mensajesSalidaLstbx" rows="10">
 					<listhead>
-						<listheader label="${labels.mensaje.fecha}" hflex="min"
+						<listheader label="${labels.mensaje.fecha}"
+							width="15%" sortDirection="ascending" sort="auto(fecha_creado)"
+							hflex="max" align="center" />
+
+						<listheader
+							label="${labels.mensaje.destinatario}" width="20%" hflex="max"
 							align="center" />
 
-						<listheader label="${labels.mensaje.destinatario}"
-							hflex="min" align="center" />
+						<listheader label="${labels.mensaje.asunto}"
+							width="55%" hflex="max" align="center" />
 
-						<listheader label="${labels.mensaje.asunto}" hflex="min"
-							align="center" />
-
-						<listheader label="${labels.mensaje.estado}" hflex="min"
-							align="center" />
+						<listheader label="${labels.mensaje.estado}"
+							width="10%" hflex="max" align="center" />
 					</listhead>
 				</listbox>
 
 				<div class="panel-footer custom-list-paging">
 					<n:div class="row">
 						<n:div class="col-md-3">
-							<paging id="mensajesSalidaPgn" pageSize="10" />
+							<paging id="mensajesSalidaPgn"
+								pageSize="10" />
 						</n:div>
 						<n:div class="col-md-4">
 							<hbox align="center">
 								<label value="${labels.app.listSize}" />
-								<combobox id="mensajesSalidaPageSizeCmbbx" width="80px"
+								<combobox
+									id="mensajesSalidaPageSizeCmbbx" width="80px"
 									sclass="input-group" value="10">
 									<comboitem value="10" label="10" />
 									<comboitem value="25" label="25" />

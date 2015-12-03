@@ -72,7 +72,7 @@ public class RestMensajes // extends BaseRest
 			MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
 			System.out.println("ingeso");
 			mensajes = mensajeService.findByImei(nombreUsuario, imei);
-			mensajeService.setEnviado(mensajes);
+			mensajeService.setEnviado(mensajes, ctx);
 		} else
 		{
 			throw new NotAuthorizedException();
