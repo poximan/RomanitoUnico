@@ -40,5 +40,7 @@ public interface MessageService extends BaseService<Message, MessageDao> {
 
 	public List<Message> findByParameters(Map<String, Object> parameters);
 
-	public boolean mensajeRecibido(Integer idMensaje);
+	public boolean mensajeRecibido(Integer idMensaje,ApplicationContext ctx);
+
+	public boolean mensajeLeido(Integer idMensaje,ApplicationContext ctx);
 }
