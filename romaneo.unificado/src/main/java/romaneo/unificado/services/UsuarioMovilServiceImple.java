@@ -16,7 +16,7 @@ public class UsuarioMovilServiceImple extends BaseServiceImple<UsuarioMovil, Usu
 		// Consulta
 		StringBuffer query = new StringBuffer("");
 		query.append("FROM " + UsuarioMovil.class.getSimpleName() + " um ");
-		query.append("WHERE um.idUsuario.nombre_usuario = :nombreUsuario ");
+		query.append("WHERE um.idUsuario.nombreUsuario = :nombreUsuario ");
 		query.append("AND um.idMovil.imei = :imei ");
 		query.append("AND um.fechaFin is null");
 
