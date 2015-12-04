@@ -127,6 +127,22 @@ public class MensajeSalidaFormController extends BaseFormController {
 		tipoLstbx.renderAll();
 	}
 
+	@Listen("onClick = #editBttn")
+	public void edit() {
+
+		if (destinatarioBndbx.isReadonly()) {
+			destinatarioBndbx.setReadonly(false);
+			contenidoTxtbx.setReadonly(false);
+			asuntoTxtbx.setReadonly(false);
+			tipoBndbx.setReadonly(false);
+		} else {
+			destinatarioBndbx.setReadonly(true);
+			contenidoTxtbx.setReadonly(true);
+			asuntoTxtbx.setReadonly(true);
+			tipoBndbx.setReadonly(true);
+		}
+	}
+
 	@Listen("onSelect = #tipoLstbx")
 	public void selectTipo() {
 		if (tipoLstbx.getSelectedItem() == null) {

@@ -9,15 +9,17 @@
 		<vlayout style="margin: 15px;">
 
 			<grid fixedLayout="true" sclass="grid-form">
+
 				<columns>
 					<column align="right" width="70px"></column>
 					<column></column>
 				</columns>
-				<rows>
 
+				<rows>
 					<row sclass="row-form">
 						<label value="${labels.mensaje.destinatario}" />
-						<bandbox id="destinatarioBndbx" hflex="1">
+						<bandbox id="destinatarioBndbx" hflex="1"
+							readonly="true">
 							<bandpopup>
 								<vbox>
 									<hbox align="center"
@@ -44,13 +46,13 @@
 					<row sclass="row-form">
 						<label value="${labels.mensaje.contenido}" />
 						<textbox id="contenidoTxtbx" hflex="1"
-							class="form-control" multiline="true" />
+							readonly="true" class="form-control" multiline="true" />
 					</row>
 
 					<row sclass="row-form">
 						<label value="${labels.mensaje.asunto}" />
 						<textbox id="asuntoTxtbx" hflex="1"
-							class="form-control" />
+							class="form-control" readonly="true" />
 					</row>
 
 					<row sclass="row-form">
@@ -84,6 +86,8 @@
 
 		<div sclass="container-buttons-form">
 			<hbox pack="end" width="100%">
+				<button id="editBttn" iconSclass="z-icon-check"
+					label="${labels.app.edit}" sclass="btn btn-primary btn-sm" />
 				<button id="acceptBttn" iconSclass="z-icon-check"
 					label="${labels.app.aceptar}" sclass="btn btn-primary btn-sm" />
 				<button id="cancelBttn" iconSclass="z-icon-times"
