@@ -33,12 +33,12 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 				Object filterValue = parameters.get(filterKey);
 
 				if (filterKey.equalsIgnoreCase(Message.Filters.BY_DESDE.getValue())) {
-					query.append(" AND e.fecha_creado >= :desde ");
+					query.append(" AND e.fechaCreado >= :desde ");
 					queryParameters.put("desde", filterValue);
 				}
 
 				if (filterKey.equalsIgnoreCase(Message.Filters.BY_HASTA.getValue())) {
-					query.append(" AND e.fecha_creado <= :hasta ");
+					query.append(" AND e.fechaCreado <= :hasta ");
 					queryParameters.put("hasta", filterValue);
 				}
 
@@ -96,15 +96,15 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 		StringBuffer query = new StringBuffer(
 				"SELECT COUNT(DISTINCT e.id) FROM " + Message.class.getSimpleName() + " e ");
 		query.append("WHERE 1 = 1 ");
-		query.append("AND e.fecha_creado >= :dateFrom ");
-		query.append("AND e.fecha_creado <= :dateTo ");
+		query.append("AND e.fechaCreado >= :fechaCreado ");
+		query.append("AND e.fechaCreado <= :fechaCreado ");
 
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.DATE, numberOfDays < 0 ? numberOfDays : (numberOfDays * (-1)));
 
 		Query hQuery = getSession().createQuery(query.toString());
-		hQuery.setParameter("dateFrom", calendar.getTime());
-		hQuery.setParameter("dateTo", new Date());
+		hQuery.setParameter("fechaCreado", calendar.getTime());
+		hQuery.setParameter("fechaCreado", new Date());
 
 		Long count = (Long) hQuery.uniqueResult();
 
@@ -121,8 +121,8 @@ public class MessageDaoImple extends BaseDaoImple<Message, Integer> implements M
 	{
 		StringBuffer query = new StringBuffer(
 				"SELECT m FROM " + Message.class.getSimpleName() + " m ");
-		query.append("WHERE m.usuario.nombre_usuario = :nombreUsuario");
-		query.append(" AND m.fecha_enviado is null ");
+		query.append("WHERE m.usuario.nombreUsuario = :nombreUsuario");
+		query.append(" AND m.fechaEnviado is null ");
 	
 
 		Map<String, Object> parameters = new HashMap<String, Object>();

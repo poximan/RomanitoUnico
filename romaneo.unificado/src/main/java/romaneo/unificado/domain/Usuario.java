@@ -48,10 +48,10 @@ public class Usuario extends BaseEntity implements Serializable {
 
 	@Basic(optional = false)
 	@Column(name = "NOMBRE_USUARIO", nullable = false, length = 40)
-	private String nombre_usuario;
+	private String nombreUsuario;
 
 	@Column(name = "CLAVE_USUARIO", length = 40)
-	private String clave_usuario;
+	private String claveUsuario;
 
 	@Column(name = "DESCRIPCION", length = 100)
 	private String descripcion;
@@ -74,11 +74,11 @@ public class Usuario extends BaseEntity implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(Persona persona, String nombre_usuario, String clave_usuario, String descripcion) {
+	public Usuario(Persona persona, String nombreUsuario, String claveUsuario, String descripcion) {
 		super();
 		this.persona = persona;
-		this.nombre_usuario = nombre_usuario;
-		this.clave_usuario = clave_usuario;
+		this.nombreUsuario = nombreUsuario;
+		this.claveUsuario = claveUsuario;
 		this.descripcion = descripcion;
 	}
 
@@ -129,12 +129,12 @@ public class Usuario extends BaseEntity implements Serializable {
 		return persona;
 	}
 
-	public String getNombre_usuario() {
-		return nombre_usuario;
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public String getClave_usuario() {
-		return clave_usuario;
+	public String getClaveUsuario() {
+		return claveUsuario;
 	}
 
 	public String getDescripcion() {
@@ -167,12 +167,12 @@ public class Usuario extends BaseEntity implements Serializable {
 		this.persona = persona;
 	}
 
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
-	public void setClave_usuario(String clave_usuario) {
-		this.clave_usuario = clave_usuario;
+	public void setClaveUsuario(String claveUsuario) {
+		this.claveUsuario = claveUsuario;
 	}
 
 	public void setDescripcion(String descripcion) {

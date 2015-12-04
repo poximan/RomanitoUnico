@@ -163,8 +163,8 @@ public class MensajeSalidaListController extends BasePagedListController<Message
 			public void render(Listitem item, Message mensaje, int arg) throws Exception {
 
 				try {
-					new Listcell(""
-							+ (mensaje.getFecha_creado().getTime() != null ? mensaje.getFecha_creado().getTime() : "")//
+					new Listcell(
+							"" + (mensaje.getFechaCreado().getTime() != null ? mensaje.getFechaCreado().getTime() : "")//
 					).setParent(item);
 
 				} catch (NullPointerException excepcion) {

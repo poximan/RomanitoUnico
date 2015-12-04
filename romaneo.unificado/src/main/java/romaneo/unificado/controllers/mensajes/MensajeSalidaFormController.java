@@ -87,8 +87,8 @@ public class MensajeSalidaFormController extends BaseFormController {
 
 		if ((mensaje = (Message) Executions.getCurrent().getArg().get(SELECTED)) != null) {
 
-			tipoBndbx.setValue(mensaje.getTipo_mensaje().getValue());
-			tipoBndbx.setAttribute(ENTITY, mensaje.getTipo_mensaje().getValue());
+			tipoBndbx.setValue(mensaje.getTipoMensaje().getValue());
+			tipoBndbx.setAttribute(ENTITY, mensaje.getTipoMensaje().getValue());
 
 			destinatarioBndbx.setValue(mensaje.getUsuario().getPersona().getNombre());
 			destinatarioBndbx.setAttribute(ENTITY, mensaje.getUsuario());
@@ -181,11 +181,11 @@ public class MensajeSalidaFormController extends BaseFormController {
 	@Override
 	public void accept() {
 
-		mensaje.setFecha_creado(Calendar.getInstance());
+		mensaje.setFechaCreado(Calendar.getInstance());
 		mensaje.setAsunto(asuntoTxtbx.getValue());
 		mensaje.setMensaje(contenidoTxtbx.getValue());
 		mensaje.setUsuario((Usuario) destinatarioBndbx.getAttribute(ENTITY));
-		mensaje.setTipo_mensaje((TipoMensaje) tipoBndbx.getAttribute(ENTITY));
+		mensaje.setTipoMensaje((TipoMensaje) tipoBndbx.getAttribute(ENTITY));
 		mensaje.setEstado(getEstadoService().getEstado(EstadosPosibles.GENERADO.getValue()));
 
 		try {

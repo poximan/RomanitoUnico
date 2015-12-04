@@ -53,7 +53,7 @@ public class RestMensajes // extends BaseRest
 	}
 
 	@GET
-	@Path("ackMensaje")
+	@Path("ackRecibido")
 	@Produces(MediaType.APPLICATION_JSON)
 	public boolean ackMensaje(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei,
 			@QueryParam("idMensaje") Integer idMensaje) {

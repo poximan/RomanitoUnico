@@ -25,7 +25,7 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>im
 	@Override
 	public void markAsProcessed(Message message) {
 		Calendar now = Calendar.getInstance();
-		message.setFecha_recibido_ack(now);
+		message.setFechaRecibidoAck(now);
 		update(message);
 	}
 
@@ -54,12 +54,12 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>im
 				Object filterValue = parameters.get(filterKey);
 
 				if (filterKey.equalsIgnoreCase(Message.Filters.BY_DESDE.getValue())) {
-					query.append(" AND e.fecha_creado >= :desde ");
+					query.append(" AND e.fechaCreado >= :desde ");
 					queryParameters.put("desde", filterValue);
 				}
 
 				if (filterKey.equalsIgnoreCase(Message.Filters.BY_HASTA.getValue())) {
-					query.append(" AND e.fecha_creado <= :hasta ");
+					query.append(" AND e.fechaHasta <= :hasta ");
 					queryParameters.put("hasta", filterValue);
 				}
 
@@ -109,7 +109,7 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>im
 			EstadoService serv_estado = (EstadoService) ctx.getBean(EstadoService.class.getSimpleName());
 			Estado nuevo_estado = serv_estado.getEstado(EstadosPosibles.ENVIADO.getValue());
 
-			mensaje.setFecha_enviado(Calendar.getInstance());
+			mensaje.setFechaEnviado(Calendar.getInstance());
 			mensaje.setEstado(nuevo_estado);
 			dao.update(mensaje);
 		}
@@ -122,20 +122,19 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>im
 		Estado nuevo_estado = serv_estado.getEstado(EstadosPosibles.RECIBIDO.getValue());
 		Message mensaje;
 		mensaje = dao.findById(idMensaje);
-		mensaje.setFecha_recibido_ack(Calendar.getInstance());
+		mensaje.setFechaRecibidoAck(Calendar.getInstance());
 		mensaje.setEstado(nuevo_estado);
 		dao.update(mensaje);
 		return true;
 	}
 
 	@Override
-	public boolean mensajeLeido(Integer idMensaje, ApplicationContext ctx)
-	{
+	public boolean mensajeLeido(Integer idMensaje, ApplicationContext ctx) {
 		EstadoService serv_estado = (EstadoService) ctx.getBean(EstadoService.class.getSimpleName());
 		Estado nuevo_estado = serv_estado.getEstado(EstadosPosibles.LEIDO.getValue());
 		Message mensaje;
 		mensaje = dao.findById(idMensaje);
-		mensaje.setFecha_leido_ack(Calendar.getInstance());
+		mensaje.setFechaLeidoAck(Calendar.getInstance());
 		mensaje.setEstado(nuevo_estado);
 		dao.update(mensaje);
 		return false;

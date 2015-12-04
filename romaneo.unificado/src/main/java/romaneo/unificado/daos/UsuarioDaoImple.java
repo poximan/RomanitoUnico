@@ -20,30 +20,30 @@ public class UsuarioDaoImple extends BaseDaoImple<Usuario, Integer> implements U
 	}
 
 	@Override
-	public Usuario findByName(String nombre_usuario) {
+	public Usuario findByName(String nombreUsuario) {
 
 		StringBuffer query = new StringBuffer("");
 		query.append("FROM " + Usuario.class.getSimpleName() + " u ");
 		query.append("WHERE 1 = 1 ");
-		query.append("AND u.nombre_usuario = :nombre_usuario");
+		query.append("AND u.nombreUsuario = :nombreUsuario");
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("nombre_usuario", nombre_usuario);
+		parameters.put("nombreUsuario", nombreUsuario);
 
 		List<Usuario> result = findQueryByParameters(query.toString(), parameters);
 		return result.isEmpty() ? null : result.get(0);
 	}
 
 	@Override
-	public List<Usuario> findByLikeName(String nombre_usuario) {
+	public List<Usuario> findByLikeName(String nombreUsuario) {
 
 		StringBuffer query = new StringBuffer("");
 		query.append("FROM " + Usuario.class.getSimpleName() + " u ");
 		query.append("WHERE 1 = 1 ");
-		query.append("AND u.nombre_usuario LIKE :nombre_usuario");
+		query.append("AND u.nombreUsuario LIKE :nombreUsuario");
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("nombre_usuario", "%" + nombre_usuario + "%");
+		parameters.put("nombreUsuario", "%" + nombreUsuario + "%");
 
 		List<Usuario> result = findQueryByParameters(query.toString(), parameters);
 		return result.isEmpty() ? null : result;

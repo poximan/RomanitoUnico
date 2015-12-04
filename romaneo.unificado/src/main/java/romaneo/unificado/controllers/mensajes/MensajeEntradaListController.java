@@ -83,11 +83,9 @@ public class MensajeEntradaListController extends BasePagedListController<Messag
 
 				(new Listcell("" + (Message.getId() != null ? Message.getId() : ""))).setParent(item);
 
-				(new Listcell("" + (Message.getFecha_creado() != null ? Message.getFecha_creado() : "")))
-						.setParent(item);
+				(new Listcell("" + (Message.getFechaCreado() != null ? Message.getFechaCreado() : ""))).setParent(item);
 
-				(new Listcell("" + (Message.getFecha_creado() != null ? Message.getFecha_creado() : "")))
-						.setParent(item);
+				(new Listcell("" + (Message.getFechaCreado() != null ? Message.getFechaCreado() : ""))).setParent(item);
 
 				item.setAttribute(ENTITY, Message);
 			}

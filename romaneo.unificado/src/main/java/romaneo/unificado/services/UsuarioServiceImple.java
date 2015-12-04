@@ -36,7 +36,7 @@ public class UsuarioServiceImple extends BaseServiceImple<Usuario, UsuarioDao>
 			throw new UsernameNotFoundException("El usuario " + user + " no existe en la base de datos");
 
 		// Convierto mi usuario a un UserDetails de SpringSecurity
-		return new org.springframework.security.core.userdetails.User(user.getNombre_usuario(), user.getClave_usuario(),
+		return new org.springframework.security.core.userdetails.User(user.getNombreUsuario(), user.getClaveUsuario(),
 				user.getActivo() == 'Y' ? true : false, true, true, true, convertProfiles(user.getRoles()));
 	}
 
@@ -72,7 +72,7 @@ public class UsuarioServiceImple extends BaseServiceImple<Usuario, UsuarioDao>
 
 		validationPasswords(user, oldPassword, newPassword, reNewPassword);
 
-		user.setClave_usuario(newPassword);
+		user.setClaveUsuario(newPassword);
 		dao.update(user);
 	}
 
@@ -81,7 +81,7 @@ public class UsuarioServiceImple extends BaseServiceImple<Usuario, UsuarioDao>
 
 		ResourceError error = new ResourceError();
 
-		if (oldPassword == null || !oldPassword.equals(user.getClave_usuario()))
+		if (oldPassword == null || !oldPassword.equals(user.getClaveUsuario()))
 			error.addFieldError(new FieldResourceError("user", "password", null,
 					"La contraseña ingresada no coincide con la actual"));
 

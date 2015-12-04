@@ -22,7 +22,6 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -39,7 +38,6 @@ public class Message extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "ID")
@@ -51,33 +49,34 @@ public class Message extends BaseEntity implements Serializable {
 	@Column(nullable = false)
 	private String mensaje;
 
-	@Column(nullable = false)
-	private TipoMensaje tipo_mensaje;
+	@Column(name = "TIPO_MENSAJE", nullable = true)
+	private TipoMensaje tipoMensaje;
 
 	@Column(name = "FECHA_CREADO", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fecha_creado;
-	
+	private Calendar fechaCreado;
+
 	@Column(name = "FECHA_ENVIADO", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fecha_enviado;
+	private Calendar fechaEnviado;
 
 	@Column(name = "FECHA_RECIBIDO", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fecha_recibido_ack;
+	private Calendar fechaRecibidoAck;
 
 	@Column(name = "FECHA_LEIDO", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fecha_leido_ack;
+	private Calendar fechaLeidoAck;
 
 	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "ID_USUARIO")
-	private  Usuario usuario;
+	private Usuario usuario;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "ID_ESTADO", referencedColumnName = "id")
-	private  Estado estado;
+	private Estado estado;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -150,20 +149,20 @@ public class Message extends BaseEntity implements Serializable {
 		return mensaje;
 	}
 
-	public TipoMensaje getTipo_mensaje() {
-		return tipo_mensaje;
+	public TipoMensaje getTipoMensaje() {
+		return tipoMensaje;
 	}
 
-	public Calendar getFecha_creado() {
-		return fecha_creado;
+	public Calendar getFechaCreado() {
+		return fechaCreado;
 	}
 
-	public Calendar getFecha_recibido_ack() {
-		return fecha_recibido_ack;
+	public Calendar getFechaRecibidoAck() {
+		return fechaRecibidoAck;
 	}
 
-	public Calendar getFecha_leido_ack() {
-		return fecha_leido_ack;
+	public Calendar getFechaLeidoAck() {
+		return fechaLeidoAck;
 	}
 
 	public Usuario getUsuario() {
@@ -173,10 +172,9 @@ public class Message extends BaseEntity implements Serializable {
 	public Estado getEstado() {
 		return estado;
 	}
-	
-	public Calendar getFecha_enviado()
-	{
-		return fecha_enviado;
+
+	public Calendar getFechaEnviado() {
+		return fechaEnviado;
 	}
 
 	/* ............................................. */
@@ -200,31 +198,29 @@ public class Message extends BaseEntity implements Serializable {
 		this.mensaje = mensaje;
 	}
 
-	public void setTipo_mensaje(TipoMensaje tipo_mensaje) {
-		this.tipo_mensaje = tipo_mensaje;
+	public void setTipoMensaje(TipoMensaje tipoMensaje) {
+		this.tipoMensaje = tipoMensaje;
 	}
 
-	public void setFecha_creado(Calendar fecha_creado) {
-		this.fecha_creado = fecha_creado;
+	public void setFechaCreado(Calendar fechaCreado) {
+		this.fechaCreado = fechaCreado;
 	}
 
-	public void setFecha_recibido_ack(Calendar fecha_recibido_ack) {
-		this.fecha_recibido_ack = fecha_recibido_ack;
+	public void setFechaRecibidoAck(Calendar fechaRecibidoAck) {
+		this.fechaRecibidoAck = fechaRecibidoAck;
 	}
 
-	public void setFecha_leido_ack(Calendar fecha_leido_ack) {
-		this.fecha_leido_ack = fecha_leido_ack;
+	public void setFechaLeidoAck(Calendar fechaLeidoAck) {
+		this.fechaLeidoAck = fechaLeidoAck;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	public void setFecha_enviado(Calendar fecha_enviado)
-	{
-		this.fecha_enviado = fecha_enviado;
-	}
 
+	public void setFechaEnviado(Calendar fechaEnviado) {
+		this.fechaEnviado = fechaEnviado;
+	}
 
 	@Override
 	public void setPK(Object Id) {
