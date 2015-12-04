@@ -7,6 +7,7 @@ package romaneo.unificado.controllers.mensajes;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -119,7 +120,13 @@ public class MensajeSalidaListController extends BasePagedListController<Message
 			Executions.activate(desktop);
 			try {
 
-				getListComponent().setItemRenderer(getListitemRender());
+				List<Listitem> mensajes_viejos = getListComponent().getItems();
+
+				Listbox mensajes_nuevos = new Listbox();
+				mensajes_nuevos.setItemRenderer(getListitemRender());
+
+				if (!mensajes_viejos.equals(mensajes_nuevos))
+					getListComponent().setItemRenderer(getListitemRender());
 
 			} finally {
 				Executions.deactivate(desktop);
