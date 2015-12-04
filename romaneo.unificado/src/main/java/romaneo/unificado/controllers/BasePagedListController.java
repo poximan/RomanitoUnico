@@ -172,6 +172,10 @@ public abstract class BasePagedListController<Entity extends Serializable> exten
 		});
 	}
 
+	public void redibujarLista(){
+		
+	}
+	
 	/**
 	 * Recorre todos los componentes de la pagina y les agrega el evento onOK a
 	 * los que pertenezcan a los filtros

@@ -8,8 +8,14 @@ package romaneo.unificado.controllers.mensajes;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.zkoss.util.resource.Labels;
+import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Desktop;
+import org.zkoss.zk.ui.DesktopUnavailableException;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Path;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
@@ -64,6 +70,8 @@ public class MensajeSalidaListController extends BasePagedListController<Message
 	@Wire
 	private Textbox filterByEstado;
 
+	private Timer timer;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -77,6 +85,53 @@ public class MensajeSalidaListController extends BasePagedListController<Message
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
+
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+
+		super.doAfterCompose(comp);
+
+		// http://www.zkoss.org/zkdemo/zk_pe_and_ee/server_push_comet
+
+		if (timer != null)
+			timer.cancel();
+		timer = new Timer();
+		timer.schedule(createUpdateTask(), 0, 10000);
+	}
+
+	private TimerTask createUpdateTask() {
+		return new TimerTask() {
+			@Override
+			public void run() {
+				updateInfo();
+			}
+		};
+	}
+
+	private void updateInfo() {
+		try {
+			Desktop desktop = mensajesSalidaLstbx.getDesktop();
+			if (desktop == null) {
+				timer.cancel();
+				return;
+			}
+
+			Executions.activate(desktop);
+			try {
+
+				getListComponent().setItemRenderer(getListitemRender());
+
+			} finally {
+				Executions.deactivate(desktop);
+			}
+		} catch (DesktopUnavailableException ex) {
+			System.out.println("Desktop currently unavailable");
+			timer.cancel();
+		} catch (InterruptedException e) {
+			System.out.println("The server push thread interrupted");
+			timer.cancel();
+		}
+	}
 
 	@Override
 	protected Listbox getListComponent() {
