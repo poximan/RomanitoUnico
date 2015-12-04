@@ -70,7 +70,6 @@ public class Message extends BaseEntity implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fecha_leido_ack;
 
-
 	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "ID_USUARIO")
