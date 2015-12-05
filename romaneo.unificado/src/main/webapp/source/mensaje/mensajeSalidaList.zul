@@ -94,7 +94,7 @@
 				<listbox id="mensajesSalidaLstbx" rows="10">
 					<listhead>
 						<listheader label="${labels.mensaje.fecha}"
-							width="15%" sortDirection="ascending" sort="auto(fecha_creado)"
+							width="20%" sortDirection="ascending" sort="auto(fecha_creado)"
 							hflex="max" align="center" />
 
 						<listheader
@@ -102,7 +102,7 @@
 							align="center" />
 
 						<listheader label="${labels.mensaje.asunto}"
-							width="55%" hflex="max" align="center" />
+							width="50%" hflex="max" align="center" />
 
 						<listheader label="${labels.mensaje.estado}"
 							width="10%" hflex="max" align="center" />

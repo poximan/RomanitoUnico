@@ -83,6 +83,7 @@ public class MensajeSalidaFormController extends BaseFormController {
 	}
 
 	public void doAfterCompose(Component comp) throws Exception {
+
 		super.doAfterCompose(comp);
 
 		if ((mensaje = (Message) Executions.getCurrent().getArg().get(SELECTED)) != null) {
@@ -130,16 +131,20 @@ public class MensajeSalidaFormController extends BaseFormController {
 	@Listen("onClick = #editBttn")
 	public void edit() {
 
-		if (destinatarioBndbx.isReadonly()) {
-			destinatarioBndbx.setReadonly(false);
-			contenidoTxtbx.setReadonly(false);
-			asuntoTxtbx.setReadonly(false);
-			tipoBndbx.setReadonly(false);
-		} else {
-			destinatarioBndbx.setReadonly(true);
-			contenidoTxtbx.setReadonly(true);
-			asuntoTxtbx.setReadonly(true);
-			tipoBndbx.setReadonly(true);
+		if (mensaje.getEstado().getNombre().equals(EstadosPosibles.GENERADO.getValue()))
+			if (destinatarioBndbx.isReadonly()) {
+				destinatarioBndbx.setReadonly(false);
+				contenidoTxtbx.setReadonly(false);
+				asuntoTxtbx.setReadonly(false);
+				tipoBndbx.setReadonly(false);
+			} else {
+				destinatarioBndbx.setReadonly(true);
+				contenidoTxtbx.setReadonly(true);
+				asuntoTxtbx.setReadonly(true);
+				tipoBndbx.setReadonly(true);
+			}
+		else {
+			alert("El mensaje ya fue enviado, no puede modificarse");
 		}
 	}
 

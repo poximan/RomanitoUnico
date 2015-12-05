@@ -44,15 +44,15 @@
 					</row>
 
 					<row sclass="row-form">
-						<label value="${labels.mensaje.contenido}" />
-						<textbox id="contenidoTxtbx" hflex="1"
-							readonly="true" class="form-control" multiline="true" />
-					</row>
-
-					<row sclass="row-form">
 						<label value="${labels.mensaje.asunto}" />
 						<textbox id="asuntoTxtbx" hflex="1"
 							class="form-control" readonly="true" />
+					</row>
+
+					<row sclass="row-form">
+						<label value="${labels.mensaje.contenido}" />
+						<textbox id="contenidoTxtbx" hflex="1"
+							readonly="true" class="form-control" multiline="true" />
 					</row>
 
 					<row sclass="row-form">
