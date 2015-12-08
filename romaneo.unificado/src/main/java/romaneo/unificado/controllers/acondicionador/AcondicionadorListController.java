@@ -19,7 +19,7 @@ import org.zkoss.zul.Paging;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
-import romaneo.unificado.controllers.BasePagedListController;
+import romaneo.unificado.controllers.BasePagedListNuevoController;
 import romaneo.unificado.domain.Acondicionador;
 import romaneo.unificado.services.acondicionador.AcondicionadorService;
 
@@ -28,7 +28,7 @@ import romaneo.unificado.services.acondicionador.AcondicionadorService;
  * 
  * @author hugo
  */
-public class AcondicionadorListController extends BasePagedListController<Acondicionador> {
+public class AcondicionadorListController extends BasePagedListNuevoController<Acondicionador> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -114,7 +114,7 @@ public class AcondicionadorListController extends BasePagedListController<Acondi
 	/* ------------------------------------------------------------------ */
 	/* filtros ---------------------------------------------------------- */
 	/* ------------------------------------------------------------------ */
-	
+
 	@Override
 	public void buildParameters() {
 
