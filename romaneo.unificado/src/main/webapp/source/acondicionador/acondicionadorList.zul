@@ -4,117 +4,143 @@
 		apply="romaneo.unificado.controllers.acondicionador.AcondicionadorListController">
 
 		<style src="/css/list.css" />
+		<style src="/css/bootstrap/css/bootstrap.css" />
 
-		<n:div class="row">
+		<n:button class="navbar-toggler" type="button"
+			data-toggle="collapse" data-target="#exCollapsingNavbar">
+			&#9776;
+		</n:button>
+		<n:div class="container-fluid">
 
-			<n:div class="col-md-2">
-				<n:ul class="nav nav-pills nav-stacked">
+			<n:div class="row-fluid " style='height: inherit;'>
+				<n:div class="sidebar">
+					<n:div class="col-md-2 full-height">
 
-					<n:li class="active">
-						<n:a id="acondicionadoresSubmenuA1">
-							${labels.masterData.menu.acondicionadores}
-						</n:a>
-					</n:li>
 
-					<n:li>
-						<n:a id="productoresSubmenuA1">
-							${labels.masterData.menu.productores}
-						</n:a>
-					</n:li>
 
-					<n:li>
-						<n:a id="establecimientosSubmenuA1">
-							${labels.masterData.menu.establecimientos}
-						</n:a>
-					</n:li>
+						<n:div class="collapse"
+							id="exCollapsingNavbar">
 
-					<n:li>
-						<n:a id="contratistasSubmenuA1">
-							${labels.masterData.menu.contratistas}
-						</n:a>
-					</n:li>
+							<n:ul class="nav nav-pills nav-stacked">
 
-				</n:ul>
-			</n:div>
+								<n:li class="active">
+									<n:a
+										id="acondicionadoresSubmenuA1">
+										${labels.masterData.menu.acondicionadores}
+									</n:a>
+								</n:li>
 
-			<n:div class="col-md-10">
+								<n:li>
+									<n:a id="productoresSubmenuA1">
+										${labels.masterData.menu.productores}
+									</n:a>
+								</n:li>
 
-				<n:h1 style="margin-top:5px">
-					${labels.masterData.menu.acondicionadores}
-				</n:h1>
-				<separator />
+								<n:li>
+									<n:a
+										id="establecimientosSubmenuA1">
+										${labels.masterData.menu.establecimientos}
+									</n:a>
+								</n:li>
 
-				<n:div class="filters-panel panel">
-					<n:div class="row">
+								<n:li>
+									<n:a id="contratistasSubmenuA1">
+										${labels.masterData.menu.contratistas}
+									</n:a>
+								</n:li>
 
-						<n:div class="col-md-3">
-							<textbox id="filterByApellidoTxtbx" placeholder="${labels.persona.apellido}"
-								class="form-control" />
+							</n:ul>
+							<n:span class="text-muted">
+
+							</n:span>
 						</n:div>
-
-						<n:div class="col-md-3">
-							<textbox id="filterByNombreTxtbx" placeholder="${labels.persona.nombre}"
-								class="form-control" />
-						</n:div>
-
-						<n:div class="col-md-3">
-							<intbox id="filterByDni" placeholder="${labels.persona.dni}"
-								class="form-control" />
-						</n:div>
-
-					</n:div>
-
-					<separator height="10px" orient="vertical" />
-
-					<n:div class="panel-footer text-right">
-						<button id="filterBttn" iconSclass="z-icon-filter" label="${labels.app.filter}"
-							class="btn btn-sm btn-default" />
-
-						<button id="cleanFiltersBttn" iconSclass="z-icon-undo"
-							label="${labels.app.cleanFilters}" class="btn btn-sm btn-default" />
-
-						<button id="newBttn" iconSclass="z-icon-plus" label="${labels.app.create}"
-							class="btn btn-sm btn-primary" />
-
-						<button id="editBttn" disabled="true" iconSclass="z-icon-edit"
-							label="${labels.app.edit}" class="btn btn-sm btn-default" />
-
-						<button id="deleteBttn" disabled="true" iconSclass="z-icon-times"
-							label="${labels.app.delete}" class="btn btn-sm btn-default" />
-
 					</n:div>
 				</n:div>
 
-				<listbox id="acondicionadoresLstbx" rows="10">
-					<listhead>
-						<listheader label="${labels.persona.apellido}" hflex="min"
-							align="center" />
-						<listheader label="${labels.persona.nombre}" align="center" />
-						<listheader label="${labels.persona.localidad}" align="center" />
-						<listheader label="${labels.persona.telefono}" align="center" />
-					</listhead>
-				</listbox>
 
-				<div class="panel-footer custom-list-paging">
-					<n:div class="row">
-						<n:div class="col-md-3">
-							<paging id="acondicionadoresPgn" pageSize="10" />
+
+				<n:div class="Content col-md-10 ">
+					<n:h1 style="margin-top:5px">
+						${labels.masterData.menu.acondicionadores}
+					</n:h1>
+					<separator />
+
+					<n:div class="filters-panel panel">
+						<n:div class="row">
+
+							<n:div class="col-md-3">
+								<textbox id="filterByApellidoTxtbx"
+									placeholder="${labels.persona.apellido}" class="form-control" />
+							</n:div>
+
+							<n:div class="col-md-3">
+								<textbox id="filterByNombreTxtbx"
+									placeholder="${labels.persona.nombre}" class="form-control" />
+							</n:div>
+
+							<n:div class="col-md-3">
+								<intbox id="filterByDni"
+									placeholder="${labels.persona.dni}" class="form-control" />
+							</n:div>
+
 						</n:div>
-						<n:div class="col-md-4">
-							<hbox align="center">
-								<label value="${labels.app.listSize}" />
-								<combobox id="acondicionadoresPageSizeCmbbx" width="80px"
-									sclass="input-group" value="10">
-									<comboitem value="10" label="10" />
-									<comboitem value="25" label="25" />
-									<comboitem value="50" label="50" />
-								</combobox>
-							</hbox>
+
+						<separator height="10px" orient="vertical" />
+
+						<n:div class="panel-footer text-right">
+							<button id="filterBttn"
+								iconSclass="z-icon-filter" label="${labels.app.filter}"
+								class="btn btn-sm btn-default" />
+
+							<button id="cleanFiltersBttn"
+								iconSclass="z-icon-undo" label="${labels.app.cleanFilters}"
+								class="btn btn-sm btn-default" />
+
+							<button id="newBttn"
+								iconSclass="z-icon-plus" label="${labels.app.create}"
+								class="btn btn-sm btn-primary" />
+
+							<button id="editBttn" disabled="true"
+								iconSclass="z-icon-edit" label="${labels.app.edit}"
+								class="btn btn-sm btn-default" />
+
+							<button id="deleteBttn" disabled="true"
+								iconSclass="z-icon-times" label="${labels.app.delete}"
+								class="btn btn-sm btn-default" />
+
 						</n:div>
 					</n:div>
-				</div>
-			</n:div>
 
+					<listbox id="acondicionadoresLstbx" rows="10">
+						<listhead>
+							<listheader
+								label="${labels.persona.apellido}" hflex="min" align="center" />
+							<listheader label="${labels.persona.nombre}"
+								align="center" />
+							<listheader
+								label="${labels.persona.localidad}" align="center" />
+							<listheader
+								label="${labels.persona.telefono}" align="center" />
+						</listhead>
+					</listbox>
+
+					<div class="panel-footer custom-list-paging">
+						<n:div class="row">
+							<paging id="acondicionadoresPgn"
+								pageSize="10" />
+						</n:div>
+						<hbox align="center">
+							<label value="${labels.app.listSize}" />
+							<combobox id="acondicionadoresPageSizeCmbbx"
+								width="80px" sclass="input-group" value="10">
+								<comboitem value="10" label="10" />
+								<comboitem value="25" label="25" />
+								<comboitem value="50" label="50" />
+							</combobox>
+						</hbox>
+					</div>
+				</n:div>
+			</n:div>
 		</n:div>
 
 	</window>

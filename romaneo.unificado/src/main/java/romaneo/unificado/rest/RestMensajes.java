@@ -14,7 +14,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import romaneo.unificado.domain.Message;
+import romaneo.unificado.rest.exception.LeidoException;
 import romaneo.unificado.rest.exception.NotAuthorizedException;
+import romaneo.unificado.rest.exception.PendienteEnvioException;
 import romaneo.unificado.services.MessageService;
 import romaneo.unificado.services.UsuarioMovilService;
 
@@ -27,7 +29,8 @@ public class RestMensajes // extends BaseRest
 	@GET
 	@Path("prueba")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String fuckingPrueba() {
+	public String fuckingPrueba()
+	{
 
 		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 		MessageService mensajeS = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
@@ -35,36 +38,52 @@ public class RestMensajes // extends BaseRest
 		String respuesta = "rest Funcionando";
 		return respuesta;
 	}
-	
+
 	@GET
 	@Path("ackLeido")
 	@Produces(MediaType.APPLICATION_JSON)
 	public boolean ackMensajeLeido(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei,
-			@QueryParam("idMensaje") Integer idMensaje) {
-		if (autenticar(nombreUsuario, imei)) {
+			@QueryParam("idMensaje") Integer idMensaje)
+	{
+		if (autenticar(nombreUsuario, imei))
+		{
 			ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 			MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
-			mensajeService.mensajeLeido(idMensaje, ctx);
-			} else
+			try
 			{
-				throw new NotAuthorizedException();
-			} 
-			return true;
+				mensajeService.mensajeLeido(idMensaje, ctx);
+			} catch (LeidoException e)
+			{
+				throw e;
+			}
+		} else
+		{
+			throw new NotAuthorizedException();
+		}
+		return true;
 	}
 
 	@GET
 	@Path("ackRecibido")
 	@Produces(MediaType.APPLICATION_JSON)
 	public boolean ackMensaje(@QueryParam("nombreUsuario") String nombreUsuario, @QueryParam("imei") String imei,
-			@QueryParam("idMensaje") Integer idMensaje) {
-		if (autenticar(nombreUsuario, imei)) {
-		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
-		MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
-		mensajeService.mensajeRecibido(idMensaje, ctx);
+			@QueryParam("idMensaje") Integer idMensaje)
+	{
+		if (autenticar(nombreUsuario, imei))
+		{
+			ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
+			MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
+			try
+			{
+				mensajeService.mensajeRecibido(idMensaje, ctx);
+			} catch (PendienteEnvioException e)
+			{
+				throw e;
+			}
 		} else
 		{
 			throw new NotAuthorizedException();
-		} 
+		}
 		return true;
 	}
 
@@ -72,11 +91,13 @@ public class RestMensajes // extends BaseRest
 	@Path("entrante")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Message> mensajesRecibido(@QueryParam("nombreUsuario") String nombreUsuario,
-			@QueryParam("imei") String imei) {
+			@QueryParam("imei") String imei)
+	{
 
 		List<Message> mensajes = null;
 
-		if (autenticar(nombreUsuario, imei)) {
+		if (autenticar(nombreUsuario, imei))
+		{
 			ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 			MessageService mensajeService = (MessageService) ctx.getBean(MessageService.class.getSimpleName());
 			System.out.println("ingeso");
@@ -85,12 +106,13 @@ public class RestMensajes // extends BaseRest
 		} else
 		{
 			throw new NotAuthorizedException();
-		} 
+		}
 
 		return mensajes;
 	}
 
-	public boolean autenticar(String nombreUsuario, String imei) {
+	public boolean autenticar(String nombreUsuario, String imei)
+	{
 		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(server);
 		UsuarioMovilService usMoService = (UsuarioMovilService) ctx.getBean(UsuarioMovilService.class.getSimpleName());
 		return usMoService.findByNameIMEI(nombreUsuario, imei) == null ? false : true;

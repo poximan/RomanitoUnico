@@ -14,6 +14,8 @@ import romaneo.unificado.domain.Estado;
 import romaneo.unificado.domain.Estado.EstadosPosibles;
 import romaneo.unificado.domain.Message;
 import romaneo.unificado.domain.Message.TipoMensaje;
+import romaneo.unificado.rest.exception.LeidoException;
+import romaneo.unificado.rest.exception.PendienteEnvioException;
 
 public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>implements MessageService {
 
@@ -117,11 +119,17 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>im
 	}
 
 	@Override
-	public boolean mensajeRecibido(Integer idMensaje, ApplicationContext ctx) {
+	public boolean mensajeRecibido(Integer idMensaje, ApplicationContext ctx) throws PendienteEnvioException {
 		EstadoService serv_estado = (EstadoService) ctx.getBean(EstadoService.class.getSimpleName());
 		Estado nuevo_estado = serv_estado.getEstado(EstadosPosibles.RECIBIDO.getValue());
 		Message mensaje;
 		mensaje = dao.findById(idMensaje);
+		System.out.println("estado: "+mensaje.getEstado().getNombre());
+		if(mensaje.getEstado().getNombre().equals(EstadosPosibles.RECIBIDO.getValue()))
+		{
+			System.out.println("mensajeRecibido");
+			throw new PendienteEnvioException();
+		}
 		mensaje.setFechaRecibidoAck(Calendar.getInstance());
 		mensaje.setEstado(nuevo_estado);
 		dao.update(mensaje);
@@ -129,11 +137,15 @@ public class MessageServiceImple extends BaseServiceImple<Message, MessageDao>im
 	}
 
 	@Override
-	public boolean mensajeLeido(Integer idMensaje, ApplicationContext ctx) {
+	public boolean mensajeLeido(Integer idMensaje, ApplicationContext ctx) throws LeidoException {
 		EstadoService serv_estado = (EstadoService) ctx.getBean(EstadoService.class.getSimpleName());
 		Estado nuevo_estado = serv_estado.getEstado(EstadosPosibles.LEIDO.getValue());
 		Message mensaje;
 		mensaje = dao.findById(idMensaje);
+		if(mensaje.getEstado().getNombre().equals(EstadosPosibles.LEIDO.getValue()))
+		{
+			throw new LeidoException();
+		}
 		mensaje.setFechaLeidoAck(Calendar.getInstance());
 		mensaje.setEstado(nuevo_estado);
 		dao.update(mensaje);
